@@ -195,13 +195,29 @@ class AskCommand(BotCommand):
         }
 
     @staticmethod
-    def _build_user_message(stock_code: str, skill_id: str, skill_text: str) -> str:
+    def _build_metrics_context(stock_code: str, config) -> Dict[str, Any]:
+        try:
+            from src.services.ask_metrics_service import build_ask_metrics_context
+
+            return build_ask_metrics_context(stock_code, config=config)
+        except Exception as exc:
+            logger.warning("[AskCommand] metrics context failed for %s: %s", stock_code, exc)
+            return {"code": stock_code, "data_quality": {"ask_metrics": "failed"}, "error": str(exc)[:120]}
+
+    @staticmethod
+    def _build_user_message(
+        stock_code: str,
+        skill_id: str,
+        skill_text: str,
+        metrics_context: Optional[Dict[str, Any]] = None,
+    ) -> str:
         from src.services.claude_bridge_service import get_claude_bridge_service
 
         return get_claude_bridge_service().build_stock_user_message(
             stock_code,
             skill_id=skill_id,
             skill_text=skill_text,
+            metrics_context=metrics_context,
         )
 
     def execute(self, message: BotMessage, args: List[str]) -> BotResponse:
@@ -237,11 +253,13 @@ class AskCommand(BotCommand):
         try:
             from src.services.claude_bridge_service import get_claude_bridge_service
 
+            metrics_context = self._build_metrics_context(code, config)
             content = get_claude_bridge_service().build_stock_answer(
                 code,
                 skill_id=skill_id,
                 skill_text=skill_text,
                 config=config,
+                metrics_context=metrics_context,
             )
             if not content:
                 return BotResponse.text_response("⚠️ 分析失败: Claude direct bridge 未返回内容")
@@ -280,7 +298,8 @@ class AskCommand(BotCommand):
                 from src.agent.conversation import conversation_manager
                 from src.services.claude_bridge_service import get_claude_bridge_service
 
-                user_msg = self._build_user_message(stock_code, skill_id, skill_text)
+                metrics_context = self._build_metrics_context(stock_code, config)
+                user_msg = self._build_user_message(stock_code, skill_id, skill_text, metrics_context=metrics_context)
                 session_id = f"{platform}_{user_id}:ask_{stock_code}_{uuid.uuid4()}"
                 conversation_manager.add_message(session_id, "user", user_msg)
 
@@ -289,6 +308,7 @@ class AskCommand(BotCommand):
                     skill_id=skill_id,
                     skill_text=skill_text,
                     config=config,
+                    metrics_context=metrics_context,
                 )
                 if not content:
                     error_note = "[分析失败] Claude direct bridge 未返回内容"

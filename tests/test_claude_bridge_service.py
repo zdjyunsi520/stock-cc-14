@@ -25,7 +25,12 @@ class ClaudeBridgeServiceTests(unittest.TestCase):
 
             service = ClaudeBridgeService(project_root=project_root, memory_root=memory_root)
 
-            message = service.build_stock_user_message("603687", skill_id="bull_trend", skill_text="看风险")
+            message = service.build_stock_user_message(
+                "603687",
+                skill_id="bull_trend",
+                skill_text="看风险",
+                metrics_context={"code": "603687", "twenty_day": {"twenty_day_return_pct": 12.3}},
+            )
 
         self.assertIn("daily_stock_analysis", message)
         self.assertIn("603687", message)
@@ -33,6 +38,9 @@ class ClaudeBridgeServiceTests(unittest.TestCase):
         self.assertIn("Always answer in Chinese", message)
         self.assertIn("project preference", message)
         self.assertIn("Use Feishu", message)
+        self.assertIn("确定性问股指标", message)
+        self.assertIn("twenty_day_return_pct", message)
+        self.assertIn("基本面、分时、趋势、20日涨幅、大盘、热点", message)
 
     def test_restricted_context_skips_sensitive_paths(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -66,7 +74,13 @@ class ClaudeBridgeServiceTests(unittest.TestCase):
         client.create_message.return_value = SimpleNamespace(content="direct answer")
 
         with patch("src.services.claude_bridge_service.AnthropicDirectClient", return_value=client):
-            answer = service.build_stock_answer("600519", skill_id="bull_trend", skill_text="看风险", config=SimpleNamespace())
+            answer = service.build_stock_answer(
+                "600519",
+                skill_id="bull_trend",
+                skill_text="看风险",
+                config=SimpleNamespace(),
+                metrics_context={"market": {"bias": "risk_on"}},
+            )
 
         self.assertEqual(answer, "direct answer")
         client.create_message.assert_called_once()
@@ -74,6 +88,10 @@ class ClaudeBridgeServiceTests(unittest.TestCase):
         self.assertIn("600519", user_message)
         self.assertIn("bull_trend", user_message)
         self.assertIn("看风险", user_message)
+        self.assertIn("risk_on", user_message)
+        system_prompt = client.create_message.call_args.kwargs["system"]
+        self.assertIn("基本面", system_prompt)
+        self.assertIn("情景推演", system_prompt)
 
 
 if __name__ == "__main__":

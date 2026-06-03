@@ -9,11 +9,12 @@ project host.
 
 from __future__ import annotations
 
+import json
 import logging
 import re
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable, Optional
+from typing import Any, Iterable, Optional
 
 from src.services.anthropic_direct_client import AnthropicDirectClient
 
@@ -25,6 +26,7 @@ class ClaudeBridgeService:
 
     _MAX_FILE_CHARS = 3000
     _MAX_CONTEXT_CHARS = 9000
+    _MAX_METRICS_CHARS = 7000
     _MEMORY_PATTERNS = ("project_*.md", "feedback_*.md", "reference_*.md")
     _SENSITIVE_PARTS = {
         ".env",
@@ -45,11 +47,19 @@ class ClaudeBridgeService:
         slug = re.sub(r"[^A-Za-z0-9]", "-", str(project_root)).strip("-")
         return Path.home() / ".claude" / "projects" / slug / "memory"
 
-    def build_stock_user_message(self, stock_code: str, skill_id: str = "", skill_text: str = "") -> str:
+    def build_stock_user_message(
+        self,
+        stock_code: str,
+        skill_id: str = "",
+        skill_text: str = "",
+        metrics_context: Optional[dict[str, Any]] = None,
+    ) -> str:
         """Compose the user prompt for a stock question with restricted context."""
         parts = [
             f"请以 daily_stock_analysis 的 Claude 只读市场分析主持人身份分析股票 {stock_code}。",
             "你可以使用项目内已注册的行情、新闻、技术面、历史分析等只读工具。",
+            "必须从结论、基本面、分时、趋势、20日涨幅、大盘、热点、情景推演、风险提示这些角度回答。",
+            "预测只能使用“若...则...”的情景推演，不给确定性交易指令。",
             "禁止下单、写入持仓、承诺收益、读取或泄露密钥，不要假装拥有未提供的数据。",
         ]
         if skill_id:
@@ -57,26 +67,57 @@ class ClaudeBridgeService:
         if skill_text:
             parts.append(f"用户补充要求: {skill_text}")
 
+        metrics_text = self._format_metrics_context(metrics_context)
+        if metrics_text:
+            parts.append("以下是确定性问股指标。请优先基于这些数据分析；缺失或失败的维度必须明说，不要脑补实时数据:")
+            parts.append(metrics_text)
+
         context = self.build_restricted_context()
         if context:
             parts.append("以下是只读项目上下文，请作为行为边界和协作偏好使用，不要逐字复述:")
             parts.append(context)
         return "\n\n".join(parts)
 
-    def build_stock_answer(self, stock_code: str, skill_id: str = "", skill_text: str = "", config=None) -> str:
+    def build_stock_answer(
+        self,
+        stock_code: str,
+        skill_id: str = "",
+        skill_text: str = "",
+        config=None,
+        metrics_context: Optional[dict[str, Any]] = None,
+    ) -> str:
         """Ask Claude directly through Anthropic Messages API."""
         client = AnthropicDirectClient(config=config)
-        user_message = self.build_stock_user_message(stock_code, skill_id=skill_id, skill_text=skill_text)
+        user_message = self.build_stock_user_message(
+            stock_code,
+            skill_id=skill_id,
+            skill_text=skill_text,
+            metrics_context=metrics_context,
+        )
         response = client.create_message(
             user_message,
             system=(
                 "你是 daily_stock_analysis 的 Claude 只读市场分析主持人。"
+                "必须输出：结论、基本面、分时、趋势、20日涨幅、大盘、热点、情景推演、风险提示。"
                 "只做复盘、问股、实时分析和情景推演；不下单、不写持仓、不承诺收益。"
+                "若数据缺失或 data_quality 标记失败，必须说明缺口；预测只写条件场景。"
             ),
-            max_tokens=1800,
+            max_tokens=2200,
             temperature=0.2,
         )
         return response.content.strip()
+
+    def _format_metrics_context(self, metrics_context: Optional[dict[str, Any]]) -> str:
+        if not metrics_context:
+            return ""
+        try:
+            text = json.dumps(metrics_context, ensure_ascii=False, sort_keys=True, default=str, indent=2)
+        except (TypeError, ValueError) as exc:
+            logger.warning("Claude bridge metrics context skipped: %s", exc)
+            return ""
+        if len(text) > self._MAX_METRICS_CHARS:
+            return text[: self._MAX_METRICS_CHARS] + "\n...[metrics truncated]"
+        return text
 
     def build_restricted_context(self) -> str:
         """Return a bounded, non-sensitive context block."""

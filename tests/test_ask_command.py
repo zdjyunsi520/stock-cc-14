@@ -112,10 +112,11 @@ class TestAskCommandMultiStock(unittest.TestCase):
         bridge = MagicMock()
         bridge.build_stock_answer.side_effect = lambda code, **kwargs: f"{code} raw content"
 
-        with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
-            with patch.object(command, "_build_portfolio_section", return_value="## 组合视角\n组合摘要"):
-                with patch("src.agent.conversation.conversation_manager"):
-                    response = command._analyze_multi(config, message, ["600519", "000858"], None, "")
+        with patch.object(command, "_build_metrics_context", side_effect=lambda code, _config: {"code": code, "data_quality": {"unit": "ok"}}):
+            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                with patch.object(command, "_build_portfolio_section", return_value="## 组合视角\n组合摘要"):
+                    with patch("src.agent.conversation.conversation_manager"):
+                        response = command._analyze_multi(config, message, ["600519", "000858"], None, "")
 
         self.assertTrue(response.markdown)
         self.assertIn("## 组合视角", response.text)
@@ -187,10 +188,11 @@ class TestAskCommandMultiStock(unittest.TestCase):
         bridge = MagicMock()
         bridge.build_stock_answer.side_effect = lambda code, **kwargs: f"{code} 自由文本分析"
 
-        with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
-            with patch.object(command, "_build_portfolio_section", return_value=""):
-                with patch("src.agent.conversation.conversation_manager"):
-                    response = command._analyze_multi(config, message, ["600519", "000858"], None, "")
+        with patch.object(command, "_build_metrics_context", side_effect=lambda code, _config: {"code": code}):
+            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                with patch.object(command, "_build_portfolio_section", return_value=""):
+                    with patch("src.agent.conversation.conversation_manager"):
+                        response = command._analyze_multi(config, message, ["600519", "000858"], None, "")
 
         self.assertIn("600519 自由文本分析", response.text)
         self.assertNotIn("⚠️ 分析失败: Failed to parse dashboard JSON", response.text)
@@ -203,10 +205,11 @@ class TestAskCommandMultiStock(unittest.TestCase):
         bridge = MagicMock()
         bridge.build_stock_answer.side_effect = lambda code, **kwargs: f"{code} direct analysis"
 
-        with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
-            with patch.object(command, "_build_portfolio_section", return_value=""):
-                with patch("src.agent.conversation.conversation_manager") as mock_cm:
-                    command._analyze_multi(config, message, ["600519", "000858"], None, "")
+        with patch.object(command, "_build_metrics_context", side_effect=lambda code, _config: {"code": code}):
+            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                with patch.object(command, "_build_portfolio_section", return_value=""):
+                    with patch("src.agent.conversation.conversation_manager") as mock_cm:
+                        command._analyze_multi(config, message, ["600519", "000858"], None, "")
 
         assistant_messages = [
             call.args[2]
@@ -225,11 +228,12 @@ class TestAskCommandMultiStock(unittest.TestCase):
         bridge.build_stock_answer.side_effect = lambda code, **kwargs: f"{code} raw content"
 
         with patch("bot.commands.ask.get_db", side_effect=lambda: call_order.append("db")) as mock_get_db:
-            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
-                with patch.object(command, "_build_portfolio_section", return_value=""):
-                    with patch("src.agent.conversation.conversation_manager") as mock_cm:
-                        mock_cm.add_message.side_effect = lambda *args, **kwargs: call_order.append("history")
-                        command._analyze_multi(config, message, ["600519", "000858"], None, "")
+            with patch.object(command, "_build_metrics_context", side_effect=lambda code, _config: {"code": code}):
+                with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                    with patch.object(command, "_build_portfolio_section", return_value=""):
+                        with patch("src.agent.conversation.conversation_manager") as mock_cm:
+                            mock_cm.add_message.side_effect = lambda *args, **kwargs: call_order.append("history")
+                            command._analyze_multi(config, message, ["600519", "000858"], None, "")
 
         mock_get_db.assert_called_once_with()
         self.assertTrue(call_order)
@@ -259,9 +263,10 @@ class TestAskCommandMultiStock(unittest.TestCase):
         bridge = MagicMock()
         bridge.build_stock_answer.return_value = "analysis ok"
 
-        with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
-            with patch.object(command, "_resolve_skill_name", return_value="缠论"):
-                response = command._analyze_single(config, message, "600519", "chan_theory", "")
+        with patch.object(command, "_build_metrics_context", return_value={"code": "600519", "data_quality": {"unit": "ok"}}):
+            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                with patch.object(command, "_resolve_skill_name", return_value="缠论"):
+                    response = command._analyze_single(config, message, "600519", "chan_theory", "")
 
         self.assertIn("analysis ok", response.text)
         bridge.build_stock_answer.assert_called_once_with(
@@ -269,7 +274,32 @@ class TestAskCommandMultiStock(unittest.TestCase):
             skill_id="chan_theory",
             skill_text="",
             config=config,
+            metrics_context={"code": "600519", "data_quality": {"unit": "ok"}},
         )
+
+    def test_analyze_multi_passes_metrics_context_per_stock(self):
+        command = AskCommand()
+        config = SimpleNamespace()
+        message = self._message()
+        bridge = MagicMock()
+        bridge.build_stock_answer.side_effect = lambda code, **kwargs: f"{code} analysis"
+
+        with patch.object(command, "_build_metrics_context", side_effect=lambda code, _config: {"code": code, "tag": "metrics"}):
+            with patch("src.services.claude_bridge_service.get_claude_bridge_service", return_value=bridge):
+                with patch.object(command, "_build_portfolio_section", return_value=""):
+                    with patch("src.agent.conversation.conversation_manager"):
+                        command._analyze_multi(config, message, ["600519", "000858"], "bull_trend", "")
+
+        contexts = [call.kwargs.get("metrics_context") for call in bridge.build_stock_answer.call_args_list]
+        self.assertEqual(contexts, [{"code": "600519", "tag": "metrics"}, {"code": "000858", "tag": "metrics"}])
+
+    def test_build_metrics_context_fails_open(self):
+        command = AskCommand()
+        with patch("src.services.ask_metrics_service.build_ask_metrics_context", side_effect=RuntimeError("boom")):
+            context = command._build_metrics_context("600519", SimpleNamespace())
+
+        self.assertEqual(context["code"], "600519")
+        self.assertEqual(context["data_quality"]["ask_metrics"], "failed")
 
 
 class TestAskCommandSilentExceptionFix(unittest.TestCase):
