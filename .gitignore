@@ -1,5 +1,4 @@
 # 环境变量文件（包含敏感信息，禁止提交）
-.env
 .env.*
 *.env
 *.env.local
@@ -53,7 +52,6 @@ env/
 .cursorrules
 
 # 数据和日志
-/data/
 logs/
 reports/
 *.db
@@ -76,6 +74,7 @@ run.sh
 verify_*.py
 
 # ignore Claude workspace artifacts, but keep shared repo skills versioned
+.codegraph/*
 .claude/*
 !.claude/skills/
 !.claude/skills/**
