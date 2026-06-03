@@ -1,5 +1,7 @@
 # 环境变量文件（包含敏感信息，禁止提交）
+.env
 .env.*
+*.env
 *.env.local
 .env.*.local
 
