@@ -343,7 +343,7 @@ class TestIssue1512SettingsFields(unittest.TestCase):
 
     def test_stream_fields_are_registered_as_notification_switches(self) -> None:
         expected = {
-            "FEISHU_STREAM_ENABLED": 17,
+            "FEISHU_STREAM_ENABLED": 18,
             "DINGTALK_STREAM_ENABLED": 35,
         }
         for key, display_order in expected.items():

@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+export PYTHONIOENCODING="${PYTHONIOENCODING:-utf-8}"
+export PYTHONUTF8="${PYTHONUTF8:-1}"
+
 syntax_check() {
   echo "==> backend-gate: Python syntax check"
   python -m py_compile main.py src/config.py src/auth.py src/analyzer.py src/notification.py

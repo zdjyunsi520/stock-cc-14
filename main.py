@@ -382,6 +382,12 @@ def parse_arguments() -> argparse.Namespace:
         help='强制回测（即使已有回测结果也重新计算）'
     )
 
+    parser.add_argument(
+        '--evolve-analysis',
+        action='store_true',
+        help='运行自我进化只读诊断，生成建议报告与 trajectory'
+    )
+
     return parser.parse_args()
 
 
@@ -425,6 +431,28 @@ def _compute_trading_day_filter(
 
     should_skip_all = (not filtered_codes) and (effective_region or '') == ''
     return (filtered_codes, effective_region, should_skip_all)
+
+
+def _run_evolution_dry_run(config: Config) -> int:
+    """Run read-only self-evolution diagnostics and persist local artifacts."""
+    from src.repositories.evolution_repo import EvolutionRepository
+    from src.services.evolution_service import EvolutionService
+
+    service = EvolutionService(config)
+    evolution_run = service.run_dry_run()
+    repo = EvolutionRepository(getattr(config, 'evolution_output_dir', 'reports/evolution'))
+    artifacts = repo.save_run(evolution_run)
+    logger.info(
+        "自我进化诊断完成: status=%s samples=%s steps=%s output=%s",
+        evolution_run.status,
+        evolution_run.sample_count,
+        len(evolution_run.steps),
+        artifacts.get("run_dir"),
+    )
+    print(f"Evolution run: {artifacts.get('run')}")
+    print(f"Trajectory: {artifacts.get('trajectory')}")
+    print(f"Summary: {artifacts.get('summary')}")
+    return 0
 
 
 def _run_market_review_with_shared_lock(
@@ -827,6 +855,13 @@ def main() -> int:
         result = run_notification_diagnostics(config)
         print(format_notification_diagnostics(result))
         return 0 if result.ok else 1
+
+    if getattr(args, 'evolve_analysis', False):
+        if not getattr(args, 'dry_run', False):
+            logger.error("自我进化 P0 仅支持 --dry-run，只生成建议与 trajectory，不执行采纳动作。")
+            return 1
+        logger.info("模式: 自我进化只读诊断")
+        return _run_evolution_dry_run(config)
 
     # 解析股票列表（统一为大写 Issue #355）
     stock_codes = None

@@ -901,7 +901,13 @@ class Config:
     backtest_min_age_days: int = 14
     backtest_engine_version: str = "v1"
     backtest_neutral_band_pct: float = 2.0
-    
+
+    # === 自我进化配置（默认关闭，只读建议）===
+    evolution_enabled: bool = False
+    evolution_lookback_days: int = 30
+    evolution_min_sample_size: int = 20
+    evolution_output_dir: str = "reports/evolution"
+
     # === 日志配置 ===
     log_dir: str = "./logs"  # 日志文件目录
     log_level: str = "INFO"  # 日志级别
@@ -1829,6 +1835,20 @@ class Config:
                 field_name='BACKTEST_NEUTRAL_BAND_PCT',
                 minimum=0.0,
             ),
+            evolution_enabled=parse_env_bool(os.getenv('EVOLUTION_ENABLED'), default=False),
+            evolution_lookback_days=parse_env_int(
+                os.getenv('EVOLUTION_LOOKBACK_DAYS'),
+                30,
+                field_name='EVOLUTION_LOOKBACK_DAYS',
+                minimum=1,
+            ),
+            evolution_min_sample_size=parse_env_int(
+                os.getenv('EVOLUTION_MIN_SAMPLE_SIZE'),
+                20,
+                field_name='EVOLUTION_MIN_SAMPLE_SIZE',
+                minimum=1,
+            ),
+            evolution_output_dir=os.getenv('EVOLUTION_OUTPUT_DIR', 'reports/evolution'),
             log_dir=os.getenv('LOG_DIR', './logs'),
             log_level=os.getenv('LOG_LEVEL', 'INFO'),
             max_workers=parse_env_int(os.getenv('MAX_WORKERS'), 3, field_name='MAX_WORKERS', minimum=1),

@@ -126,6 +126,32 @@ class TestTushareFetcherFollowUps(unittest.TestCase):
         self.assertEqual(bottom, [{"name": "消费", "change_pct": -0.6}])
         self.assertEqual(rate_limit_mock.call_count, 2)
 
+    def test_trade_calendar_rate_limit_enters_cooldown(self) -> None:
+        fetcher = self._make_fetcher()
+        fetcher._api.trade_cal.side_effect = Exception("每分钟最多访问该接口1次")
+
+        with patch.object(fetcher, "_get_china_now", return_value=datetime(2026, 3, 17, 16, 0)), patch(
+            "data_provider.tushare_fetcher.time.time", return_value=1000.0
+        ):
+            first = fetcher._get_trade_dates()
+            second = fetcher._get_trade_dates()
+
+        self.assertEqual(first, [])
+        self.assertEqual(second, [])
+        fetcher._api.trade_cal.assert_called_once()
+
+    def test_trade_calendar_hourly_rate_limit_cools_down_for_one_hour(self) -> None:
+        fetcher = self._make_fetcher()
+        fetcher._api.trade_cal.side_effect = Exception("抱歉，您访问接口(trade_cal)频率超限(1次/小时)")
+
+        with patch.object(fetcher, "_get_china_now", return_value=datetime(2026, 3, 17, 16, 0)), patch(
+            "data_provider.tushare_fetcher.time.time", return_value=1000.0
+        ):
+            fetcher._get_trade_dates()
+
+        self.assertEqual(fetcher._trade_cal_cooldown_until, 4600.0)
+        fetcher._api.trade_cal.assert_called_once()
+
     def test_get_chip_distribution_rate_limits_all_tushare_calls(self) -> None:
         fetcher = self._make_fetcher()
         fetcher._api.trade_cal.return_value = pd.DataFrame(

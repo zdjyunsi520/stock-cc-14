@@ -143,6 +143,7 @@ class TushareFetcher(BaseFetcher):
         self._api: Optional[object] = None  # Tushare API 实例
         self.date_list: Optional[List[str]] = None  # 交易日列表缓存（倒序，最新日期在前）
         self._date_list_end: Optional[str] = None  # 缓存对应的截止日期，用于跨日刷新
+        self._trade_cal_cooldown_until: float = 0.0
 
         # 尝试初始化 API
         self._init_api()
@@ -267,6 +268,13 @@ class TushareFetcher(BaseFetcher):
         """返回上海时区当前时间，方便测试覆盖跨日刷新逻辑。"""
         return datetime.now(ZoneInfo("Asia/Shanghai"))
 
+    @staticmethod
+    def _trade_cal_cooldown_seconds(error_msg: str) -> int:
+        normalized = (error_msg or "").lower()
+        if "1次/小时" in normalized or "每小时" in normalized or "hour" in normalized:
+            return 3600
+        return 600
+
     def _get_trade_dates(self, end_date: Optional[str] = None) -> List[str]:
         """按自然日刷新交易日历缓存，避免服务跨日后继续复用旧日历。"""
         if self._api is None:
@@ -277,14 +285,31 @@ class TushareFetcher(BaseFetcher):
 
         if self.date_list is not None and self._date_list_end == requested_end_date:
             return self.date_list
+        if time.time() < self._trade_cal_cooldown_until:
+            logger.warning("[Tushare] trade_cal 处于限流冷却期，跳过本次刷新")
+            return self.date_list or []
 
         start_date = (china_now - timedelta(days=20)).strftime("%Y%m%d")
-        df_cal = self._call_api_with_rate_limit(
-            "trade_cal",
-            exchange="SSE",
-            start_date=start_date,
-            end_date=requested_end_date,
-        )
+        try:
+            df_cal = self._call_api_with_rate_limit(
+                "trade_cal",
+                exchange="SSE",
+                start_date=start_date,
+                end_date=requested_end_date,
+            )
+        except RateLimitError as exc:
+            cooldown_seconds = self._trade_cal_cooldown_seconds(str(exc))
+            self._trade_cal_cooldown_until = time.time() + cooldown_seconds
+            logger.warning("[Tushare] trade_cal 触发限流，%s 秒内跳过重复刷新", cooldown_seconds)
+            return self.date_list or []
+        except Exception as exc:
+            error_msg = str(exc).lower()
+            if any(keyword in error_msg for keyword in ["quota", "配额", "limit", "频率超限", "超限", "每分钟最多访问", "权限"]):
+                cooldown_seconds = self._trade_cal_cooldown_seconds(error_msg)
+                self._trade_cal_cooldown_until = time.time() + cooldown_seconds
+                logger.warning("[Tushare] trade_cal 触发限流，%s 秒内跳过重复刷新: %s", cooldown_seconds, exc)
+                return self.date_list or []
+            raise
 
         if df_cal is None or df_cal.empty or "cal_date" not in df_cal.columns:
             logger.warning("[Tushare] trade_cal 返回为空，无法更新交易日历缓存")

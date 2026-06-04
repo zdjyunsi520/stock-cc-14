@@ -6,9 +6,10 @@ from __future__ import annotations
 import logging
 import sqlite3
 import time
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, Iterator, List, Optional, Sequence
 
 import pandas as pd
 
@@ -23,7 +24,8 @@ class IntradayMinuteCacheProvider:
 
     def __init__(self, *, db_path: Optional[str] = None, ttl_seconds: int = 60) -> None:
         config = get_config()
-        self.db_path = Path(db_path or config.database_path)
+        default_db_path = Path(config.database_path).parent / "stock_minute_cache.db"
+        self.db_path = Path(db_path) if db_path else default_db_path
         self.ttl_seconds = max(0, int(ttl_seconds))
         self._ensure_table()
 
@@ -50,45 +52,56 @@ class IntradayMinuteCacheProvider:
             return rows
         return cached
 
-    def _connect(self) -> sqlite3.Connection:
+    @contextmanager
+    def _connect(self) -> Iterator[sqlite3.Connection]:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        conn = sqlite3.connect(self.db_path)
-        conn.row_factory = sqlite3.Row
-        return conn
+        conn = sqlite3.connect(self.db_path, timeout=5)
+        try:
+            conn.row_factory = sqlite3.Row
+            yield conn
+        finally:
+            conn.close()
 
     def _ensure_table(self) -> None:
-        with self._connect() as conn:
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS stock_minute (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    code VARCHAR(10) NOT NULL,
-                    trade_date DATE NOT NULL,
-                    minute_time DATETIME NOT NULL,
-                    open FLOAT,
-                    high FLOAT,
-                    low FLOAT,
-                    close FLOAT,
-                    volume FLOAT,
-                    amount FLOAT,
-                    avg_price FLOAT,
-                    data_source VARCHAR(50),
-                    fetched_at DATETIME NOT NULL,
-                    UNIQUE (code, trade_date, minute_time)
+        try:
+            with self._connect() as conn:
+                conn.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS stock_minute (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        code VARCHAR(10) NOT NULL,
+                        trade_date DATE NOT NULL,
+                        minute_time DATETIME NOT NULL,
+                        open FLOAT,
+                        high FLOAT,
+                        low FLOAT,
+                        close FLOAT,
+                        volume FLOAT,
+                        amount FLOAT,
+                        avg_price FLOAT,
+                        data_source VARCHAR(50),
+                        fetched_at DATETIME NOT NULL,
+                        UNIQUE (code, trade_date, minute_time)
+                    )
+                    """
                 )
-                """
-            )
-            conn.execute("CREATE INDEX IF NOT EXISTS ix_stock_minute_code_time ON stock_minute (code, minute_time)")
-            conn.commit()
+                conn.execute("CREATE INDEX IF NOT EXISTS ix_stock_minute_code_time ON stock_minute (code, minute_time)")
+                conn.commit()
+        except sqlite3.DatabaseError as exc:
+            logger.warning("[IntradayMinute] 分时缓存库初始化失败，将跳过本轮缓存: %s", exc)
 
     def _is_cache_fresh(self, code: str) -> bool:
         if self.ttl_seconds <= 0:
             return False
-        with self._connect() as conn:
-            row = conn.execute(
-                "SELECT MAX(fetched_at) AS fetched_at FROM stock_minute WHERE code = ?",
-                (code,),
-            ).fetchone()
+        try:
+            with self._connect() as conn:
+                row = conn.execute(
+                    "SELECT MAX(fetched_at) AS fetched_at FROM stock_minute WHERE code = ?",
+                    (code,),
+                ).fetchone()
+        except sqlite3.DatabaseError as exc:
+            logger.warning("[IntradayMinute] 分时缓存 freshness 检查失败 %s: %s", code, exc)
+            return False
         if row is None or not row["fetched_at"]:
             return False
         try:
@@ -98,23 +111,27 @@ class IntradayMinuteCacheProvider:
         return time.time() - fetched_at.timestamp() < self.ttl_seconds
 
     def _load_cached(self, code: str) -> List[Dict[str, Any]]:
-        with self._connect() as conn:
-            latest = conn.execute(
-                "SELECT MAX(trade_date) AS trade_date FROM stock_minute WHERE code = ?",
-                (code,),
-            ).fetchone()
-            trade_date = latest["trade_date"] if latest is not None else None
-            if not trade_date:
-                return []
-            rows = conn.execute(
-                """
-                SELECT minute_time, open, high, low, close, volume, amount, avg_price, data_source
-                FROM stock_minute
-                WHERE code = ? AND trade_date = ?
-                ORDER BY minute_time
-                """,
-                (code, trade_date),
-            ).fetchall()
+        try:
+            with self._connect() as conn:
+                latest = conn.execute(
+                    "SELECT MAX(trade_date) AS trade_date FROM stock_minute WHERE code = ?",
+                    (code,),
+                ).fetchone()
+                trade_date = latest["trade_date"] if latest is not None else None
+                if not trade_date:
+                    return []
+                rows = conn.execute(
+                    """
+                    SELECT minute_time, open, high, low, close, volume, amount, avg_price, data_source
+                    FROM stock_minute
+                    WHERE code = ? AND trade_date = ?
+                    ORDER BY minute_time
+                    """,
+                    (code, trade_date),
+                ).fetchall()
+        except sqlite3.DatabaseError as exc:
+            logger.warning("[IntradayMinute] 分时缓存读取失败 %s: %s", code, exc)
+            return []
         return [
             {
                 "time": row["minute_time"],
@@ -209,27 +226,30 @@ class IntradayMinuteCacheProvider:
         ]
         if not payload:
             return
-        with self._connect() as conn:
-            conn.executemany(
-                """
-                INSERT INTO stock_minute (
-                    code, trade_date, minute_time, open, high, low, close,
-                    volume, amount, avg_price, data_source, fetched_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(code, trade_date, minute_time) DO UPDATE SET
-                    open = excluded.open,
-                    high = excluded.high,
-                    low = excluded.low,
-                    close = excluded.close,
-                    volume = excluded.volume,
-                    amount = excluded.amount,
-                    avg_price = excluded.avg_price,
-                    data_source = excluded.data_source,
-                    fetched_at = excluded.fetched_at
-                """,
-                payload,
-            )
-            conn.commit()
+        try:
+            with self._connect() as conn:
+                conn.executemany(
+                    """
+                    INSERT INTO stock_minute (
+                        code, trade_date, minute_time, open, high, low, close,
+                        volume, amount, avg_price, data_source, fetched_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(code, trade_date, minute_time) DO UPDATE SET
+                        open = excluded.open,
+                        high = excluded.high,
+                        low = excluded.low,
+                        close = excluded.close,
+                        volume = excluded.volume,
+                        amount = excluded.amount,
+                        avg_price = excluded.avg_price,
+                        data_source = excluded.data_source,
+                        fetched_at = excluded.fetched_at
+                    """,
+                    payload,
+                )
+                conn.commit()
+        except sqlite3.DatabaseError as exc:
+            logger.warning("[IntradayMinute] 分时缓存写入失败 %s: %s", code, exc)
 
 
 def _first_existing_column(df: pd.DataFrame, candidates: Sequence[str]) -> Optional[str]:

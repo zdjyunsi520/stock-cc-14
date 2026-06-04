@@ -292,12 +292,15 @@ class IntradayPickScheduler:
         candidates = payload.get("ranked_candidates") or []
         data_quality = summary.get("data_quality") or {}
         source_failed = data_quality.get("snapshot_status") == "source_failed"
+        static_degraded = data_quality.get("theme_universe_degraded") or data_quality.get("theme_universe_source") == "static_fallback"
         snapshot_empty = source_failed or data_quality.get("snapshot_status") == "empty" or data_quality.get("snapshot_count") == 0
         conclusion = (
             "核心结论：数据源获取失败，本次盘中选股不可用，系统将在约 10 分钟后再试一次。"
             if source_failed
             else "核心结论：实时行情快照为空，本次盘中选股不可用，不应据此判断没有机会。"
             if snapshot_empty
+            else f"核心结论：实时热点源不可用，当前为静态题材兜底观察，匹配 {summary.get('rough_count', 0)} 只，观察候选 {summary.get('checked_count', 0)} 只。"
+            if static_degraded
             else f"核心结论：匹配热点池 {summary.get('rough_count', 0)} 只，观察候选 {summary.get('checked_count', 0)} 只，低位补涨优先 {summary.get('passed_count', 0)} 只。"
         )
         lines = [
@@ -317,9 +320,16 @@ class IntradayPickScheduler:
             lines.append("暂无活跃题材。")
         for item in themes[:5]:
             reasons = "；".join((item.get("reasons") or [])[:3]) or "规则评分靠前"
+            momentum_stage = str(item.get("momentum_stage") or "unknown")
+            momentum_text = f"/{momentum_stage}" if momentum_stage != "unknown" else ""
+            lifecycle_stage = str(item.get("lifecycle_stage") or "unknown")
+            lifecycle_text = cls._lifecycle_stage_label(lifecycle_stage)
             lines.append(
-                f"- {item.get('theme')}：{item.get('stage')}，题材分 {item.get('score')}，"
-                f"上涨 {item.get('up_count')}/{item.get('member_count')}，活跃 {item.get('active_count')}。{reasons}"
+                f"- {item.get('theme')}：{item.get('stage')}{momentum_text}，生命周期 {lifecycle_text}，"
+                f"题材分 {item.get('score')}，基础分 {item.get('base_score', item.get('score'))}，"
+                f"曲率 {item.get('momentum_score', 0)}，高潮压力 {item.get('climax_pressure', 0)}，"
+                f"分歧 {item.get('divergence_score', 0)}，上涨 {item.get('up_count')}/{item.get('member_count')}，"
+                f"活跃 {item.get('active_count')}。{reasons}"
             )
         lines.extend(["", "**候选排序**"])
         if source_failed:
@@ -349,10 +359,24 @@ class IntradayPickScheduler:
                 "- 趋势确认票是否过热，等待回踩后再观察。",
                 "",
                 "**数据说明**",
-                f"本报告由规则引擎生成，Claude 主持人未参与或已降级。数据状态：{data_quality.get('snapshot_status', 'unknown')}。仅作观察提醒，不代表交易指令。",
+                f"本报告由规则引擎生成，Claude 主持人未参与或已降级。数据状态：{data_quality.get('snapshot_status', 'unknown')}；热点来源：{data_quality.get('theme_universe_source', 'unknown')}；历史题材样本：{data_quality.get('theme_history_theme_count', 0)}。仅作观察提醒，不代表交易指令。",
             ]
         )
         return "\n".join(lines)
+
+    @staticmethod
+    def _lifecycle_stage_label(stage: str) -> str:
+        labels = {
+            "warming": "蠢蠢欲动",
+            "accelerating": "升温扩散",
+            "climax": "如日中天",
+            "diverging": "分歧",
+            "cooling": "退热",
+            "exhausted": "退潮",
+            "static_degraded": "静态兜底",
+            "unknown": "未知",
+        }
+        return labels.get(stage, stage or "未知")
 
     @staticmethod
     def _wrap_report(content: str, used_claude: bool, model: str) -> str:

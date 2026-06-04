@@ -19,7 +19,8 @@ import random
 import time
 from threading import BoundedSemaphore, RLock, Thread
 from abc import ABC, abstractmethod
-from datetime import datetime, timezone
+from copy import deepcopy
+from datetime import date, datetime, timedelta, timezone
 from typing import Callable, Optional, List, Tuple, Dict, Any, Sequence
 
 import pandas as pd
@@ -602,7 +603,11 @@ class DataFetcherManager:
         self._fetcher_call_locks_lock = RLock()
         self._stock_name_cache: Dict[str, str] = {}
         self._stock_name_cache_lock = RLock()
-        
+        self._auxiliary_cache: Dict[str, Dict[str, Any]] = {}
+        self._auxiliary_cache_lock = RLock()
+        self._provider_cooldowns: Dict[str, float] = {}
+        self._provider_cooldowns_lock = RLock()
+
         if fetchers:
             # 按优先级排序
             self._fetchers = sorted(fetchers, key=lambda f: f.priority)
@@ -634,11 +639,167 @@ class DataFetcherManager:
             self._stock_name_cache = {}
         if not hasattr(self, "_stock_name_cache_lock") or self._stock_name_cache_lock is None:
             self._stock_name_cache_lock = RLock()
+        if not hasattr(self, "_auxiliary_cache") or self._auxiliary_cache is None:
+            self._auxiliary_cache = {}
+        if not hasattr(self, "_auxiliary_cache_lock") or self._auxiliary_cache_lock is None:
+            self._auxiliary_cache_lock = RLock()
+        if not hasattr(self, "_provider_cooldowns") or self._provider_cooldowns is None:
+            self._provider_cooldowns = {}
+        if not hasattr(self, "_provider_cooldowns_lock") or self._provider_cooldowns_lock is None:
+            self._provider_cooldowns_lock = RLock()
+
+    def _get_auxiliary_cache(self, key: str, ttl_seconds: int) -> Optional[Any]:
+        if ttl_seconds <= 0:
+            return None
+        self._ensure_concurrency_guards()
+        with self._auxiliary_cache_lock:
+            item = self._auxiliary_cache.get(key)
+            if not item:
+                return None
+            if time.time() - float(item.get("ts", 0)) > ttl_seconds:
+                self._auxiliary_cache.pop(key, None)
+                return None
+            return deepcopy(item.get("value"))
+
+    def _set_auxiliary_cache(self, key: str, value: Any) -> None:
+        self._ensure_concurrency_guards()
+        with self._auxiliary_cache_lock:
+            self._auxiliary_cache[key] = {"ts": time.time(), "value": deepcopy(value)}
+            if len(self._auxiliary_cache) > 256:
+                oldest_key = min(self._auxiliary_cache, key=lambda item_key: self._auxiliary_cache[item_key].get("ts", 0))
+                self._auxiliary_cache.pop(oldest_key, None)
+
+    @staticmethod
+    def _provider_cooldown_seconds(error_reason: str) -> int:
+        text = (error_reason or "").lower()
+        if any(marker in text for marker in ("1次/小时", "每小时", "hour")):
+            return 3600
+        if any(marker in text for marker in ("rate limit", "quota", "每分钟最多访问", "频率超限", "超限", "配额", "limit")):
+            return 600
+        if any(marker in text for marker in ("remotedisconnected", "connection aborted", "connection reset", "连接被关闭")):
+            return 120
+        return 0
+
+    def _cooldown_key(self, fetcher_name: str, method_name: str) -> str:
+        return f"{fetcher_name}:{method_name}"
+
+    def _is_provider_in_cooldown(self, fetcher_name: str, method_name: str) -> bool:
+        self._ensure_concurrency_guards()
+        key = self._cooldown_key(fetcher_name, method_name)
+        with self._provider_cooldowns_lock:
+            until = self._provider_cooldowns.get(key)
+            if not until:
+                return False
+            if time.time() >= until:
+                self._provider_cooldowns.pop(key, None)
+                return False
+            return True
+
+    def _mark_provider_cooldown(self, fetcher_name: str, method_name: str, error_reason: str) -> None:
+        seconds = self._provider_cooldown_seconds(error_reason)
+        if seconds <= 0:
+            return
+        self._ensure_concurrency_guards()
+        key = self._cooldown_key(fetcher_name, method_name)
+        with self._provider_cooldowns_lock:
+            self._provider_cooldowns[key] = time.time() + seconds
+        logger.warning("[%s] %s 进入冷却 %ss: %s", fetcher_name, method_name, seconds, error_reason)
+
+    @staticmethod
+    def _capability_provider_names(method_name: str) -> Optional[set]:
+        provider_map = {
+            "get_concept_rankings": {"AkshareFetcher"},
+            "get_board_members": {"AkshareFetcher"},
+        }
+        return provider_map.get(method_name)
+
+    def _supports_auxiliary_capability(self, fetcher: BaseFetcher, method_name: str) -> bool:
+        instance_method = getattr(fetcher, method_name, None)
+        if not callable(instance_method):
+            return False
+
+        provider_names = self._capability_provider_names(method_name)
+        if provider_names is not None:
+            return fetcher.name in provider_names
+
+        method = getattr(type(fetcher), method_name, None)
+        base_method = getattr(BaseFetcher, method_name, None)
+        return method is not None and method is not base_method
+
+    @staticmethod
+    def _source_chain_summary(source_chain: List[Dict[str, Any]]) -> str:
+        if not source_chain:
+            return "无可用数据源"
+        parts = []
+        for item in source_chain:
+            provider = str(item.get("provider") or "unknown")
+            result = str(item.get("result") or "unknown")
+            error = str(item.get("error") or "").strip()
+            parts.append(f"{provider}:{result}{'(' + error + ')' if error else ''}")
+        return "; ".join(parts)
 
     def _get_fetchers_snapshot(self) -> List[BaseFetcher]:
         self._ensure_concurrency_guards()
         with self._fetchers_lock:
             return list(getattr(self, "_fetchers", []))
+
+    @staticmethod
+    def _daily_data_date_range(
+        start_date: Optional[str],
+        end_date: Optional[str],
+        days: int,
+    ) -> Tuple[date, date]:
+        end_dt = datetime.strptime(end_date, "%Y-%m-%d").date() if end_date else date.today()
+        if start_date:
+            start_dt = datetime.strptime(start_date, "%Y-%m-%d").date()
+        else:
+            start_dt = end_dt - timedelta(days=max(1, int(days or 30)) * 2)
+        return start_dt, end_dt
+
+    @staticmethod
+    def _daily_cache_is_enough(df: pd.DataFrame, days: int, end_dt: date) -> bool:
+        if df is None or df.empty or len(df) < min(int(days or 30), 20):
+            return False
+        if "date" not in df.columns:
+            return False
+        latest = pd.to_datetime(df["date"], errors="coerce").max()
+        if pd.isna(latest):
+            return False
+        latest_date = latest.date() if isinstance(latest, datetime) else latest.to_pydatetime().date()
+        return latest_date >= end_dt - timedelta(days=5)
+
+    def _load_local_daily_data(
+        self,
+        stock_code: str,
+        start_dt: date,
+        end_dt: date,
+        days: int,
+    ) -> pd.DataFrame:
+        try:
+            from src.storage import DatabaseManager
+
+            rows = DatabaseManager().get_data_range(stock_code, start_dt, end_dt)
+        except Exception as exc:
+            logger.debug("[日线本地库] %s 读取失败: %s", stock_code, exc)
+            return pd.DataFrame()
+        if not rows:
+            return pd.DataFrame()
+        records = [row.to_dict() for row in rows]
+        df = pd.DataFrame(records)
+        if df.empty:
+            return df
+        df["date"] = pd.to_datetime(df["date"], errors="coerce")
+        return df.dropna(subset=["date"]).sort_values("date").tail(days).reset_index(drop=True)
+
+    def _save_local_daily_data(self, stock_code: str, df: pd.DataFrame, source: str) -> None:
+        if df is None or df.empty:
+            return
+        try:
+            from src.storage import DatabaseManager
+
+            DatabaseManager().save_daily_data(df, stock_code, data_source=source)
+        except Exception as exc:
+            logger.warning("[日线本地库] %s 保存失败: %s", stock_code, exc)
 
     def _refresh_fetcher_indexes_locked(self) -> None:
         self._fetchers_by_name = {fetcher.name: fetcher for fetcher in self._fetchers}
@@ -1166,6 +1327,11 @@ class DataFetcherManager:
 
         # Normalize code (strip SH/SZ prefix etc.)
         stock_code = normalize_stock_code(stock_code)
+        start_dt, end_dt = self._daily_data_date_range(start_date, end_date, days)
+        cached_daily_data = self._load_local_daily_data(stock_code, start_dt, end_dt, days)
+        if self._daily_cache_is_enough(cached_daily_data, days, end_dt):
+            logger.info("[日线本地库] %s 命中 stock_daily，跳过上游数据源请求", stock_code)
+            return cached_daily_data, "local_stock_daily"
 
         fetchers = self._get_fetchers_snapshot()
         errors = []
@@ -1242,6 +1408,7 @@ class DataFetcherManager:
                                 f"[数据源完成] {stock_code} 使用 [{fetcher.name}] 获取成功: "
                                 f"rows={len(df)}, elapsed={elapsed:.2f}s"
                             )
+                            self._save_local_daily_data(stock_code, df, fetcher.name)
                             return df, fetcher.name
                         duration_ms = int((time.time() - attempt_start) * 1000)
                         record_provider_run(
@@ -1310,6 +1477,7 @@ class DataFetcherManager:
                         f"[数据源完成] {stock_code} 使用 [{fetcher.name}] 获取成功: "
                         f"rows={len(df)}, elapsed={elapsed:.2f}s"
                     )
+                    self._save_local_daily_data(stock_code, df, fetcher.name)
                     return df, fetcher.name
                 duration_ms = int((time.time() - attempt_start) * 1000)
                 record_provider_run(
@@ -2131,24 +2299,40 @@ class DataFetcherManager:
 
     def get_market_stats(self) -> Dict[str, Any]:
         """获取市场涨跌统计（自动切换数据源）"""
+        cache_key = "market_stats:cn"
+        cached = self._get_auxiliary_cache(cache_key, 60)
+        if cached is not None:
+            logger.info("[市场统计] 命中辅助缓存，跳过上游数据源请求")
+            return cached
+
         tickflow_fetcher = self._get_tickflow_fetcher()
-        if tickflow_fetcher is not None:
+        if tickflow_fetcher is not None and not self._is_provider_in_cooldown("TickFlowFetcher", "get_market_stats"):
             try:
                 data = tickflow_fetcher.get_market_stats()
                 if data:
                     logger.info("[TickFlowFetcher] 获取市场统计成功")
+                    self._set_auxiliary_cache(cache_key, data)
                     return data
             except Exception as e:
-                logger.warning(f"[TickFlowFetcher] 获取市场统计失败: {e}")
+                _, error_reason = summarize_exception(e)
+                self._mark_provider_cooldown("TickFlowFetcher", "get_market_stats", error_reason)
+                logger.warning(f"[TickFlowFetcher] 获取市场统计失败: {error_reason}")
 
         for fetcher in self._fetchers:
+            method_name = "get_market_stats"
+            if self._is_provider_in_cooldown(fetcher.name, method_name):
+                logger.info(f"[{fetcher.name}] 市场统计处于冷却期，跳过")
+                continue
             try:
                 data = fetcher.get_market_stats()
                 if data:
                     logger.info(f"[{fetcher.name}] 获取市场统计成功")
+                    self._set_auxiliary_cache(cache_key, data)
                     return data
             except Exception as e:
-                logger.warning(f"[{fetcher.name}] 获取市场统计失败: {e}")
+                _, error_reason = summarize_exception(e)
+                self._mark_provider_cooldown(fetcher.name, method_name, error_reason)
+                logger.warning(f"[{fetcher.name}] 获取市场统计失败: {error_reason}")
                 continue
         return {}
 
@@ -3107,9 +3291,20 @@ class DataFetcherManager:
             source_chain: List[Dict[str, Any]] = []
             last_error = ""
 
+            method_name = "get_sector_rankings"
             # 直接遍历管理器已经按 priority 排好序的数据源列表
             for fetcher in self._fetchers:
                 if not hasattr(fetcher, 'get_sector_rankings'):
+                    continue
+                if self._is_provider_in_cooldown(fetcher.name, method_name):
+                    source_chain.append(
+                        {
+                            "provider": fetcher.name,
+                            "result": "skipped_cooldown",
+                            "duration_ms": 0,
+                        }
+                    )
+                    logger.info(f"[{fetcher.name}] 板块排行处于冷却期，跳过")
                     continue
 
                 start = time.time()
@@ -3139,6 +3334,7 @@ class DataFetcherManager:
                 except Exception as e:
                     error_type, error_reason = summarize_exception(e)
                     last_error = f"{fetcher.name} ({error_type}) {error_reason}"
+                    self._mark_provider_cooldown(fetcher.name, method_name, error_reason)
                     duration_ms = int((time.time() - start) * 1000)
                     source_chain.append(
                         {
@@ -3154,29 +3350,60 @@ class DataFetcherManager:
 
     def get_sector_rankings(self, n: int = 5) -> Tuple[List[Dict], List[Dict]]:
         """获取板块涨跌榜（自动切换数据源）"""
+        cache_key = f"sector_rankings:{int(n or 5)}"
+        cached = self._get_auxiliary_cache(cache_key, 300)
+        if cached is not None:
+            logger.info("[板块排行] 命中辅助缓存，跳过上游数据源请求")
+            return cached[0] or [], cached[1] or []
+
         # 按需求固定回退顺序：Akshare(EM) -> Akshare(Sina) -> Tushare -> Efinance
         top, bottom, _, last_error = self._get_sector_rankings_with_meta(n)
         if top or bottom:
+            self._set_auxiliary_cache(cache_key, (top, bottom))
             return top, bottom
         logger.warning(f"[板块排行] 所有数据源均失败，最终错误: {last_error}")
         return [], []
 
     def get_concept_rankings(self, n: int = 5) -> Tuple[List[Dict], List[Dict]]:
         """获取概念/题材涨跌榜（自动切换数据源）。"""
-        last_error = ""
+        cache_key = f"concept_rankings:{int(n or 5)}"
+        cached = self._get_auxiliary_cache(cache_key, 300)
+        if cached is not None:
+            logger.info("[概念排行] 命中辅助缓存，跳过上游数据源请求")
+            return cached[0] or [], cached[1] or []
+
+        source_chain: List[Dict[str, Any]] = []
+        method_name = "get_concept_rankings"
         for fetcher in self._fetchers:
+            if not self._supports_auxiliary_capability(fetcher, method_name):
+                continue
+            if self._is_provider_in_cooldown(fetcher.name, method_name):
+                source_chain.append({"provider": fetcher.name, "result": "skipped_cooldown"})
+                logger.info(f"[{fetcher.name}] 概念排行处于冷却期，跳过")
+                continue
+            start = time.time()
             try:
                 data = fetcher.get_concept_rankings(n)
+                duration_ms = int((time.time() - start) * 1000)
                 if data and (data[0] or data[1]):
                     logger.info(f"[{fetcher.name}] 获取概念排行成功")
-                    return data[0] or [], data[1] or []
-                last_error = f"{fetcher.name}返回空结果"
+                    result = (data[0] or [], data[1] or [])
+                    source_chain.append({"provider": fetcher.name, "result": "ok", "duration_ms": duration_ms})
+                    self._set_auxiliary_cache(cache_key, result)
+                    return result
+                source_chain.append({"provider": fetcher.name, "result": "empty", "duration_ms": duration_ms})
             except Exception as e:
                 error_type, error_reason = summarize_exception(e)
-                last_error = f"{fetcher.name} ({error_type}) {error_reason}"
+                duration_ms = int((time.time() - start) * 1000)
+                source_chain.append({
+                    "provider": fetcher.name,
+                    "result": "failed",
+                    "duration_ms": duration_ms,
+                    "error": f"{error_type} {error_reason}",
+                })
+                self._mark_provider_cooldown(fetcher.name, method_name, error_reason)
                 logger.warning(f"[{fetcher.name}] 获取概念排行失败: {error_reason}")
-        if last_error:
-            logger.warning(f"[概念排行] 所有数据源均失败，最终错误: {last_error}")
+        logger.warning(f"[概念排行] 所有支持的数据源均失败，source_chain={self._source_chain_summary(source_chain)}")
         return [], []
 
     def get_board_members(
@@ -3186,21 +3413,49 @@ class DataFetcherManager:
         max_members: int = 100,
     ) -> List[Dict[str, Any]]:
         """获取行业/概念成分股（自动切换数据源）。"""
-        last_error = ""
         normalized_type = (board_type or "concept").strip().lower()
+        normalized_name = str(board_name or "").strip()
+        cache_key = f"board_members:{normalized_type}:{normalized_name}:{int(max_members or 100)}"
+        cached = self._get_auxiliary_cache(cache_key, 1800)
+        if cached is not None:
+            logger.info("[板块成分股] 命中辅助缓存 board=%s type=%s", normalized_name, normalized_type)
+            return list(cached)[:max_members]
+
+        source_chain: List[Dict[str, Any]] = []
+        method_name = "get_board_members"
         for fetcher in self._fetchers:
+            if not self._supports_auxiliary_capability(fetcher, method_name):
+                continue
+            if self._is_provider_in_cooldown(fetcher.name, method_name):
+                source_chain.append({"provider": fetcher.name, "result": "skipped_cooldown"})
+                logger.info(f"[{fetcher.name}] 板块成分股处于冷却期，跳过")
+                continue
+            start = time.time()
             try:
-                data = self._call_fetcher_method(fetcher, "get_board_members", board_name, normalized_type, max_members)
+                data = self._call_fetcher_method(fetcher, method_name, normalized_name, normalized_type, max_members)
+                duration_ms = int((time.time() - start) * 1000)
                 if data:
-                    logger.info(f"[{fetcher.name}] 获取板块成分股成功 board={board_name} type={normalized_type}")
-                    return data[:max_members]
-                last_error = f"{fetcher.name}返回空结果"
+                    logger.info(f"[{fetcher.name}] 获取板块成分股成功 board={normalized_name} type={normalized_type}")
+                    result = data[:max_members]
+                    source_chain.append({"provider": fetcher.name, "result": "ok", "duration_ms": duration_ms})
+                    self._set_auxiliary_cache(cache_key, result)
+                    return result
+                source_chain.append({"provider": fetcher.name, "result": "empty", "duration_ms": duration_ms})
             except Exception as e:
                 error_type, error_reason = summarize_exception(e)
-                last_error = f"{fetcher.name} ({error_type}) {error_reason}"
-                logger.warning(f"[{fetcher.name}] 获取板块成分股失败 board={board_name}: {error_reason}")
-        if last_error:
-            logger.warning(f"[板块成分股] 所有数据源均失败 board={board_name}，最终错误: {last_error}")
+                duration_ms = int((time.time() - start) * 1000)
+                source_chain.append({
+                    "provider": fetcher.name,
+                    "result": "failed",
+                    "duration_ms": duration_ms,
+                    "error": f"{error_type} {error_reason}",
+                })
+                self._mark_provider_cooldown(fetcher.name, method_name, error_reason)
+                logger.warning(f"[{fetcher.name}] 获取板块成分股失败 board={normalized_name}: {error_reason}")
+        logger.warning(
+            f"[板块成分股] 所有支持的数据源均失败 board={normalized_name}，"
+            f"source_chain={self._source_chain_summary(source_chain)}"
+        )
         return []
 
     def get_hot_theme_universe(
@@ -3278,6 +3533,13 @@ class DataFetcherManager:
         normalized_codes = [normalize_stock_code(str(code)) for code in (stock_codes or [])]
         normalized_codes = [code for code in normalized_codes if code]
         scope_text = f"指定 {len(normalized_codes)} 只" if normalized_codes else "全市场"
+        cache_scope = ",".join(sorted(set(normalized_codes))) if normalized_codes else "all"
+        cache_key = f"a_share_realtime_snapshot:{cache_scope}"
+        cached = self._get_auxiliary_cache(cache_key, 45)
+        if cached is not None:
+            logger.info("[A股实时快照] 命中辅助缓存(scope=%s)，跳过上游数据源请求", scope_text)
+            return list(cached)
+
         routes = [
             ("AkshareFetcher", "get_a_share_realtime_snapshot_tencent", "tencent_batch"),
             ("EfinanceFetcher", "get_a_share_realtime_snapshot", "efinance"),
@@ -3285,6 +3547,9 @@ class DataFetcherManager:
         ]
         last_error = ""
         for fetcher_name, method_name, source_label in routes:
+            if self._is_provider_in_cooldown(fetcher_name, method_name):
+                logger.info(f"[{source_label}] A 股实时快照处于冷却期，跳过(scope={scope_text})")
+                continue
             fetcher = self._get_fetcher_by_name(fetcher_name, capability="a_share_realtime_snapshot")
             if fetcher is None:
                 last_error = f"{source_label}数据源不可用"
@@ -3297,12 +3562,14 @@ class DataFetcherManager:
                 data = self._call_fetcher_method(fetcher, method_name, normalized_codes or None)
                 if data:
                     logger.info(f"[{source_label}] 获取 A 股实时快照成功(scope={scope_text})")
+                    self._set_auxiliary_cache(cache_key, data)
                     return data
                 last_error = f"{source_label}返回空结果"
                 logger.warning(f"[{source_label}] 获取 A 股实时快照为空(scope={scope_text})")
             except Exception as e:
                 error_type, error_reason = summarize_exception(e)
                 last_error = f"{source_label} ({error_type}) {error_reason}"
+                self._mark_provider_cooldown(fetcher_name, method_name, error_reason)
                 logger.warning(f"[{source_label}] 获取 A 股实时快照失败(scope={scope_text}): {error_reason}")
         if last_error:
             logger.warning(f"[A股实时快照] 所有数据源均失败(scope={scope_text})，最终错误: {last_error}")

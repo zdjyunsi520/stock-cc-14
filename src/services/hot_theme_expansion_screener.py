@@ -3,7 +3,10 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import asdict, dataclass, field
+from datetime import datetime
+from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import pandas as pd
@@ -79,6 +82,17 @@ class ThemeExpansionState:
     avg_volume_ratio: Optional[float]
     total_amount: float
     stage: str
+    base_score: float = 0.0
+    momentum_score: float = 0.0
+    score_delta: float = 0.0
+    active_delta: int = 0
+    persistence: int = 0
+    momentum_stage: str = "unknown"
+    lifecycle_stage: str = "unknown"
+    lifecycle_score: float = 0.0
+    climax_pressure: float = 0.0
+    divergence_score: float = 0.0
+    lifecycle_metrics: Dict[str, Any] = field(default_factory=dict)
     reasons: List[str] = field(default_factory=list)
 
 
@@ -120,11 +134,15 @@ class HotThemeExpansionScreener:
         daily_provider: Optional[Callable[[str, int], Tuple[pd.DataFrame, str]]] = None,
         minute_provider: Optional[Callable[[str], Optional[Sequence[Dict[str, Any]]]]] = None,
         theme_universe_provider: Optional[Callable[[], ThemeUniverse]] = None,
+        theme_history_provider: Optional[Callable[[], Dict[str, List[Dict[str, Any]]]]] = None,
+        log_dir: str = "./logs",
     ) -> None:
         self.snapshot_provider = snapshot_provider
         self.daily_provider = daily_provider or self._default_daily_provider
         self.minute_provider = minute_provider
         self.theme_universe_provider = theme_universe_provider
+        self.theme_history_provider = theme_history_provider
+        self.log_dir = log_dir
 
     @staticmethod
     def _default_manager():
@@ -159,18 +177,20 @@ class HotThemeExpansionScreener:
         snapshot = self._load_snapshot(list(universe.keys()))
         snapshot_by_code = _snapshot_by_code(snapshot)
         rows = [row for code, row in snapshot_by_code.items() if code in universe]
-        theme_states = self._score_themes(rows, universe, criteria)
-        theme_score_map = {state.theme: state.score for state in theme_states if state.score >= criteria.min_theme_score}
+        theme_history = self._load_theme_history()
+        theme_states = self._score_themes(rows, universe, criteria, theme_history, universe_source)
+        theme_state_map = {state.theme: state for state in theme_states if state.score >= criteria.min_theme_score}
 
         candidates: List[HotThemeExpansionCandidate] = []
         for code, themes in universe.items():
-            active_theme_scores = [theme_score_map[theme] for theme in themes if theme in theme_score_map]
-            if not active_theme_scores:
+            active_theme_states = [theme_state_map[theme] for theme in themes if theme in theme_state_map]
+            if not active_theme_states:
                 continue
             row = snapshot_by_code.get(code)
             if not row:
                 continue
-            candidates.append(self._score_candidate(row, themes, max(active_theme_scores), criteria))
+            strongest_theme = max(active_theme_states, key=lambda item: item.score)
+            candidates.append(self._score_candidate(row, themes, strongest_theme, criteria))
 
         candidates.sort(key=lambda item: (item.laggard_priority, item.score, item.theme_score, item.change_pct or -99.0), reverse=True)
         snapshot_status = "ok" if snapshot else "source_failed"
@@ -184,8 +204,10 @@ class HotThemeExpansionScreener:
                 "snapshot_error": "realtime_snapshot_source_failed" if snapshot_status == "source_failed" else "",
                 "theme_universe_count": len(universe),
                 "theme_universe_source": universe_source,
+                "theme_universe_degraded": universe_source == "static_fallback",
+                "theme_history_theme_count": len(theme_history),
                 "matched_snapshot_count": len(rows),
-                "active_theme_count": len(theme_score_map),
+                "active_theme_count": len(theme_state_map),
             },
         )
 
@@ -194,6 +216,8 @@ class HotThemeExpansionScreener:
         rows: Iterable[Dict[str, Any]],
         universe: ThemeUniverse,
         criteria: HotThemeExpansionCriteria,
+        theme_history: Dict[str, List[Dict[str, Any]]],
+        universe_source: str,
     ) -> List[ThemeExpansionState]:
         grouped: Dict[str, List[Dict[str, Any]]] = {}
         for row in rows:
@@ -239,29 +263,274 @@ class HotThemeExpansionScreener:
             if total_amount >= 2_000_000_000:
                 score += 8.0
                 reasons.append("板块成交额活跃")
-            stage = _theme_stage(score, avg_change, active_count)
+
+            base_score = round(max(0.0, score), 2)
+            avg_change_rounded = round(avg_change, 2) if avg_change is not None else None
+            avg_volume_rounded = round(avg_volume_ratio, 2) if avg_volume_ratio is not None else None
+            momentum = self._theme_momentum_metrics(
+                theme=theme,
+                base_score=base_score,
+                active_count=active_count,
+                avg_change_pct=avg_change_rounded,
+                avg_volume_ratio=avg_volume_rounded,
+                criteria=criteria,
+                history=theme_history.get(theme, []),
+                universe_source=universe_source,
+            )
+            momentum_reasons = momentum.pop("reasons", [])
+            reasons.extend(momentum_reasons)
+            lifecycle = self._theme_lifecycle_metrics(
+                base_score=base_score,
+                member_count=len(members),
+                active_count=active_count,
+                up_count=up_count,
+                avg_change_pct=avg_change_rounded,
+                avg_volume_ratio=avg_volume_rounded,
+                total_amount=total_amount,
+                criteria=criteria,
+                momentum=momentum,
+                universe_source=universe_source,
+            )
+            lifecycle_reasons = lifecycle.pop("reasons", [])
+            reasons.extend(lifecycle_reasons)
+            final_score = max(0.0, base_score + float(momentum["momentum_score"]) + float(lifecycle["score_adjustment"]))
+            if universe_source == "static_fallback":
+                final_score = min(final_score, max(0.0, base_score - 8.0), 32.0)
+            stage = _theme_stage(final_score, avg_change, active_count)
             states.append(
                 ThemeExpansionState(
                     theme=theme,
-                    score=round(max(0.0, score), 2),
+                    score=round(final_score, 2),
                     member_count=len(members),
                     active_count=active_count,
                     up_count=up_count,
-                    avg_change_pct=round(avg_change, 2) if avg_change is not None else None,
-                    avg_volume_ratio=round(avg_volume_ratio, 2) if avg_volume_ratio is not None else None,
+                    avg_change_pct=avg_change_rounded,
+                    avg_volume_ratio=avg_volume_rounded,
                     total_amount=total_amount,
                     stage=stage,
+                    base_score=base_score,
+                    momentum_score=round(float(momentum["momentum_score"]), 2),
+                    score_delta=round(float(momentum["score_delta"]), 2),
+                    active_delta=int(momentum["active_delta"]),
+                    persistence=int(momentum["persistence"]),
+                    momentum_stage=str(momentum["momentum_stage"]),
+                    lifecycle_stage=str(lifecycle["lifecycle_stage"]),
+                    lifecycle_score=round(float(lifecycle["lifecycle_score"]), 2),
+                    climax_pressure=round(float(lifecycle["climax_pressure"]), 2),
+                    divergence_score=round(float(lifecycle["divergence_score"]), 2),
+                    lifecycle_metrics=lifecycle["lifecycle_metrics"],
                     reasons=reasons,
                 )
             )
         states.sort(key=lambda item: item.score, reverse=True)
         return states
 
+    def _load_theme_history(self) -> Dict[str, List[Dict[str, Any]]]:
+        if self.theme_history_provider is not None:
+            return self.theme_history_provider() or {}
+        return _load_recent_theme_history(log_dir=self.log_dir)
+
+    @staticmethod
+    def _theme_momentum_metrics(
+        *,
+        theme: str,
+        base_score: float,
+        active_count: int,
+        avg_change_pct: Optional[float],
+        avg_volume_ratio: Optional[float],
+        criteria: HotThemeExpansionCriteria,
+        history: Sequence[Dict[str, Any]],
+        universe_source: str,
+    ) -> Dict[str, Any]:
+        if universe_source == "static_fallback":
+            return {
+                "momentum_score": -8.0,
+                "score_delta": 0.0,
+                "active_delta": 0,
+                "persistence": 0,
+                "momentum_stage": "degraded_static_fallback",
+                "reasons": ["静态题材兜底，热点可信度降权"],
+            }
+        clean_history = [item for item in history if isinstance(item, dict)]
+        if not clean_history:
+            return {
+                "momentum_score": 0.0,
+                "score_delta": 0.0,
+                "active_delta": 0,
+                "persistence": 0,
+                "momentum_stage": "unknown",
+                "reasons": [],
+            }
+
+        previous = clean_history[-1]
+        prev_score = _safe_float(previous.get("score")) or _safe_float(previous.get("base_score")) or 0.0
+        prev_active = int(_safe_float(previous.get("active_count")) or 0)
+        prev_change = _safe_float(previous.get("avg_change_pct"))
+        prev_volume = _safe_float(previous.get("avg_volume_ratio"))
+        score_delta = base_score - prev_score
+        active_delta = active_count - prev_active
+        avg_change_delta = (avg_change_pct - prev_change) if avg_change_pct is not None and prev_change is not None else 0.0
+        volume_delta = (avg_volume_ratio - prev_volume) if avg_volume_ratio is not None and prev_volume is not None else 0.0
+        persistence = sum(1 for item in clean_history[-5:] if (_safe_float(item.get("score")) or 0.0) >= criteria.min_theme_score)
+
+        prev_delta = 0.0
+        if len(clean_history) >= 2:
+            earlier = clean_history[-2]
+            earlier_score = _safe_float(earlier.get("score")) or _safe_float(earlier.get("base_score")) or 0.0
+            prev_delta = prev_score - earlier_score
+        acceleration = score_delta - prev_delta
+
+        momentum_score = 0.0
+        reasons: List[str] = []
+        momentum_stage = "persistent" if persistence >= 2 else "unknown"
+
+        if score_delta >= 6.0 and active_delta > 0:
+            momentum_score += min(12.0, score_delta * 0.6) + min(4.0, active_delta * 2.0)
+            momentum_stage = "accelerating" if acceleration >= 0 else "emerging"
+            reasons.append(f"题材热度较上次升温 {score_delta:.1f}")
+            reasons.append(f"活跃成分增加 {active_delta} 只")
+        elif base_score >= criteria.min_theme_score and persistence == 0:
+            momentum_score += 4.0
+            momentum_stage = "emerging"
+            reasons.append("题材首次进入达标区")
+        elif persistence >= 2 and score_delta >= -4.0:
+            momentum_score += min(6.0, persistence * 2.0)
+            momentum_stage = "persistent"
+            reasons.append("最近多次保持达标")
+
+        if score_delta <= -8.0 or active_delta < -1 or avg_change_delta < -2.0:
+            penalty = min(15.0, abs(score_delta) * 0.6 + max(0, -active_delta) * 3.0 + max(0.0, -avg_change_delta) * 1.5)
+            momentum_score -= penalty
+            momentum_stage = "fading"
+            reasons.append("题材热度回落，降权观察")
+
+        if volume_delta >= 0.4 and momentum_stage in {"accelerating", "emerging"}:
+            momentum_score += 2.0
+            reasons.append("板块量比同步抬升")
+        elif volume_delta <= -0.5 and momentum_stage == "fading":
+            momentum_score -= 2.0
+
+        momentum_score = max(-15.0, min(18.0, momentum_score))
+        return {
+            "momentum_score": momentum_score,
+            "score_delta": score_delta,
+            "active_delta": active_delta,
+            "persistence": persistence,
+            "momentum_stage": momentum_stage,
+            "reasons": reasons,
+        }
+
+    @staticmethod
+    def _theme_lifecycle_metrics(
+        *,
+        base_score: float,
+        member_count: int,
+        active_count: int,
+        up_count: int,
+        avg_change_pct: Optional[float],
+        avg_volume_ratio: Optional[float],
+        total_amount: float,
+        criteria: HotThemeExpansionCriteria,
+        momentum: Dict[str, Any],
+        universe_source: str,
+    ) -> Dict[str, Any]:
+        member_count = max(1, int(member_count))
+        up_ratio = up_count / member_count
+        active_ratio = active_count / member_count
+        avg_change = avg_change_pct if avg_change_pct is not None else 0.0
+        avg_volume = avg_volume_ratio if avg_volume_ratio is not None else 0.0
+        score_delta = float(momentum.get("score_delta") or 0.0)
+        active_delta = int(momentum.get("active_delta") or 0)
+        persistence = int(momentum.get("persistence") or 0)
+        momentum_stage = str(momentum.get("momentum_stage") or "unknown")
+        amount_pressure = min(1.0, total_amount / 5_000_000_000)
+        heat_pressure = min(1.0, max(0.0, avg_change) / max(1.0, criteria.overheat_change_pct))
+        volume_pressure = min(1.0, max(0.0, avg_volume - 1.0) / 2.0)
+        climax_pressure = min(
+            1.0,
+            heat_pressure * 0.45 + up_ratio * 0.25 + active_ratio * 0.2 + volume_pressure * 0.1,
+        )
+        divergence_score = min(
+            1.0,
+            max(0.0, -score_delta) / 16.0
+            + max(0.0, -active_delta) / 5.0
+            + max(0.0, 0.45 - active_ratio)
+            + (0.2 if up_ratio >= 0.65 and active_ratio <= 0.25 else 0.0),
+        )
+        metrics = {
+            "up_ratio": round(up_ratio, 4),
+            "active_ratio": round(active_ratio, 4),
+            "heat_pressure": round(heat_pressure, 4),
+            "volume_pressure": round(volume_pressure, 4),
+            "amount_pressure": round(amount_pressure, 4),
+            "score_delta": round(score_delta, 2),
+            "active_delta": active_delta,
+            "persistence": persistence,
+            "momentum_stage": momentum_stage,
+        }
+
+        if universe_source == "static_fallback":
+            return {
+                "lifecycle_stage": "static_degraded",
+                "lifecycle_score": -10.0,
+                "score_adjustment": -6.0,
+                "climax_pressure": 0.0,
+                "divergence_score": 1.0,
+                "lifecycle_metrics": metrics,
+                "reasons": ["静态热点池仅作兜底观察"],
+            }
+
+        lifecycle_stage = "unknown"
+        lifecycle_score = 0.0
+        score_adjustment = 0.0
+        reasons: List[str] = []
+
+        if persistence >= 2 and (score_delta <= -12.0 or active_count == 0 or divergence_score >= 0.9):
+            lifecycle_stage = "exhausted"
+            lifecycle_score = -14.0
+            score_adjustment = -12.0
+            reasons.append("热点生命周期进入退潮段")
+        elif score_delta <= -8.0 or active_delta < -1 or divergence_score >= 0.65:
+            lifecycle_stage = "cooling" if score_delta <= -12.0 or base_score < criteria.min_theme_score else "diverging"
+            lifecycle_score = -8.0 if lifecycle_stage == "cooling" else -5.0
+            score_adjustment = -8.0 if lifecycle_stage == "cooling" else -5.0
+            reasons.append("热点生命周期出现分歧退热")
+        elif (base_score >= 42.0 and climax_pressure >= 0.75) or (avg_change >= 6.5 and up_ratio >= 0.75 and active_ratio >= 0.5):
+            lifecycle_stage = "climax"
+            lifecycle_score = 3.0
+            score_adjustment = -2.0
+            reasons.append("热点进入高潮段，追高风险抬升")
+        elif momentum_stage == "accelerating" or (score_delta >= 6.0 and active_delta > 0 and active_ratio >= 0.25):
+            lifecycle_stage = "accelerating"
+            lifecycle_score = 12.0
+            score_adjustment = 8.0
+            reasons.append("热点生命周期处于升温扩散段")
+        elif momentum_stage == "emerging" or (base_score >= criteria.min_theme_score and avg_change <= 5.5 and active_delta >= 0):
+            lifecycle_stage = "warming"
+            lifecycle_score = 8.0
+            score_adjustment = 5.0
+            reasons.append("热点生命周期处于蠢蠢欲动段")
+        elif momentum_stage == "persistent" and divergence_score < 0.45:
+            lifecycle_stage = "accelerating" if score_delta > 0 else "warming"
+            lifecycle_score = 5.0
+            score_adjustment = 3.0
+            reasons.append("热点生命周期仍保持扩散韧性")
+
+        return {
+            "lifecycle_stage": lifecycle_stage,
+            "lifecycle_score": lifecycle_score,
+            "score_adjustment": score_adjustment,
+            "climax_pressure": climax_pressure,
+            "divergence_score": divergence_score,
+            "lifecycle_metrics": metrics,
+            "reasons": reasons,
+        }
+
     def _score_candidate(
         self,
         row: Dict[str, Any],
         themes: Sequence[str],
-        theme_score: float,
+        theme_state: ThemeExpansionState,
         criteria: HotThemeExpansionCriteria,
     ) -> HotThemeExpansionCandidate:
         code = normalize_stock_code(str(row.get("code") or ""))
@@ -277,9 +546,28 @@ class HotThemeExpansionScreener:
         amount = _safe_float(row.get("amount"))
         price = _safe_float(row.get("price"))
 
+        theme_score = theme_state.score
         score = min(25.0, theme_score * 0.35)
         laggard_priority = 0
+        metrics["theme_momentum_stage"] = theme_state.momentum_stage
+        metrics["theme_momentum_score"] = theme_state.momentum_score
+        metrics["theme_score_delta"] = theme_state.score_delta
+        metrics["theme_active_delta"] = theme_state.active_delta
+        metrics["theme_lifecycle_stage"] = theme_state.lifecycle_stage
+        metrics["theme_lifecycle_score"] = theme_state.lifecycle_score
+        metrics["theme_climax_pressure"] = theme_state.climax_pressure
+        metrics["theme_divergence_score"] = theme_state.divergence_score
         reasons.append(f"热点扩散分 {theme_score:.1f}")
+        if theme_state.lifecycle_stage in {"warming", "accelerating"}:
+            reasons.append(f"热点生命周期确认 {theme_state.lifecycle_stage}")
+        elif theme_state.lifecycle_stage == "climax":
+            warnings.append("题材处于高潮段，追高风险增加")
+        elif theme_state.lifecycle_stage in {"diverging", "cooling", "exhausted", "static_degraded"}:
+            warnings.append("题材生命周期降权，需降低热点可信度")
+        if theme_state.momentum_stage in {"accelerating", "emerging"} and theme_state.momentum_score > 0:
+            reasons.append(f"题材曲率确认 {theme_state.momentum_stage}")
+        elif theme_state.momentum_stage in {"fading", "degraded_static_fallback"}:
+            warnings.append("题材曲率降权，需降低热点可信度")
 
         if change_pct is not None:
             if criteria.laggard_change_min_pct <= change_pct <= 2.5:
@@ -375,6 +663,13 @@ class HotThemeExpansionScreener:
                 warnings.append("低位补涨但分时资金确认不足")
         else:
             data_quality["minute_confirmation"] = minute_metrics.get("status")
+
+        if laggard_priority and theme_state.lifecycle_stage in {"diverging", "cooling", "exhausted", "static_degraded"}:
+            laggard_priority = 0
+            warnings.append("低位补涨但热点生命周期未确认")
+        if laggard_priority and theme_state.momentum_stage in {"fading", "degraded_static_fallback"}:
+            laggard_priority = 0
+            warnings.append("低位补涨但题材曲率未确认")
 
         return HotThemeExpansionCandidate(
             code=code,
@@ -485,8 +780,13 @@ def screen_hot_theme_expansion(criteria: Optional[HotThemeExpansionCriteria] = N
         daily_provider = DailyHistoryCacheProvider()
     from src.services.intraday_minute_provider import IntradayMinuteCacheProvider
 
+    config = get_config()
     minute_provider = IntradayMinuteCacheProvider()
-    return HotThemeExpansionScreener(daily_provider=daily_provider, minute_provider=minute_provider).screen(criteria)
+    return HotThemeExpansionScreener(
+        daily_provider=daily_provider,
+        minute_provider=minute_provider,
+        log_dir=getattr(config, "log_dir", "./logs") or "./logs",
+    ).screen(criteria)
 
 
 def result_to_dict(result: HotThemeExpansionResult) -> Dict[str, Any]:
@@ -496,6 +796,51 @@ def result_to_dict(result: HotThemeExpansionResult) -> Dict[str, Any]:
         "criteria": asdict(result.criteria),
         "data_quality": result.data_quality,
     }
+
+
+def _load_recent_theme_history(*, log_dir: str = "./logs", lookback_runs: int = 6) -> Dict[str, List[Dict[str, Any]]]:
+    archive_dir = Path(log_dir) / "intraday_pick_archive"
+    if not archive_dir.exists():
+        return {}
+
+    dated_payloads: List[Tuple[datetime, Dict[str, Any]]] = []
+    for file_path in archive_dir.glob("intraday_pick_*.json"):
+        try:
+            payload = json.loads(file_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        themes = payload.get("themes")
+        generated_at = _payload_generated_at(payload)
+        if not isinstance(themes, list) or not themes or generated_at is None:
+            continue
+        dated_payloads.append((generated_at, payload))
+    if not dated_payloads:
+        return {}
+
+    dated_payloads.sort(key=lambda item: item[0], reverse=True)
+    latest_date = dated_payloads[0][0].date()
+    payloads = [payload for generated_at, payload in dated_payloads if generated_at.date() == latest_date][:lookback_runs]
+
+    history: Dict[str, List[Dict[str, Any]]] = {}
+    for payload in reversed(payloads):
+        for item in payload.get("themes") or []:
+            if not isinstance(item, dict):
+                continue
+            theme = str(item.get("theme") or "").strip()
+            if theme:
+                history.setdefault(theme, []).append(item)
+    return history
+
+
+def _payload_generated_at(payload: Dict[str, Any]) -> Optional[datetime]:
+    generated_at = str(payload.get("generated_at") or "")
+    if generated_at:
+        for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"):
+            try:
+                return datetime.strptime(generated_at[:19], fmt)
+            except ValueError:
+                pass
+    return None
 
 
 def _normalize_universe(universe: ThemeUniverse) -> ThemeUniverse:

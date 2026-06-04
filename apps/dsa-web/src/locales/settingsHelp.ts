@@ -276,6 +276,17 @@ const settingsHelpZhCN: SettingsHelpMap = {
       '如果飞书侧配置 IP 白名单，需要确认当前运行环境出口 IP 已加入白名单。',
     ],
   },
+  'settings.notification.FEISHU_APP_CHAT_ID': {
+    title: '飞书应用群 ID',
+    summary: '配置飞书应用机器人主动推送消息的目标群聊 ID。',
+    usage: '仅在使用 FEISHU_APP_ID / FEISHU_APP_SECRET 的应用机器人主动推送时填写；自定义群 Webhook 不需要该字段。',
+    valueNotes: [
+      '群 ID 通常以 oc_ 开头，需要从飞书开放平台事件、接口或管理员工具中获取。',
+      '只填写群 ID 不会启用 Stream 模式，也不会替代 FEISHU_WEBHOOK_URL。',
+    ],
+    impact: ['影响飞书应用机器人主动通知的目标群，不影响其他通知渠道。'],
+    notes: ['请确认应用机器人已加入目标群，并具备向该群发送消息的权限。'],
+  },
   'settings.notification.FEISHU_STREAM_ENABLED': {
     title: '飞书 Stream 模式',
     summary: '启用飞书应用机器人 / Stream Bot 长连接模式，不是飞书群 Webhook 推送开关。',
@@ -762,6 +773,38 @@ const settingsHelpZhCN: SettingsHelpMap = {
     ],
     impact: ['影响后台告警检测和通知推送。'],
     notes: ['该字段为 Legacy 配置方式，高级规则请使用告警中心。'],
+  },
+  'settings.agent.EVOLUTION_ENABLED': {
+    title: '自我进化诊断',
+    summary: '启用只读自我进化诊断，用历史分析和回测信号生成改进候选。',
+    usage: 'P0 阶段通过 python main.py --evolve-analysis --dry-run 手动运行，仅生成本地报告和 trajectory。',
+    valueNotes: ['当前不会自动采纳策略或提示词变更。', '样本不足时会输出 insufficient_data 门禁结果。'],
+    impact: ['影响自我进化诊断入口和输出，不改变正常分析流程。'],
+    notes: ['用于复盘和校准，不构成自动改写生产策略。'],
+  },
+  'settings.agent.EVOLUTION_LOOKBACK_DAYS': {
+    title: '自我进化回看天数',
+    summary: '控制自我进化诊断扫描最近多少天的历史分析记录。',
+    usage: '填写正整数；默认 30 天。',
+    valueNotes: ['窗口越长样本越多，但也可能纳入较旧市场环境。'],
+    impact: ['影响诊断样本范围和生成建议的依据。'],
+    notes: ['建议结合回测覆盖度调整。'],
+  },
+  'settings.agent.EVOLUTION_MIN_SAMPLE_SIZE': {
+    title: '自我进化最小样本数',
+    summary: '设置生成可行动候选前需要满足的最小历史样本数量。',
+    usage: '填写正整数；默认 20。',
+    valueNotes: ['低于该值时诊断会保守阻断建议输出。'],
+    impact: ['影响样本量门禁是否放行。'],
+    notes: ['不要为了快速出建议而过低设置样本门槛。'],
+  },
+  'settings.agent.EVOLUTION_OUTPUT_DIR': {
+    title: '自我进化输出目录',
+    summary: '配置自我进化诊断报告、run JSON 和 trajectory JSONL 的保存目录。',
+    usage: '填写项目可写路径；默认 reports/evolution。',
+    valueNotes: ['目录不可写会导致诊断结果无法持久化。'],
+    impact: ['影响本地诊断产物保存位置。'],
+    notes: ['建议保留在 reports 下，方便归档和排查。'],
   },
   // ------------------------------------------------------------------
   // Backtest configuration

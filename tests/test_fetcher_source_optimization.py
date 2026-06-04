@@ -3,6 +3,7 @@
 
 import sys
 import unittest
+from datetime import date, timedelta
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
@@ -15,6 +16,7 @@ if "json_repair" not in sys.modules:
 
 from data_provider.base import DataFetcherManager
 from data_provider.realtime_types import RealtimeSource, UnifiedRealtimeQuote
+from src.storage import DatabaseManager, StockDaily
 
 
 class _StubFetcher:
@@ -253,6 +255,55 @@ class TestFetcherSourceOptimization(unittest.TestCase):
         akshare.get_a_share_realtime_snapshot_em.assert_not_called()
         tushare.get_a_share_realtime_snapshot.assert_not_called()
 
+    def test_a_share_snapshot_reuses_short_ttl_auxiliary_cache(self):
+        akshare = MagicMock()
+        akshare.name = "AkshareFetcher"
+        akshare.priority = 1
+        akshare.get_a_share_realtime_snapshot_tencent.return_value = [{"code": "600001", "source": "tencent"}]
+        manager = DataFetcherManager(fetchers=[akshare])
+
+        first = manager.get_a_share_realtime_snapshot(["600001"])
+        second = manager.get_a_share_realtime_snapshot(["600001"])
+
+        self.assertEqual(first, second)
+        akshare.get_a_share_realtime_snapshot_tencent.assert_called_once_with(["600001"])
+
+    def test_a_share_snapshot_skips_provider_during_connection_cooldown(self):
+        akshare = MagicMock()
+        akshare.name = "AkshareFetcher"
+        akshare.priority = 1
+        akshare.get_a_share_realtime_snapshot_tencent.side_effect = ConnectionError("RemoteDisconnected")
+        akshare.get_a_share_realtime_snapshot_em.return_value = [{"code": "600001", "source": "akshare_em"}]
+        manager = DataFetcherManager(fetchers=[akshare])
+
+        first = manager.get_a_share_realtime_snapshot(["600001"])
+        second = manager.get_a_share_realtime_snapshot(["600002"])
+
+        self.assertEqual(first, [{"code": "600001", "source": "akshare_em"}])
+        self.assertEqual(second, [{"code": "600001", "source": "akshare_em"}])
+        akshare.get_a_share_realtime_snapshot_tencent.assert_called_once_with(["600001"])
+        akshare.get_a_share_realtime_snapshot_em.assert_any_call(["600001"])
+        akshare.get_a_share_realtime_snapshot_em.assert_any_call(["600002"])
+
+    def test_board_members_reuses_auxiliary_cache(self):
+        fetcher = MagicMock()
+        fetcher.name = "AkshareFetcher"
+        fetcher.priority = 1
+        fetcher.get_board_members.return_value = [{"code": "600001", "name": "热点A"}]
+        manager = DataFetcherManager(fetchers=[fetcher])
+
+        first = manager.get_board_members("AI", "concept", 20)
+        second = manager.get_board_members("AI", "concept", 20)
+
+        self.assertEqual(first, second)
+        fetcher.get_board_members.assert_called_once_with("AI", "concept", 20)
+
+    def test_hourly_rate_limit_uses_one_hour_provider_cooldown(self):
+        self.assertEqual(
+            DataFetcherManager._provider_cooldown_seconds("抱歉，您访问接口(trade_cal)频率超限(1次/小时)"),
+            3600,
+        )
+
     @patch("src.config.get_config")
     def test_us_daily_route_skips_temporarily_unavailable_longbridge(self, mock_get_config):
         mock_get_config.return_value = SimpleNamespace(
@@ -279,6 +330,101 @@ class TestFetcherSourceOptimization(unittest.TestCase):
         self.assertEqual(source, "YfinanceFetcher")
         yfinance.get_daily_data.assert_called_once()
         longbridge.get_daily_data.assert_not_called()
+
+    def test_daily_data_prefers_local_stock_daily_when_enough(self):
+        DatabaseManager.reset_instance()
+        db = DatabaseManager(db_url="sqlite:///:memory:")
+        code = "600519"
+        today = date.today()
+        local_df = pd.DataFrame(
+            [
+                {
+                    "date": today - timedelta(days=offset),
+                    "open": 10.0,
+                    "high": 11.0,
+                    "low": 9.0,
+                    "close": 10.5,
+                    "volume": 1000,
+                    "amount": 10500,
+                    "pct_chg": 1.0,
+                }
+                for offset in range(30)
+            ]
+        )
+        db.save_daily_data(local_df, code, data_source="local_seed")
+        fetcher = MagicMock()
+        fetcher.name = "EfinanceFetcher"
+        fetcher.priority = 0
+        manager = DataFetcherManager(fetchers=[fetcher])
+
+        try:
+            df, source = manager.get_daily_data(code, days=30)
+
+            self.assertEqual(source, "local_stock_daily")
+            self.assertEqual(len(df), 30)
+            fetcher.get_daily_data.assert_not_called()
+        finally:
+            DatabaseManager.reset_instance()
+
+    def test_daily_data_fetches_and_saves_when_local_stock_daily_is_insufficient(self):
+        DatabaseManager.reset_instance()
+        db = DatabaseManager(db_url="sqlite:///:memory:")
+        code = "600519"
+        fresh_df = _make_daily_df()
+        fetcher = MagicMock()
+        fetcher.name = "EfinanceFetcher"
+        fetcher.priority = 0
+        fetcher.get_daily_data.return_value = fresh_df
+        manager = DataFetcherManager(fetchers=[fetcher])
+
+        try:
+            df, source = manager.get_daily_data(code, days=30)
+
+            self.assertFalse(df.empty)
+            self.assertEqual(source, "EfinanceFetcher")
+            fetcher.get_daily_data.assert_called_once()
+            with db.get_session() as session:
+                saved = session.query(StockDaily).filter(StockDaily.code == code).count()
+            self.assertEqual(saved, len(fresh_df))
+        finally:
+            DatabaseManager.reset_instance()
+
+    def test_daily_data_uses_local_stock_daily_after_fetch_saved_it(self):
+        DatabaseManager.reset_instance()
+        DatabaseManager(db_url="sqlite:///:memory:")
+        code = "600519"
+        fresh_df = pd.DataFrame(
+            [
+                {
+                    "date": date.today() - timedelta(days=offset),
+                    "open": 10.0,
+                    "high": 11.0,
+                    "low": 9.0,
+                    "close": 10.5,
+                    "volume": 1000,
+                    "amount": 10500,
+                    "pct_chg": 1.0,
+                }
+                for offset in range(30)
+            ]
+        )
+        fetcher = MagicMock()
+        fetcher.name = "EfinanceFetcher"
+        fetcher.priority = 0
+        fetcher.get_daily_data.return_value = fresh_df
+        manager = DataFetcherManager(fetchers=[fetcher])
+
+        try:
+            first_df, first_source = manager.get_daily_data(code, days=30)
+            second_df, second_source = manager.get_daily_data(code, days=30)
+
+            self.assertFalse(first_df.empty)
+            self.assertFalse(second_df.empty)
+            self.assertEqual(first_source, "EfinanceFetcher")
+            self.assertEqual(second_source, "local_stock_daily")
+            fetcher.get_daily_data.assert_called_once()
+        finally:
+            DatabaseManager.reset_instance()
 
     @patch("src.config.get_config")
     def test_hk_daily_route_skips_temporarily_unavailable_longbridge(self, mock_get_config):

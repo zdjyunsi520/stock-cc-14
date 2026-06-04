@@ -1520,8 +1520,19 @@ _FIELD_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "options": [],
         "validation": {},
         "display_order": 17,
+        "help_key": "settings.notification.FEISHU_APP_CHAT_ID",
         "examples": [
             "FEISHU_APP_CHAT_ID=oc_xxxxx",
+        ],
+        "docs": [
+            {
+                "label": "完整指南：飞书通知配置",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/full-guide.md#飞书",
+            },
+            {
+                "label": "飞书机器人配置专题",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/bot/feishu-bot-config.md",
+            },
         ],
     },
     "FEISHU_STREAM_ENABLED": {
@@ -3737,6 +3748,107 @@ _FIELD_DEFINITIONS: Dict[str, Dict[str, Any]] = {
             },
         ],
         "warning_codes": ["legacy_json_only_basic_rules"],
+    },
+    "EVOLUTION_ENABLED": {
+        "title": "Evolution Dry Run",
+        "description": "Enable read-only self-evolution diagnostics for historical analysis and backtest quality signals.",
+        "category": "agent",
+        "data_type": "boolean",
+        "ui_control": "switch",
+        "is_sensitive": False,
+        "is_required": False,
+        "is_editable": True,
+        "default_value": "false",
+        "options": [],
+        "validation": {},
+        "display_order": 72,
+        "help_key": "settings.agent.EVOLUTION_ENABLED",
+        "examples": [
+            "EVOLUTION_ENABLED=false",
+            "python main.py --evolve-analysis --dry-run",
+        ],
+        "docs": [
+            {
+                "label": "完整指南：环境变量完整列表",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/full-guide.md#环境变量完整列表",
+            },
+        ],
+        "warning_codes": [],
+    },
+    "EVOLUTION_LOOKBACK_DAYS": {
+        "title": "Evolution Lookback Days",
+        "description": "Number of recent days scanned when building the read-only evolution diagnostic sample.",
+        "category": "agent",
+        "data_type": "integer",
+        "ui_control": "number",
+        "is_sensitive": False,
+        "is_required": False,
+        "is_editable": True,
+        "default_value": "30",
+        "options": [],
+        "validation": {"min": 1, "max": 3650},
+        "display_order": 73,
+        "help_key": "settings.agent.EVOLUTION_LOOKBACK_DAYS",
+        "examples": [
+            "EVOLUTION_LOOKBACK_DAYS=30",
+        ],
+        "docs": [
+            {
+                "label": "完整指南：环境变量完整列表",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/full-guide.md#环境变量完整列表",
+            },
+        ],
+        "warning_codes": [],
+    },
+    "EVOLUTION_MIN_SAMPLE_SIZE": {
+        "title": "Evolution Min Sample Size",
+        "description": "Minimum historical sample count required before evolution diagnostics emit actionable candidates.",
+        "category": "agent",
+        "data_type": "integer",
+        "ui_control": "number",
+        "is_sensitive": False,
+        "is_required": False,
+        "is_editable": True,
+        "default_value": "20",
+        "options": [],
+        "validation": {"min": 1, "max": 10000},
+        "display_order": 74,
+        "help_key": "settings.agent.EVOLUTION_MIN_SAMPLE_SIZE",
+        "examples": [
+            "EVOLUTION_MIN_SAMPLE_SIZE=20",
+        ],
+        "docs": [
+            {
+                "label": "完整指南：环境变量完整列表",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/full-guide.md#环境变量完整列表",
+            },
+        ],
+        "warning_codes": [],
+    },
+    "EVOLUTION_OUTPUT_DIR": {
+        "title": "Evolution Output Directory",
+        "description": "Directory where read-only evolution run artifacts, trajectory JSONL, and summaries are written.",
+        "category": "agent",
+        "data_type": "string",
+        "ui_control": "text",
+        "is_sensitive": False,
+        "is_required": False,
+        "is_editable": True,
+        "default_value": "reports/evolution",
+        "options": [],
+        "validation": {},
+        "display_order": 75,
+        "help_key": "settings.agent.EVOLUTION_OUTPUT_DIR",
+        "examples": [
+            "EVOLUTION_OUTPUT_DIR=reports/evolution",
+        ],
+        "docs": [
+            {
+                "label": "完整指南：环境变量完整列表",
+                "href": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/main/docs/full-guide.md#环境变量完整列表",
+            },
+        ],
+        "warning_codes": [],
     },
 }
 

@@ -35,7 +35,7 @@ class AnthropicDirectClient:
         channel_api_key, channel_base_url, channel_model = self._resolve_anthropic_channel()
         config_keys = getattr(self.config, "anthropic_api_keys", []) or []
         config_api_key = getattr(self.config, "anthropic_api_key", None) or (config_keys[0] if config_keys else "")
-        self.api_key = (api_key or os.getenv("CLAUDE_BRIDGE_API_KEY") or channel_api_key or config_api_key or "").strip()
+        self.api_key = (api_key or os.getenv("CLAUDE_BRIDGE_API_KEY") or config_api_key or channel_api_key or "").strip()
         self.base_url = (base_url or os.getenv("CLAUDE_BRIDGE_BASE_URL") or channel_base_url or os.getenv("ANTHROPIC_BASE_URL") or self.DEFAULT_BASE_URL).strip()
         self.model = (model or os.getenv("CLAUDE_BRIDGE_MODEL") or channel_model or getattr(self.config, "anthropic_model", "") or "claude-opus-4-6").strip()
         self.messages_path = os.getenv("CLAUDE_BRIDGE_MESSAGES_PATH", "").strip()

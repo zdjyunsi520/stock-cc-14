@@ -111,6 +111,50 @@ class IntradayPickSchedulerReportTests(unittest.TestCase):
         self.assertEqual(len(report_payload["ranked_candidates"]), 10)
         self.assertEqual(report_payload["ranked_candidates"][-1]["code"], "600009")
 
+    def test_fallback_report_renders_theme_momentum_and_degraded_source(self):
+        payload = {
+            "title": "热点扩散盘中选股",
+            "summary": {
+                "rough_count": 3,
+                "checked_count": 1,
+                "passed_count": 0,
+                "theme_count": 1,
+                "active_theme_count": 1,
+                "data_quality": {
+                    "snapshot_status": "ok",
+                    "theme_universe_source": "static_fallback",
+                    "theme_universe_degraded": True,
+                    "theme_history_theme_count": 2,
+                },
+            },
+            "themes": [{
+                "theme": "CCL",
+                "stage": "观察",
+                "score": 32.0,
+                "base_score": 44.0,
+                "momentum_score": -8.0,
+                "momentum_stage": "degraded_static_fallback",
+                "lifecycle_stage": "static_degraded",
+                "climax_pressure": 0.0,
+                "divergence_score": 1.0,
+                "member_count": 3,
+                "up_count": 2,
+                "active_count": 2,
+                "reasons": ["静态题材兜底，热点可信度降权"],
+            }],
+            "ranked_candidates": [],
+        }
+
+        report = IntradayPickScheduler._build_fallback_report(payload)
+
+        self.assertIn("静态题材兜底观察", report)
+        self.assertIn("CCL：观察/degraded_static_fallback", report)
+        self.assertIn("生命周期 静态兜底", report)
+        self.assertIn("基础分 44.0，曲率 -8.0", report)
+        self.assertIn("高潮压力 0.0，分歧 1.0", report)
+        self.assertIn("热点来源：static_fallback", report)
+        self.assertIn("历史题材样本：2", report)
+
     def test_data_source_failure_retries_same_slot_after_ten_minutes(self):
         clock = {"value": 1000.0}
         calls = {"count": 0}
