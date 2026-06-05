@@ -39,7 +39,7 @@ class AnthropicDirectClient:
         self.base_url = (base_url or os.getenv("CLAUDE_BRIDGE_BASE_URL") or channel_base_url or os.getenv("ANTHROPIC_BASE_URL") or self.DEFAULT_BASE_URL).strip()
         self.model = (model or os.getenv("CLAUDE_BRIDGE_MODEL") or channel_model or getattr(self.config, "anthropic_model", "") or "claude-opus-4-6").strip()
         self.messages_path = os.getenv("CLAUDE_BRIDGE_MESSAGES_PATH", "").strip()
-        self.timeout_s = float(os.getenv("CLAUDE_BRIDGE_TIMEOUT_S", "60"))
+        self.timeout_s = float(os.getenv("CLAUDE_BRIDGE_TIMEOUT_S", "240"))
 
     def _resolve_anthropic_channel(self) -> Tuple[str, str, str]:
         for channel in self._iter_anthropic_channels():
@@ -138,16 +138,37 @@ class AnthropicDirectClient:
         if system.strip():
             payload["system"] = system.strip()
 
-        response = requests.post(
-            self.messages_url(),
-            headers={
-                "x-api-key": self.api_key,
-                "anthropic-version": self.DEFAULT_VERSION,
-                "content-type": "application/json",
-            },
-            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-            timeout=self.timeout_s,
-        )
+        # 超时重试：最多 3 次，每次递增超时
+        max_retries = 3
+        last_exc = None
+        for retry in range(max_retries):
+            try:
+                timeout = self.timeout_s * (retry + 1)
+                response = requests.post(
+                    self.messages_url(),
+                    headers={
+                        "x-api-key": self.api_key,
+                        "anthropic-version": self.DEFAULT_VERSION,
+                        "content-type": "application/json",
+                    },
+                    data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                    timeout=timeout,
+                )
+                break
+            except requests.exceptions.Timeout as exc:
+                last_exc = exc
+                logger.warning(
+                    "Anthropic direct call timeout (retry %d/%d, timeout=%.0fs): %s",
+                    retry + 1, max_retries, timeout, exc,
+                )
+                if retry < max_retries - 1:
+                    import time
+                    time.sleep(2)
+        else:
+            raise RuntimeError(
+                f"Anthropic direct call timed out after {max_retries} retries: "
+                f"model={self.model}; url={self.messages_url()}"
+            ) from last_exc
         if response.status_code >= 400:
             body_summary = self._summarize_error_body(response.text)
             logger.warning(

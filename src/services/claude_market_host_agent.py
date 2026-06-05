@@ -71,8 +71,15 @@ class ClaudeMarketHostAgent:
                 "热点扩散规则引擎负责选股，你负责解释题材阶段、候选排序、风险和观察条件。",
                 "必须基于输入 JSON，不得编造新闻、行情、板块或指标。",
                 "不得下单，不得承诺收益，不得给确定性买卖指令。",
-                "输出适合通知渠道推送的 markdown，中文，短而清楚。"
+                "输出适合通知渠道推送的 markdown，中文，短而清楚。",
                 "必须包含：核心结论、题材状态、候选排序、主要风险、下一步观察、数据说明。",
+                "",
+                "【数据说明】必须明确标注以下来源信息（从 summary.data_quality 中提取）：",
+                "- 热点题材来源：theme_universe_source（market_hot_board=实时市场数据 / static_fallback=静态兜底）",
+                "- 实时行情快照：snapshot_status 和 snapshot_count",
+                "- 日线历史数据：daily_source（如 local_stock_daily/TushareFetcher/BaostockFetcher 等）",
+                "- 是否降级：theme_universe_degraded（true/false）",
+                "用一句话概括，如：'热点题材来自实时市场数据，行情快照正常(115支)，日线来自本地缓存+Tushare，未降级。'",
             ]
         )
 

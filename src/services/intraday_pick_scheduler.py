@@ -359,7 +359,13 @@ class IntradayPickScheduler:
                 "- 趋势确认票是否过热，等待回踩后再观察。",
                 "",
                 "**数据说明**",
-                f"本报告由规则引擎生成，Claude 主持人未参与或已降级。数据状态：{data_quality.get('snapshot_status', 'unknown')}；热点来源：{data_quality.get('theme_universe_source', 'unknown')}；历史题材样本：{data_quality.get('theme_history_theme_count', 0)}。仅作观察提醒，不代表交易指令。",
+                (
+                    f"本报告由规则引擎生成。"
+                    f"热点来源：{'实时市场数据' if data_quality.get('theme_universe_source') == 'market_hot_board' else '静态兜底'}；"
+                    f"行情快照：{data_quality.get('snapshot_status', 'unknown')}({data_quality.get('snapshot_count', 0)}支)；"
+                    f"{'已降级' if data_quality.get('theme_universe_degraded') else '未降级'}。"
+                    "仅作观察提醒，不代表交易指令。"
+                ),
             ]
         )
         return "\n".join(lines)

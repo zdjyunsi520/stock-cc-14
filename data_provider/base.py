@@ -708,8 +708,8 @@ class DataFetcherManager:
     @staticmethod
     def _capability_provider_names(method_name: str) -> Optional[set]:
         provider_map = {
-            "get_concept_rankings": {"AkshareFetcher"},
-            "get_board_members": {"AkshareFetcher"},
+            "get_concept_rankings": {"ThsFetcher", "AkshareFetcher"},
+            "get_board_members": {"ThsFetcher", "AkshareFetcher"},
         }
         return provider_map.get(method_name)
 
@@ -1227,6 +1227,7 @@ class DataFetcherManager:
         from src.config import get_config
         from .efinance_fetcher import EfinanceFetcher
         from .akshare_fetcher import AkshareFetcher
+        from .ths_fetcher import ThsFetcher
         from .tushare_fetcher import TushareFetcher
         from .pytdx_fetcher import PytdxFetcher
         from .baostock_fetcher import BaostockFetcher
@@ -1235,6 +1236,7 @@ class DataFetcherManager:
         config = get_config()
         # 创建所有数据源实例（优先级在各 Fetcher 的 __init__ 中确定）
         efinance = EfinanceFetcher()
+        ths = ThsFetcher()          # 同花顺数据源（概念排行 + 成分股）
         akshare = AkshareFetcher()
         pytdx = PytdxFetcher()      # 通达信数据源（可配 PYTDX_HOST/PYTDX_PORT）
         baostock = BaostockFetcher()
@@ -1270,6 +1272,7 @@ class DataFetcherManager:
         self._ensure_concurrency_guards()
         with self._fetchers_lock:
             self._fetchers = [
+                ths,
                 efinance,
                 akshare,
                 pytdx,
@@ -1448,9 +1451,21 @@ class DataFetcherManager:
             logger.error(f"[数据源终止] {stock_code} 获取失败: elapsed={elapsed:.2f}s\n{error_summary}")
             raise DataFetchError(error_summary)
 
+        # A 股日线：排除 ThsFetcher（无日线能力），Tushare/Efinance/Akshare 轮流+间隔
+        daily_fetcher_names = {"TushareFetcher", "EfinanceFetcher", "AkshareFetcher",
+                               "PytdxFetcher", "BaostockFetcher", "YfinanceFetcher"}
+        fetchers = [f for f in fetchers if f.name in daily_fetcher_names]
+
+        # 轮询：根据全局计数器决定起始位置，避免每次都从同一个源开始
+        rr_key = "_daily_rr_offset"
+        offset = getattr(self, rr_key, 0) % len(fetchers) if fetchers else 0
+        fetchers = fetchers[offset:] + fetchers[:offset]
+
         for attempt, fetcher in enumerate(fetchers, start=1):
+            # 每次调源前等待1.5秒，避免频率过高
+            time.sleep(1.5)
             attempt_start = time.time()
-            fallback_to = fetchers[attempt].name if attempt < total_fetchers else None
+            fallback_to = fetchers[attempt].name if attempt < len(fetchers) else None
             try:
                 logger.info(f"[数据源尝试 {attempt}/{total_fetchers}] [{fetcher.name}] 获取 {stock_code}...")
                 df = self._call_fetcher_method(
@@ -1478,6 +1493,8 @@ class DataFetcherManager:
                         f"rows={len(df)}, elapsed={elapsed:.2f}s"
                     )
                     self._save_local_daily_data(stock_code, df, fetcher.name)
+                    # 更新轮询偏移，下次从下一个源开始
+                    setattr(self, rr_key, offset + attempt)
                     return df, fetcher.name
                 duration_ms = int((time.time() - attempt_start) * 1000)
                 record_provider_run(
@@ -1491,7 +1508,6 @@ class DataFetcherManager:
                     fallback_to=fallback_to,
                     record_count=0,
                 )
-                    
             except Exception as e:
                 error_type, error_reason = summarize_exception(e)
                 error_msg = f"[{fetcher.name}] ({error_type}) {error_reason}"
@@ -3293,6 +3309,7 @@ class DataFetcherManager:
 
             method_name = "get_sector_rankings"
             # 直接遍历管理器已经按 priority 排好序的数据源列表
+            sector_idx = 0
             for fetcher in self._fetchers:
                 if not hasattr(fetcher, 'get_sector_rankings'):
                     continue
@@ -3306,6 +3323,9 @@ class DataFetcherManager:
                     )
                     logger.info(f"[{fetcher.name}] 板块排行处于冷却期，跳过")
                     continue
+                if sector_idx > 0:
+                    time.sleep(2)
+                sector_idx += 1
 
                 start = time.time()
                 try:
@@ -3374,6 +3394,7 @@ class DataFetcherManager:
 
         source_chain: List[Dict[str, Any]] = []
         method_name = "get_concept_rankings"
+        fetcher_idx = 0
         for fetcher in self._fetchers:
             if not self._supports_auxiliary_capability(fetcher, method_name):
                 continue
@@ -3381,6 +3402,9 @@ class DataFetcherManager:
                 source_chain.append({"provider": fetcher.name, "result": "skipped_cooldown"})
                 logger.info(f"[{fetcher.name}] 概念排行处于冷却期，跳过")
                 continue
+            if fetcher_idx > 0:
+                time.sleep(2)
+            fetcher_idx += 1
             start = time.time()
             try:
                 data = fetcher.get_concept_rankings(n)
@@ -3423,6 +3447,7 @@ class DataFetcherManager:
 
         source_chain: List[Dict[str, Any]] = []
         method_name = "get_board_members"
+        fetcher_index = 0
         for fetcher in self._fetchers:
             if not self._supports_auxiliary_capability(fetcher, method_name):
                 continue
@@ -3430,6 +3455,10 @@ class DataFetcherManager:
                 source_chain.append({"provider": fetcher.name, "result": "skipped_cooldown"})
                 logger.info(f"[{fetcher.name}] 板块成分股处于冷却期，跳过")
                 continue
+            # 每次调源前等待2秒
+            if fetcher_index > 0:
+                time.sleep(2)
+            fetcher_index += 1
             start = time.time()
             try:
                 data = self._call_fetcher_method(fetcher, method_name, normalized_name, normalized_type, max_members)
@@ -3463,13 +3492,12 @@ class DataFetcherManager:
         n: int = 5,
         max_members_per_theme: int = 80,
     ) -> Dict[str, List[str]]:
-        """从当日概念/行业排行识别热点，再获取热点成分股代码。"""
+        """从当日概念排行识别热点，再获取热点成分股代码。"""
         universe: Dict[str, List[str]] = {}
         ranked_boards: List[Tuple[str, Dict[str, Any]]] = []
-        concept_top, _ = self.get_concept_rankings(n)
-        sector_top, _ = self.get_sector_rankings(n)
+        concept_result = self.get_concept_rankings(n)
+        concept_top = concept_result[0] if concept_result else []
         ranked_boards.extend(("concept", item) for item in concept_top)
-        ranked_boards.extend(("industry", item) for item in sector_top)
 
         seen_boards = set()
         for board_type, board in ranked_boards:
@@ -3546,10 +3574,12 @@ class DataFetcherManager:
             ("AkshareFetcher", "get_a_share_realtime_snapshot_em", "akshare_em"),
         ]
         last_error = ""
-        for fetcher_name, method_name, source_label in routes:
+        for route_idx, (fetcher_name, method_name, source_label) in enumerate(routes):
             if self._is_provider_in_cooldown(fetcher_name, method_name):
                 logger.info(f"[{source_label}] A 股实时快照处于冷却期，跳过(scope={scope_text})")
                 continue
+            if route_idx > 0:
+                time.sleep(1.5)
             fetcher = self._get_fetcher_by_name(fetcher_name, capability="a_share_realtime_snapshot")
             if fetcher is None:
                 last_error = f"{source_label}数据源不可用"
