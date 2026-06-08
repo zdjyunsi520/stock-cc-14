@@ -285,3 +285,6 @@ python main.py --webui-only
 本项目仅供学习和研究使用，不构成任何投资建议。股市有风险，投资需谨慎。作者不对使用本项目产生的任何损失负责。
 
 ---
+
+补充今日日线
+python main.py --sync-incremental

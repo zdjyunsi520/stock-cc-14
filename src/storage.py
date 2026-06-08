@@ -138,6 +138,23 @@ class StockDaily(Base):
         }
 
 
+class StockDailySyncState(Base):
+    """全市场日线同步状态跟踪"""
+    __tablename__ = 'stock_daily_sync_state'
+
+    code = Column(String(10), primary_key=True)
+    code_name = Column(String(50))
+    last_synced_date = Column(Date)
+    total_days = Column(Integer, default=0)
+    status = Column(String(20), default='pending')  # pending/syncing/done/failed
+    error_message = Column(Text)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    __table_args__ = (
+        Index('ix_sync_state_status', 'status'),
+    )
+
+
 class NewsIntel(Base):
     """
     新闻情报数据模型
@@ -1816,7 +1833,149 @@ class DatabaseManager(metaclass=_DatabaseManagerMeta):
         except Exception as e:
             logger.error(f"保存 {code} 数据失败: {e}")
             raise
-    
+
+    def save_daily_data_bulk(self, df: pd.DataFrame, code: str, data_source: str = "Unknown") -> int:
+        """批量写入日线数据，不做 existence check，直接 INSERT OR REPLACE。适用于全量同步。"""
+        if df is None or df.empty:
+            return 0
+
+        now = datetime.now()
+        records = []
+        seen_dates = set()
+        for row in df.to_dict(orient='records'):
+            row_date = self._normalize_daily_date(row.get('date'))
+            if row_date is None or row_date in seen_dates:
+                continue
+            seen_dates.add(row_date)
+            records.append({
+                'code': code,
+                'date': row_date,
+                'open': self._normalize_sql_value(row.get('open')),
+                'high': self._normalize_sql_value(row.get('high')),
+                'low': self._normalize_sql_value(row.get('low')),
+                'close': self._normalize_sql_value(row.get('close')),
+                'volume': self._normalize_sql_value(row.get('volume')),
+                'amount': self._normalize_sql_value(row.get('amount')),
+                'pct_chg': self._normalize_sql_value(row.get('pct_chg')),
+                'data_source': data_source,
+                'created_at': now,
+                'updated_at': now,
+            })
+
+        if not records:
+            return 0
+
+        def _write(session: Session) -> int:
+            _CHUNK = 50
+            for i in range(0, len(records), _CHUNK):
+                chunk = records[i:i + _CHUNK]
+                if self._is_sqlite_engine:
+                    stmt = sqlite_insert(StockDaily).values(chunk)
+                    excluded = stmt.excluded
+                    session.execute(
+                        stmt.on_conflict_do_update(
+                            index_elements=['code', 'date'],
+                            set_={
+                                'open': excluded.open,
+                                'high': excluded.high,
+                                'low': excluded.low,
+                                'close': excluded.close,
+                                'volume': excluded.volume,
+                                'amount': excluded.amount,
+                                'pct_chg': excluded.pct_chg,
+                                'data_source': excluded.data_source,
+                                'updated_at': excluded.updated_at,
+                            },
+                        )
+                    )
+                else:
+                    for record in chunk:
+                        session.merge(StockDaily(**record))
+            return len(records)
+
+        try:
+            return self._run_write_transaction(f"save_daily_data_bulk[{code}]", _write)
+        except Exception as e:
+            logger.warning("save_daily_data_bulk %s 失败: %s", code, e)
+            return 0
+
+    def upsert_sync_state(self, code: str, code_name: str = "",
+                          last_synced_date=None, total_days: int = 0,
+                          status: str = "pending", error_message: str = "") -> None:
+        """更新或插入同步状态记录"""
+        now = datetime.now()
+
+        def _write(session: Session):
+            existing = session.get(StockDailySyncState, code)
+            if existing:
+                if code_name:
+                    existing.code_name = code_name
+                if last_synced_date is not None:
+                    existing.last_synced_date = last_synced_date
+                if total_days:
+                    existing.total_days = total_days
+                existing.status = status
+                if error_message:
+                    existing.error_message = error_message[:500]
+                existing.updated_at = now
+            else:
+                session.add(StockDailySyncState(
+                    code=code, code_name=code_name,
+                    last_synced_date=last_synced_date,
+                    total_days=total_days, status=status,
+                    error_message=error_message[:500] if error_message else None,
+                    updated_at=now,
+                ))
+
+        try:
+            self._run_write_transaction(f"upsert_sync_state[{code}]", _write)
+        except Exception as e:
+            logger.warning("upsert_sync_state %s 失败: %s", code, e)
+
+    def get_sync_states(self, status: Optional[str] = None) -> List[Dict[str, Any]]:
+        """查询同步状态"""
+        with self.get_session() as session:
+            query = select(StockDailySyncState)
+            if status:
+                query = query.where(StockDailySyncState.status == status)
+            rows = session.execute(query.order_by(StockDailySyncState.code)).scalars().all()
+            return [
+                {
+                    'code': r.code,
+                    'code_name': r.code_name,
+                    'last_synced_date': r.last_synced_date,
+                    'total_days': r.total_days,
+                    'status': r.status,
+                    'error_message': r.error_message,
+                    'updated_at': r.updated_at,
+                }
+                for r in rows
+            ]
+
+    def get_bulk_daily_data(self, days: int = 15) -> pd.DataFrame:
+        """批量获取全市场最近N天日线数据，返回一个包含所有股票的 DataFrame。"""
+        from sqlalchemy import text as sa_text
+        cutoff = (datetime.now() - timedelta(days=days + 5)).strftime("%Y-%m-%d")
+        sql = f"""
+            SELECT code, date, open, high, low, close, volume, amount, pct_chg
+            FROM stock_daily
+            WHERE date >= :cutoff
+            ORDER BY code, date
+        """
+        with self.get_session() as session:
+            result = session.execute(sa_text(sql), {"cutoff": cutoff})
+            rows = result.fetchall()
+            columns = result.keys()
+
+        if not rows:
+            return pd.DataFrame()
+        df = pd.DataFrame(rows, columns=columns)
+        df["date"] = pd.to_datetime(df["date"])
+        for col in ("open", "high", "low", "close", "volume", "amount", "pct_chg"):
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
+        return df
+
     def get_analysis_context(
         self, 
         code: str,

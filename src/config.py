@@ -988,6 +988,11 @@ class Config:
     max_retries: int = 3
     retry_base_delay: float = 1.0
     retry_max_delay: float = 30.0
+
+    # === 日线同步配置 ===
+    daily_sync_enabled: bool = False
+    daily_sync_interval_seconds: float = 5.0
+    daily_sync_start_date: str = "2000-01-01"
     
     # === WebUI 配置 ===
     webui_enabled: bool = False

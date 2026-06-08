@@ -235,6 +235,10 @@ def parse_arguments() -> argparse.Namespace:
   python main.py --single-notify    # 启用单股推送模式（每分析完一只立即推送）
   python main.py --schedule         # 启用定时任务模式
   python main.py --market-review    # 仅运行大盘复盘
+  python main.py --sync-daily       # 全量同步全市场日线（沪深主板，约3024只）
+  python main.py --sync-daily --max-stocks 10  # 全量同步（测试用，限制数量）
+  python main.py --sync-incremental # 增量同步最新交易日日线（收盘后15:30运行）
+  python main.py --ma10-screen      # MA10回踩选股（回踩不破+放量+热点概念）
         '''
     )
 
@@ -386,6 +390,31 @@ def parse_arguments() -> argparse.Namespace:
         '--evolve-analysis',
         action='store_true',
         help='运行自我进化只读诊断，生成建议报告与 trajectory'
+    )
+
+    parser.add_argument(
+        '--sync-daily',
+        action='store_true',
+        help='全量同步全市场日线历史数据（Baostock）'
+    )
+
+    parser.add_argument(
+        '--sync-incremental',
+        action='store_true',
+        help='增量同步已下载股票的最新日线数据'
+    )
+
+    parser.add_argument(
+        '--max-stocks',
+        type=int,
+        default=None,
+        help='限制全量同步的股票数量（测试用）'
+    )
+
+    parser.add_argument(
+        '--ma10-screen',
+        action='store_true',
+        help='运行 MA10 回踩选股器'
     )
 
     return parser.parse_args()
@@ -936,6 +965,52 @@ def main() -> int:
                 f"回测完成: processed={stats.get('processed')} saved={stats.get('saved')} "
                 f"completed={stats.get('completed')} insufficient={stats.get('insufficient')} errors={stats.get('errors')}"
             )
+            return 0
+
+        # 模式0.5: 日线数据同步
+        if getattr(args, 'sync_daily', False):
+            logger.info("模式: 全量日线数据同步")
+            from src.services.daily_data_sync_service import DailyDataSyncService
+
+            svc = DailyDataSyncService(config=config)
+            max_stocks = getattr(args, 'max_stocks', None)
+            result = svc.sync_full(max_stocks=max_stocks)
+            logger.info(
+                "全量同步完成: total=%d synced=%d skipped=%d failed=%d rows=%d",
+                result.total, result.synced, result.skipped, result.failed, result.rows_written,
+            )
+            if result.errors:
+                logger.warning("失败股票: %s", "; ".join(result.errors[:20]))
+            return 0
+
+        if getattr(args, 'sync_incremental', False):
+            logger.info("模式: 增量日线数据同步")
+            from src.services.daily_data_sync_service import DailyDataSyncService
+
+            svc = DailyDataSyncService(config=config)
+            result = svc.sync_incremental()
+            logger.info(
+                "增量同步完成: total=%d synced=%d failed=%d rows=%d",
+                result.total, result.synced, result.failed, result.rows_written,
+            )
+            return 0
+
+        # 模式0.6: MA10 回踩选股
+        if getattr(args, 'ma10_screen', False):
+            logger.info("模式: MA10 回踩选股")
+            from src.services.ma10_pullback_screener import MA10PullbackScreener, MA10PullbackCriteria
+
+            screener = MA10PullbackScreener()
+            candidates = screener.screen()
+            if not candidates:
+                logger.info("无符合条件的股票")
+                return 0
+
+            print(f"\n{'序号':>4}  {'代码':<8} {'名称':<8} {'收盘':>8} {'MA10':>8} {'距MA10%':>8} {'量比':>6} {'涨跌%':>7} {'评分':>5}  所属概念")
+            print("-" * 100)
+            for i, c in enumerate(candidates, 1):
+                themes = "/".join(c.themes[:3]) or "无"
+                print(f"{i:4d}  {c.code:<8} {c.name:<8} {c.close:8.2f} {c.ma10:8.2f} {c.dist_ma10_pct:+7.2f}% {c.volume_ratio:6.2f} {c.change_pct:+6.2f}% {c.score:5.1f}  {themes}")
             return 0
 
         # 模式1: 仅大盘复盘
