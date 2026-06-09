@@ -228,9 +228,9 @@ class DailyDataSyncService:
         return result
 
     def _sync_one_stock(self, bs, code: str, name: str) -> int:
-        """同步单只股票最近30天数据，返回写入行数。"""
+        """同步单只股票最近120天数据，返回写入行数。"""
         bs_code = self._to_bs_code(code)
-        start = (date.today() - timedelta(days=30)).strftime("%Y-%m-%d")
+        start = (date.today() - timedelta(days=120)).strftime("%Y-%m-%d")
         end = date.today().strftime("%Y-%m-%d")
         rs = bs.query_history_k_data_plus(
             code=bs_code,
@@ -306,7 +306,7 @@ class DailyDataSyncService:
                 name = state.get("code_name", "")
                 last_date = state.get("last_synced_date")
 
-                start = self._next_trading_day(last_date) if last_date else self.start_date
+                start = self._next_trading_day(last_date) if last_date else today - timedelta(days=120)
                 start_str = start.strftime("%Y-%m-%d") if isinstance(start, date) else str(start)
                 end_str = today.strftime("%Y-%m-%d")
 

@@ -239,6 +239,13 @@ def parse_arguments() -> argparse.Namespace:
   python main.py --sync-daily --max-stocks 10  # 全量同步（测试用，限制数量）
   python main.py --sync-incremental # 增量同步最新交易日日线（收盘后15:30运行）
   python main.py --ma10-screen      # MA10回踩选股（回踩不破+放量+热点概念）
+  python main.py --rise-dna         # 涨跌基因分析（分析上涨股票共同特征和规律）
+  python main.py --rise-dna --min-change 5  # 涨跌基因分析（涨幅阈值5%）
+  python main.py --pattern-screen     # 规律选股（默认取数据库最新交易日）
+  python main.py --pattern-screen --date 20260605  # 使用指定日期的规律选股
+  python main.py --pattern-screen --force-refresh  # 强制重新分析（忽略缓存）
+  python main.py --cache-concepts              # 仅缓存当天概念板块（收盘后运行）
+  python main.py --pattern-screen --notify     # 规律选股并推送到飞书
         '''
     )
 
@@ -415,6 +422,50 @@ def parse_arguments() -> argparse.Namespace:
         '--ma10-screen',
         action='store_true',
         help='运行 MA10 回踩选股器'
+    )
+
+    parser.add_argument(
+        '--rise-dna',
+        action='store_true',
+        help='运行涨跌基因分析（分析上涨股票的共同特征和规律）'
+    )
+
+    parser.add_argument(
+        '--min-change',
+        type=float,
+        default=3.0,
+        help='涨跌基因分析的涨幅阈值，默认3.0%%'
+    )
+
+    parser.add_argument(
+        '--pattern-screen',
+        action='store_true',
+        help='规律选股（基于涨跌基因分析的持续热点规律筛选股票）'
+    )
+
+    parser.add_argument(
+        '--force-refresh',
+        action='store_true',
+        help='强制重新分析规律选股（忽略缓存）'
+    )
+
+    parser.add_argument(
+        '--cache-concepts',
+        action='store_true',
+        help='仅缓存当天的概念板块数据（不依赖日线，收盘后即可运行）'
+    )
+
+    parser.add_argument(
+        '--notify',
+        action='store_true',
+        help='规律选股结果推送到飞书'
+    )
+
+    parser.add_argument(
+        '--date',
+        type=str,
+        default=None,
+        help='指定规律选股的数据日期，如 20260605（默认取数据库最新交易日）'
     )
 
     return parser.parse_args()
@@ -1011,6 +1062,85 @@ def main() -> int:
             for i, c in enumerate(candidates, 1):
                 themes = "/".join(c.themes[:3]) or "无"
                 print(f"{i:4d}  {c.code:<8} {c.name:<8} {c.close:8.2f} {c.ma10:8.2f} {c.dist_ma10_pct:+7.2f}% {c.volume_ratio:6.2f} {c.change_pct:+6.2f}% {c.score:5.1f}  {themes}")
+            return 0
+
+        if getattr(args, 'rise_dna', False):
+            logger.info("模式: 涨跌基因分析")
+            from src.services.rise_dna_analyzer import RiseDNAAnalyzer, RiseDNAConfig
+
+            config_dna = RiseDNAConfig(min_change_pct=getattr(args, 'min_change', 3.0))
+            analyzer = RiseDNAAnalyzer()
+            report = analyzer.analyze(config_dna)
+            print(RiseDNAAnalyzer.format_report(report))
+            return 0
+
+        if getattr(args, 'cache_concepts', False):
+            logger.info("模式: 缓存概念板块数据")
+            from src.services.pattern_screener import PatternScreener
+
+            screener = PatternScreener()
+            universe = screener.cache_todays_concepts()
+            if universe:
+                print(f"概念板块缓存完成: {len(universe)}只股票")
+            else:
+                print("概念板块缓存失败")
+            return 0
+
+        if getattr(args, 'pattern_screen', False):
+            logger.info("模式: 规律选股")
+            from src.services.pattern_screener import PatternScreener, PatternScreenerConfig
+
+            screener = PatternScreener()
+            config_ps = PatternScreenerConfig()
+            date_key = getattr(args, 'date', None)
+            force_refresh = getattr(args, 'force_refresh', False)
+            do_notify = getattr(args, 'notify', False)
+
+            # 检查概念缓存是否存在（精确匹配日期，不回退到最新）
+            actual_date = date_key or screener._get_latest_trading_date() or ""
+            if actual_date:
+                cache_path = screener._concept_cache_path(actual_date)
+                if not os.path.exists(cache_path):
+                    logger.warning("[PatternScreen] 日期 %s 无概念缓存数据，跳过规律选股", actual_date)
+                    print(f"无 {actual_date} 的概念缓存数据，请先运行 --cache-concepts")
+                    return 1
+
+            candidates, hot_themes = screener.screen(config_ps, date_key=date_key, force_refresh=force_refresh)
+            if not candidates:
+                logger.info("无符合条件的股票")
+                return 0
+
+            report = PatternScreener.format_report(candidates, hot_themes, date_key=actual_date)
+            print(report)
+
+            # 推送到飞书
+            if do_notify:
+                try:
+                    from src.notification import NotificationService, NotificationBuilder
+
+                    display = ""
+                    if actual_date and len(actual_date) == 8:
+                        display = f"{actual_date[:4]}-{actual_date[4:6]}-{actual_date[6:8]}"
+
+                    notifier = NotificationService()
+                    if notifier.is_available():
+                        title = f"规律选股报告 {display}"
+                        alert_text = NotificationBuilder.build_simple_alert(
+                            title=title, content=report, alert_type="info"
+                        )
+                        key = f"pattern_screen:{actual_date}"
+                        notifier.send_with_results(
+                            alert_text,
+                            route_type="alert",
+                            severity="info",
+                            dedup_key=key,
+                            cooldown_key=key,
+                        )
+                        logger.info("[PatternScreen] 已推送到飞书")
+                    else:
+                        logger.warning("[PatternScreen] 无可用的通知渠道")
+                except Exception as exc:
+                    logger.warning("[PatternScreen] 推送失败: %s", exc)
             return 0
 
         # 模式1: 仅大盘复盘

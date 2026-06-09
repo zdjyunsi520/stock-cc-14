@@ -1,0 +1,403 @@
+{
+  "date_key": "20260601",
+  "hot_themes": [
+    [
+      "空间计算",
+      4
+    ],
+    [
+      "AI视频",
+      4
+    ],
+    [
+      "数字孪生",
+      3
+    ],
+    [
+      "工业母机",
+      3
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "603466",
+      "name": "风语筑",
+      "close": 11.56,
+      "vol_ratio": 1.23,
+      "ret3": 4.0,
+      "ret5": 9.17,
+      "up_days_5": 3,
+      "dist_ma10": 4.98,
+      "consecutive_up": 1,
+      "themes": [
+        "空间计算",
+        "AI视频",
+        "数字孪生"
+      ],
+      "score": 67.3
+    },
+    {
+      "code": "002520",
+      "name": "日发精机",
+      "close": 6.35,
+      "vol_ratio": 2.89,
+      "ret3": 10.24,
+      "ret5": 8.37,
+      "up_days_5": 3,
+      "dist_ma10": 4.87,
+      "consecutive_up": 2,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 63.9
+    },
+    {
+      "code": "603048",
+      "name": "浙江黎明",
+      "close": 20.79,
+      "vol_ratio": 2.62,
+      "ret3": 4.91,
+      "ret5": 5.66,
+      "up_days_5": 2,
+      "dist_ma10": 2.59,
+      "consecutive_up": 1,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 56.2
+    },
+    {
+      "code": "002527",
+      "name": "新时达",
+      "close": 14.89,
+      "vol_ratio": 0.95,
+      "ret3": -3.6,
+      "ret5": 12.88,
+      "up_days_5": 4,
+      "dist_ma10": 4.0,
+      "consecutive_up": 2,
+      "themes": [
+        "数字孪生",
+        "工业母机"
+      ],
+      "score": 54.5
+    },
+    {
+      "code": "000837",
+      "name": "秦川机床",
+      "close": 12.67,
+      "vol_ratio": 2.93,
+      "ret3": 10.55,
+      "ret5": 10.38,
+      "up_days_5": 4,
+      "dist_ma10": 6.73,
+      "consecutive_up": 4,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 54.3
+    },
+    {
+      "code": "003013",
+      "name": "地铁设计",
+      "close": 15.52,
+      "vol_ratio": 1.38,
+      "ret3": 4.05,
+      "ret5": 5.83,
+      "up_days_5": 4,
+      "dist_ma10": 4.15,
+      "consecutive_up": 3,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 53.8
+    },
+    {
+      "code": "002334",
+      "name": "英威腾",
+      "close": 9.17,
+      "vol_ratio": 1.12,
+      "ret3": 6.34,
+      "ret5": 7.75,
+      "up_days_5": 4,
+      "dist_ma10": 1.91,
+      "consecutive_up": 0,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 51.2
+    },
+    {
+      "code": "002331",
+      "name": "皖通科技",
+      "close": 8.84,
+      "vol_ratio": 0.93,
+      "ret3": 1.15,
+      "ret5": 4.68,
+      "up_days_5": 4,
+      "dist_ma10": 1.02,
+      "consecutive_up": 2,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 49.3
+    },
+    {
+      "code": "002378",
+      "name": "章源钨业",
+      "close": 29.69,
+      "vol_ratio": 0.86,
+      "ret3": 0.95,
+      "ret5": 2.81,
+      "up_days_5": 4,
+      "dist_ma10": 1.31,
+      "consecutive_up": 0,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 48.6
+    },
+    {
+      "code": "600736",
+      "name": "苏州高新",
+      "close": 7.24,
+      "vol_ratio": 1.32,
+      "ret3": 2.56,
+      "ret5": 2.73,
+      "up_days_5": 3,
+      "dist_ma10": 0.53,
+      "consecutive_up": 1,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 48.2
+    },
+    {
+      "code": "002747",
+      "name": "埃斯顿",
+      "close": 29.49,
+      "vol_ratio": 1.27,
+      "ret3": 9.97,
+      "ret5": 4.43,
+      "up_days_5": 3,
+      "dist_ma10": 3.68,
+      "consecutive_up": 3,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 47.7
+    },
+    {
+      "code": "002555",
+      "name": "三七互娱",
+      "close": 19.5,
+      "vol_ratio": 1.43,
+      "ret3": -0.29,
+      "ret5": 2.75,
+      "up_days_5": 2,
+      "dist_ma10": 0.9,
+      "consecutive_up": 1,
+      "themes": [
+        "AI视频"
+      ],
+      "score": 44.3
+    },
+    {
+      "code": "000681",
+      "name": "视觉中国",
+      "close": 22.5,
+      "vol_ratio": 0.88,
+      "ret3": -1.4,
+      "ret5": -0.22,
+      "up_days_5": 3,
+      "dist_ma10": 2.82,
+      "consecutive_up": 0,
+      "themes": [
+        "AI视频"
+      ],
+      "score": 43.8
+    },
+    {
+      "code": "603888",
+      "name": "新华网",
+      "close": 19.25,
+      "vol_ratio": 1.13,
+      "ret3": 5.69,
+      "ret5": 5.89,
+      "up_days_5": 2,
+      "dist_ma10": 4.07,
+      "consecutive_up": 1,
+      "themes": [
+        "AI视频"
+      ],
+      "score": 41.3
+    },
+    {
+      "code": "002903",
+      "name": "宇环数控",
+      "close": 43.55,
+      "vol_ratio": 1.1,
+      "ret3": 10.64,
+      "ret5": 1.52,
+      "up_days_5": 2,
+      "dist_ma10": 1.7,
+      "consecutive_up": 0,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 41.0
+    },
+    {
+      "code": "003005",
+      "name": "竞业达",
+      "close": 15.07,
+      "vol_ratio": 1.06,
+      "ret3": -3.33,
+      "ret5": -1.69,
+      "up_days_5": 2,
+      "dist_ma10": -3.53,
+      "consecutive_up": 1,
+      "themes": [
+        "AI视频",
+        "数字孪生"
+      ],
+      "score": 40.6
+    },
+    {
+      "code": "603015",
+      "name": "弘讯科技",
+      "close": 12.89,
+      "vol_ratio": 1.52,
+      "ret3": 9.24,
+      "ret5": 17.83,
+      "up_days_5": 4,
+      "dist_ma10": 7.6,
+      "consecutive_up": 2,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 40.2
+    },
+    {
+      "code": "000410",
+      "name": "沈阳机床",
+      "close": 5.31,
+      "vol_ratio": 2.01,
+      "ret3": 0.76,
+      "ret5": -0.55,
+      "up_days_5": 2,
+      "dist_ma10": -0.64,
+      "consecutive_up": 2,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 40.1
+    },
+    {
+      "code": "000925",
+      "name": "众合科技",
+      "close": 8.64,
+      "vol_ratio": 1.84,
+      "ret3": 10.47,
+      "ret5": 10.34,
+      "up_days_5": 3,
+      "dist_ma10": 6.96,
+      "consecutive_up": 3,
+      "themes": [
+        "空间计算"
+      ],
+      "score": 38.4
+    },
+    {
+      "code": "002407",
+      "name": "多氟多",
+      "close": 33.2,
+      "vol_ratio": 1.29,
+      "ret3": 0.32,
+      "ret5": -1.37,
+      "up_days_5": 3,
+      "dist_ma10": -4.07,
+      "consecutive_up": 1,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 37.9
+    },
+    {
+      "code": "603088",
+      "name": "宁波精达",
+      "close": 10.5,
+      "vol_ratio": 1.61,
+      "ret3": 1.86,
+      "ret5": 0.05,
+      "up_days_5": 2,
+      "dist_ma10": -2.65,
+      "consecutive_up": 1,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 36.1
+    },
+    {
+      "code": "002031",
+      "name": "巨轮智能",
+      "close": 6.45,
+      "vol_ratio": 1.6,
+      "ret3": 2.94,
+      "ret5": -1.6,
+      "up_days_5": 2,
+      "dist_ma10": -2.96,
+      "consecutive_up": 1,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 36.0
+    },
+    {
+      "code": "000779",
+      "name": "甘咨询",
+      "close": 7.52,
+      "vol_ratio": 1.09,
+      "ret3": 1.35,
+      "ret5": -2.05,
+      "up_days_5": 1,
+      "dist_ma10": 0.75,
+      "consecutive_up": 0,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 35.9
+    },
+    {
+      "code": "002026",
+      "name": "山东威达",
+      "close": 12.41,
+      "vol_ratio": 1.06,
+      "ret3": -0.77,
+      "ret5": 1.11,
+      "up_days_5": 3,
+      "dist_ma10": -0.49,
+      "consecutive_up": 1,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 35.6
+    },
+    {
+      "code": "603687",
+      "name": "大胜达",
+      "close": 18.7,
+      "vol_ratio": 1.03,
+      "ret3": 4.61,
+      "ret5": 18.8,
+      "up_days_5": 4,
+      "dist_ma10": 10.06,
+      "consecutive_up": 1,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 35.3
+    }
+  ],
+  "analysis_time": "2026-06-08 23:15:07"
+}
