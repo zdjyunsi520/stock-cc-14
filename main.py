@@ -1110,7 +1110,8 @@ def main() -> int:
                 logger.info("无符合条件的股票")
                 return 0
 
-            report = PatternScreener.format_report(candidates, hot_themes, date_key=actual_date)
+            bottom5 = candidates[-5:] if len(candidates) > 5 else candidates
+            report = PatternScreener.format_report(bottom5, hot_themes, date_key=actual_date)
             print(report)
 
             # 推送到飞书
