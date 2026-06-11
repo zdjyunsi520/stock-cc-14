@@ -462,6 +462,12 @@ def parse_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        '--wash',
+        action='store_true',
+        help='洗盘精选模式（v3算法：>60加洗盘,50-60高洗减,<=50强洗加）'
+    )
+
+    parser.add_argument(
         '--date',
         type=str,
         default=None,
@@ -1110,8 +1116,38 @@ def main() -> int:
                 logger.info("无符合条件的股票")
                 return 0
 
-            bottom5 = candidates[-5:] if len(candidates) > 5 else candidates
-            report = PatternScreener.format_report(bottom5, hot_themes, date_key=actual_date)
+            # 洗盘精选模式
+            do_wash = getattr(args, 'wash', False)
+            if do_wash:
+                # v3算法：
+                # 洗盘=0排除
+                # 规律>60: 加洗盘分
+                # 50<规律<=60 且 洗盘>=10: 减洗盘分; 洗盘<10: 排除
+                # 规律<=50 且 洗盘>=10: 加洗盘分; 洗盘<10: 排除
+                def _wash_final(c):
+                    s, w = c.score, c.wash_score
+                    if w == 0:
+                        return None
+                    if s > 60:
+                        return s + w
+                    elif s > 50:
+                        return s - w if w >= 10 else None
+                    else:
+                        return s + w if w >= 10 else None
+
+                picked = []
+                for c in candidates:
+                    f = _wash_final(c)
+                    if f is not None:
+                        c._wash_final = f
+                        picked.append(c)
+                picked.sort(key=lambda c: -c._wash_final)
+            else:
+                # 规律选股模式：取倒数5只（规律分最低的5只）
+                candidates.sort(key=lambda c: c.score)
+                picked = candidates[:5]
+
+            report = PatternScreener.format_report(picked, hot_themes, date_key=actual_date)
             print(report)
 
             # 推送到飞书

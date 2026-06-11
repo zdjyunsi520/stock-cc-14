@@ -26,8 +26,8 @@ CONCEPT_CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname
 
 @dataclass
 class PatternScreenerConfig:
-    min_price: float = 5.0            # 最低价格
-    max_price: float = 50.0           # 最高价格
+    min_price: float = 0.0            # 最低价格
+    max_price: float = 99999.0        # 最高价格
     min_vol_ratio: float = 0.8        # 最低量比
     max_ret5: float = 20.0            # 5日涨幅上限（排除追高）
     concept_top_n: int = 20           # 取前N个热点概念
@@ -49,6 +49,8 @@ class PatternCandidate:
     consecutive_up: int = 0
     themes: List[str] = field(default_factory=list)
     score: float = 0.0
+    wash_score: int = 0          # 洗盘评分（0-20）
+    wash_detail: str = ""        # 洗盘特征摘要
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -361,7 +363,239 @@ class PatternScreener:
             ))
 
         candidates.sort(key=lambda c: (-c.score, -c.vol_ratio))
-        return candidates[:config.max_candidates]
+        candidates = candidates[:config.max_candidates]
+
+        # 洗盘评分
+        self._apply_wash_score(candidates, df)
+
+        return candidates
+
+    # ------------------------------------------------------------------
+    # 单股评分（不受过滤条件限制）
+    # ------------------------------------------------------------------
+
+    def score_single(self, code: str, date_key: str = "") -> Dict[str, Any]:
+        """对指定股票计算规律分+洗盘分，不受初筛过滤限制。
+
+        Args:
+            code: 股票代码，如 '002436'
+            date_key: 日期，如 '20260609'，空则取最新交易日
+
+        Returns:
+            包含规律分明细、洗盘分、v3最终分的字典
+        """
+        if not date_key:
+            date_key = self._get_latest_trading_date() or ""
+        if not date_key:
+            return {"error": "无法确定交易日期"}
+
+        # 加载数据
+        df = self.db.get_bulk_daily_data(days=30)
+        g = df[df["code"] == code].sort_values("date").reset_index(drop=True)
+
+        if len(g) < 10:
+            return {"error": f"K线数据不足({len(g)}条)"}
+
+        name = self._get_stock_name(code)
+        close_s = g["close"].astype(float)
+        pct = g["pct_chg"].astype(float)
+        volume = g["volume"].astype(float)
+        cur = float(close_s.iloc[-1])
+
+        ma5 = float(close_s.rolling(5).mean().iloc[-1])
+        ma10 = float(close_s.rolling(10).mean().iloc[-1])
+        avg_vol5 = float(volume.rolling(5).mean().iloc[-2]) if len(volume) >= 6 else 0
+        vol_ratio = float(volume.iloc[-1]) / avg_vol5 if avg_vol5 > 0 else 0
+
+        ret3 = float(sum(pct.iloc[-3:])) if len(pct) >= 3 else 0
+        ret5 = float(sum(pct.iloc[-5:])) if len(pct) >= 5 else 0
+        up5 = int(sum(1 for p in pct.iloc[-5:] if p > 0)) if len(pct) >= 5 else 0
+        dist_ma10 = (cur / ma10 - 1) * 100 if ma10 > 0 else 0
+
+        consec = 0
+        for p in reversed(pct.tolist()):
+            if p > 0:
+                consec += 1
+            else:
+                break
+
+        # 热点概念匹配
+        stock_themes = []
+        concept_cache = self._concept_cache_path(date_key)
+        if os.path.exists(concept_cache):
+            with open(concept_cache, "r", encoding="utf-8") as f:
+                cdata = json.load(f)
+            hot_names = set(cdata.get("hot_concepts", {}).keys())
+            for concept, stock_list in cdata.get("hot_concepts", {}).items():
+                if code in stock_list:
+                    stock_themes.append(concept)
+
+        # 规律评分
+        score = 0.0
+        s1 = len(stock_themes) * 10; score += s1
+        s2 = min(vol_ratio, 3.0) * 10; score += s2
+        s3 = up5 * 5; score += s3
+        s4 = 10 if 0 <= dist_ma10 <= 5 else 0; score += s4
+        s5 = -5 if ret5 > 10 else 0; score += s5
+
+        # 洗盘评分
+        wash, wash_detail = (0, "")
+        if len(g) >= 20:
+            wash, wash_detail = self._compute_wash_score(g)
+
+        # v3最终分
+        def _v3(s, w):
+            if w == 0: return None
+            if s > 60: return s + w
+            elif s > 50: return s - w if w >= 10 else None
+            else: return s + w if w >= 10 else None
+
+        final = _v3(score, wash)
+
+        return {
+            "code": code, "name": name, "date": date_key,
+            "close": round(cur, 2), "vol_ratio": round(vol_ratio, 2),
+            "ret3": round(ret3, 2), "ret5": round(ret5, 2),
+            "up_days_5": up5, "dist_ma10": round(dist_ma10, 2),
+            "consecutive_up": consec, "themes": stock_themes,
+            "score_breakdown": {
+                "hot_concepts": s1,
+                "vol_ratio": round(s2, 1),
+                "up_days": s3,
+                "near_ma10": s4,
+                "chase_penalty": s5,
+            },
+            "score": round(score, 1),
+            "wash_score": wash, "wash_detail": wash_detail,
+            "v3_final": round(final, 1) if final is not None else None,
+        }
+
+    # ------------------------------------------------------------------
+    # 洗盘评分
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _compute_wash_score(g: pd.DataFrame) -> Tuple[int, str]:
+        """计算最近一个交易日的洗盘评分。
+
+        洗盘 = 主力在拉升途中故意打压股价清洗浮筹。
+        日线识别依据：
+          1. 下影线/实体比（盘中打压后收回）
+          2. 收盘位置（收在当日偏高位置）
+          3. 多头排列（MA5>MA10>MA20）
+          4. 守住MA20（最低价未破中期支撑）
+          5. 缩量（主力未出逃）
+          6. 贴近MA10（支撑确认）
+          7. 前期上涨趋势
+        """
+        if len(g) < 20:
+            return 0, ""
+
+        last = len(g) - 1
+        o = float(g.loc[last, "open"])
+        h = float(g.loc[last, "high"])
+        l = float(g.loc[last, "low"])
+        c = float(g.loc[last, "close"])
+        prev_c = float(g.loc[last - 1, "close"])
+        total_range = h - l
+
+        if total_range <= 0:
+            return 0, ""
+
+        # 均线
+        ma5 = g["close"].rolling(5).mean()
+        ma10 = g["close"].rolling(10).mean()
+        ma20 = g["close"].rolling(20).mean()
+        if pd.isna(ma20.iloc[last]):
+            return 0, ""
+
+        vol_ma5 = g["volume"].rolling(5).mean()
+        avg_vol = vol_ma5.iloc[last - 1] if last >= 1 else 0
+        vol_ratio = float(g.loc[last, "volume"]) / avg_vol if avg_vol > 0 else 1.0
+
+        # 日内形态
+        lower_shadow = min(o, c) - l
+        body = abs(c - o)
+        ls_body_ratio = lower_shadow / body if body > 0 else 0
+        close_pos = (c - l) / total_range
+
+        # 均线状态
+        _ma5 = float(ma5.iloc[last])
+        _ma10 = float(ma10.iloc[last])
+        _ma20 = float(ma20.iloc[last])
+        is_bull = _ma5 > _ma10 > _ma20
+        hold_ma20 = l > _ma20
+        dist_ma10 = (c - _ma10) / _ma10 * 100 if _ma10 > 0 else 0
+
+        # 前5日涨幅
+        if last >= 5:
+            prev5 = (float(g.loc[last, "close"]) / float(g.loc[last - 5, "close"]) - 1) * 100
+        else:
+            prev5 = 0
+
+        # 评分
+        wash = 0
+        tags = []
+
+        # 1. 下影线/实体比（0-4分）
+        if ls_body_ratio > 3:
+            wash += 4; tags.append("长下影3x")
+        elif ls_body_ratio > 2:
+            wash += 3; tags.append("长下影2x")
+        elif ls_body_ratio > 1:
+            wash += 2; tags.append("下影1x")
+        elif ls_body_ratio > 0.5:
+            wash += 1
+
+        # 2. 收盘位置（0-3分）
+        if close_pos > 0.8:
+            wash += 3; tags.append("收高位")
+        elif close_pos > 0.7:
+            wash += 2
+        elif close_pos > 0.6:
+            wash += 1
+
+        # 3. 多头排列（0-3分）
+        if is_bull:
+            wash += 3; tags.append("多头")
+
+        # 4. 守住MA20（0-2分）
+        if hold_ma20:
+            wash += 2; tags.append("守MA20")
+
+        # 5. 缩量（0-2分）
+        if vol_ratio < 0.6:
+            wash += 2; tags.append("缩量")
+        elif vol_ratio < 0.8:
+            wash += 1; tags.append("微缩量")
+
+        # 6. 贴近MA10（0-2分）
+        if 0 <= dist_ma10 <= 3:
+            wash += 2; tags.append("贴MA10")
+        elif dist_ma10 > 3:
+            wash += 1
+
+        # 7. 前期涨势（0-1分）
+        if prev5 > 5:
+            wash += 1
+
+        detail = ",".join(tags) if tags else ""
+        return wash, detail
+
+    def _apply_wash_score(self, candidates: List[PatternCandidate],
+                          daily_df: pd.DataFrame) -> None:
+        """批量计算洗盘评分并回写候选。需要至少25天数据来计算MA20。"""
+        if not candidates:
+            return
+        codes = [c.code for c in candidates]
+        df_wash = self.db.get_bulk_daily_data(days=30)
+        for c in candidates:
+            g = df_wash[df_wash["code"] == c.code].sort_values("date").reset_index(drop=True)
+            if len(g) < 20:
+                continue
+            wash, detail = self._compute_wash_score(g)
+            c.wash_score = wash
+            c.wash_detail = detail
 
     # ------------------------------------------------------------------
     # Helpers
@@ -520,16 +754,17 @@ class PatternScreener:
             lines.append(
                 f"  {'代码':<8} {'名称':<8} {'收盘':>7} {'量比':>5} "
                 f"{'3日涨':>7} {'5日涨':>7} {'涨/5天':>5} "
-                f"{'距MA10':>7} {'连涨':>4} {'评分':>5}  所属概念"
+                f"{'距MA10':>7} {'连涨':>4} {'评分':>5} {'洗盘':>4}  所属概念"
             )
-            lines.append("  " + "-" * 110)
+            lines.append("  " + "-" * 120)
 
             for c in candidates:
                 themes_str = ",".join(c.themes[:3])
+                wash_str = str(c.wash_score) if c.wash_score > 0 else "-"
                 lines.append(
                     f"  {c.code:<8} {c.name:<8} {c.close:>7.2f} {c.vol_ratio:>5.2f} "
                     f"{c.ret3:>+6.2f}% {c.ret5:>+6.02f}% {c.up_days_5:>3}/5 "
-                    f"{c.dist_ma10:>+6.02f}% {c.consecutive_up:>3}天 {c.score:>5.1f}  {themes_str}"
+                    f"{c.dist_ma10:>+6.02f}% {c.consecutive_up:>3}天 {c.score:>5.1f} {wash_str:>4}  {themes_str}"
                 )
         else:
             lines.append("  无符合条件的股票")
