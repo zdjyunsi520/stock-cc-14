@@ -1089,9 +1089,9 @@ class PortfolioService:
     @staticmethod
     def _fetch_realtime_position_price(symbol: str) -> Tuple[Optional[float], Optional[str]]:
         try:
-            from data_provider.base import DataFetcherManager
+            from data_provider.base import get_data_fetcher_manager
 
-            quote = DataFetcherManager().get_realtime_quote(symbol, log_final_failure=False)
+            quote = get_data_fetcher_manager().get_realtime_quote(symbol, log_final_failure=False)
         except Exception as exc:
             logger.warning("Failed to fetch realtime portfolio price for %s: %s", symbol, exc)
             return None, None

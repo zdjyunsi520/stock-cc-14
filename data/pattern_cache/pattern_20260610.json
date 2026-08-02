@@ -34,6 +34,7 @@
         "光刻胶"
       ],
       "score": 64.8,
+      "theme_score": 20.0,
       "wash_score": 4,
       "wash_detail": ""
     },
@@ -52,6 +53,7 @@
         "中芯国际概念"
       ],
       "score": 64.1,
+      "theme_score": 20.0,
       "wash_score": 4,
       "wash_detail": "贴MA10"
     },
@@ -69,6 +71,7 @@
         "中芯国际概念"
       ],
       "score": 63.3,
+      "theme_score": 10.0,
       "wash_score": 2,
       "wash_detail": ""
     },
@@ -84,10 +87,11 @@
       "consecutive_up": 2,
       "themes": [
         "氟化工概念",
-        "中芯国际概念",
-        "光刻胶"
+        "光刻胶",
+        "中芯国际概念"
       ],
       "score": 58.7,
+      "theme_score": 30.0,
       "wash_score": 5,
       "wash_detail": "收高位"
     },
@@ -102,10 +106,11 @@
       "dist_ma10": 10.49,
       "consecutive_up": 2,
       "themes": [
-        "中芯国际概念",
-        "光刻胶"
+        "光刻胶",
+        "中芯国际概念"
       ],
       "score": 57.8,
+      "theme_score": 20.0,
       "wash_score": 4,
       "wash_detail": ""
     },
@@ -123,8 +128,27 @@
         "氟化工概念"
       ],
       "score": 52.1,
+      "theme_score": 10.0,
       "wash_score": 2,
       "wash_detail": ""
+    },
+    {
+      "code": "605507",
+      "name": "国邦医药",
+      "close": 16.15,
+      "vol_ratio": 1.69,
+      "ret3": 1.72,
+      "ret5": 2.86,
+      "up_days_5": 3,
+      "dist_ma10": 3.14,
+      "consecutive_up": 1,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 51.9,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,多头"
     },
     {
       "code": "002915",
@@ -140,6 +164,7 @@
         "氟化工概念"
       ],
       "score": 51.6,
+      "theme_score": 10.0,
       "wash_score": 2,
       "wash_detail": ""
     },
@@ -157,6 +182,7 @@
         "合成生物"
       ],
       "score": 51.3,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位,贴MA10"
     },
@@ -174,8 +200,27 @@
         "中芯国际概念"
       ],
       "score": 51.3,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "603276",
+      "name": "恒兴新材",
+      "close": 17.25,
+      "vol_ratio": 5.22,
+      "ret3": 6.53,
+      "ret5": 8.61,
+      "up_days_5": 2,
+      "dist_ma10": 5.9,
+      "consecutive_up": 1,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 50.0,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
     },
     {
       "code": "603928",
@@ -191,6 +236,7 @@
         "光刻胶"
       ],
       "score": 49.5,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": "贴MA10"
     },
@@ -208,6 +254,7 @@
         "光刻胶"
       ],
       "score": 48.4,
+      "theme_score": 10.0,
       "wash_score": 0,
       "wash_detail": ""
     },
@@ -225,8 +272,45 @@
         "合成生物"
       ],
       "score": 46.9,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "600062",
+      "name": "华润双鹤",
+      "close": 17.08,
+      "vol_ratio": 1.66,
+      "ret3": 1.27,
+      "ret5": 1.69,
+      "up_days_5": 2,
+      "dist_ma10": 1.72,
+      "consecutive_up": 1,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 46.6,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "603139",
+      "name": "康惠股份",
+      "close": 37.88,
+      "vol_ratio": 1.12,
+      "ret3": -0.25,
+      "ret5": -0.37,
+      "up_days_5": 3,
+      "dist_ma10": 1.03,
+      "consecutive_up": 2,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 46.2,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
     },
     {
       "code": "002643",
@@ -242,6 +326,7 @@
         "光刻胶"
       ],
       "score": 46.1,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": "贴MA10"
     },
@@ -259,6 +344,7 @@
         "氟化工概念"
       ],
       "score": 46.0,
+      "theme_score": 10.0,
       "wash_score": 9,
       "wash_detail": "长下影3x,守MA20,贴MA10"
     },
@@ -276,6 +362,7 @@
         "合成生物"
       ],
       "score": 45.8,
+      "theme_score": 10.0,
       "wash_score": 3,
       "wash_detail": "贴MA10"
     },
@@ -293,6 +380,7 @@
         "氟化工概念"
       ],
       "score": 45.1,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": "收高位"
     },
@@ -310,8 +398,27 @@
         "中芯国际概念"
       ],
       "score": 44.8,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "603456",
+      "name": "九洲药业",
+      "close": 12.52,
+      "vol_ratio": 0.97,
+      "ret3": 1.39,
+      "ret5": -0.28,
+      "up_days_5": 3,
+      "dist_ma10": 0.15,
+      "consecutive_up": 2,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 44.7,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
     },
     {
       "code": "603160",
@@ -327,8 +434,27 @@
         "中芯国际概念"
       ],
       "score": 44.2,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位"
+    },
+    {
+      "code": "600201",
+      "name": "生物股份",
+      "close": 12.06,
+      "vol_ratio": 0.83,
+      "ret3": 6.72,
+      "ret5": 4.63,
+      "up_days_5": 3,
+      "dist_ma10": 2.94,
+      "consecutive_up": 3,
+      "themes": [
+        "合成生物"
+      ],
+      "score": 43.3,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
     },
     {
       "code": "000859",
@@ -344,113 +470,10 @@
         "光刻胶"
       ],
       "score": 43.1,
+      "theme_score": 10.0,
       "wash_score": 7,
       "wash_detail": "多头,守MA20"
-    },
-    {
-      "code": "601678",
-      "name": "滨化股份",
-      "close": 5.65,
-      "vol_ratio": 1.29,
-      "ret3": 5.6,
-      "ret5": 1.36,
-      "up_days_5": 2,
-      "dist_ma10": 3.98,
-      "consecutive_up": 1,
-      "themes": [
-        "氟化工概念"
-      ],
-      "score": 42.9,
-      "wash_score": 4,
-      "wash_detail": "收高位"
-    },
-    {
-      "code": "600160",
-      "name": "XD巨化股",
-      "close": 40.39,
-      "vol_ratio": 1.25,
-      "ret3": 3.1,
-      "ret5": 4.38,
-      "up_days_5": 2,
-      "dist_ma10": 7.79,
-      "consecutive_up": 1,
-      "themes": [
-        "氟化工概念",
-        "中芯国际概念"
-      ],
-      "score": 42.5,
-      "wash_score": 9,
-      "wash_detail": "收高位,多头,守MA20"
-    },
-    {
-      "code": "002004",
-      "name": "华邦健康",
-      "close": 4.55,
-      "vol_ratio": 1.23,
-      "ret3": 2.07,
-      "ret5": 0.09,
-      "up_days_5": 2,
-      "dist_ma10": 0.95,
-      "consecutive_up": 2,
-      "themes": [
-        "氟化工概念"
-      ],
-      "score": 42.3,
-      "wash_score": 5,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "002129",
-      "name": "TCL中环",
-      "close": 10.13,
-      "vol_ratio": 2.15,
-      "ret3": 7.93,
-      "ret5": 11.17,
-      "up_days_5": 3,
-      "dist_ma10": 5.71,
-      "consecutive_up": 2,
-      "themes": [
-        "中芯国际概念"
-      ],
-      "score": 41.5,
-      "wash_score": 7,
-      "wash_detail": "下影1x,守MA20"
-    },
-    {
-      "code": "603333",
-      "name": "尚纬股份",
-      "close": 8.74,
-      "vol_ratio": 0.99,
-      "ret3": -0.47,
-      "ret5": 0.93,
-      "up_days_5": 2,
-      "dist_ma10": 0.59,
-      "consecutive_up": 1,
-      "themes": [
-        "氟化工概念"
-      ],
-      "score": 39.9,
-      "wash_score": 5,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "600141",
-      "name": "兴发集团",
-      "close": 29.75,
-      "vol_ratio": 0.97,
-      "ret3": 2.04,
-      "ret5": -5.36,
-      "up_days_5": 2,
-      "dist_ma10": -1.77,
-      "consecutive_up": 2,
-      "themes": [
-        "氟化工概念",
-        "中芯国际概念"
-      ],
-      "score": 39.7,
-      "wash_score": 3,
-      "wash_detail": "收高位"
     }
   ],
-  "analysis_time": "2026-06-11 08:48:42"
+  "analysis_time": "2026-06-19 00:13:51"
 }

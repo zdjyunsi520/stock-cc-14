@@ -12,6 +12,7 @@ import numpy as np
 import pandas as pd
 
 from src.storage import DatabaseManager
+from src.utils.stock_filter import is_excluded_board
 
 logger = logging.getLogger(__name__)
 
@@ -113,7 +114,7 @@ class RiseDNAAnalyzer:
     def _compute_metrics(df: pd.DataFrame) -> pd.DataFrame:
         results = []
         for code, group in df.groupby("code"):
-            if code.startswith(("300", "301", "688", "4", "8")):
+            if is_excluded_board(code):
                 continue
             g = group.sort_values("date").copy()
             if len(g) < 5:
@@ -392,8 +393,8 @@ class RiseDNAAnalyzer:
             return dict(self._theme_universe_provider())
 
         try:
-            from data_provider.base import DataFetcherManager
-            manager = DataFetcherManager()
+            from data_provider.base import get_data_fetcher_manager
+            manager = get_data_fetcher_manager()
             universe = manager.get_hot_theme_universe(n=top_n, max_members_per_theme=100)
             if universe:
                 logger.info("[RiseDNA] 热点概念加载完成: %d 只股票有概念标注", len(universe))

@@ -1,0 +1,587 @@
+[
+  {
+    "code": "300223",
+    "name": "北京君正",
+    "concepts": [
+      "人脸识别",
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 192.75,
+    "pct_chg": 3.6,
+    "vol_ratio": 1.2,
+    "dist_ma10": 18.54,
+    "ret5": 29.39,
+    "wash": 14,
+    "wash_detail": "长下影3x,收高位,多头,守MA20",
+    "pe": 73.54,
+    "pe_static": 249.4,
+    "pb": 7.36,
+    "total_mv": 93800000000.0,
+    "revenue": 1560000000.0
+  },
+  {
+    "code": "688207",
+    "name": "格灵深瞳",
+    "concepts": [
+      "人脸识别",
+      "机器视觉"
+    ],
+    "close": 21.78,
+    "pct_chg": 3.08,
+    "vol_ratio": 0.82,
+    "dist_ma10": 10.9,
+    "ret5": 20.61,
+    "wash": 14,
+    "wash_detail": "长下影3x,收高位,多头,守MA20",
+    "pe": null,
+    "pe_static": null,
+    "pb": 2.85,
+    "total_mv": 5200000000.0,
+    "revenue": 21000000.0
+  },
+  {
+    "code": "301568",
+    "name": "思泰克",
+    "concepts": [
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 117.23,
+    "pct_chg": -0.81,
+    "vol_ratio": 0.87,
+    "dist_ma10": 17.24,
+    "ret5": 30.53,
+    "wash": 14,
+    "wash_detail": "长下影3x,收高位,多头,守MA20",
+    "pe": 111.182,
+    "pe_static": 105.19,
+    "pb": 11.0,
+    "total_mv": 11700000000.0,
+    "revenue": 112000000.00000001
+  },
+  {
+    "code": "301013",
+    "name": "利和兴",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 67.88,
+    "pct_chg": -1.08,
+    "vol_ratio": 0.82,
+    "dist_ma10": 12.54,
+    "ret5": 30.34,
+    "wash": 14,
+    "wash_detail": "长下影3x,收高位,多头,守MA20",
+    "pe": 1274.582,
+    "pe_static": null,
+    "pb": 24.59,
+    "total_mv": 16400000000.0,
+    "revenue": 140000000.0
+  },
+  {
+    "code": "300607",
+    "name": "拓斯达",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 38.69,
+    "pct_chg": -0.31,
+    "vol_ratio": 0.83,
+    "dist_ma10": 8.03,
+    "ret5": 18.39,
+    "wash": 14,
+    "wash_detail": "长下影3x,收高位,多头,守MA20",
+    "pe": 97.536,
+    "pe_static": 253.94,
+    "pb": 6.43,
+    "total_mv": 18700000000.0,
+    "revenue": 538000000.0
+  },
+  {
+    "code": "300709",
+    "name": "精研科技",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 65.36,
+    "pct_chg": 3.65,
+    "vol_ratio": 0.64,
+    "dist_ma10": 20.03,
+    "ret5": 31.67,
+    "wash": 14,
+    "wash_detail": "长下影2x,收高位,多头,守MA20,微缩量",
+    "pe": null,
+    "pe_static": 233.51,
+    "pb": 5.56,
+    "total_mv": 11900000000.0,
+    "revenue": 572000000.0
+  },
+  {
+    "code": "300005",
+    "name": "探路者",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 17.38,
+    "pct_chg": 1.88,
+    "vol_ratio": 1.23,
+    "dist_ma10": 7.87,
+    "ret5": 19.1,
+    "wash": 13,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 75.383,
+    "pe_static": 215.48,
+    "pb": 7.86,
+    "total_mv": 17000000000.0,
+    "revenue": 496000000.0
+  },
+  {
+    "code": "301536",
+    "name": "星宸科技",
+    "concepts": [
+      "人脸识别",
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 113.52,
+    "pct_chg": 0.78,
+    "vol_ratio": 0.7,
+    "dist_ma10": 16.82,
+    "ret5": 23.46,
+    "wash": 12,
+    "wash_detail": "长下影2x,多头,守MA20,微缩量",
+    "pe": 53.697,
+    "pe_static": 153.39,
+    "pb": 14.68,
+    "total_mv": 47300000000.0,
+    "revenue": 994000000.0
+  },
+  {
+    "code": "300613",
+    "name": "富瀚微",
+    "concepts": [
+      "人脸识别",
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 68.62,
+    "pct_chg": 0.01,
+    "vol_ratio": 0.99,
+    "dist_ma10": 10.24,
+    "ret5": 16.67,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 47.299,
+    "pe_static": 111.05,
+    "pb": 5.52,
+    "total_mv": 16100000000.0,
+    "revenue": 559000000.0
+  },
+  {
+    "code": "003004",
+    "name": "声迅股份",
+    "concepts": [
+      "人脸识别"
+    ],
+    "close": 71.6,
+    "pct_chg": 3.56,
+    "vol_ratio": 1.38,
+    "dist_ma10": 7.53,
+    "ret5": 11.59,
+    "wash": 12,
+    "wash_detail": "下影1x,收高位,多头,守MA20",
+    "pe": null,
+    "pe_static": null,
+    "pb": 9.52,
+    "total_mv": 6000000000.0,
+    "revenue": 44000000.0
+  },
+  {
+    "code": "002415",
+    "name": "海康威视",
+    "concepts": [
+      "人脸识别",
+      "机器视觉"
+    ],
+    "close": 32.83,
+    "pct_chg": 1.64,
+    "vol_ratio": 1.18,
+    "dist_ma10": 5.3,
+    "ret5": 8.36,
+    "wash": 12,
+    "wash_detail": "下影1x,收高位,多头,守MA20",
+    "pe": 25.877,
+    "pe_static": 20.28,
+    "pb": 3.35,
+    "total_mv": 287800000000.0,
+    "revenue": 20715000000.0
+  },
+  {
+    "code": "688090",
+    "name": "瑞松科技",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 131.39,
+    "pct_chg": 1.58,
+    "vol_ratio": 0.79,
+    "dist_ma10": 14.1,
+    "ret5": 26.67,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20,微缩量",
+    "pe": 187.767,
+    "pe_static": 1338.74,
+    "pb": 16.71,
+    "total_mv": 15400000000.0,
+    "revenue": 202000000.0
+  },
+  {
+    "code": "688610",
+    "name": "埃科光电",
+    "concepts": [
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 237.0,
+    "pct_chg": 2.0,
+    "vol_ratio": 0.97,
+    "dist_ma10": 4.43,
+    "ret5": 11.24,
+    "wash": 12,
+    "wash_detail": "长下影2x,多头,守MA20",
+    "pe": 167.056,
+    "pe_static": 242.41,
+    "pb": 9.99,
+    "total_mv": 15500000000.0,
+    "revenue": 147000000.0
+  },
+  {
+    "code": "688400",
+    "name": "凌云光",
+    "concepts": [
+      "机器视觉",
+      "AI视频"
+    ],
+    "close": 68.21,
+    "pct_chg": -1.27,
+    "vol_ratio": 1.39,
+    "dist_ma10": 11.82,
+    "ret5": 19.5,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 39.186,
+    "pe_static": 194.07,
+    "pb": 5.49,
+    "total_mv": 31200000000.0,
+    "revenue": 597000000.0
+  },
+  {
+    "code": "603662",
+    "name": "柯力传感",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 69.6,
+    "pct_chg": -0.7,
+    "vol_ratio": 1.03,
+    "dist_ma10": 1.6,
+    "ret5": 8.01,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20,贴MA10",
+    "pe": 120.304,
+    "pe_static": 58.1,
+    "pb": 7.1,
+    "total_mv": 19700000000.0,
+    "revenue": 358000000.0
+  },
+  {
+    "code": "688595",
+    "name": "芯海科技",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 39.68,
+    "pct_chg": -0.8,
+    "vol_ratio": 0.96,
+    "dist_ma10": 5.9,
+    "ret5": 16.3,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": null,
+    "pe_static": null,
+    "pb": 9.01,
+    "total_mv": 5800000000.0,
+    "revenue": 177000000.0
+  },
+  {
+    "code": "688312",
+    "name": "燕麦科技",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 95.99,
+    "pct_chg": 3.66,
+    "vol_ratio": 1.41,
+    "dist_ma10": 14.22,
+    "ret5": 24.39,
+    "wash": 11,
+    "wash_detail": "长下影3x,收高位,守MA20",
+    "pe": 1357.31,
+    "pe_static": 98.24,
+    "pb": 8.64,
+    "total_mv": 13400000000.0,
+    "revenue": 92000000.0
+  },
+  {
+    "code": "300307",
+    "name": "慈星股份",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 7.97,
+    "pct_chg": -2.09,
+    "vol_ratio": 0.59,
+    "dist_ma10": 0.33,
+    "ret5": -2.37,
+    "wash": 11,
+    "wash_detail": "下影1x,多头,守MA20,缩量,贴MA10",
+    "pe": 17.008,
+    "pe_static": 63.38,
+    "pb": 1.87,
+    "total_mv": 6100000000.0,
+    "revenue": 630000000.0
+  },
+  {
+    "code": "300341",
+    "name": "麦克奥迪",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 15.43,
+    "pct_chg": -0.84,
+    "vol_ratio": 0.86,
+    "dist_ma10": 4.26,
+    "ret5": 8.69,
+    "wash": 11,
+    "wash_detail": "长下影2x,多头,守MA20",
+    "pe": 47.269,
+    "pe_static": 46.67,
+    "pb": 4.05,
+    "total_mv": 8000000000.0,
+    "revenue": 388000000.0
+  },
+  {
+    "code": "002960",
+    "name": "青鸟智控",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 8.95,
+    "pct_chg": -1.86,
+    "vol_ratio": 0.9,
+    "dist_ma10": 0.51,
+    "ret5": 0.43,
+    "wash": 11,
+    "wash_detail": "长下影3x,多头,贴MA10",
+    "pe": 35.093,
+    "pe_static": 28.42,
+    "pb": 1.21,
+    "total_mv": 9000000000.0,
+    "revenue": 875000000.0
+  },
+  {
+    "code": "688218",
+    "name": "江苏北人",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 54.8,
+    "pct_chg": -0.36,
+    "vol_ratio": 1.01,
+    "dist_ma10": 4.97,
+    "ret5": 2.79,
+    "wash": 11,
+    "wash_detail": "下影1x,收高位,多头,守MA20",
+    "pe": 400.958,
+    "pe_static": null,
+    "pb": 7.14,
+    "total_mv": 6000000000.0,
+    "revenue": 92000000.0
+  },
+  {
+    "code": "603888",
+    "name": "新华网",
+    "concepts": [
+      "AI视频"
+    ],
+    "close": 19.13,
+    "pct_chg": 1.65,
+    "vol_ratio": 1.19,
+    "dist_ma10": 1.85,
+    "ret5": 5.82,
+    "wash": 11,
+    "wash_detail": "下影1x,收高位,多头,贴MA10",
+    "pe": 79.218,
+    "pe_static": 37.9,
+    "pb": 3.28,
+    "total_mv": 12400000000.0,
+    "revenue": 355000000.0
+  },
+  {
+    "code": "300545",
+    "name": "联得装备",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 38.38,
+    "pct_chg": 2.18,
+    "vol_ratio": 1.39,
+    "dist_ma10": 5.91,
+    "ret5": 15.95,
+    "wash": 11,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 64.397,
+    "pe_static": 62.99,
+    "pb": 3.21,
+    "total_mv": 6900000000.0,
+    "revenue": 295000000.0
+  },
+  {
+    "code": "300042",
+    "name": "朗科科技",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 73.72,
+    "pct_chg": 4.79,
+    "vol_ratio": 1.42,
+    "dist_ma10": 12.73,
+    "ret5": 21.83,
+    "wash": 11,
+    "wash_detail": "收高位,多头,守MA20",
+    "pe": 43.382,
+    "pe_static": 523.45,
+    "pb": 12.53,
+    "total_mv": 14100000000.0,
+    "revenue": 486000000.00000006
+  },
+  {
+    "code": "300657",
+    "name": "弘信电子",
+    "concepts": [
+      "AI眼镜"
+    ],
+    "close": 46.46,
+    "pct_chg": -2.29,
+    "vol_ratio": 0.92,
+    "dist_ma10": 0.53,
+    "ret5": -0.8,
+    "wash": 11,
+    "wash_detail": "长下影3x,多头,守MA20,贴MA10",
+    "pe": 136.905,
+    "pe_static": 141.04,
+    "pb": 14.6,
+    "total_mv": 20700000000.0,
+    "revenue": 1616000000.0
+  },
+  {
+    "code": "301218",
+    "name": "华是科技",
+    "concepts": [
+      "人脸识别",
+      "机器视觉"
+    ],
+    "close": 43.45,
+    "pct_chg": -2.53,
+    "vol_ratio": 1.02,
+    "dist_ma10": 3.09,
+    "ret5": 14.06,
+    "wash": 10,
+    "wash_detail": "下影1x,多头,守MA20",
+    "pe": null,
+    "pe_static": null,
+    "pb": 5.71,
+    "total_mv": 5100000000.0,
+    "revenue": 39000000.0
+  },
+  {
+    "code": "002449",
+    "name": "国星光电",
+    "concepts": [
+      "人脸识别",
+      "AI眼镜"
+    ],
+    "close": 8.03,
+    "pct_chg": 0.63,
+    "vol_ratio": 0.86,
+    "dist_ma10": 2.35,
+    "ret5": 9.95,
+    "wash": 10,
+    "wash_detail": "长下影3x,收高位,贴MA10",
+    "pe": null,
+    "pe_static": null,
+    "pb": 1.32,
+    "total_mv": 4900000000.0,
+    "revenue": 616000000.0
+  },
+  {
+    "code": "301330",
+    "name": "熵基科技",
+    "concepts": [
+      "人脸识别",
+      "机器视觉"
+    ],
+    "close": 27.92,
+    "pct_chg": -2.1,
+    "vol_ratio": 1.41,
+    "dist_ma10": 2.18,
+    "ret5": 6.17,
+    "wash": 10,
+    "wash_detail": "长下影2x,多头,贴MA10",
+    "pe": 127.392,
+    "pe_static": 30.01,
+    "pb": 1.86,
+    "total_mv": 6400000000.0,
+    "revenue": 451000000.0
+  },
+  {
+    "code": "688787",
+    "name": "海天瑞声",
+    "concepts": [
+      "人脸识别"
+    ],
+    "close": 160.4,
+    "pct_chg": 0.63,
+    "vol_ratio": 1.19,
+    "dist_ma10": 3.21,
+    "ret5": 4.21,
+    "wash": 10,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 266.485,
+    "pe_static": 634.42,
+    "pb": 11.93,
+    "total_mv": 8900000000.0,
+    "revenue": 97000000.0
+  },
+  {
+    "code": "301312",
+    "name": "智立方",
+    "concepts": [
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 110.01,
+    "pct_chg": -2.65,
+    "vol_ratio": 0.68,
+    "dist_ma10": 15.96,
+    "ret5": 36.46,
+    "wash": 10,
+    "wash_detail": "下影1x,多头,守MA20,微缩量",
+    "pe": 314.999,
+    "pe_static": 240.81,
+    "pb": 10.5,
+    "total_mv": 18100000000.0,
+    "revenue": 193000000.0
+  }
+]

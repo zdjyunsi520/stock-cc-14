@@ -430,9 +430,9 @@ class AlertService:
 
     async def _evaluate_volume(self, rule: VolumeAlert) -> Dict[str, Any]:
         def _fetch_daily_data():
-            from data_provider import DataFetcherManager
+            from data_provider import get_data_fetcher_manager
 
-            return DataFetcherManager().get_daily_data(rule.stock_code, days=20)
+            return get_data_fetcher_manager().get_daily_data(rule.stock_code, days=20)
 
         try:
             result = await asyncio.to_thread(_fetch_daily_data)
@@ -525,9 +525,9 @@ class AlertService:
         cache_key = (rule.stock_code, requested_days)
 
         def _fetch_daily_data():
-            from data_provider import DataFetcherManager
+            from data_provider import get_data_fetcher_manager
 
-            return DataFetcherManager().get_daily_data(rule.stock_code, days=requested_days)
+            return get_data_fetcher_manager().get_daily_data(rule.stock_code, days=requested_days)
 
         try:
             if daily_cache is not None and cache_key in daily_cache:

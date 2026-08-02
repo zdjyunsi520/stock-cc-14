@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Page Inspector",
+  "version": "2.1.0",
+  "description": "页面结构抓取与自动化执行工具",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:3123/*",
+    "http://localhost:3123/*",
+    "https://api.anthropic.com/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Page Inspector"
+  }
+}

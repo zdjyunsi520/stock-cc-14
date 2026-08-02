@@ -1,0 +1,605 @@
+[
+  {
+    "code": "601177",
+    "name": "杭齿前进",
+    "targets": [
+      "金融科技"
+    ],
+    "themes": [
+      "参股银行"
+    ],
+    "latest_date": "2026-06-02",
+    "latest_close": 17.62,
+    "latest_score": 36.7,
+    "latest_wash": 12,
+    "latest_detail": "长下影3x,多头,守MA20,微缩量,贴MA10",
+    "latest_ret_20d": 5.32,
+    "latest_dd_high": -5.12,
+    "latest_bounce_low": 9.58,
+    "latest_dist_ma20": 3.25,
+    "latest_high_20d": 18.57,
+    "latest_low_20d": 16.08,
+    "latest_amplitude": 1.155,
+    "latest_max_gain": 5.53,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 6,
+    "max_wash": 12,
+    "low_absorb_dates": [
+      "2026-06-02"
+    ]
+  },
+  {
+    "code": "300440",
+    "name": "运达科技",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "AI智能体",
+      "智能物流"
+    ],
+    "latest_date": "2026-06-10",
+    "latest_close": 18.56,
+    "latest_score": 37.5,
+    "latest_wash": 11,
+    "latest_detail": "长下影3x,守MA20,微缩量,贴MA10",
+    "latest_ret_20d": 4.33,
+    "latest_dd_high": -5.02,
+    "latest_bounce_low": 10.48,
+    "latest_dist_ma20": 2.73,
+    "latest_high_20d": 19.54,
+    "latest_low_20d": 16.8,
+    "latest_amplitude": 1.163,
+    "latest_max_gain": 7.54,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 2,
+    "max_wash": 11,
+    "low_absorb_dates": [
+      "2026-06-10"
+    ]
+  },
+  {
+    "code": "300480",
+    "name": "光力科技",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "存储芯片"
+    ],
+    "latest_date": "2026-06-18",
+    "latest_close": 37.1,
+    "latest_score": 44.4,
+    "latest_wash": 11,
+    "latest_detail": "长下影3x,多头,守MA20",
+    "latest_ret_20d": -2.27,
+    "latest_dd_high": -6.38,
+    "latest_bounce_low": 14.22,
+    "latest_dist_ma20": 5.47,
+    "latest_high_20d": 39.63,
+    "latest_low_20d": 32.48,
+    "latest_amplitude": 1.22,
+    "latest_max_gain": 5.98,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 1,
+    "max_wash": 11,
+    "low_absorb_dates": [
+      "2026-06-18"
+    ]
+  },
+  {
+    "code": "300677",
+    "name": "英科医疗",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "智能医疗"
+    ],
+    "latest_date": "2026-06-05",
+    "latest_close": 46.53,
+    "latest_score": 42.8,
+    "latest_wash": 11,
+    "latest_detail": "长下影3x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -10.09,
+    "latest_dd_high": -14.21,
+    "latest_bounce_low": 7.09,
+    "latest_dist_ma20": -2.85,
+    "latest_high_20d": 54.24,
+    "latest_low_20d": 43.45,
+    "latest_amplitude": 1.248,
+    "latest_max_gain": 4.81,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 10,
+    "max_wash": 11,
+    "low_absorb_dates": [
+      "2026-06-05"
+    ]
+  },
+  {
+    "code": "601728",
+    "name": "中国电信",
+    "targets": [
+      "政务与行业信息化"
+    ],
+    "themes": [
+      "云计算",
+      "国资云",
+      "智慧政务"
+    ],
+    "latest_date": "2026-05-25",
+    "latest_close": 6.13,
+    "latest_score": 19.2,
+    "latest_wash": 11,
+    "latest_detail": "长下影3x,多头,缩量",
+    "latest_ret_20d": 2.85,
+    "latest_dd_high": -13.9,
+    "latest_bounce_low": 3.72,
+    "latest_dist_ma20": -1.28,
+    "latest_high_20d": 7.12,
+    "latest_low_20d": 5.91,
+    "latest_amplitude": 1.205,
+    "latest_max_gain": 7.74,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 20,
+    "max_wash": 11,
+    "low_absorb_dates": [
+      "2026-05-25"
+    ]
+  },
+  {
+    "code": "000100",
+    "name": "TCL科技",
+    "targets": [
+      "AI应用",
+      "金融科技"
+    ],
+    "themes": [
+      "AI眼镜",
+      "参股银行"
+    ],
+    "latest_date": "2026-06-10",
+    "latest_close": 4.67,
+    "latest_score": 35.7,
+    "latest_wash": 10,
+    "latest_detail": "多头,守MA20,缩量,贴MA10",
+    "latest_ret_20d": 9.11,
+    "latest_dd_high": -5.08,
+    "latest_bounce_low": 11.72,
+    "latest_dist_ma20": 3.59,
+    "latest_high_20d": 4.92,
+    "latest_low_20d": 4.18,
+    "latest_amplitude": 1.177,
+    "latest_max_gain": 7.0,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 6,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-10"
+    ]
+  },
+  {
+    "code": "000888",
+    "name": "峨眉山Ａ",
+    "targets": [
+      "政务与行业信息化"
+    ],
+    "themes": [
+      "智慧政务"
+    ],
+    "latest_date": "2026-06-16",
+    "latest_close": 9.88,
+    "latest_score": 40.8,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,缩量,贴MA10",
+    "latest_ret_20d": -8.26,
+    "latest_dd_high": -8.26,
+    "latest_bounce_low": 3.35,
+    "latest_dist_ma20": -2.78,
+    "latest_high_20d": 10.77,
+    "latest_low_20d": 9.56,
+    "latest_amplitude": 1.127,
+    "latest_max_gain": 2.82,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 10,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-16"
+    ]
+  },
+  {
+    "code": "002026",
+    "name": "山东威达",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "智能物流"
+    ],
+    "latest_date": "2026-06-09",
+    "latest_close": 12.42,
+    "latest_score": 39.9,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,缩量,贴MA10",
+    "latest_ret_20d": -6.05,
+    "latest_dd_high": -6.05,
+    "latest_bounce_low": 1.8,
+    "latest_dist_ma20": -1.57,
+    "latest_high_20d": 13.22,
+    "latest_low_20d": 12.2,
+    "latest_amplitude": 1.084,
+    "latest_max_gain": 5.63,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 9,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-09"
+    ]
+  },
+  {
+    "code": "300219",
+    "name": "鸿利智汇",
+    "targets": [
+      "金融科技"
+    ],
+    "themes": [
+      "互联网金融"
+    ],
+    "latest_date": "2026-06-10",
+    "latest_close": 8.75,
+    "latest_score": 42.4,
+    "latest_wash": 10,
+    "latest_detail": "下影1x,多头,守MA20,微缩量,贴MA10",
+    "latest_ret_20d": 7.49,
+    "latest_dd_high": -7.21,
+    "latest_bounce_low": 9.92,
+    "latest_dist_ma20": 2.89,
+    "latest_high_20d": 9.43,
+    "latest_low_20d": 7.96,
+    "latest_amplitude": 1.185,
+    "latest_max_gain": 6.52,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 6,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-10"
+    ]
+  },
+  {
+    "code": "300607",
+    "name": "拓斯达",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "人工智能",
+      "智谱AI",
+      "机器视觉"
+    ],
+    "latest_date": "2026-06-15",
+    "latest_close": 34.05,
+    "latest_score": 35.9,
+    "latest_wash": 10,
+    "latest_detail": "收高位,多头,缩量,贴MA10",
+    "latest_ret_20d": -0.75,
+    "latest_dd_high": -8.47,
+    "latest_bounce_low": 12.12,
+    "latest_dist_ma20": 3.0,
+    "latest_high_20d": 37.2,
+    "latest_low_20d": 30.37,
+    "latest_amplitude": 1.225,
+    "latest_max_gain": 7.76,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 4,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-15"
+    ]
+  },
+  {
+    "code": "300746",
+    "name": "汉嘉数智",
+    "targets": [
+      "政务与行业信息化"
+    ],
+    "themes": [
+      "数据要素"
+    ],
+    "latest_date": "2026-06-16",
+    "latest_close": 11.11,
+    "latest_score": 35.4,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,缩量,贴MA10",
+    "latest_ret_20d": -15.64,
+    "latest_dd_high": -15.83,
+    "latest_bounce_low": 5.41,
+    "latest_dist_ma20": -3.39,
+    "latest_high_20d": 13.2,
+    "latest_low_20d": 10.54,
+    "latest_amplitude": 1.252,
+    "latest_max_gain": 5.99,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 3,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-16"
+    ]
+  },
+  {
+    "code": "300866",
+    "name": "安克创新",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "AI眼镜",
+      "智能家居"
+    ],
+    "latest_date": "2026-06-17",
+    "latest_close": 113.63,
+    "latest_score": 41.2,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,微缩量,贴MA10",
+    "latest_ret_20d": -11.24,
+    "latest_dd_high": -11.24,
+    "latest_bounce_low": 8.81,
+    "latest_dist_ma20": -3.27,
+    "latest_high_20d": 128.03,
+    "latest_low_20d": 104.43,
+    "latest_amplitude": 1.226,
+    "latest_max_gain": 7.24,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 9,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-17"
+    ]
+  },
+  {
+    "code": "301230",
+    "name": "泓博医药",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "ChatGPT概念",
+      "多模态AI"
+    ],
+    "latest_date": "2026-06-16",
+    "latest_close": 33.67,
+    "latest_score": 38.0,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -13.02,
+    "latest_dd_high": -13.24,
+    "latest_bounce_low": 4.66,
+    "latest_dist_ma20": -3.91,
+    "latest_high_20d": 38.81,
+    "latest_low_20d": 32.17,
+    "latest_amplitude": 1.206,
+    "latest_max_gain": 6.03,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 7,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-16"
+    ]
+  },
+  {
+    "code": "600143",
+    "name": "金发科技",
+    "targets": [
+      "AI应用",
+      "政务与行业信息化"
+    ],
+    "themes": [
+      "东数西算(算力)",
+      "数据中心(AIDC)"
+    ],
+    "latest_date": "2026-06-18",
+    "latest_close": 16.79,
+    "latest_score": 43.5,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,收高位,贴MA10",
+    "latest_ret_20d": -5.14,
+    "latest_dd_high": -9.59,
+    "latest_bounce_low": 8.81,
+    "latest_dist_ma20": -0.68,
+    "latest_high_20d": 18.57,
+    "latest_low_20d": 15.43,
+    "latest_amplitude": 1.203,
+    "latest_max_gain": 6.12,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 10,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-18"
+    ]
+  },
+  {
+    "code": "600570",
+    "name": "恒生电子",
+    "targets": [
+      "AI应用",
+      "政务与行业信息化",
+      "金融科技"
+    ],
+    "themes": [
+      "AIGC概念",
+      "AI应用",
+      "AI智能体",
+      "ChatGPT概念",
+      "互联网金融",
+      "人工智能",
+      "信创",
+      "多模态AI",
+      "数字货币",
+      "数据要素",
+      "智慧政务",
+      "跨境支付(CIPS)"
+    ],
+    "latest_date": "2026-06-17",
+    "latest_close": 22.5,
+    "latest_score": 37.1,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -14.02,
+    "latest_dd_high": -14.02,
+    "latest_bounce_low": 7.04,
+    "latest_dist_ma20": -5.34,
+    "latest_high_20d": 26.17,
+    "latest_low_20d": 21.02,
+    "latest_amplitude": 1.245,
+    "latest_max_gain": 4.28,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 10,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-17"
+    ]
+  },
+  {
+    "code": "601567",
+    "name": "三星电气",
+    "targets": [
+      "AI应用",
+      "金融科技"
+    ],
+    "themes": [
+      "AI应用",
+      "人工智能",
+      "参股银行",
+      "智能医疗",
+      "智能电网"
+    ],
+    "latest_date": "2026-06-17",
+    "latest_close": 15.38,
+    "latest_score": 46.7,
+    "latest_wash": 10,
+    "latest_detail": "长下影2x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -14.6,
+    "latest_dd_high": -14.6,
+    "latest_bounce_low": 10.17,
+    "latest_dist_ma20": -3.48,
+    "latest_high_20d": 18.01,
+    "latest_low_20d": 13.96,
+    "latest_amplitude": 1.29,
+    "latest_max_gain": 4.94,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 3,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-17"
+    ]
+  },
+  {
+    "code": "603042",
+    "name": "华脉科技",
+    "targets": [
+      "AI应用",
+      "政务与行业信息化",
+      "金融科技"
+    ],
+    "themes": [
+      "互联网金融",
+      "数据中心(AIDC)",
+      "智能医疗"
+    ],
+    "latest_date": "2026-06-09",
+    "latest_close": 20.15,
+    "latest_score": 42.7,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -15.44,
+    "latest_dd_high": -15.44,
+    "latest_bounce_low": 5.11,
+    "latest_dist_ma20": -3.32,
+    "latest_high_20d": 23.83,
+    "latest_low_20d": 19.17,
+    "latest_amplitude": 1.243,
+    "latest_max_gain": 4.87,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 7,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-09"
+    ]
+  },
+  {
+    "code": "603515",
+    "name": "欧普照明",
+    "targets": [
+      "政务与行业信息化"
+    ],
+    "themes": [
+      "智慧灯杆"
+    ],
+    "latest_date": "2026-06-16",
+    "latest_close": 18.73,
+    "latest_score": 42.3,
+    "latest_wash": 10,
+    "latest_detail": "长下影3x,收高位,微缩量,贴MA10",
+    "latest_ret_20d": -4.97,
+    "latest_dd_high": -6.58,
+    "latest_bounce_low": 2.97,
+    "latest_dist_ma20": -1.46,
+    "latest_high_20d": 20.05,
+    "latest_low_20d": 18.19,
+    "latest_amplitude": 1.102,
+    "latest_max_gain": 2.72,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 10,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-16"
+    ]
+  },
+  {
+    "code": "603662",
+    "name": "柯力传感",
+    "targets": [
+      "AI应用"
+    ],
+    "themes": [
+      "机器视觉"
+    ],
+    "latest_date": "2026-06-15",
+    "latest_close": 66.6,
+    "latest_score": 35.6,
+    "latest_wash": 10,
+    "latest_detail": "收高位,多头,缩量,贴MA10",
+    "latest_ret_20d": -0.15,
+    "latest_dd_high": -6.39,
+    "latest_bounce_low": 13.54,
+    "latest_dist_ma20": 1.55,
+    "latest_high_20d": 71.15,
+    "latest_low_20d": 58.66,
+    "latest_amplitude": 1.213,
+    "latest_max_gain": 5.53,
+    "latest_limit_up_20d": 0,
+    "low_absorb_days": 1,
+    "low_pos_days": 3,
+    "max_wash": 10,
+    "low_absorb_dates": [
+      "2026-06-15"
+    ]
+  }
+]

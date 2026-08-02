@@ -1,0 +1,120 @@
+[
+  {
+    "code": "002415",
+    "name": "海康威视",
+    "concepts": [
+      "人脸识别",
+      "机器视觉"
+    ],
+    "close": 32.83,
+    "pct_chg": 1.64,
+    "vol_ratio": 1.18,
+    "dist_ma10": 5.3,
+    "ret5": 8.36,
+    "wash": 12,
+    "wash_detail": "下影1x,收高位,多头,守MA20",
+    "pe": 25.877,
+    "pe_static": 20.28,
+    "pb": 3.35,
+    "total_mv": 287800000000.0,
+    "revenue": 20715000000.0
+  },
+  {
+    "code": "688400",
+    "name": "凌云光",
+    "concepts": [
+      "机器视觉",
+      "AI视频"
+    ],
+    "close": 68.21,
+    "pct_chg": -1.27,
+    "vol_ratio": 1.39,
+    "dist_ma10": 11.82,
+    "ret5": 19.5,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 39.186,
+    "pe_static": 194.07,
+    "pb": 5.49,
+    "total_mv": 31200000000.0,
+    "revenue": 597000000.0
+  },
+  {
+    "code": "300613",
+    "name": "富瀚微",
+    "concepts": [
+      "人脸识别",
+      "机器视觉",
+      "AI眼镜"
+    ],
+    "close": 68.62,
+    "pct_chg": 0.01,
+    "vol_ratio": 0.99,
+    "dist_ma10": 10.24,
+    "ret5": 16.67,
+    "wash": 12,
+    "wash_detail": "长下影3x,多头,守MA20",
+    "pe": 47.299,
+    "pe_static": 111.05,
+    "pb": 5.52,
+    "total_mv": 16100000000.0,
+    "revenue": 559000000.0
+  },
+  {
+    "code": "002960",
+    "name": "青鸟智控",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 8.95,
+    "pct_chg": -1.86,
+    "vol_ratio": 0.9,
+    "dist_ma10": 0.51,
+    "ret5": 0.43,
+    "wash": 11,
+    "wash_detail": "长下影3x,多头,贴MA10",
+    "pe": 35.093,
+    "pe_static": 28.42,
+    "pb": 1.21,
+    "total_mv": 9000000000.0,
+    "revenue": 875000000.0
+  },
+  {
+    "code": "300341",
+    "name": "麦克奥迪",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 15.43,
+    "pct_chg": -0.84,
+    "vol_ratio": 0.86,
+    "dist_ma10": 4.26,
+    "ret5": 8.69,
+    "wash": 11,
+    "wash_detail": "长下影2x,多头,守MA20",
+    "pe": 47.269,
+    "pe_static": 46.67,
+    "pb": 4.05,
+    "total_mv": 8000000000.0,
+    "revenue": 388000000.0
+  },
+  {
+    "code": "300307",
+    "name": "慈星股份",
+    "concepts": [
+      "机器视觉"
+    ],
+    "close": 7.97,
+    "pct_chg": -2.09,
+    "vol_ratio": 0.59,
+    "dist_ma10": 0.33,
+    "ret5": -2.37,
+    "wash": 11,
+    "wash_detail": "下影1x,多头,守MA20,缩量,贴MA10",
+    "pe": 17.008,
+    "pe_static": 63.38,
+    "pb": 1.87,
+    "total_mv": 6100000000.0,
+    "revenue": 630000000.0
+  }
+]

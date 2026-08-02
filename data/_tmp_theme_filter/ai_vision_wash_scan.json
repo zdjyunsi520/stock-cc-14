@@ -1,0 +1,3581 @@
+{
+  "scan_date": "2026-06-22",
+  "concept_map": {
+    "AI视觉": [
+      "机器视觉",
+      "人脸识别",
+      "AI眼镜",
+      "AI视频"
+    ]
+  },
+  "pool_size": 458,
+  "records": [
+    {
+      "code": "300223",
+      "name": "北京君正",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 192.75,
+      "pct_chg": 3.6,
+      "vol_ratio": 1.2,
+      "dist_ma10": 18.54,
+      "ret5": 29.39,
+      "wash": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "688207",
+      "name": "格灵深瞳",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 21.78,
+      "pct_chg": 3.08,
+      "vol_ratio": 0.82,
+      "dist_ma10": 10.9,
+      "ret5": 20.61,
+      "wash": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "301568",
+      "name": "思泰克",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 117.23,
+      "pct_chg": -0.81,
+      "vol_ratio": 0.87,
+      "dist_ma10": 17.24,
+      "ret5": 30.53,
+      "wash": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "301013",
+      "name": "利和兴",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 67.88,
+      "pct_chg": -1.08,
+      "vol_ratio": 0.82,
+      "dist_ma10": 12.54,
+      "ret5": 30.34,
+      "wash": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "300607",
+      "name": "拓斯达",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 38.69,
+      "pct_chg": -0.31,
+      "vol_ratio": 0.83,
+      "dist_ma10": 8.03,
+      "ret5": 18.39,
+      "wash": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "300709",
+      "name": "精研科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 65.36,
+      "pct_chg": 3.65,
+      "vol_ratio": 0.64,
+      "dist_ma10": 20.03,
+      "ret5": 31.67,
+      "wash": 14,
+      "wash_detail": "长下影2x,收高位,多头,守MA20,微缩量"
+    },
+    {
+      "code": "300005",
+      "name": "探路者",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 17.38,
+      "pct_chg": 1.88,
+      "vol_ratio": 1.23,
+      "dist_ma10": 7.87,
+      "ret5": 19.1,
+      "wash": 13,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "301536",
+      "name": "星宸科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 113.52,
+      "pct_chg": 0.78,
+      "vol_ratio": 0.7,
+      "dist_ma10": 16.82,
+      "ret5": 23.46,
+      "wash": 12,
+      "wash_detail": "长下影2x,多头,守MA20,微缩量"
+    },
+    {
+      "code": "300613",
+      "name": "富瀚微",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 68.62,
+      "pct_chg": 0.01,
+      "vol_ratio": 0.99,
+      "dist_ma10": 10.24,
+      "ret5": 16.67,
+      "wash": 12,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "003004",
+      "name": "声迅股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 71.6,
+      "pct_chg": 3.56,
+      "vol_ratio": 1.38,
+      "dist_ma10": 7.53,
+      "ret5": 11.59,
+      "wash": 12,
+      "wash_detail": "下影1x,收高位,多头,守MA20"
+    },
+    {
+      "code": "002415",
+      "name": "海康威视",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 32.83,
+      "pct_chg": 1.64,
+      "vol_ratio": 1.18,
+      "dist_ma10": 5.3,
+      "ret5": 8.36,
+      "wash": 12,
+      "wash_detail": "下影1x,收高位,多头,守MA20"
+    },
+    {
+      "code": "688090",
+      "name": "瑞松科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 131.39,
+      "pct_chg": 1.58,
+      "vol_ratio": 0.79,
+      "dist_ma10": 14.1,
+      "ret5": 26.67,
+      "wash": 12,
+      "wash_detail": "长下影3x,多头,守MA20,微缩量"
+    },
+    {
+      "code": "688610",
+      "name": "埃科光电",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 237.0,
+      "pct_chg": 2.0,
+      "vol_ratio": 0.97,
+      "dist_ma10": 4.43,
+      "ret5": 11.24,
+      "wash": 12,
+      "wash_detail": "长下影2x,多头,守MA20"
+    },
+    {
+      "code": "688400",
+      "name": "凌云光",
+      "concepts": [
+        "机器视觉",
+        "AI视频"
+      ],
+      "close": 68.21,
+      "pct_chg": -1.27,
+      "vol_ratio": 1.39,
+      "dist_ma10": 11.82,
+      "ret5": 19.5,
+      "wash": 12,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "603662",
+      "name": "柯力传感",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 69.6,
+      "pct_chg": -0.7,
+      "vol_ratio": 1.03,
+      "dist_ma10": 1.6,
+      "ret5": 8.01,
+      "wash": 12,
+      "wash_detail": "长下影3x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "688595",
+      "name": "芯海科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 39.68,
+      "pct_chg": -0.8,
+      "vol_ratio": 0.96,
+      "dist_ma10": 5.9,
+      "ret5": 16.3,
+      "wash": 12,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "688312",
+      "name": "燕麦科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 95.99,
+      "pct_chg": 3.66,
+      "vol_ratio": 1.41,
+      "dist_ma10": 14.22,
+      "ret5": 24.39,
+      "wash": 11,
+      "wash_detail": "长下影3x,收高位,守MA20"
+    },
+    {
+      "code": "300307",
+      "name": "慈星股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 7.97,
+      "pct_chg": -2.09,
+      "vol_ratio": 0.59,
+      "dist_ma10": 0.33,
+      "ret5": -2.37,
+      "wash": 11,
+      "wash_detail": "下影1x,多头,守MA20,缩量,贴MA10"
+    },
+    {
+      "code": "300341",
+      "name": "麦克奥迪",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 15.43,
+      "pct_chg": -0.84,
+      "vol_ratio": 0.86,
+      "dist_ma10": 4.26,
+      "ret5": 8.69,
+      "wash": 11,
+      "wash_detail": "长下影2x,多头,守MA20"
+    },
+    {
+      "code": "002960",
+      "name": "青鸟智控",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 8.95,
+      "pct_chg": -1.86,
+      "vol_ratio": 0.9,
+      "dist_ma10": 0.51,
+      "ret5": 0.43,
+      "wash": 11,
+      "wash_detail": "长下影3x,多头,贴MA10"
+    },
+    {
+      "code": "688218",
+      "name": "江苏北人",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 54.8,
+      "pct_chg": -0.36,
+      "vol_ratio": 1.01,
+      "dist_ma10": 4.97,
+      "ret5": 2.79,
+      "wash": 11,
+      "wash_detail": "下影1x,收高位,多头,守MA20"
+    },
+    {
+      "code": "603888",
+      "name": "新华网",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 19.13,
+      "pct_chg": 1.65,
+      "vol_ratio": 1.19,
+      "dist_ma10": 1.85,
+      "ret5": 5.82,
+      "wash": 11,
+      "wash_detail": "下影1x,收高位,多头,贴MA10"
+    },
+    {
+      "code": "300545",
+      "name": "联得装备",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 38.38,
+      "pct_chg": 2.18,
+      "vol_ratio": 1.39,
+      "dist_ma10": 5.91,
+      "ret5": 15.95,
+      "wash": 11,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "300042",
+      "name": "朗科科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 73.72,
+      "pct_chg": 4.79,
+      "vol_ratio": 1.42,
+      "dist_ma10": 12.73,
+      "ret5": 21.83,
+      "wash": 11,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "300657",
+      "name": "弘信电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 46.46,
+      "pct_chg": -2.29,
+      "vol_ratio": 0.92,
+      "dist_ma10": 0.53,
+      "ret5": -0.8,
+      "wash": 11,
+      "wash_detail": "长下影3x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "301218",
+      "name": "华是科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 43.45,
+      "pct_chg": -2.53,
+      "vol_ratio": 1.02,
+      "dist_ma10": 3.09,
+      "ret5": 14.06,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002449",
+      "name": "国星光电",
+      "concepts": [
+        "人脸识别",
+        "AI眼镜"
+      ],
+      "close": 8.03,
+      "pct_chg": 0.63,
+      "vol_ratio": 0.86,
+      "dist_ma10": 2.35,
+      "ret5": 9.95,
+      "wash": 10,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "301330",
+      "name": "熵基科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 27.92,
+      "pct_chg": -2.1,
+      "vol_ratio": 1.41,
+      "dist_ma10": 2.18,
+      "ret5": 6.17,
+      "wash": 10,
+      "wash_detail": "长下影2x,多头,贴MA10"
+    },
+    {
+      "code": "688787",
+      "name": "海天瑞声",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 160.4,
+      "pct_chg": 0.63,
+      "vol_ratio": 1.19,
+      "dist_ma10": 3.21,
+      "ret5": 4.21,
+      "wash": 10,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "301312",
+      "name": "智立方",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 110.01,
+      "pct_chg": -2.65,
+      "vol_ratio": 0.68,
+      "dist_ma10": 15.96,
+      "ret5": 36.46,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20,微缩量"
+    },
+    {
+      "code": "603501",
+      "name": "豪威集团",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 90.56,
+      "pct_chg": 0.66,
+      "vol_ratio": 1.15,
+      "dist_ma10": 1.27,
+      "ret5": 5.23,
+      "wash": 10,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "002747",
+      "name": "埃斯顿",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 37.19,
+      "pct_chg": 1.89,
+      "vol_ratio": 1.49,
+      "dist_ma10": 7.17,
+      "ret5": 14.92,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "688272",
+      "name": "富吉瑞",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 34.23,
+      "pct_chg": -0.73,
+      "vol_ratio": 1.33,
+      "dist_ma10": -2.19,
+      "ret5": -1.14,
+      "wash": 10,
+      "wash_detail": "长下影3x,收高位,多头"
+    },
+    {
+      "code": "300365",
+      "name": "恒华科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 5.03,
+      "pct_chg": -0.79,
+      "vol_ratio": 1.17,
+      "dist_ma10": 2.38,
+      "ret5": 5.08,
+      "wash": 10,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "300353",
+      "name": "东土科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 22.22,
+      "pct_chg": -1.99,
+      "vol_ratio": 0.8,
+      "dist_ma10": 0.43,
+      "ret5": -0.02,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20,微缩量,贴MA10"
+    },
+    {
+      "code": "688228",
+      "name": "开普云",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 86.58,
+      "pct_chg": -0.21,
+      "vol_ratio": 1.21,
+      "dist_ma10": 0.53,
+      "ret5": 5.3,
+      "wash": 10,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "002426",
+      "name": "胜利精密",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 4.06,
+      "pct_chg": -1.69,
+      "vol_ratio": 0.62,
+      "dist_ma10": 6.31,
+      "ret5": 15.23,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20,微缩量"
+    },
+    {
+      "code": "300373",
+      "name": "扬杰科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 128.11,
+      "pct_chg": 4.04,
+      "vol_ratio": 1.26,
+      "dist_ma10": 18.74,
+      "ret5": 29.06,
+      "wash": 10,
+      "wash_detail": "长下影2x,多头,守MA20"
+    },
+    {
+      "code": "301067",
+      "name": "显盈科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 36.95,
+      "pct_chg": 4.2,
+      "vol_ratio": 0.93,
+      "dist_ma10": 6.06,
+      "ret5": 6.83,
+      "wash": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "001314",
+      "name": "亿道信息",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 59.2,
+      "pct_chg": 1.04,
+      "vol_ratio": 1.0,
+      "dist_ma10": 8.09,
+      "ret5": 15.55,
+      "wash": 10,
+      "wash_detail": "长下影3x,守MA20"
+    },
+    {
+      "code": "002983",
+      "name": "芯瑞达",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 25.51,
+      "pct_chg": -1.05,
+      "vol_ratio": 0.91,
+      "dist_ma10": 2.22,
+      "ret5": 7.11,
+      "wash": 10,
+      "wash_detail": "下影1x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "000063",
+      "name": "中兴通讯",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 39.43,
+      "pct_chg": 4.06,
+      "vol_ratio": 1.44,
+      "dist_ma10": 4.12,
+      "ret5": 8.27,
+      "wash": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "688088",
+      "name": "虹软科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI视频",
+        "AI眼镜"
+      ],
+      "close": 37.97,
+      "pct_chg": -0.21,
+      "vol_ratio": 1.03,
+      "dist_ma10": 1.07,
+      "ret5": 6.4,
+      "wash": 9,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "300678",
+      "name": "中科信息",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 23.73,
+      "pct_chg": -0.17,
+      "vol_ratio": 1.41,
+      "dist_ma10": 1.91,
+      "ret5": 3.9,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "688327",
+      "name": "云从科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 14.46,
+      "pct_chg": 1.33,
+      "vol_ratio": 1.04,
+      "dist_ma10": 4.67,
+      "ret5": 9.32,
+      "wash": 9,
+      "wash_detail": "下影1x,收高位,守MA20"
+    },
+    {
+      "code": "600728",
+      "name": "佳都科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 4.67,
+      "pct_chg": 0.43,
+      "vol_ratio": 1.31,
+      "dist_ma10": 0.56,
+      "ret5": 1.75,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "603800",
+      "name": "洪田股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 76.69,
+      "pct_chg": -4.87,
+      "vol_ratio": 1.12,
+      "dist_ma10": 0.47,
+      "ret5": 12.86,
+      "wash": 9,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "300802",
+      "name": "矩子科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 26.86,
+      "pct_chg": -4.0,
+      "vol_ratio": 0.95,
+      "dist_ma10": 5.83,
+      "ret5": 14.55,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002559",
+      "name": "亚威股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 10.58,
+      "pct_chg": -2.49,
+      "vol_ratio": 0.94,
+      "dist_ma10": 4.45,
+      "ret5": 11.62,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "300790",
+      "name": "宇瞳光学",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 27.71,
+      "pct_chg": -1.74,
+      "vol_ratio": 0.8,
+      "dist_ma10": 12.78,
+      "ret5": 22.24,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002414",
+      "name": "高德红外",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 13.83,
+      "pct_chg": 1.24,
+      "vol_ratio": 1.03,
+      "dist_ma10": 6.2,
+      "ret5": 6.19,
+      "wash": 9,
+      "wash_detail": "下影1x,收高位,守MA20"
+    },
+    {
+      "code": "688556",
+      "name": "高测股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 12.42,
+      "pct_chg": 1.8,
+      "vol_ratio": 1.27,
+      "dist_ma10": 8.64,
+      "ret5": 16.33,
+      "wash": 9,
+      "wash_detail": "长下影2x,守MA20"
+    },
+    {
+      "code": "002402",
+      "name": "和而泰",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 24.76,
+      "pct_chg": -0.08,
+      "vol_ratio": 1.24,
+      "dist_ma10": 0.92,
+      "ret5": 4.07,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "300656",
+      "name": "民德电子",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 38.21,
+      "pct_chg": -1.52,
+      "vol_ratio": 0.74,
+      "dist_ma10": 3.75,
+      "ret5": 6.63,
+      "wash": 9,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "000925",
+      "name": "众合科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 8.53,
+      "pct_chg": 4.53,
+      "vol_ratio": 1.29,
+      "dist_ma10": 2.75,
+      "ret5": 6.28,
+      "wash": 9,
+      "wash_detail": "收高位,多头,贴MA10"
+    },
+    {
+      "code": "300490",
+      "name": "华自科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 15.12,
+      "pct_chg": 1.34,
+      "vol_ratio": 1.13,
+      "dist_ma10": 4.94,
+      "ret5": 7.54,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "002965",
+      "name": "祥鑫科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 43.47,
+      "pct_chg": -1.02,
+      "vol_ratio": 0.71,
+      "dist_ma10": 8.51,
+      "ret5": 9.64,
+      "wash": 9,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "002401",
+      "name": "中远海科",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 12.94,
+      "pct_chg": -0.38,
+      "vol_ratio": 1.12,
+      "dist_ma10": 0.94,
+      "ret5": 1.91,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "301512",
+      "name": "智信精密",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 55.75,
+      "pct_chg": -2.35,
+      "vol_ratio": 1.16,
+      "dist_ma10": 1.08,
+      "ret5": 6.47,
+      "wash": 9,
+      "wash_detail": "长下影2x,多头,贴MA10"
+    },
+    {
+      "code": "002139",
+      "name": "拓邦股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 9.93,
+      "pct_chg": 0.51,
+      "vol_ratio": 1.09,
+      "dist_ma10": 0.69,
+      "ret5": 3.97,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "603666",
+      "name": "亿嘉和",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 28.16,
+      "pct_chg": 1.19,
+      "vol_ratio": 1.17,
+      "dist_ma10": 2.87,
+      "ret5": 7.17,
+      "wash": 9,
+      "wash_detail": "长下影2x,收高位,贴MA10"
+    },
+    {
+      "code": "688079",
+      "name": "美迪凯",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 29.47,
+      "pct_chg": -0.3,
+      "vol_ratio": 1.18,
+      "dist_ma10": 8.49,
+      "ret5": 30.06,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "688045",
+      "name": "必易微",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 76.8,
+      "pct_chg": -2.85,
+      "vol_ratio": 0.79,
+      "dist_ma10": 6.23,
+      "ret5": 13.75,
+      "wash": 9,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "300975",
+      "name": "商络电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 42.64,
+      "pct_chg": -1.52,
+      "vol_ratio": 1.26,
+      "dist_ma10": 4.1,
+      "ret5": 17.87,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "000636",
+      "name": "风华高科",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 72.98,
+      "pct_chg": -2.17,
+      "vol_ratio": 0.93,
+      "dist_ma10": 11.06,
+      "ret5": 22.02,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "603738",
+      "name": "XD泰晶科",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 61.7,
+      "pct_chg": 4.67,
+      "vol_ratio": 0.9,
+      "dist_ma10": 18.0,
+      "ret5": 18.47,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "603327",
+      "name": "福蓉科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 10.74,
+      "pct_chg": 0.85,
+      "vol_ratio": 0.89,
+      "dist_ma10": 4.09,
+      "ret5": 10.57,
+      "wash": 9,
+      "wash_detail": "下影1x,收高位,守MA20"
+    },
+    {
+      "code": "301099",
+      "name": "雅创电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 92.0,
+      "pct_chg": -1.41,
+      "vol_ratio": 0.8,
+      "dist_ma10": 13.67,
+      "ret5": 32.98,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002138",
+      "name": "顺络电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 73.44,
+      "pct_chg": 3.2,
+      "vol_ratio": 0.93,
+      "dist_ma10": 18.32,
+      "ret5": 27.85,
+      "wash": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "688484",
+      "name": "南芯科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 52.99,
+      "pct_chg": -1.29,
+      "vol_ratio": 0.78,
+      "dist_ma10": 14.27,
+      "ret5": 29.61,
+      "wash": 9,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "688007",
+      "name": "光峰科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 13.33,
+      "pct_chg": 0.91,
+      "vol_ratio": 1.33,
+      "dist_ma10": 1.89,
+      "ret5": 5.63,
+      "wash": 9,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "001283",
+      "name": "豪鹏科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 52.44,
+      "pct_chg": -0.32,
+      "vol_ratio": 0.81,
+      "dist_ma10": 4.83,
+      "ret5": 11.06,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "002841",
+      "name": "视源股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 34.87,
+      "pct_chg": -0.14,
+      "vol_ratio": 1.08,
+      "dist_ma10": 1.34,
+      "ret5": 2.69,
+      "wash": 9,
+      "wash_detail": "长下影3x,收高位,贴MA10"
+    },
+    {
+      "code": "688371",
+      "name": "菲沃泰",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 37.77,
+      "pct_chg": -0.61,
+      "vol_ratio": 0.85,
+      "dist_ma10": -1.42,
+      "ret5": -3.16,
+      "wash": 9,
+      "wash_detail": "长下影3x,多头"
+    },
+    {
+      "code": "002587",
+      "name": "奥拓电子",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 6.99,
+      "pct_chg": -1.69,
+      "vol_ratio": 1.21,
+      "dist_ma10": 1.13,
+      "ret5": 6.2,
+      "wash": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "603160",
+      "name": "汇顶科技",
+      "concepts": [
+        "人脸识别",
+        "AI眼镜"
+      ],
+      "close": 59.19,
+      "pct_chg": 0.25,
+      "vol_ratio": 0.84,
+      "dist_ma10": 3.34,
+      "ret5": 5.7,
+      "wash": 8,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "002373",
+      "name": "千方科技",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 7.76,
+      "pct_chg": 0.0,
+      "vol_ratio": 1.25,
+      "dist_ma10": 2.8,
+      "ret5": 4.8,
+      "wash": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "300024",
+      "name": "机器人",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 17.17,
+      "pct_chg": -3.81,
+      "vol_ratio": 0.76,
+      "dist_ma10": 4.06,
+      "ret5": 14.72,
+      "wash": 8,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "300031",
+      "name": "宝通科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 31.49,
+      "pct_chg": 2.84,
+      "vol_ratio": 1.18,
+      "dist_ma10": 15.22,
+      "ret5": 24.34,
+      "wash": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "688291",
+      "name": "金橙子",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 53.15,
+      "pct_chg": -2.8,
+      "vol_ratio": 1.41,
+      "dist_ma10": 7.22,
+      "ret5": 15.72,
+      "wash": 8,
+      "wash_detail": "长下影2x,守MA20"
+    },
+    {
+      "code": "300458",
+      "name": "全志科技",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 35.58,
+      "pct_chg": -0.17,
+      "vol_ratio": 1.05,
+      "dist_ma10": 8.93,
+      "ret5": 16.44,
+      "wash": 8,
+      "wash_detail": "长下影3x,守MA20"
+    },
+    {
+      "code": "600184",
+      "name": "光电股份",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 27.75,
+      "pct_chg": -1.67,
+      "vol_ratio": 1.48,
+      "dist_ma10": 4.79,
+      "ret5": 10.89,
+      "wash": 8,
+      "wash_detail": "下影1x,多头"
+    },
+    {
+      "code": "688502",
+      "name": "XD茂莱光",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 499.0,
+      "pct_chg": -4.01,
+      "vol_ratio": 0.69,
+      "dist_ma10": 5.03,
+      "ret5": 7.66,
+      "wash": 8,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "688191",
+      "name": "智洋创新",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 38.88,
+      "pct_chg": -0.64,
+      "vol_ratio": 0.99,
+      "dist_ma10": 11.08,
+      "ret5": 21.08,
+      "wash": 8,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "600071",
+      "name": "凤凰光学",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 17.2,
+      "pct_chg": -0.23,
+      "vol_ratio": 1.09,
+      "dist_ma10": 1.32,
+      "ret5": 4.22,
+      "wash": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "301213",
+      "name": "观想科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 51.35,
+      "pct_chg": -1.82,
+      "vol_ratio": 1.05,
+      "dist_ma10": 5.33,
+      "ret5": 7.41,
+      "wash": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603322",
+      "name": "超讯科技",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 29.5,
+      "pct_chg": -0.67,
+      "vol_ratio": 1.26,
+      "dist_ma10": 1.5,
+      "ret5": 5.29,
+      "wash": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "300578",
+      "name": "会畅科技",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 20.32,
+      "pct_chg": -2.78,
+      "vol_ratio": 1.29,
+      "dist_ma10": 4.04,
+      "ret5": 8.3,
+      "wash": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "000785",
+      "name": "居然智家",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 2.15,
+      "pct_chg": -0.46,
+      "vol_ratio": 0.78,
+      "dist_ma10": -7.29,
+      "ret5": -5.78,
+      "wash": 8,
+      "wash_detail": "长下影3x,收高位,微缩量"
+    },
+    {
+      "code": "603466",
+      "name": "风语筑",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 9.72,
+      "pct_chg": -0.71,
+      "vol_ratio": 0.52,
+      "dist_ma10": -11.84,
+      "ret5": -15.93,
+      "wash": 8,
+      "wash_detail": "长下影3x,缩量"
+    },
+    {
+      "code": "300602",
+      "name": "飞荣达",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 49.08,
+      "pct_chg": -0.89,
+      "vol_ratio": 0.86,
+      "dist_ma10": 9.7,
+      "ret5": 17.2,
+      "wash": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002301",
+      "name": "齐心集团",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 7.72,
+      "pct_chg": 0.39,
+      "vol_ratio": 0.82,
+      "dist_ma10": 1.13,
+      "ret5": 5.31,
+      "wash": 8,
+      "wash_detail": "长下影2x,收高位,贴MA10"
+    },
+    {
+      "code": "002992",
+      "name": "宝明科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 45.39,
+      "pct_chg": -1.15,
+      "vol_ratio": 0.82,
+      "dist_ma10": 2.5,
+      "ret5": 8.18,
+      "wash": 8,
+      "wash_detail": "下影1x,多头,贴MA10"
+    },
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 34.46,
+      "pct_chg": 4.81,
+      "vol_ratio": 1.35,
+      "dist_ma10": 12.26,
+      "ret5": 20.58,
+      "wash": 8,
+      "wash_detail": "下影1x,守MA20"
+    },
+    {
+      "code": "600114",
+      "name": "东睦股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 42.45,
+      "pct_chg": -3.19,
+      "vol_ratio": 1.13,
+      "dist_ma10": 2.38,
+      "ret5": 10.09,
+      "wash": 8,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "300596",
+      "name": "利安隆",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 50.38,
+      "pct_chg": 3.77,
+      "vol_ratio": 1.32,
+      "dist_ma10": 20.38,
+      "ret5": 27.64,
+      "wash": 8,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "688230",
+      "name": "芯导科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 70.77,
+      "pct_chg": -0.42,
+      "vol_ratio": 1.44,
+      "dist_ma10": 7.19,
+      "ret5": 11.24,
+      "wash": 8,
+      "wash_detail": "长下影3x,守MA20"
+    },
+    {
+      "code": "002241",
+      "name": "歌尔股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 23.72,
+      "pct_chg": -0.84,
+      "vol_ratio": 1.23,
+      "dist_ma10": 1.52,
+      "ret5": 3.09,
+      "wash": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "000100",
+      "name": "TCL科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 4.99,
+      "pct_chg": -0.2,
+      "vol_ratio": 1.05,
+      "dist_ma10": 4.79,
+      "ret5": 9.75,
+      "wash": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "301248",
+      "name": "杰创智能",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 75.87,
+      "pct_chg": 3.46,
+      "vol_ratio": 1.32,
+      "dist_ma10": 5.74,
+      "ret5": 12.59,
+      "wash": 7,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "603636",
+      "name": "南威软件",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 9.26,
+      "pct_chg": 1.2,
+      "vol_ratio": 0.67,
+      "dist_ma10": 1.52,
+      "ret5": 6.21,
+      "wash": 7,
+      "wash_detail": "收高位,微缩量,贴MA10"
+    },
+    {
+      "code": "002355",
+      "name": "兴民智通",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 4.63,
+      "pct_chg": -1.28,
+      "vol_ratio": 1.21,
+      "dist_ma10": -4.5,
+      "ret5": -2.84,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300077",
+      "name": "国民技术",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 23.1,
+      "pct_chg": -0.99,
+      "vol_ratio": 1.11,
+      "dist_ma10": 2.7,
+      "ret5": 7.46,
+      "wash": 7,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "002152",
+      "name": "广电运通",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 10.18,
+      "pct_chg": 2.62,
+      "vol_ratio": 1.26,
+      "dist_ma10": 2.41,
+      "ret5": 3.6,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "002456",
+      "name": "欧菲光",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 9.19,
+      "pct_chg": -1.18,
+      "vol_ratio": 0.97,
+      "dist_ma10": 0.43,
+      "ret5": 5.73,
+      "wash": 7,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "300531",
+      "name": "优博讯",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 16.01,
+      "pct_chg": 3.29,
+      "vol_ratio": 1.47,
+      "dist_ma10": 2.42,
+      "ret5": 6.84,
+      "wash": 7,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "002777",
+      "name": "久远银海",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 13.29,
+      "pct_chg": 1.3,
+      "vol_ratio": 1.44,
+      "dist_ma10": -0.79,
+      "ret5": 0.29,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300830",
+      "name": "金现代",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 8.87,
+      "pct_chg": 0.23,
+      "vol_ratio": 1.06,
+      "dist_ma10": -0.07,
+      "ret5": 0.47,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "600271",
+      "name": "航天信息",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 7.05,
+      "pct_chg": 0.71,
+      "vol_ratio": 1.32,
+      "dist_ma10": -0.13,
+      "ret5": -0.41,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "002835",
+      "name": "同为股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 12.42,
+      "pct_chg": 0.57,
+      "vol_ratio": 1.27,
+      "dist_ma10": -2.06,
+      "ret5": -2.19,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300479",
+      "name": "神思电子",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 14.63,
+      "pct_chg": 1.32,
+      "vol_ratio": 1.32,
+      "dist_ma10": 2.09,
+      "ret5": 2.82,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "300155",
+      "name": "安居宝",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 4.23,
+      "pct_chg": -1.17,
+      "vol_ratio": 1.36,
+      "dist_ma10": -2.87,
+      "ret5": -3.17,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "688058",
+      "name": "宝兰德",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 23.68,
+      "pct_chg": 1.33,
+      "vol_ratio": 1.22,
+      "dist_ma10": 0.46,
+      "ret5": 0.49,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "002599",
+      "name": "盛通股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 5.53,
+      "pct_chg": -0.18,
+      "vol_ratio": 1.29,
+      "dist_ma10": -5.13,
+      "ret5": -5.88,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300508",
+      "name": "维宏股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 59.64,
+      "pct_chg": 1.62,
+      "vol_ratio": 1.11,
+      "dist_ma10": 13.35,
+      "ret5": 24.53,
+      "wash": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "300836",
+      "name": "佰奥智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 74.67,
+      "pct_chg": -1.02,
+      "vol_ratio": 0.98,
+      "dist_ma10": 5.07,
+      "ret5": 14.47,
+      "wash": 7,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "300567",
+      "name": "精测电子",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 213.8,
+      "pct_chg": -0.03,
+      "vol_ratio": 1.0,
+      "dist_ma10": 6.83,
+      "ret5": 8.88,
+      "wash": 7,
+      "wash_detail": "长下影2x,守MA20"
+    },
+    {
+      "code": "688099",
+      "name": "晶晨股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 96.92,
+      "pct_chg": 0.17,
+      "vol_ratio": 1.05,
+      "dist_ma10": 3.94,
+      "ret5": 10.38,
+      "wash": 7,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "300638",
+      "name": "广和通",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 20.24,
+      "pct_chg": -0.3,
+      "vol_ratio": 1.36,
+      "dist_ma10": -1.07,
+      "ret5": 2.86,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300971",
+      "name": "博亚精工",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 20.08,
+      "pct_chg": -0.15,
+      "vol_ratio": 1.14,
+      "dist_ma10": -0.96,
+      "ret5": 1.16,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "688092",
+      "name": "爱科科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 22.38,
+      "pct_chg": -0.93,
+      "vol_ratio": 0.91,
+      "dist_ma10": -7.78,
+      "ret5": -2.17,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "600100",
+      "name": "同方股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 7.16,
+      "pct_chg": 0.7,
+      "vol_ratio": 1.05,
+      "dist_ma10": 0.06,
+      "ret5": 0.73,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "300793",
+      "name": "佳禾智能",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 12.33,
+      "pct_chg": -0.96,
+      "vol_ratio": 1.29,
+      "dist_ma10": -0.48,
+      "ret5": 1.08,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "603280",
+      "name": "南方路机",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 27.28,
+      "pct_chg": 0.29,
+      "vol_ratio": 1.17,
+      "dist_ma10": -1.79,
+      "ret5": -1.92,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300192",
+      "name": "科德教育",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 16.8,
+      "pct_chg": 1.14,
+      "vol_ratio": 1.18,
+      "dist_ma10": 0.74,
+      "ret5": 4.31,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "300182",
+      "name": "捷成股份",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 5.43,
+      "pct_chg": -0.55,
+      "vol_ratio": 1.09,
+      "dist_ma10": -6.62,
+      "ret5": -1.33,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "301231",
+      "name": "荣信文化",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 35.6,
+      "pct_chg": 2.77,
+      "vol_ratio": 1.12,
+      "dist_ma10": 3.35,
+      "ret5": 9.08,
+      "wash": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "601929",
+      "name": "吉视传媒",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 2.36,
+      "pct_chg": 0.0,
+      "vol_ratio": 1.15,
+      "dist_ma10": -3.04,
+      "ret5": -1.89,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "002878",
+      "name": "元隆雅图",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 12.78,
+      "pct_chg": -0.16,
+      "vol_ratio": 0.9,
+      "dist_ma10": -7.79,
+      "ret5": -5.28,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "300433",
+      "name": "蓝思科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 53.81,
+      "pct_chg": -3.51,
+      "vol_ratio": 1.12,
+      "dist_ma10": 14.86,
+      "ret5": 28.22,
+      "wash": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "300566",
+      "name": "激智科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 33.39,
+      "pct_chg": -2.96,
+      "vol_ratio": 0.8,
+      "dist_ma10": 6.62,
+      "ret5": 3.96,
+      "wash": 7,
+      "wash_detail": "多头,守MA20,微缩量"
+    },
+    {
+      "code": "688521",
+      "name": "芯原股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 284.0,
+      "pct_chg": 3.65,
+      "vol_ratio": 1.17,
+      "dist_ma10": 17.18,
+      "ret5": 24.75,
+      "wash": 7,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "688378",
+      "name": "奥来德",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 57.65,
+      "pct_chg": 1.18,
+      "vol_ratio": 1.03,
+      "dist_ma10": 13.68,
+      "ret5": 29.17,
+      "wash": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "300968",
+      "name": "格林精密",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 10.74,
+      "pct_chg": -0.56,
+      "vol_ratio": 1.12,
+      "dist_ma10": 0.38,
+      "ret5": 3.71,
+      "wash": 7,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "603215",
+      "name": "比依股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 15.36,
+      "pct_chg": -0.78,
+      "vol_ratio": 0.92,
+      "dist_ma10": 1.94,
+      "ret5": 4.03,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "301383",
+      "name": "天键股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 28.14,
+      "pct_chg": 2.1,
+      "vol_ratio": 1.21,
+      "dist_ma10": 2.89,
+      "ret5": 4.53,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "300795",
+      "name": "米奥会展",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 9.16,
+      "pct_chg": 1.44,
+      "vol_ratio": 0.97,
+      "dist_ma10": -1.71,
+      "ret5": -2.51,
+      "wash": 7,
+      "wash_detail": "长下影3x,收高位"
+    },
+    {
+      "code": "301267",
+      "name": "华厦眼科",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 16.3,
+      "pct_chg": 0.74,
+      "vol_ratio": 1.44,
+      "dist_ma10": 1.25,
+      "ret5": -1.63,
+      "wash": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "688619",
+      "name": "罗普特",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 17.74,
+      "pct_chg": 3.8,
+      "vol_ratio": 1.03,
+      "dist_ma10": 6.28,
+      "ret5": 14.81,
+      "wash": 6,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "688343",
+      "name": "云天励飞",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 73.61,
+      "pct_chg": -2.67,
+      "vol_ratio": 1.0,
+      "dist_ma10": 9.17,
+      "ret5": 19.72,
+      "wash": 6,
+      "wash_detail": "下影1x,守MA20"
+    },
+    {
+      "code": "002298",
+      "name": "中电鑫龙",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 8.37,
+      "pct_chg": 2.7,
+      "vol_ratio": 1.19,
+      "dist_ma10": 1.68,
+      "ret5": 4.21,
+      "wash": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "300546",
+      "name": "雄帝科技",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 16.75,
+      "pct_chg": 2.95,
+      "vol_ratio": 1.43,
+      "dist_ma10": 1.83,
+      "ret5": 3.63,
+      "wash": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "300098",
+      "name": "高新兴",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 4.99,
+      "pct_chg": 0.6,
+      "vol_ratio": 1.37,
+      "dist_ma10": -1.03,
+      "ret5": 0.64,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "002177",
+      "name": "御银股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 6.45,
+      "pct_chg": 4.71,
+      "vol_ratio": 1.35,
+      "dist_ma10": 4.15,
+      "ret5": 6.21,
+      "wash": 6,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "301215",
+      "name": "中汽股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 5.27,
+      "pct_chg": -1.5,
+      "vol_ratio": 0.75,
+      "dist_ma10": -1.31,
+      "ret5": 1.38,
+      "wash": 6,
+      "wash_detail": "长下影3x,微缩量"
+    },
+    {
+      "code": "002236",
+      "name": "大华股份",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 16.5,
+      "pct_chg": 1.41,
+      "vol_ratio": 1.14,
+      "dist_ma10": 1.42,
+      "ret5": 3.42,
+      "wash": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "301083",
+      "name": "百胜智能",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 14.11,
+      "pct_chg": 1.44,
+      "vol_ratio": 1.19,
+      "dist_ma10": -0.68,
+      "ret5": -0.52,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "605268",
+      "name": "王力安防",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 9.54,
+      "pct_chg": -0.62,
+      "vol_ratio": 1.1,
+      "dist_ma10": -3.22,
+      "ret5": -3.44,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "300711",
+      "name": "广哈通信",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 17.68,
+      "pct_chg": -0.67,
+      "vol_ratio": 1.29,
+      "dist_ma10": -1.35,
+      "ret5": -1.48,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "002771",
+      "name": "真视通",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 14.38,
+      "pct_chg": 1.55,
+      "vol_ratio": 0.88,
+      "dist_ma10": -4.5,
+      "ret5": -1.29,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "301578",
+      "name": "辰奕智能",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 21.55,
+      "pct_chg": 0.47,
+      "vol_ratio": 1.13,
+      "dist_ma10": -3.22,
+      "ret5": -4.03,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "300822",
+      "name": "贝仕达克",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 12.77,
+      "pct_chg": -0.93,
+      "vol_ratio": 1.12,
+      "dist_ma10": -2.56,
+      "ret5": -1.88,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "688025",
+      "name": "杰普特",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 442.67,
+      "pct_chg": -1.41,
+      "vol_ratio": 0.76,
+      "dist_ma10": 10.1,
+      "ret5": 19.04,
+      "wash": 6,
+      "wash_detail": "守MA20,微缩量"
+    },
+    {
+      "code": "300913",
+      "name": "兆龙互连",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 58.3,
+      "pct_chg": -1.07,
+      "vol_ratio": 1.02,
+      "dist_ma10": 3.75,
+      "ret5": 15.94,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "603893",
+      "name": "瑞芯微",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 179.91,
+      "pct_chg": -0.42,
+      "vol_ratio": 1.21,
+      "dist_ma10": 5.99,
+      "ret5": 11.67,
+      "wash": 6,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "300457",
+      "name": "赢合科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 23.61,
+      "pct_chg": 0.55,
+      "vol_ratio": 1.17,
+      "dist_ma10": -1.42,
+      "ret5": 2.36,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "001287",
+      "name": "中电港",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 30.02,
+      "pct_chg": 2.07,
+      "vol_ratio": 1.48,
+      "dist_ma10": 11.71,
+      "ret5": 18.98,
+      "wash": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "300450",
+      "name": "先导智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 47.35,
+      "pct_chg": 1.33,
+      "vol_ratio": 0.94,
+      "dist_ma10": 5.52,
+      "ret5": 15.23,
+      "wash": 6,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600741",
+      "name": "华域汽车",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 16.6,
+      "pct_chg": 2.03,
+      "vol_ratio": 0.97,
+      "dist_ma10": 0.13,
+      "ret5": -0.19,
+      "wash": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "301629",
+      "name": "矽电股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 381.9,
+      "pct_chg": -4.98,
+      "vol_ratio": 1.13,
+      "dist_ma10": 0.71,
+      "ret5": 0.77,
+      "wash": 6,
+      "wash_detail": "多头,贴MA10"
+    },
+    {
+      "code": "603918",
+      "name": "金桥信息",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 10.63,
+      "pct_chg": 1.53,
+      "vol_ratio": 1.24,
+      "dist_ma10": -0.62,
+      "ret5": 0.72,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "688529",
+      "name": "豪森智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 17.16,
+      "pct_chg": -1.1,
+      "vol_ratio": 1.07,
+      "dist_ma10": -0.85,
+      "ret5": 0.63,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "002347",
+      "name": "泰尔股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 6.28,
+      "pct_chg": -1.41,
+      "vol_ratio": 1.29,
+      "dist_ma10": -4.02,
+      "ret5": -3.2,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "600880",
+      "name": "博瑞传播",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 4.05,
+      "pct_chg": 1.0,
+      "vol_ratio": 1.39,
+      "dist_ma10": -1.29,
+      "ret5": -1.18,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "300079",
+      "name": "数码视讯",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 4.56,
+      "pct_chg": 1.11,
+      "vol_ratio": 1.08,
+      "dist_ma10": -3.49,
+      "ret5": -2.55,
+      "wash": 6,
+      "wash_detail": "长下影2x,收高位"
+    },
+    {
+      "code": "688049",
+      "name": "炬芯科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 45.84,
+      "pct_chg": -0.35,
+      "vol_ratio": 1.16,
+      "dist_ma10": 6.42,
+      "ret5": 12.44,
+      "wash": 6,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "601231",
+      "name": "环旭电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 37.49,
+      "pct_chg": -0.05,
+      "vol_ratio": 1.16,
+      "dist_ma10": 1.19,
+      "ret5": 11.69,
+      "wash": 6,
+      "wash_detail": "长下影2x,贴MA10"
+    },
+    {
+      "code": "002600",
+      "name": "领益智造",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 16.68,
+      "pct_chg": -0.83,
+      "vol_ratio": 1.03,
+      "dist_ma10": 10.6,
+      "ret5": 17.98,
+      "wash": 6,
+      "wash_detail": "下影1x,守MA20"
+    },
+    {
+      "code": "300493",
+      "name": "润欣科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 14.38,
+      "pct_chg": -1.51,
+      "vol_ratio": 1.11,
+      "dist_ma10": 2.64,
+      "ret5": 8.15,
+      "wash": 6,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "002708",
+      "name": "光洋股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 14.98,
+      "pct_chg": -1.32,
+      "vol_ratio": 1.2,
+      "dist_ma10": 5.08,
+      "ret5": 13.8,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "002045",
+      "name": "国光电器",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 8.61,
+      "pct_chg": 0.0,
+      "vol_ratio": 1.11,
+      "dist_ma10": -0.21,
+      "ret5": 1.2,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "001308",
+      "name": "康冠科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 20.87,
+      "pct_chg": -0.48,
+      "vol_ratio": 0.86,
+      "dist_ma10": 1.41,
+      "ret5": 4.8,
+      "wash": 6,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "300866",
+      "name": "安克创新",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 115.47,
+      "pct_chg": -1.4,
+      "vol_ratio": 1.17,
+      "dist_ma10": 2.86,
+      "ret5": 0.46,
+      "wash": 6,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "001316",
+      "name": "润贝航科",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 36.5,
+      "pct_chg": -2.54,
+      "vol_ratio": 1.05,
+      "dist_ma10": 0.11,
+      "ret5": -3.68,
+      "wash": 6,
+      "wash_detail": "长下影2x,贴MA10"
+    },
+    {
+      "code": "600612",
+      "name": "老凤祥",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 34.21,
+      "pct_chg": -0.64,
+      "vol_ratio": 1.01,
+      "dist_ma10": -2.07,
+      "ret5": -3.33,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "301180",
+      "name": "万祥科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 13.79,
+      "pct_chg": -0.93,
+      "vol_ratio": 0.82,
+      "dist_ma10": -1.1,
+      "ret5": -1.06,
+      "wash": 6,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "300002",
+      "name": "神州泰岳",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 7.56,
+      "pct_chg": 3.85,
+      "vol_ratio": 1.12,
+      "dist_ma10": 1.71,
+      "ret5": 4.87,
+      "wash": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "002065",
+      "name": "东华软件",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 7.45,
+      "pct_chg": 1.92,
+      "vol_ratio": 1.12,
+      "dist_ma10": 3.29,
+      "ret5": 6.32,
+      "wash": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "300771",
+      "name": "智莱科技",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 11.3,
+      "pct_chg": -0.53,
+      "vol_ratio": 0.87,
+      "dist_ma10": -0.82,
+      "ret5": 1.52,
+      "wash": 5,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "600850",
+      "name": "电科数字",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 19.32,
+      "pct_chg": -1.38,
+      "vol_ratio": 1.11,
+      "dist_ma10": 1.07,
+      "ret5": 4.57,
+      "wash": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "688039",
+      "name": "当虹科技",
+      "concepts": [
+        "人脸识别",
+        "AI视频"
+      ],
+      "close": 43.95,
+      "pct_chg": -0.11,
+      "vol_ratio": 1.22,
+      "dist_ma10": 2.64,
+      "ret5": 4.38,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "300306",
+      "name": "远方信息",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 10.25,
+      "pct_chg": 1.49,
+      "vol_ratio": 1.31,
+      "dist_ma10": -1.12,
+      "ret5": -1.41,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "301056",
+      "name": "森赫股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 11.91,
+      "pct_chg": -0.25,
+      "vol_ratio": 1.21,
+      "dist_ma10": -2.55,
+      "ret5": -3.35,
+      "wash": 5,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "688686",
+      "name": "奥普特",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 153.03,
+      "pct_chg": -3.56,
+      "vol_ratio": 0.93,
+      "dist_ma10": 9.16,
+      "ret5": 21.75,
+      "wash": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "300227",
+      "name": "光韵达",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 11.31,
+      "pct_chg": 4.92,
+      "vol_ratio": 1.25,
+      "dist_ma10": 6.76,
+      "ret5": 15.54,
+      "wash": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "688195",
+      "name": "腾景科技",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 207.7,
+      "pct_chg": -2.28,
+      "vol_ratio": 1.16,
+      "dist_ma10": 1.29,
+      "ret5": 9.45,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "001360",
+      "name": "南矿集团",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 21.5,
+      "pct_chg": -2.09,
+      "vol_ratio": 0.8,
+      "dist_ma10": 10.45,
+      "ret5": 14.14,
+      "wash": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002845",
+      "name": "同兴达",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 15.64,
+      "pct_chg": -1.32,
+      "vol_ratio": 0.87,
+      "dist_ma10": 1.59,
+      "ret5": 10.43,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "300496",
+      "name": "中科创达",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 64.8,
+      "pct_chg": -1.61,
+      "vol_ratio": 1.3,
+      "dist_ma10": 3.17,
+      "ret5": 8.32,
+      "wash": 5,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "002073",
+      "name": "软控股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 5.4,
+      "pct_chg": 1.12,
+      "vol_ratio": 1.44,
+      "dist_ma10": -1.21,
+      "ret5": -0.86,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "002131",
+      "name": "利欧股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 5.37,
+      "pct_chg": 0.75,
+      "vol_ratio": 1.3,
+      "dist_ma10": -0.22,
+      "ret5": 1.54,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "600959",
+      "name": "江苏有线",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 3.13,
+      "pct_chg": 0.97,
+      "vol_ratio": 0.92,
+      "dist_ma10": -1.76,
+      "ret5": -0.6,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "300612",
+      "name": "宣亚国际",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 12.14,
+      "pct_chg": 1.93,
+      "vol_ratio": 1.27,
+      "dist_ma10": -1.06,
+      "ret5": -0.42,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "301171",
+      "name": "易点天下",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 39.1,
+      "pct_chg": 2.36,
+      "vol_ratio": 1.31,
+      "dist_ma10": 2.61,
+      "ret5": 11.2,
+      "wash": 5,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002575",
+      "name": "群兴玩具",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 5.9,
+      "pct_chg": 0.0,
+      "vol_ratio": 0.58,
+      "dist_ma10": -1.45,
+      "ret5": -0.99,
+      "wash": 5,
+      "wash_detail": "多头,缩量"
+    },
+    {
+      "code": "300251",
+      "name": "光线传媒",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 11.42,
+      "pct_chg": 0.88,
+      "vol_ratio": 1.23,
+      "dist_ma10": -0.1,
+      "ret5": 1.03,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "601360",
+      "name": "三六零",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 9.58,
+      "pct_chg": 2.24,
+      "vol_ratio": 1.49,
+      "dist_ma10": 2.69,
+      "ret5": 4.55,
+      "wash": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "002555",
+      "name": "三七互娱",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 18.26,
+      "pct_chg": 4.52,
+      "vol_ratio": 1.42,
+      "dist_ma10": 1.28,
+      "ret5": 2.39,
+      "wash": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "600633",
+      "name": "浙数文化",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 11.07,
+      "pct_chg": 1.37,
+      "vol_ratio": 1.36,
+      "dist_ma10": -0.08,
+      "ret5": 2.99,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "600640",
+      "name": "国脉文化",
+      "concepts": [
+        "AI视频",
+        "AI眼镜"
+      ],
+      "close": 10.75,
+      "pct_chg": 1.9,
+      "vol_ratio": 1.18,
+      "dist_ma10": -0.12,
+      "ret5": 1.45,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "003005",
+      "name": "竞业达",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 14.3,
+      "pct_chg": 0.42,
+      "vol_ratio": 1.12,
+      "dist_ma10": -3.24,
+      "ret5": -3.73,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "301270",
+      "name": "汉仪股份",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 28.82,
+      "pct_chg": 1.19,
+      "vol_ratio": 1.09,
+      "dist_ma10": -2.47,
+      "ret5": -3.1,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "688123",
+      "name": "聚辰股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 136.99,
+      "pct_chg": -1.38,
+      "vol_ratio": 1.27,
+      "dist_ma10": 5.98,
+      "ret5": 12.48,
+      "wash": 5,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "688601",
+      "name": "力芯微",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 59.21,
+      "pct_chg": -3.33,
+      "vol_ratio": 1.3,
+      "dist_ma10": 6.18,
+      "ret5": 11.3,
+      "wash": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "688653",
+      "name": "康希通信",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 15.07,
+      "pct_chg": -2.14,
+      "vol_ratio": 1.12,
+      "dist_ma10": 4.97,
+      "ret5": 9.71,
+      "wash": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "688469",
+      "name": "芯联集成",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 9.01,
+      "pct_chg": 3.44,
+      "vol_ratio": 1.18,
+      "dist_ma10": 15.88,
+      "ret5": 21.48,
+      "wash": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "688798",
+      "name": "艾为电子",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 69.29,
+      "pct_chg": -2.45,
+      "vol_ratio": 1.23,
+      "dist_ma10": 2.05,
+      "ret5": 7.58,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "688728",
+      "name": "格科微",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 14.11,
+      "pct_chg": -1.81,
+      "vol_ratio": 1.04,
+      "dist_ma10": 2.57,
+      "ret5": 6.19,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "300752",
+      "name": "隆利科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 14.02,
+      "pct_chg": -3.31,
+      "vol_ratio": 0.9,
+      "dist_ma10": 0.33,
+      "ret5": 10.04,
+      "wash": 5,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "002632",
+      "name": "道明光学",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 9.77,
+      "pct_chg": 0.1,
+      "vol_ratio": 1.36,
+      "dist_ma10": -1.27,
+      "ret5": 1.22,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "000049",
+      "name": "德赛电池",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 23.91,
+      "pct_chg": -0.58,
+      "vol_ratio": 1.15,
+      "dist_ma10": 1.5,
+      "ret5": 4.53,
+      "wash": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "300207",
+      "name": "欣旺达",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 21.26,
+      "pct_chg": 2.21,
+      "vol_ratio": 1.01,
+      "dist_ma10": 4.46,
+      "ret5": 5.11,
+      "wash": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600827",
+      "name": "百联股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 7.93,
+      "pct_chg": 1.15,
+      "vol_ratio": 1.02,
+      "dist_ma10": -1.09,
+      "ret5": -1.71,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "301556",
+      "name": "托普云农",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 63.6,
+      "pct_chg": -1.38,
+      "vol_ratio": 1.42,
+      "dist_ma10": -1.44,
+      "ret5": -1.69,
+      "wash": 5,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "000650",
+      "name": "仁和药业",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 5.15,
+      "pct_chg": 0.39,
+      "vol_ratio": 1.36,
+      "dist_ma10": -1.15,
+      "ret5": -2.84,
+      "wash": 5,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "601011",
+      "name": "宝泰隆",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 2.69,
+      "pct_chg": 2.67,
+      "vol_ratio": 0.86,
+      "dist_ma10": -6.47,
+      "ret5": -7.97,
+      "wash": 5,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "688609",
+      "name": "九联科技",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 11.39,
+      "pct_chg": -4.45,
+      "vol_ratio": 1.09,
+      "dist_ma10": 0.53,
+      "ret5": 8.4,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002970",
+      "name": "锐明技术",
+      "concepts": [
+        "人脸识别",
+        "机器视觉"
+      ],
+      "close": 64.2,
+      "pct_chg": -3.39,
+      "vol_ratio": 1.08,
+      "dist_ma10": -1.54,
+      "ret5": 3.84,
+      "wash": 4,
+      "wash_detail": "多头"
+    },
+    {
+      "code": "300102",
+      "name": "乾照光电",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 23.72,
+      "pct_chg": -3.66,
+      "vol_ratio": 1.11,
+      "dist_ma10": 0.15,
+      "ret5": 2.28,
+      "wash": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "002230",
+      "name": "科大讯飞",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 43.88,
+      "pct_chg": 2.98,
+      "vol_ratio": 1.28,
+      "dist_ma10": 3.75,
+      "ret5": 8.4,
+      "wash": 4,
+      "wash_detail": ""
+    },
+    {
+      "code": "600130",
+      "name": "波导股份",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 4.74,
+      "pct_chg": 0.21,
+      "vol_ratio": 1.2,
+      "dist_ma10": 1.17,
+      "ret5": 4.69,
+      "wash": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "300248",
+      "name": "新开普",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 8.52,
+      "pct_chg": 2.77,
+      "vol_ratio": 1.21,
+      "dist_ma10": -0.08,
+      "ret5": 2.21,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "300605",
+      "name": "恒锋信息",
+      "concepts": [
+        "人脸识别",
+        "机器视觉",
+        "AI视频"
+      ],
+      "close": 10.31,
+      "pct_chg": 2.38,
+      "vol_ratio": 1.11,
+      "dist_ma10": -0.69,
+      "ret5": -1.26,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "300645",
+      "name": "正元智慧",
+      "concepts": [
+        "人脸识别"
+      ],
+      "close": 13.1,
+      "pct_chg": 3.07,
+      "vol_ratio": 1.24,
+      "dist_ma10": -1.09,
+      "ret5": -1.55,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "688167",
+      "name": "炬光科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 374.99,
+      "pct_chg": -4.58,
+      "vol_ratio": 0.77,
+      "dist_ma10": -0.98,
+      "ret5": 14.23,
+      "wash": 4,
+      "wash_detail": "下影1x,微缩量"
+    },
+    {
+      "code": "300672",
+      "name": "国科微",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 315.19,
+      "pct_chg": -4.65,
+      "vol_ratio": 1.42,
+      "dist_ma10": 7.44,
+      "ret5": 16.94,
+      "wash": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "688306",
+      "name": "均普智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 10.23,
+      "pct_chg": -1.92,
+      "vol_ratio": 1.35,
+      "dist_ma10": 10.64,
+      "ret5": 19.49,
+      "wash": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002475",
+      "name": "立讯精密",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 68.4,
+      "pct_chg": -2.19,
+      "vol_ratio": 1.25,
+      "dist_ma10": 2.03,
+      "ret5": 7.36,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "301316",
+      "name": "慧博云通",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 42.07,
+      "pct_chg": -1.66,
+      "vol_ratio": 0.98,
+      "dist_ma10": 9.13,
+      "ret5": 18.63,
+      "wash": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "600288",
+      "name": "大恒科技",
+      "concepts": [
+        "机器视觉",
+        "AI视频"
+      ],
+      "close": 13.01,
+      "pct_chg": -0.99,
+      "vol_ratio": 1.41,
+      "dist_ma10": 1.66,
+      "ret5": 6.19,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "301360",
+      "name": "荣旗科技",
+      "concepts": [
+        "机器视觉",
+        "AI眼镜"
+      ],
+      "close": 75.65,
+      "pct_chg": -3.37,
+      "vol_ratio": 1.06,
+      "dist_ma10": 1.2,
+      "ret5": 8.96,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000039",
+      "name": "中集集团",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 8.98,
+      "pct_chg": 1.13,
+      "vol_ratio": 1.02,
+      "dist_ma10": -2.2,
+      "ret5": 0.29,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "003028",
+      "name": "振邦智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 24.25,
+      "pct_chg": -1.22,
+      "vol_ratio": 1.1,
+      "dist_ma10": -3.07,
+      "ret5": -0.82,
+      "wash": 4,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "002979",
+      "name": "雷赛智能",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 53.43,
+      "pct_chg": -3.43,
+      "vol_ratio": 1.1,
+      "dist_ma10": 0.29,
+      "ret5": 5.9,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "300446",
+      "name": "航天智造",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 15.46,
+      "pct_chg": -1.59,
+      "vol_ratio": 1.05,
+      "dist_ma10": -2.42,
+      "ret5": -2.39,
+      "wash": 4,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "688165",
+      "name": "埃夫特",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 20.05,
+      "pct_chg": -4.66,
+      "vol_ratio": 1.01,
+      "dist_ma10": -1.02,
+      "ret5": 2.6,
+      "wash": 4,
+      "wash_detail": "多头"
+    },
+    {
+      "code": "300112",
+      "name": "万讯自控",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 6.68,
+      "pct_chg": 1.52,
+      "vol_ratio": 1.08,
+      "dist_ma10": -1.59,
+      "ret5": -1.09,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603337",
+      "name": "杰克科技",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 40.81,
+      "pct_chg": -4.38,
+      "vol_ratio": 1.08,
+      "dist_ma10": 1.58,
+      "ret5": 6.22,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002338",
+      "name": "奥普光电",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 53.13,
+      "pct_chg": -1.61,
+      "vol_ratio": 0.87,
+      "dist_ma10": 0.62,
+      "ret5": 0.47,
+      "wash": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "600742",
+      "name": "富维股份",
+      "concepts": [
+        "机器视觉"
+      ],
+      "close": 7.58,
+      "pct_chg": 1.34,
+      "vol_ratio": 0.91,
+      "dist_ma10": -2.72,
+      "ret5": -4.02,
+      "wash": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "300067",
+      "name": "安诺其",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 5.62,
+      "pct_chg": 0.54,
+      "vol_ratio": 1.25,
+      "dist_ma10": 4.11,
+      "ret5": 7.08,
+      "wash": 4,
+      "wash_detail": ""
+    },
+    {
+      "code": "001330",
+      "name": "博纳影业",
+      "concepts": [
+        "AI视频"
+      ],
+      "close": 6.72,
+      "pct_chg": -1.75,
+      "vol_ratio": 0.93,
+      "dist_ma10": -1.87,
+      "ret5": -4.96,
+      "wash": 4,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "300323",
+      "name": "华灿光电",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 16.02,
+      "pct_chg": -0.68,
+      "vol_ratio": 1.01,
+      "dist_ma10": 0.02,
+      "ret5": 9.46,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "300938",
+      "name": "信测标准",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 43.79,
+      "pct_chg": -3.55,
+      "vol_ratio": 1.34,
+      "dist_ma10": 8.41,
+      "ret5": 16.19,
+      "wash": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "002273",
+      "name": "水晶光电",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 35.53,
+      "pct_chg": -3.82,
+      "vol_ratio": 1.25,
+      "dist_ma10": 2.04,
+      "ret5": 9.66,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "688220",
+      "name": "翱捷科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 99.59,
+      "pct_chg": -1.5,
+      "vol_ratio": 1.18,
+      "dist_ma10": 4.39,
+      "ret5": 10.41,
+      "wash": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "688458",
+      "name": "美芯晟",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 40.62,
+      "pct_chg": -2.31,
+      "vol_ratio": 1.37,
+      "dist_ma10": 4.11,
+      "ret5": 8.67,
+      "wash": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "688608",
+      "name": "恒玄科技",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 155.9,
+      "pct_chg": -2.13,
+      "vol_ratio": 1.35,
+      "dist_ma10": 2.22,
+      "ret5": 6.35,
+      "wash": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "688157",
+      "name": "松井股份",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 27.83,
+      "pct_chg": -3.0,
+      "vol_ratio": 0.83,
+      "dist_ma10": 0.59,
+      "ret5": -0.04,
+      "wash": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "001298",
+      "name": "好上好",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 20.57,
+      "pct_chg": -1.91,
+      "vol_ratio": 1.16,
+      "dist_ma10": 1.14,
+      "ret5": 2.61,
+      "wash": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "002899",
+      "name": "英派斯",
+      "concepts": [
+        "AI眼镜"
+      ],
+      "close": 22.08,
+      "pct_chg": -1.95,
+      "vol_ratio": 1.41,
+      "dist_ma10": -8.56,
+      "ret5": -10.12,
+      "wash": 4,
+      "wash_detail": "长下影3x"
+    }
+  ]
+}

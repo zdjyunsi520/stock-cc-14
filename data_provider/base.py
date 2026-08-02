@@ -3604,3 +3604,28 @@ class DataFetcherManager:
         if last_error:
             logger.warning(f"[A股实时快照] 所有数据源均失败(scope={scope_text})，最终错误: {last_error}")
         return []
+
+
+# === 全局单例工厂 ===
+# 每次裸 `DataFetcherManager()` 都会重建 7+ 个 fetcher 并打 INFO 日志，
+# 业务代码（pattern_screener / alert_service / events 等）历史上每次调用都 new，
+# 导致日志噪声 + 重复初始化开销。统一走此工厂保证全进程仅初始化一次。
+_data_fetcher_manager_singleton: Optional["DataFetcherManager"] = None
+_data_fetcher_manager_lock = RLock()
+
+
+def get_data_fetcher_manager() -> "DataFetcherManager":
+    """返回进程级单例 DataFetcherManager。"""
+    global _data_fetcher_manager_singleton
+    if _data_fetcher_manager_singleton is None:
+        with _data_fetcher_manager_lock:
+            if _data_fetcher_manager_singleton is None:
+                _data_fetcher_manager_singleton = DataFetcherManager()
+    return _data_fetcher_manager_singleton
+
+
+def reset_data_fetcher_manager() -> None:
+    """清空单例缓存，供运行时配置热更新后强制重建。"""
+    global _data_fetcher_manager_singleton
+    with _data_fetcher_manager_lock:
+        _data_fetcher_manager_singleton = None

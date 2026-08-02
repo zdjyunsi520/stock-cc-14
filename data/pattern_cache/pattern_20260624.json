@@ -1,0 +1,512 @@
+{
+  "date_key": "20260624",
+  "hot_themes": [
+    [
+      "小金属概念",
+      5
+    ],
+    [
+      "氟化工概念",
+      5
+    ],
+    [
+      "磷化工",
+      4
+    ],
+    [
+      "金属回收",
+      3
+    ],
+    [
+      "金属铜",
+      3
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "002672",
+      "name": "东江环保",
+      "close": 3.77,
+      "vol_ratio": 1.47,
+      "ret3": 11.39,
+      "ret5": -1.36,
+      "up_days_5": 2,
+      "dist_ma10": 2.56,
+      "consecutive_up": 0,
+      "themes": [
+        "金属回收",
+        "磷化工",
+        "金属铜",
+        "氟化工概念"
+      ],
+      "score": 74.7,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20,贴MA10"
+    },
+    {
+      "code": "002237",
+      "name": "恒邦股份",
+      "close": 14.16,
+      "vol_ratio": 0.82,
+      "ret3": -1.08,
+      "ret5": 4.67,
+      "up_days_5": 3,
+      "dist_ma10": 3.06,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "磷化工",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 73.2,
+      "theme_score": 40.0,
+      "wash_score": 11,
+      "wash_detail": "下影1x,收高位,多头,守MA20"
+    },
+    {
+      "code": "000751",
+      "name": "锌业股份",
+      "close": 6.16,
+      "vol_ratio": 2.73,
+      "ret3": 18.6,
+      "ret5": 16.53,
+      "up_days_5": 4,
+      "dist_ma10": 16.12,
+      "consecutive_up": 4,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 72.3,
+      "theme_score": 30.0,
+      "wash_score": 11,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603799",
+      "name": "华友钴业",
+      "close": 52.33,
+      "vol_ratio": 0.86,
+      "ret3": 0.95,
+      "ret5": -0.76,
+      "up_days_5": 2,
+      "dist_ma10": 1.89,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "磷化工",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 68.6,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000060",
+      "name": "中金岭南",
+      "close": 8.17,
+      "vol_ratio": 1.06,
+      "ret3": 3.03,
+      "ret5": 2.9,
+      "up_days_5": 3,
+      "dist_ma10": 4.06,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 65.6,
+      "theme_score": 30.0,
+      "wash_score": 8,
+      "wash_detail": "收高位,多头"
+    },
+    {
+      "code": "000546",
+      "name": "金圆股份",
+      "close": 5.41,
+      "vol_ratio": 0.98,
+      "ret3": 4.84,
+      "ret5": 0.55,
+      "up_days_5": 2,
+      "dist_ma10": 1.86,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 59.8,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "000758",
+      "name": "中色股份",
+      "close": 7.07,
+      "vol_ratio": 0.89,
+      "ret3": 0.82,
+      "ret5": 0.0,
+      "up_days_5": 2,
+      "dist_ma10": 1.23,
+      "consecutive_up": 0,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 58.9,
+      "theme_score": 30.0,
+      "wash_score": 8,
+      "wash_detail": "长下影2x,多头,贴MA10"
+    },
+    {
+      "code": "600884",
+      "name": "杉杉股份",
+      "close": 14.59,
+      "vol_ratio": 0.84,
+      "ret3": 5.3,
+      "ret5": 3.76,
+      "up_days_5": 4,
+      "dist_ma10": 4.8,
+      "consecutive_up": 3,
+      "themes": [
+        "小金属概念",
+        "氟化工概念"
+      ],
+      "score": 58.4,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,守MA20"
+    },
+    {
+      "code": "600531",
+      "name": "豫光金铅",
+      "close": 15.76,
+      "vol_ratio": 1.81,
+      "ret3": 16.67,
+      "ret5": 15.21,
+      "up_days_5": 3,
+      "dist_ma10": 16.06,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 58.1,
+      "theme_score": 30.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603327",
+      "name": "福蓉科技",
+      "close": 11.5,
+      "vol_ratio": 2.51,
+      "ret3": 7.85,
+      "ret5": 6.65,
+      "up_days_5": 4,
+      "dist_ma10": 9.18,
+      "consecutive_up": 3,
+      "themes": [
+        "金属回收"
+      ],
+      "score": 55.1,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603257",
+      "name": "中国瑞林",
+      "close": 70.82,
+      "vol_ratio": 0.96,
+      "ret3": 0.58,
+      "ret5": 2.01,
+      "up_days_5": 3,
+      "dist_ma10": 2.33,
+      "consecutive_up": 2,
+      "themes": [
+        "金属回收",
+        "金属铜"
+      ],
+      "score": 54.6,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "002738",
+      "name": "中矿资源",
+      "close": 60.25,
+      "vol_ratio": 0.95,
+      "ret3": -0.34,
+      "ret5": -2.09,
+      "up_days_5": 3,
+      "dist_ma10": -0.5,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 54.5,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,多头"
+    },
+    {
+      "code": "002266",
+      "name": "浙富控股",
+      "close": 4.98,
+      "vol_ratio": 0.92,
+      "ret3": 2.81,
+      "ret5": 0.79,
+      "up_days_5": 1,
+      "dist_ma10": 1.36,
+      "consecutive_up": 0,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 54.2,
+      "theme_score": 30.0,
+      "wash_score": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "600362",
+      "name": "江西铜业",
+      "close": 47.33,
+      "vol_ratio": 0.9,
+      "ret3": -11.23,
+      "ret5": 2.99,
+      "up_days_5": 3,
+      "dist_ma10": 0.52,
+      "consecutive_up": 0,
+      "themes": [
+        "金属回收",
+        "金属铜"
+      ],
+      "score": 54.0,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "长下影2x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "000833",
+      "name": "粤桂股份",
+      "close": 25.0,
+      "vol_ratio": 0.89,
+      "ret3": 13.56,
+      "ret5": 8.14,
+      "up_days_5": 3,
+      "dist_ma10": 3.79,
+      "consecutive_up": 3,
+      "themes": [
+        "磷化工",
+        "氟化工概念"
+      ],
+      "score": 53.9,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "000902",
+      "name": "新洋丰",
+      "close": 12.45,
+      "vol_ratio": 1.3,
+      "ret3": 2.65,
+      "ret5": -0.48,
+      "up_days_5": 2,
+      "dist_ma10": 0.22,
+      "consecutive_up": 1,
+      "themes": [
+        "磷化工",
+        "氟化工概念"
+      ],
+      "score": 53.0,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000422",
+      "name": "湖北宜化",
+      "close": 14.26,
+      "vol_ratio": 1.21,
+      "ret3": 8.67,
+      "ret5": 4.26,
+      "up_days_5": 2,
+      "dist_ma10": 4.44,
+      "consecutive_up": 1,
+      "themes": [
+        "磷化工",
+        "氟化工概念"
+      ],
+      "score": 52.1,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "002549",
+      "name": "凯美特气",
+      "close": 19.44,
+      "vol_ratio": 2.64,
+      "ret3": 18.77,
+      "ret5": 9.53,
+      "up_days_5": 3,
+      "dist_ma10": 10.79,
+      "consecutive_up": 3,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 51.4,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "000657",
+      "name": "中钨高新",
+      "close": 100.08,
+      "vol_ratio": 1.1,
+      "ret3": 2.26,
+      "ret5": 9.05,
+      "up_days_5": 2,
+      "dist_ma10": 10.2,
+      "consecutive_up": 0,
+      "themes": [
+        "金属回收",
+        "金属铜",
+        "小金属概念"
+      ],
+      "score": 51.0,
+      "theme_score": 30.0,
+      "wash_score": 13,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "002741",
+      "name": "光华科技",
+      "close": 34.97,
+      "vol_ratio": 1.52,
+      "ret3": -15.88,
+      "ret5": -1.15,
+      "up_days_5": 3,
+      "dist_ma10": 0.22,
+      "consecutive_up": 0,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 50.2,
+      "theme_score": 10.0,
+      "wash_score": 11,
+      "wash_detail": "长下影3x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "002759",
+      "name": "天际股份",
+      "close": 28.1,
+      "vol_ratio": 1.0,
+      "ret3": 3.77,
+      "ret5": -0.44,
+      "up_days_5": 2,
+      "dist_ma10": 2.6,
+      "consecutive_up": 1,
+      "themes": [
+        "磷化工",
+        "氟化工概念"
+      ],
+      "score": 50.0,
+      "theme_score": 20.0,
+      "wash_score": 8,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "603717",
+      "name": "天域生物",
+      "close": 6.38,
+      "vol_ratio": 1.99,
+      "ret3": 7.19,
+      "ret5": 3.62,
+      "up_days_5": 2,
+      "dist_ma10": 0.68,
+      "consecutive_up": 0,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 49.9,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600497",
+      "name": "驰宏锌锗",
+      "close": 12.1,
+      "vol_ratio": 1.48,
+      "ret3": 17.28,
+      "ret5": 19.36,
+      "up_days_5": 4,
+      "dist_ma10": 19.91,
+      "consecutive_up": 1,
+      "themes": [
+        "金属回收",
+        "小金属概念"
+      ],
+      "score": 49.8,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "002056",
+      "name": "横店东磁",
+      "close": 27.45,
+      "vol_ratio": 0.95,
+      "ret3": 1.66,
+      "ret5": 7.37,
+      "up_days_5": 4,
+      "dist_ma10": 3.23,
+      "consecutive_up": 0,
+      "themes": [
+        "小金属概念"
+      ],
+      "score": 49.5,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "000830",
+      "name": "鲁西化工",
+      "close": 12.87,
+      "vol_ratio": 0.91,
+      "ret3": 2.69,
+      "ret5": -0.39,
+      "up_days_5": 2,
+      "dist_ma10": 0.37,
+      "consecutive_up": 1,
+      "themes": [
+        "磷化工",
+        "氟化工概念"
+      ],
+      "score": 49.1,
+      "theme_score": 20.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    }
+  ],
+  "analysis_time": "2026-06-27 23:26:00"
+}

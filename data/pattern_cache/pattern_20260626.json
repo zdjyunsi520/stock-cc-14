@@ -1,0 +1,486 @@
+{
+  "date_key": "20260626",
+  "hot_themes": [
+    [
+      "先进封装",
+      1
+    ],
+    [
+      "商业航天",
+      1
+    ],
+    [
+      "OLED",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "close": 32.75,
+      "vol_ratio": 1.64,
+      "ret3": 1.61,
+      "ret5": 0.7,
+      "up_days_5": 2,
+      "dist_ma10": 0.61,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装",
+        "商业航天",
+        "OLED"
+      ],
+      "score": 66.4,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "603773",
+      "name": "沃格光电",
+      "close": 178.0,
+      "vol_ratio": 1.01,
+      "ret3": 3.48,
+      "ret5": 8.0,
+      "up_days_5": 4,
+      "dist_ma10": 10.53,
+      "consecutive_up": 2,
+      "themes": [
+        "先进封装",
+        "商业航天",
+        "OLED"
+      ],
+      "score": 60.1,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002579",
+      "name": "中京电子",
+      "close": 22.78,
+      "vol_ratio": 1.71,
+      "ret3": 14.26,
+      "ret5": 12.43,
+      "up_days_5": 3,
+      "dist_ma10": 18.95,
+      "consecutive_up": 2,
+      "themes": [
+        "先进封装",
+        "商业航天",
+        "OLED"
+      ],
+      "score": 57.1,
+      "theme_score": 30.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603010",
+      "name": "万盛股份",
+      "close": 16.61,
+      "vol_ratio": 3.13,
+      "ret3": 14.25,
+      "ret5": 19.9,
+      "up_days_5": 4,
+      "dist_ma10": 15.23,
+      "consecutive_up": 2,
+      "themes": [
+        "OLED"
+      ],
+      "score": 55.0,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002456",
+      "name": "欧菲光",
+      "close": 9.52,
+      "vol_ratio": 2.44,
+      "ret3": 5.55,
+      "ret5": 2.85,
+      "up_days_5": 2,
+      "dist_ma10": 3.93,
+      "consecutive_up": 1,
+      "themes": [
+        "OLED"
+      ],
+      "score": 54.4,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002845",
+      "name": "同兴达",
+      "close": 15.88,
+      "vol_ratio": 1.41,
+      "ret3": 0.26,
+      "ret5": 0.28,
+      "up_days_5": 2,
+      "dist_ma10": 1.5,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装",
+        "OLED"
+      ],
+      "score": 54.1,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "601208",
+      "name": "东材科技",
+      "close": 73.65,
+      "vol_ratio": 0.89,
+      "ret3": 2.76,
+      "ret5": -0.56,
+      "up_days_5": 3,
+      "dist_ma10": 1.8,
+      "consecutive_up": 0,
+      "themes": [
+        "商业航天",
+        "OLED"
+      ],
+      "score": 53.9,
+      "theme_score": 20.0,
+      "wash_score": 9,
+      "wash_detail": "下影1x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "605589",
+      "name": "圣泉集团",
+      "close": 66.71,
+      "vol_ratio": 0.88,
+      "ret3": 1.67,
+      "ret5": -3.03,
+      "up_days_5": 3,
+      "dist_ma10": -0.65,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装",
+        "商业航天",
+        "OLED"
+      ],
+      "score": 53.8,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600183",
+      "name": "生益科技",
+      "close": 178.5,
+      "vol_ratio": 0.84,
+      "ret3": 6.55,
+      "ret5": -2.12,
+      "up_days_5": 3,
+      "dist_ma10": 1.62,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装",
+        "商业航天"
+      ],
+      "score": 53.4,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "下影1x,多头,守MA20,贴MA10"
+    },
+    {
+      "code": "002008",
+      "name": "大族激光",
+      "close": 151.27,
+      "vol_ratio": 1.25,
+      "ret3": 4.28,
+      "ret5": 12.07,
+      "up_days_5": 3,
+      "dist_ma10": 9.3,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装",
+        "商业航天",
+        "OLED"
+      ],
+      "score": 52.5,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "000925",
+      "name": "众合科技",
+      "close": 9.52,
+      "vol_ratio": 1.65,
+      "ret3": 14.74,
+      "ret5": 16.11,
+      "up_days_5": 4,
+      "dist_ma10": 10.83,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装",
+        "商业航天"
+      ],
+      "score": 51.5,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002079",
+      "name": "苏州固锝",
+      "close": 14.18,
+      "vol_ratio": 1.03,
+      "ret3": 1.26,
+      "ret5": 3.3,
+      "up_days_5": 4,
+      "dist_ma10": 4.95,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 50.3,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002077",
+      "name": "大港股份",
+      "close": 18.53,
+      "vol_ratio": 0.95,
+      "ret3": 1.8,
+      "ret5": 3.24,
+      "up_days_5": 4,
+      "dist_ma10": 4.1,
+      "consecutive_up": 0,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 49.5,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600520",
+      "name": "三佳科技",
+      "close": 36.0,
+      "vol_ratio": 2.35,
+      "ret3": 9.82,
+      "ret5": 10.05,
+      "up_days_5": 4,
+      "dist_ma10": 13.09,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 48.5,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603726",
+      "name": "朗迪集团",
+      "close": 29.41,
+      "vol_ratio": 1.3,
+      "ret3": 1.26,
+      "ret5": 2.28,
+      "up_days_5": 3,
+      "dist_ma10": 3.2,
+      "consecutive_up": 1,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 48.0,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603690",
+      "name": "至纯科技",
+      "close": 35.49,
+      "vol_ratio": 1.79,
+      "ret3": 12.94,
+      "ret5": 19.74,
+      "up_days_5": 5,
+      "dist_ma10": 16.44,
+      "consecutive_up": 9,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 47.9,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "000725",
+      "name": "京东方A",
+      "close": 7.79,
+      "vol_ratio": 1.27,
+      "ret3": 14.39,
+      "ret5": 17.88,
+      "up_days_5": 4,
+      "dist_ma10": 16.39,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装",
+        "OLED"
+      ],
+      "score": 47.7,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002387",
+      "name": "维信诺",
+      "close": 8.84,
+      "vol_ratio": 2.17,
+      "ret3": 7.04,
+      "ret5": 6.8,
+      "up_days_5": 1,
+      "dist_ma10": 4.63,
+      "consecutive_up": 0,
+      "themes": [
+        "OLED"
+      ],
+      "score": 46.7,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002635",
+      "name": "安洁科技",
+      "close": 19.55,
+      "vol_ratio": 2.16,
+      "ret3": 8.35,
+      "ret5": 7.36,
+      "up_days_5": 3,
+      "dist_ma10": 8.33,
+      "consecutive_up": 3,
+      "themes": [
+        "OLED"
+      ],
+      "score": 46.6,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "600460",
+      "name": "士兰微",
+      "close": 50.38,
+      "vol_ratio": 1.09,
+      "ret3": 7.06,
+      "ret5": 19.16,
+      "up_days_5": 4,
+      "dist_ma10": 17.01,
+      "consecutive_up": 1,
+      "themes": [
+        "先进封装",
+        "OLED"
+      ],
+      "score": 45.9,
+      "theme_score": 20.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002049",
+      "name": "紫光国微",
+      "close": 83.98,
+      "vol_ratio": 1.05,
+      "ret3": 2.7,
+      "ret5": 4.6,
+      "up_days_5": 3,
+      "dist_ma10": 4.67,
+      "consecutive_up": 0,
+      "themes": [
+        "商业航天"
+      ],
+      "score": 45.5,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "000066",
+      "name": "中国长城",
+      "close": 18.57,
+      "vol_ratio": 1.01,
+      "ret3": 5.38,
+      "ret5": 5.12,
+      "up_days_5": 3,
+      "dist_ma10": 4.19,
+      "consecutive_up": 0,
+      "themes": [
+        "商业航天"
+      ],
+      "score": 45.1,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "003031",
+      "name": "中瓷电子",
+      "close": 183.1,
+      "vol_ratio": 0.91,
+      "ret3": -2.07,
+      "ret5": 4.59,
+      "up_days_5": 3,
+      "dist_ma10": 4.87,
+      "consecutive_up": 0,
+      "themes": [
+        "商业航天"
+      ],
+      "score": 44.1,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "600522",
+      "name": "中天科技",
+      "close": 61.29,
+      "vol_ratio": 1.3,
+      "ret3": 0.29,
+      "ret5": 9.26,
+      "up_days_5": 4,
+      "dist_ma10": 6.0,
+      "consecutive_up": 0,
+      "themes": [
+        "商业航天"
+      ],
+      "score": 43.0,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002559",
+      "name": "亚威股份",
+      "close": 12.31,
+      "vol_ratio": 2.27,
+      "ret3": 16.08,
+      "ret5": 13.22,
+      "up_days_5": 3,
+      "dist_ma10": 15.35,
+      "consecutive_up": 3,
+      "themes": [
+        "OLED"
+      ],
+      "score": 42.7,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    }
+  ],
+  "analysis_time": "2026-06-28 15:58:37"
+}

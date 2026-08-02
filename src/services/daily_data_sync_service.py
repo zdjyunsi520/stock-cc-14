@@ -7,11 +7,12 @@ import logging
 import time
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import pandas as pd
 
 from src.storage import DatabaseManager
+from src.utils.stock_filter import is_excluded_board, is_excluded_by_name
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +35,7 @@ class DailyDataSyncService:
         *,
         config: Any = None,
         db: Optional[DatabaseManager] = None,
-        interval_seconds: float = 5.0,
+        interval_seconds: float = 3.0,
         start_date: str = "2000-01-01",
     ) -> None:
         if config is None:
@@ -99,13 +100,16 @@ class DailyDataSyncService:
             # 排除退市（outDate 非空表示已退市）
             if only_listed and out_date and out_date not in ("", "None", "nan"):
                 continue
-            # 只保留 6/0 开头（排除创业板 300/301、科创板 688、北交所 4/8）
-            if code[0] not in ("6", "0"):
+            # 板块黑名单：300/301 创业板、688 科创板、4/8 北交所
+            if is_excluded_board(code):
                 continue
-            if code.startswith("688"):
+            # ST/*ST/退市（与 exclude_st 参数解耦：黑名单始终生效）
+            if is_excluded_by_name(name):
                 continue
-            if exclude_st and ("ST" in name.upper()):
-                continue
+            # 兼容旧 exclude_st 语义：如调用方明确不排除 ST，回滚到只看板块
+            # （当前无调用方传 exclude_st=False，但保留钩子避免破坏 API）
+            if exclude_st and not is_excluded_by_name(name):
+                pass  # no-op，保留参数以兼容
             stocks.append({"code": code, "name": name})
 
         logger.info("[DailySync] 股票列表: %d 只（排除ST=%s, 排除退市=%s）", len(stocks), exclude_st, only_listed)
@@ -230,8 +234,9 @@ class DailyDataSyncService:
     def _sync_one_stock(self, bs, code: str, name: str) -> int:
         """同步单只股票最近120天数据，返回写入行数。"""
         bs_code = self._to_bs_code(code)
-        start = (date.today() - timedelta(days=120)).strftime("%Y-%m-%d")
-        end = date.today().strftime("%Y-%m-%d")
+        target = self._last_complete_trading_date()
+        start = (target - timedelta(days=120)).strftime("%Y-%m-%d")
+        end = target.strftime("%Y-%m-%d")
         rs = bs.query_history_k_data_plus(
             code=bs_code,
             fields="date,open,high,low,close,volume,amount,pctChg",
@@ -243,7 +248,7 @@ class DailyDataSyncService:
 
         # Baostock 连接可能中途断开，检查 error_code
         if rs.error_code != "0":
-            raise RuntimeError(f"Baostock error: {rs.error_code} {rs.error_msg}")
+            raise RuntimeError(f"Baostock error: {rs.error_code} {rs.error_msg}") from None
 
         rows_data = []
         while rs.next():
@@ -290,7 +295,7 @@ class DailyDataSyncService:
             return SyncResult()
 
         result = SyncResult(total=len(states))
-        today = date.today()
+        target_date = self._last_complete_trading_date()
 
         import baostock as bs
 
@@ -306,9 +311,9 @@ class DailyDataSyncService:
                 name = state.get("code_name", "")
                 last_date = state.get("last_synced_date")
 
-                start = self._next_trading_day(last_date) if last_date else today - timedelta(days=120)
+                start = self._next_trading_day(last_date) if last_date else target_date - timedelta(days=120)
                 start_str = start.strftime("%Y-%m-%d") if isinstance(start, date) else str(start)
-                end_str = today.strftime("%Y-%m-%d")
+                end_str = target_date.strftime("%Y-%m-%d")
 
                 if start_str > end_str:
                     result.skipped += 1
@@ -316,6 +321,15 @@ class DailyDataSyncService:
 
                 try:
                     rows = self._sync_one_stock_incremental(bs, code, name, start_str, end_str)
+                    if rows == 0:
+                        # 0行疑似限流：暂停60秒冷却，重连后重试本股
+                        logger.warning("[DailySync] %s %s 返回0行，60秒冷却后重连重试", code, name)
+                        rows, retry_exc = self._retry_after_reconnect(
+                            bs, code, name, start_str, end_str, 60,
+                        )
+                        if retry_exc:
+                            raise retry_exc
+                        logger.info("[DailySync] %s %s 重连后: %d行", code, name, rows)
                     result.synced += 1
                     result.rows_written += rows
                     if rows > 0:
@@ -324,10 +338,52 @@ class DailyDataSyncService:
                         consecutive_empty += 1
                     logger.info("[DailySync] 增量 %s %s: %d行 (进度 %d/%d)", code, name, rows, idx + 1, len(states))
                 except Exception as exc:
-                    result.failed += 1
-                    consecutive_empty += 1
-                    result.errors.append(f"{code}: {exc}")
+                    exc_msg = str(exc)
                     logger.warning("[DailySync] 增量 %s 失败: %s", code, exc)
+
+                    # 10053/接收数据异常/软件中止：限流征兆（与0行同类），60秒冷却后重连重试本股
+                    if ("10053" in exc_msg or "接收数据异常" in exc_msg or "软件中止" in exc_msg):
+                        logger.warning("[DailySync] %s %s 连接异常，60秒冷却后重连重试该股", code, name)
+                        rows, retry_exc = self._retry_after_reconnect(
+                            bs, code, name, start_str, end_str, 60,
+                        )
+                        if retry_exc:
+                            result.failed += 1
+                            consecutive_empty += 1
+                            result.errors.append(f"{code}: {exc} | 重连后 {retry_exc}")
+                            logger.warning("[DailySync] %s 重连后仍失败: %s", code, retry_exc)
+                        else:
+                            result.synced += 1
+                            result.rows_written += rows
+                            if rows > 0:
+                                consecutive_empty = 0
+                            else:
+                                consecutive_empty += 1
+                            logger.info("[DailySync] %s %s 重连后: %d行", code, name, rows)
+                    # 10054类（远程关闭/forcibly/reset）：10分钟重连继续下一只
+                    elif ("10054" in exc_msg
+                            or "forcibly" in exc_msg.lower()
+                            or "reset" in exc_msg.lower()
+                            or "ConnectionReset" in exc_msg):
+                        result.failed += 1
+                        consecutive_empty += 1
+                        result.errors.append(f"{code}: {exc}")
+                        logger.warning("[DailySync] 检测到连接断开，等待 600 秒后重连...")
+                        time.sleep(600)
+                        try:
+                            bs.logout()
+                        except Exception:
+                            pass
+                        login_result = bs.login()
+                        if login_result.error_code != "0":
+                            logger.error("[DailySync] 重连失败: %s，停止同步", login_result.error_msg)
+                            break
+                        logger.info("[DailySync] 重连成功，继续同步")
+                    # 其他异常：只计 failed
+                    else:
+                        result.failed += 1
+                        consecutive_empty += 1
+                        result.errors.append(f"{code}: {exc}")
 
                 # 连续10只无数据，数据源未就绪，停止
                 if consecutive_empty >= 10:
@@ -347,6 +403,31 @@ class DailyDataSyncService:
             result.total, result.synced, result.failed, result.rows_written,
         )
         return result
+
+    def _retry_after_reconnect(self, bs, code: str, name: str,
+                               start_str: str, end_str: str,
+                               wait_seconds: int) -> Tuple[int, Optional[Exception]]:
+        """等待 + 重连 + 重试本股一次。
+
+        0行与10053限流路径共用。
+
+        Returns:
+            (rows, exc): 重连失败或重试异常时 exc 不为 None；否则 rows 为重试结果（可能仍0）。
+        """
+        logger.info("[DailySync] 等待 %d 秒后重连", wait_seconds)
+        time.sleep(wait_seconds)
+        try:
+            bs.logout()
+        except Exception:
+            pass
+        login_result = bs.login()
+        if login_result.error_code != "0":
+            return 0, RuntimeError(f"重连失败: {login_result.error_msg}")
+        try:
+            rows = self._sync_one_stock_incremental(bs, code, name, start_str, end_str)
+            return rows, None
+        except Exception as exc:
+            return 0, exc
 
     def _sync_one_stock_incremental(self, bs, code: str, name: str,
                                      start_str: str, end_str: str) -> int:
@@ -424,6 +505,33 @@ class DailyDataSyncService:
             return code
         prefix = "sh" if code.startswith("6") else "sz"
         return f"{prefix}.{code}"
+
+    @staticmethod
+    def _last_complete_trading_date() -> date:
+        """计算最近一个数据应已完备的交易日。
+
+        规则:
+        - 工作日 15:30 之后 → 当天
+        - 工作日 15:30 之前 → 前一个交易日
+        - 周六 → 周五
+        - 周日 → 周五
+        """
+        from datetime import datetime as _dt
+        now = _dt.now()
+        today = now.date()
+        weekday = today.weekday()  # 0=Mon ... 6=Sun
+
+        if weekday == 5:  # 周六
+            return today - timedelta(days=1)
+        if weekday == 6:  # 周日
+            return today - timedelta(days=2)
+
+        # 工作日
+        if now.hour >= 16 or (now.hour == 15 and now.minute >= 30):
+            return today
+        # 15:30 前，回退到上一个交易日
+        offset = 3 if weekday == 0 else 1  # 周一回退到上周五
+        return today - timedelta(days=offset)
 
     @staticmethod
     def _next_trading_day(d) -> Optional[date]:

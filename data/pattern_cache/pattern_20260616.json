@@ -1,0 +1,494 @@
+{
+  "date_key": "20260616",
+  "hot_themes": [
+    [
+      "储能",
+      1
+    ],
+    [
+      "光伏概念",
+      1
+    ],
+    [
+      "风电",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "605066",
+      "name": "天正电气",
+      "close": 6.94,
+      "vol_ratio": 1.7,
+      "ret3": 10.84,
+      "ret5": 5.77,
+      "up_days_5": 3,
+      "dist_ma10": 4.09,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 72.0,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "601126",
+      "name": "四方股份",
+      "close": 72.07,
+      "vol_ratio": 2.09,
+      "ret3": 7.33,
+      "ret5": 1.78,
+      "up_days_5": 3,
+      "dist_ma10": 1.92,
+      "consecutive_up": 3,
+      "themes": [
+        "风电",
+        "光伏概念"
+      ],
+      "score": 65.9,
+      "theme_score": 20.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002518",
+      "name": "科士达",
+      "close": 50.85,
+      "vol_ratio": 1.45,
+      "ret3": 11.33,
+      "ret5": 4.5,
+      "up_days_5": 2,
+      "dist_ma10": 4.32,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 64.5,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "603191",
+      "name": "望变电气",
+      "close": 18.21,
+      "vol_ratio": 1.81,
+      "ret3": 15.43,
+      "ret5": 9.71,
+      "up_days_5": 3,
+      "dist_ma10": 5.69,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 63.1,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002922",
+      "name": "伊戈尔",
+      "close": 37.56,
+      "vol_ratio": 1.14,
+      "ret3": 9.96,
+      "ret5": 2.94,
+      "up_days_5": 4,
+      "dist_ma10": 3.53,
+      "consecutive_up": 4,
+      "themes": [
+        "储能",
+        "光伏概念"
+      ],
+      "score": 61.4,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002980",
+      "name": "华盛昌",
+      "close": 122.6,
+      "vol_ratio": 1.59,
+      "ret3": 5.73,
+      "ret5": 3.06,
+      "up_days_5": 3,
+      "dist_ma10": 3.15,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "光伏概念"
+      ],
+      "score": 60.9,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603312",
+      "name": "西典新能",
+      "close": 37.66,
+      "vol_ratio": 1.59,
+      "ret3": 12.77,
+      "ret5": 7.51,
+      "up_days_5": 3,
+      "dist_ma10": 6.06,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 60.9,
+      "theme_score": 30.0,
+      "wash_score": 6,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002706",
+      "name": "良信股份",
+      "close": 12.3,
+      "vol_ratio": 0.98,
+      "ret3": 7.03,
+      "ret5": -1.17,
+      "up_days_5": 2,
+      "dist_ma10": 0.73,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 59.8,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x,贴MA10"
+    },
+    {
+      "code": "002112",
+      "name": "三变科技",
+      "close": 18.06,
+      "vol_ratio": 2.4,
+      "ret3": 9.68,
+      "ret5": 5.57,
+      "up_days_5": 3,
+      "dist_ma10": 4.61,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 59.0,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "000690",
+      "name": "宝新能源",
+      "close": 5.6,
+      "vol_ratio": 1.85,
+      "ret3": 8.93,
+      "ret5": 7.27,
+      "up_days_5": 4,
+      "dist_ma10": 4.32,
+      "consecutive_up": 4,
+      "themes": [
+        "风电"
+      ],
+      "score": 58.5,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "600460",
+      "name": "士兰微",
+      "close": 38.28,
+      "vol_ratio": 2.33,
+      "ret3": 15.14,
+      "ret5": 10.67,
+      "up_days_5": 2,
+      "dist_ma10": 11.5,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 58.3,
+      "theme_score": 30.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "601179",
+      "name": "中国西电",
+      "close": 16.3,
+      "vol_ratio": 1.8,
+      "ret3": 20.08,
+      "ret5": 14.21,
+      "up_days_5": 3,
+      "dist_ma10": 10.85,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 58.0,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002745",
+      "name": "木林森",
+      "close": 10.63,
+      "vol_ratio": 2.02,
+      "ret3": 14.66,
+      "ret5": 9.96,
+      "up_days_5": 3,
+      "dist_ma10": 7.37,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "光伏概念"
+      ],
+      "score": 55.2,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "000922",
+      "name": "佳电股份",
+      "close": 14.5,
+      "vol_ratio": 3.79,
+      "ret3": 19.34,
+      "ret5": 16.53,
+      "up_days_5": 4,
+      "dist_ma10": 14.53,
+      "consecutive_up": 4,
+      "themes": [
+        "风电"
+      ],
+      "score": 55.0,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "601611",
+      "name": "中国核建",
+      "close": 11.36,
+      "vol_ratio": 1.96,
+      "ret3": 8.38,
+      "ret5": 4.13,
+      "up_days_5": 3,
+      "dist_ma10": 3.43,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 54.6,
+      "theme_score": 10.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    },
+    {
+      "code": "002669",
+      "name": "康达新材",
+      "close": 17.11,
+      "vol_ratio": 0.92,
+      "ret3": 0.14,
+      "ret5": 0.16,
+      "up_days_5": 3,
+      "dist_ma10": 2.06,
+      "consecutive_up": 2,
+      "themes": [
+        "风电",
+        "光伏概念"
+      ],
+      "score": 54.2,
+      "theme_score": 20.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20,贴MA10"
+    },
+    {
+      "code": "002350",
+      "name": "北京科锐",
+      "close": 16.06,
+      "vol_ratio": 1.4,
+      "ret3": 11.07,
+      "ret5": 10.19,
+      "up_days_5": 3,
+      "dist_ma10": 8.83,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "风电",
+        "光伏概念"
+      ],
+      "score": 54.0,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "000151",
+      "name": "中成股份",
+      "close": 14.41,
+      "vol_ratio": 1.38,
+      "ret3": 13.53,
+      "ret5": 4.82,
+      "up_days_5": 2,
+      "dist_ma10": 4.11,
+      "consecutive_up": 0,
+      "themes": [
+        "储能",
+        "光伏概念"
+      ],
+      "score": 53.8,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "600237",
+      "name": "铜峰电子",
+      "close": 11.42,
+      "vol_ratio": 1.35,
+      "ret3": 11.37,
+      "ret5": -1.1,
+      "up_days_5": 2,
+      "dist_ma10": 2.8,
+      "consecutive_up": 2,
+      "themes": [
+        "风电",
+        "光伏概念"
+      ],
+      "score": 53.5,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20,贴MA10"
+    },
+    {
+      "code": "603218",
+      "name": "日月股份",
+      "close": 11.17,
+      "vol_ratio": 1.33,
+      "ret3": 5.0,
+      "ret5": 5.48,
+      "up_days_5": 4,
+      "dist_ma10": 2.31,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 53.3,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002079",
+      "name": "苏州固锝",
+      "close": 12.94,
+      "vol_ratio": 1.69,
+      "ret3": 8.72,
+      "ret5": 8.48,
+      "up_days_5": 3,
+      "dist_ma10": 7.05,
+      "consecutive_up": 2,
+      "themes": [
+        "储能",
+        "光伏概念"
+      ],
+      "score": 51.9,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "601026",
+      "name": "道生天合",
+      "close": 15.95,
+      "vol_ratio": 1.17,
+      "ret3": 9.0,
+      "ret5": 6.04,
+      "up_days_5": 4,
+      "dist_ma10": 2.78,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 51.7,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "603577",
+      "name": "汇金通",
+      "close": 9.82,
+      "vol_ratio": 1.59,
+      "ret3": 6.21,
+      "ret5": 3.88,
+      "up_days_5": 3,
+      "dist_ma10": 2.21,
+      "consecutive_up": 3,
+      "themes": [
+        "光伏概念"
+      ],
+      "score": 50.9,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "长下影2x,贴MA10"
+    },
+    {
+      "code": "000987",
+      "name": "越秀资本",
+      "close": 7.76,
+      "vol_ratio": 1.07,
+      "ret3": 7.2,
+      "ret5": 5.71,
+      "up_days_5": 4,
+      "dist_ma10": 2.73,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 50.7,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600416",
+      "name": "湘电股份",
+      "close": 10.77,
+      "vol_ratio": 2.54,
+      "ret3": 12.36,
+      "ret5": 7.32,
+      "up_days_5": 3,
+      "dist_ma10": 5.2,
+      "consecutive_up": 3,
+      "themes": [
+        "风电"
+      ],
+      "score": 50.4,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": ""
+    }
+  ],
+  "analysis_time": "2026-06-28 15:53:48"
+}

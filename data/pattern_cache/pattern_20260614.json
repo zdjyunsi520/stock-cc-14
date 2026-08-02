@@ -1,0 +1,478 @@
+{
+  "date_key": "20260614",
+  "hot_themes": [
+    [
+      "稀土永磁",
+      5
+    ],
+    [
+      "航空发动机",
+      4
+    ],
+    [
+      "铜缆高速连接",
+      3
+    ],
+    [
+      "存储芯片",
+      3
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "002190",
+      "name": "成飞集成",
+      "close": 27.07,
+      "vol_ratio": 2.66,
+      "ret3": 7.78,
+      "ret5": 4.31,
+      "up_days_5": 3,
+      "dist_ma10": 3.6,
+      "consecutive_up": 1,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 61.6,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000708",
+      "name": "中信特钢",
+      "close": 14.07,
+      "vol_ratio": 2.09,
+      "ret3": 4.17,
+      "ret5": 3.68,
+      "up_days_5": 4,
+      "dist_ma10": 2.52,
+      "consecutive_up": 4,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 60.9,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "601609",
+      "name": "金田股份",
+      "close": 12.55,
+      "vol_ratio": 1.97,
+      "ret3": 3.1,
+      "ret5": 1.33,
+      "up_days_5": 2,
+      "dist_ma10": 1.34,
+      "consecutive_up": 1,
+      "themes": [
+        "铜缆高速连接",
+        "稀土永磁"
+      ],
+      "score": 59.7,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000738",
+      "name": "航发控制",
+      "close": 19.49,
+      "vol_ratio": 2.9,
+      "ret3": 6.02,
+      "ret5": 3.84,
+      "up_days_5": 2,
+      "dist_ma10": 4.31,
+      "consecutive_up": 2,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 59.0,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "000612",
+      "name": "焦作万方",
+      "close": 11.43,
+      "vol_ratio": 2.39,
+      "ret3": 7.66,
+      "ret5": 2.94,
+      "up_days_5": 3,
+      "dist_ma10": 1.76,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 58.9,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "001280",
+      "name": "中国铀业",
+      "close": 73.0,
+      "vol_ratio": 2.37,
+      "ret3": 5.65,
+      "ret5": 4.94,
+      "up_days_5": 3,
+      "dist_ma10": 3.72,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 58.7,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "603072",
+      "name": "天和磁材",
+      "close": 38.02,
+      "vol_ratio": 2.19,
+      "ret3": 5.43,
+      "ret5": 4.12,
+      "up_days_5": 3,
+      "dist_ma10": 4.6,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 56.9,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "603077",
+      "name": "和邦生物",
+      "close": 2.42,
+      "vol_ratio": 1.5,
+      "ret3": 4.7,
+      "ret5": 1.39,
+      "up_days_5": 4,
+      "dist_ma10": 1.09,
+      "consecutive_up": 4,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 55.0,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600765",
+      "name": "中航重机",
+      "close": 14.02,
+      "vol_ratio": 2.49,
+      "ret3": 4.91,
+      "ret5": 1.79,
+      "up_days_5": 2,
+      "dist_ma10": 2.13,
+      "consecutive_up": 2,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 54.9,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000988",
+      "name": "华工科技",
+      "close": 151.01,
+      "vol_ratio": 0.96,
+      "ret3": -2.69,
+      "ret5": -3.51,
+      "up_days_5": 3,
+      "dist_ma10": -0.47,
+      "consecutive_up": 2,
+      "themes": [
+        "航空发动机",
+        "铜缆高速连接",
+        "存储芯片"
+      ],
+      "score": 54.6,
+      "theme_score": 30.0,
+      "wash_score": 0,
+      "wash_detail": ""
+    },
+    {
+      "code": "600111",
+      "name": "北方稀土",
+      "close": 49.43,
+      "vol_ratio": 1.69,
+      "ret3": 2.22,
+      "ret5": 0.15,
+      "up_days_5": 3,
+      "dist_ma10": 1.89,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 51.9,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600366",
+      "name": "宁波韵升",
+      "close": 13.28,
+      "vol_ratio": 1.09,
+      "ret3": 2.51,
+      "ret5": 4.54,
+      "up_days_5": 4,
+      "dist_ma10": 3.58,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 50.9,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "下影1x,守MA20"
+    },
+    {
+      "code": "600259",
+      "name": "中稀有色",
+      "close": 93.94,
+      "vol_ratio": 1.55,
+      "ret3": 4.37,
+      "ret5": 0.33,
+      "up_days_5": 3,
+      "dist_ma10": 4.95,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 50.5,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "002658",
+      "name": "雪迪龙",
+      "close": 8.25,
+      "vol_ratio": 1.52,
+      "ret3": 6.05,
+      "ret5": 5.03,
+      "up_days_5": 3,
+      "dist_ma10": 4.99,
+      "consecutive_up": 0,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 50.2,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "002654",
+      "name": "万润科技",
+      "close": 16.19,
+      "vol_ratio": 2.51,
+      "ret3": 8.98,
+      "ret5": 7.79,
+      "up_days_5": 3,
+      "dist_ma10": 6.32,
+      "consecutive_up": 2,
+      "themes": [
+        "存储芯片"
+      ],
+      "score": 50.1,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "002340",
+      "name": "格林美",
+      "close": 7.36,
+      "vol_ratio": 1.46,
+      "ret3": 4.79,
+      "ret5": 2.41,
+      "up_days_5": 3,
+      "dist_ma10": 0.6,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 49.6,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002167",
+      "name": "东方锆业",
+      "close": 14.2,
+      "vol_ratio": 1.38,
+      "ret3": 2.17,
+      "ret5": 4.6,
+      "up_days_5": 3,
+      "dist_ma10": 3.4,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 48.8,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "600206",
+      "name": "有研新材",
+      "close": 32.99,
+      "vol_ratio": 1.87,
+      "ret3": 12.55,
+      "ret5": 13.52,
+      "up_days_5": 3,
+      "dist_ma10": 10.15,
+      "consecutive_up": 0,
+      "themes": [
+        "存储芯片",
+        "稀土永磁"
+      ],
+      "score": 48.7,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600980",
+      "name": "北矿科技",
+      "close": 21.2,
+      "vol_ratio": 1.36,
+      "ret3": 3.66,
+      "ret5": 0.16,
+      "up_days_5": 3,
+      "dist_ma10": 1.86,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 48.6,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002738",
+      "name": "中矿资源",
+      "close": 61.18,
+      "vol_ratio": 1.33,
+      "ret3": 6.52,
+      "ret5": 5.24,
+      "up_days_5": 3,
+      "dist_ma10": 4.37,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 48.3,
+      "theme_score": 10.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    },
+    {
+      "code": "600392",
+      "name": "盛和资源",
+      "close": 25.8,
+      "vol_ratio": 1.82,
+      "ret3": 9.89,
+      "ret5": 8.57,
+      "up_days_5": 4,
+      "dist_ma10": 9.96,
+      "consecutive_up": 4,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 48.2,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603809",
+      "name": "豪能股份",
+      "close": 10.5,
+      "vol_ratio": 1.29,
+      "ret3": -2.23,
+      "ret5": 2.83,
+      "up_days_5": 3,
+      "dist_ma10": 1.71,
+      "consecutive_up": 1,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 47.9,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "603690",
+      "name": "至纯科技",
+      "close": 26.68,
+      "vol_ratio": 1.78,
+      "ret3": -2.81,
+      "ret5": 2.89,
+      "up_days_5": 2,
+      "dist_ma10": 1.02,
+      "consecutive_up": 0,
+      "themes": [
+        "存储芯片"
+      ],
+      "score": 47.8,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002297",
+      "name": "博云新材",
+      "close": 22.44,
+      "vol_ratio": 1.76,
+      "ret3": 9.96,
+      "ret5": 9.6,
+      "up_days_5": 4,
+      "dist_ma10": 8.49,
+      "consecutive_up": 4,
+      "themes": [
+        "航空发动机"
+      ],
+      "score": 47.6,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "000758",
+      "name": "中色股份",
+      "close": 6.96,
+      "vol_ratio": 1.76,
+      "ret3": 9.01,
+      "ret5": 4.23,
+      "up_days_5": 2,
+      "dist_ma10": 4.63,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁"
+      ],
+      "score": 47.6,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    }
+  ],
+  "analysis_time": "2026-06-19 00:20:02"
+}

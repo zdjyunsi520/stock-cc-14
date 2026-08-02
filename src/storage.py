@@ -138,6 +138,107 @@ class StockDaily(Base):
         }
 
 
+class StockFundFlow(Base):
+    """个股资金流向（同花顺数据源）"""
+    __tablename__ = 'stock_fund_flow'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    code = Column(String(10), nullable=False, index=True)
+    date = Column(Date, nullable=False, index=True)
+    close = Column(Float)
+    pct_chg = Column(Float)
+    net_flow = Column(Float)        # 资金净流入(万元)
+    main_net_5d = Column(Float)     # 5日主力净额(万元)
+    big_net = Column(Float)         # 大单净额(万元)
+    big_pct = Column(Float)         # 大单净占比(%)
+    mid_net = Column(Float)         # 中单净额(万元)
+    mid_pct = Column(Float)         # 中单净占比(%)
+    small_net = Column(Float)       # 小单净额(万元)
+    small_pct = Column(Float)       # 小单净占比(%)
+    total_inflow = Column(Float)    # 总流入(万元)
+    total_outflow = Column(Float)   # 总流出(万元)
+    big_inflow = Column(Float)      # 大单流入(万元)
+    big_outflow = Column(Float)     # 大单流出(万元)
+    mid_inflow = Column(Float)      # 中单流入(万元)
+    mid_outflow = Column(Float)     # 中单流出(万元)
+    small_inflow = Column(Float)    # 小单流入(万元)
+    small_outflow = Column(Float)   # 小单流出(万元)
+    # 派生指标（抓取时计算）
+    strength = Column(Float)        # 主力资金强度 = big_net / (total_inflow + total_outflow)
+    big_ratio = Column(Float)       # 主力占比 = (big_inflow + big_outflow) / (total_inflow + total_outflow)
+    big_consecutive = Column(Integer)  # 连续大单净流入天数
+    data_source = Column(String(50))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    __table_args__ = (
+        UniqueConstraint('code', 'date', name='uix_fund_code_date'),
+        Index('ix_fund_code_date', 'code', 'date'),
+    )
+
+
+class ConceptDim(Base):
+    """概念板块维度表（code→name 唯一映射，去重存储）"""
+    __tablename__ = 'concept_dim'
+
+    concept_code = Column(String(16), primary_key=True)
+    concept_name = Column(String(64), nullable=False)
+    first_seen_date = Column(Date)      # 首次抓到该概念的交易日
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+
+class StockConceptFundFlow(Base):
+    """概念板块资金流向（同花顺 gnzjl 接口；concept_name 在 concept_dim 维护）"""
+    __tablename__ = 'stock_concept_fund_flow'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    date = Column(Date, nullable=False, index=True)
+    seq = Column(Integer)               # 按抓取时排序的序号（默认按净额降序的排名）
+    concept_code = Column(String(16), nullable=False, index=True)  # FK -> concept_dim
+    concept_index = Column(Float)       # 行业指数
+    pct_chg = Column(Float)             # 概念涨跌幅(%)
+    inflow = Column(Float)              # 流入资金(亿)
+    outflow = Column(Float)             # 流出资金(亿)
+    net_amount = Column(Float)          # 净额(亿)
+    company_count = Column(Integer)     # 公司家数
+    leader_name = Column(String(32))    # 领涨股名
+    leader_pct = Column(Float)          # 领涨股涨跌幅(%)
+    leader_price = Column(Float)        # 领涨股当前价(元)
+    data_source = Column(String(50))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    __table_args__ = (
+        UniqueConstraint('date', 'concept_code', name='uix_concept_date_code'),
+        Index('ix_concept_date_net', 'date', 'net_amount'),
+    )
+
+
+class Stock1minKline(Base):
+    """个股 1 分钟分时数据（数据源：同花顺 d.10jqka.com.cn/v6/line/hs_{code}/60/all.js）
+
+    单次可拿约 9881~12000 条（41~67 自然日）。接口只返回 price+volumn，
+    amount = price×volume 本地推算。
+    """
+    __tablename__ = 'stock_1min_kline'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    code = Column(String(10), nullable=False, index=True)
+    ts = Column(DateTime, nullable=False, index=True)  # YYYY-MM-DD HH:MM:SS
+    price = Column(Float)          # 当分钟收盘价（同花顺分时图的单点价）
+    volume = Column(Integer)       # 成交量(股)
+    amount = Column(Float)         # 成交额(元) = price × volume
+    data_source = Column(String(50))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    __table_args__ = (
+        UniqueConstraint('code', 'ts', name='uix_1min_code_ts'),
+        Index('ix_1min_code_ts', 'code', 'ts'),
+    )
+
+
 class StockDailySyncState(Base):
     """全市场日线同步状态跟踪"""
     __tablename__ = 'stock_daily_sync_state'
@@ -777,6 +878,27 @@ class AlertCooldownRecord(Base):
 
     __table_args__ = (
         UniqueConstraint('rule_id', 'target', 'severity', name='uix_alert_cooldown_rule_target_severity'),
+    )
+
+
+class StockConceptMembership(Base):
+    """股票→题材归属（全市场反向查询表）。
+
+    用途：给定股票 code，反查它属于哪些题材。
+    数据源：同花顺 q.10jqka.com.cn/gn/detail/code/{board_code}/
+    一对多：一只股票可属于多个题材，每个 (code, concept_code) 唯一。
+    """
+    __tablename__ = 'stock_concept_membership'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    code = Column(String(10), nullable=False, index=True)             # 股票代码
+    concept_code = Column(String(16), nullable=False, index=True)     # 题材代码（FK -> concept_dim）
+    concept_name = Column(String(64))                                 # 题材名（冗余存储，便于直查）
+    fetched_at = Column(DateTime, default=datetime.now)               # 拉取时间
+
+    __table_args__ = (
+        UniqueConstraint('code', 'concept_code', name='uix_membership_code_concept'),
+        Index('ix_membership_concept_code', 'concept_code'),
     )
 
 
@@ -1952,18 +2074,36 @@ class DatabaseManager(metaclass=_DatabaseManagerMeta):
                 for r in rows
             ]
 
-    def get_bulk_daily_data(self, days: int = 15) -> pd.DataFrame:
-        """批量获取全市场最近N天日线数据，返回一个包含所有股票的 DataFrame。"""
+    def get_bulk_daily_data(self, days: int = 15, end_date: Optional[str] = None) -> pd.DataFrame:
+        """批量获取全市场最近N天日线数据，返回一个包含所有股票的 DataFrame。
+
+        Args:
+            days: 取最近多少天
+            end_date: 截止日期 'YYYY-MM-DD' 或 'YYYYMMDD'，None 则用今天。
+                      用于历史回测/指定日期复现，避免拿最新数据算历史日期的 score。
+        """
         from sqlalchemy import text as sa_text
-        cutoff = (datetime.now() - timedelta(days=days + 5)).strftime("%Y-%m-%d")
+        # 标准化 end_date
+        if end_date:
+            s = str(end_date).replace("-", "")
+            if len(s) == 8:
+                end_str = f"{s[:4]}-{s[4:6]}-{s[6:8]}"
+            else:
+                end_str = str(end_date)
+            ref_date = datetime.strptime(end_str, "%Y-%m-%d")
+        else:
+            ref_date = datetime.now()
+
+        cutoff = (ref_date - timedelta(days=days + 5)).strftime("%Y-%m-%d")
+        end_cutoff = ref_date.strftime("%Y-%m-%d")
         sql = f"""
             SELECT code, date, open, high, low, close, volume, amount, pct_chg
             FROM stock_daily
-            WHERE date >= :cutoff
+            WHERE date >= :cutoff AND date <= :end_cutoff
             ORDER BY code, date
         """
         with self.get_session() as session:
-            result = session.execute(sa_text(sql), {"cutoff": cutoff})
+            result = session.execute(sa_text(sql), {"cutoff": cutoff, "end_cutoff": end_cutoff})
             rows = result.fetchall()
             columns = result.keys()
 

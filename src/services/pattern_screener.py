@@ -12,16 +12,15 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
+from tabulate import tabulate
 
 from src.storage import DatabaseManager
+from src.utils.stock_filter import is_excluded_board
 
 logger = logging.getLogger(__name__)
 
 CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
                          "data", "pattern_cache")
-
-CONCEPT_CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
-                                  "data", "concept_cache")
 
 
 @dataclass
@@ -31,7 +30,7 @@ class PatternScreenerConfig:
     min_vol_ratio: float = 0.8        # 最低量比
     max_ret5: float = 20.0            # 5日涨幅上限（排除追高）
     concept_top_n: int = 20           # 取前N个热点概念
-    concept_min_days: int = 3         # 概念至少连续出现几天
+    concept_min_days: int = 1         # 持续热点最少命中天数（1=按天数降序全返回，3=仅强持续）
     max_candidates: int = 25          # 最多返回候选数
     lookback_days: int = 15           # 加载天数
 
@@ -49,6 +48,7 @@ class PatternCandidate:
     consecutive_up: int = 0
     themes: List[str] = field(default_factory=list)
     score: float = 0.0
+    theme_score: float = 0.0     # 概念分（热点数×10），从规律分拆出单独展示
     wash_score: int = 0          # 洗盘评分（0-20）
     wash_detail: str = ""        # 洗盘特征摘要
 
@@ -57,6 +57,10 @@ class PatternCandidate:
 
     @classmethod
     def from_dict(cls, d: Dict[str, Any]) -> "PatternCandidate":
+        # 旧缓存兼容：theme_score 缺失或为 0 时，按 themes 长度推算（热点数×10）
+        if not d.get("theme_score"):
+            themes = d.get("themes") or []
+            d = {**d, "theme_score": float(len(themes) * 10)}
         return cls(**d)
 
 
@@ -139,15 +143,19 @@ class PatternScreener:
 
         logger.info("[PatternScreen] 持续热点概念: %s", [t for t, _ in hot_themes])
 
-        # Step 2: 获取热点概念成分股
-        theme_stocks, stock_themes, stock_names = self._load_theme_members(hot_themes)
+        # Step 2: 获取热点概念成分股（优先用 concept_cache 反向构造，避免调 akshare）
+        theme_universe = self._load_theme_universe(config.concept_top_n, date_key=date_key)
+        theme_stocks, stock_themes, stock_names = self._load_theme_members(
+            hot_themes, theme_universe=theme_universe
+        )
 
         # Step 3: 加载日线 + 指标计算 + 筛选评分
-        df = self.db.get_bulk_daily_data(days=config.lookback_days)
+        # 关键：传入 end_date=date_key，确保历史日期回测只用到该日期之前的数据
+        df = self.db.get_bulk_daily_data(days=config.lookback_days, end_date=date_key)
         if df.empty:
             return [], hot_themes
 
-        candidates = self._score_and_filter(df, stock_themes, stock_names, config)
+        candidates = self._score_and_filter(df, stock_themes, stock_names, config, date_key=date_key)
 
         logger.info("[PatternScreen] 筛选结果: %d 只", len(candidates))
 
@@ -229,49 +237,68 @@ class PatternScreener:
 
     def _find_persistent_themes(self, config: PatternScreenerConfig,
                                   date_key: str = "") -> List[Tuple[str, int]]:
-        """从涨跌基因分析中提取连续多天出现的概念。"""
-        df = self.db.get_bulk_daily_data(days=config.lookback_days)
-        if df.empty:
-            return []
+        """持续热点题材（已委托给 PersistentThemeFinder）。
 
-        metrics_df = self._compute_basic_metrics(df)
-        if metrics_df.empty:
-            return []
-
-        trading_dates = sorted(metrics_df["date"].unique(), reverse=True)[:5]
-
-        theme_universe = self._load_theme_universe(config.concept_top_n, date_key=date_key)
-        if not theme_universe:
-            return []
-
-        concept_day_count: Counter = Counter()
-        for d in trading_dates:
-            day_df = metrics_df[(metrics_df["date"] == d) & (metrics_df["pct_chg"] >= 3.0)]
-            day_concepts: Counter = Counter()
-            for _, row in day_df.iterrows():
-                for t in theme_universe.get(row["code"], []):
-                    day_concepts[t] += 1
-            for concept, _ in day_concepts.most_common(5):
-                concept_day_count[concept] += 1
-
-        min_days = min(config.concept_min_days, len(trading_dates))
-        persistent = [(c, n) for c, n in concept_day_count.most_common() if n >= min_days]
-        return persistent[:10]
+        保留方法签名以兼容现有调用方（main.py / intraday_persistent_themes 等），
+        内部转调 PersistentThemeFinder.find_emerging_themes（T − T-1 集合差），
+        让所有走 PatternScreener 的场景（wash 选股/wash-backtest/盘中/缩池等）
+        自动用最新算法，无需改调用入口。
+        数据源：优先用 self._theme_universe_provider（盘中实时 API），否则走 DB。
+        永不走 JSON。
+        """
+        from src.services.persistent_theme_finder import PersistentThemeFinder
+        return PersistentThemeFinder(
+            db=self.db,
+            theme_universe_provider=self._theme_universe_provider,
+        ).find_emerging_themes(
+            lookback_days=config.lookback_days,
+            concept_min_days=config.concept_min_days,
+            date_key=date_key,
+        )
 
     # ------------------------------------------------------------------
     # Step 2: 获取热点概念成分股
     # ------------------------------------------------------------------
 
     def _load_theme_members(
-        self, hot_themes: List[Tuple[str, int]]
+        self, hot_themes: List[Tuple[str, int]],
+        theme_universe: Optional[Dict[str, List[str]]] = None,
     ) -> Tuple[Dict[str, List[str]], Dict[str, List[str]], Dict[str, str]]:
+        """获取热点题材的成分股。
+
+        优先用 theme_universe（concept_cache 的 {code: [题材]} 反向结构）构造，
+        避免每次调 akshare 拉成员导致结果不稳定。cache 缺失才 fallback 到 akshare。
+        """
         theme_stocks: Dict[str, List[str]] = {}
         stock_themes: Dict[str, List[str]] = {}
         stock_names: Dict[str, str] = {}
 
+        hot_theme_names = {name for name, _ in hot_themes}
+
+        # 路径1：从 concept_cache 反向构造（稳定，不调 API）
+        if theme_universe:
+            theme_to_codes: Dict[str, List[str]] = {}
+            for code, themes in theme_universe.items():
+                for t in themes:
+                    if t in hot_theme_names:
+                        theme_to_codes.setdefault(t, []).append(str(code))
+
+            for theme_name in hot_theme_names:
+                codes = theme_to_codes.get(theme_name, [])
+                valid = [c for c in codes if not is_excluded_board(c)]
+                theme_stocks[theme_name] = valid
+                for c in valid:
+                    stock_themes.setdefault(c, []).append(theme_name)
+                    if c not in stock_names:
+                        stock_names[c] = self._get_stock_name(c)
+            logger.info("[PatternScreen] 题材成员来自 concept_cache（共%d题材）",
+                        len(theme_stocks))
+            return theme_stocks, stock_themes, stock_names
+
+        # 路径2：fallback 调 akshare（不稳定，保留以兼容老调用方）
         try:
-            from data_provider.base import DataFetcherManager
-            mgr = DataFetcherManager()
+            from data_provider.base import get_data_fetcher_manager
+            mgr = get_data_fetcher_manager()
             for theme_name, _ in hot_themes:
                 try:
                     members = mgr.get_board_members(theme_name, "concept", 100)
@@ -279,7 +306,7 @@ class PatternScreener:
                     for m in members:
                         code = str(m.get("code", "")).strip()
                         name = str(m.get("name", "")).strip()
-                        if code.startswith(("300", "301", "688", "4", "8")):
+                        if is_excluded_board(code):
                             continue
                         codes.append(code)
                         stock_themes.setdefault(code, []).append(theme_name)
@@ -302,6 +329,7 @@ class PatternScreener:
         stock_themes: Dict[str, List[str]],
         stock_names: Dict[str, str],
         config: PatternScreenerConfig,
+        date_key: str = "",
     ) -> List[PatternCandidate]:
         candidates = []
         for code, themes in stock_themes.items():
@@ -343,7 +371,8 @@ class PatternScreener:
                     break
 
             score = 0.0
-            score += len(themes) * 10
+            theme_score = len(themes) * 10          # 概念分（热点数×10），单独存
+            score += theme_score
             score += min(vol_ratio, 3.0) * 10
             score += up5 * 5
             if 0 <= dist_ma10 <= 5:
@@ -360,13 +389,14 @@ class PatternScreener:
                 up_days_5=up5, dist_ma10=round(dist_ma10, 2),
                 consecutive_up=consec, themes=list(themes),
                 score=round(score, 1),
+                theme_score=float(theme_score),
             ))
 
         candidates.sort(key=lambda c: (-c.score, -c.vol_ratio))
         candidates = candidates[:config.max_candidates]
 
         # 洗盘评分
-        self._apply_wash_score(candidates, df)
+        self._apply_wash_score(candidates, df, date_key=date_key)
 
         return candidates
 
@@ -389,8 +419,8 @@ class PatternScreener:
         if not date_key:
             return {"error": "无法确定交易日期"}
 
-        # 加载数据
-        df = self.db.get_bulk_daily_data(days=30)
+        # 加载数据（按 date_key 截止，保证历史回测复现）
+        df = self.db.get_bulk_daily_data(days=30, end_date=date_key or None)
         g = df[df["code"] == code].sort_values("date").reset_index(drop=True)
 
         if len(g) < 10:
@@ -419,16 +449,17 @@ class PatternScreener:
             else:
                 break
 
-        # 热点概念匹配
+        # 热点概念匹配（修复：原代码误读 hot_concepts 字段，实际文件是 {code: [themes]} 反向结构）
         stock_themes = []
-        concept_cache = self._concept_cache_path(date_key)
-        if os.path.exists(concept_cache):
-            with open(concept_cache, "r", encoding="utf-8") as f:
-                cdata = json.load(f)
-            hot_names = set(cdata.get("hot_concepts", {}).keys())
-            for concept, stock_list in cdata.get("hot_concepts", {}).items():
-                if code in stock_list:
-                    stock_themes.append(concept)
+        try:
+            hot_themes = self._find_persistent_themes(PatternScreenerConfig(), date_key=date_key)
+            hot_names = {name for name, _ in hot_themes}
+            if hot_names:
+                universe = self._load_theme_universe(PatternScreenerConfig().concept_top_n, date_key=date_key)
+                code_themes = universe.get(code, []) or universe.get(str(code), [])
+                stock_themes = [t for t in code_themes if t in hot_names]
+        except Exception as exc:
+            logger.debug("[score_single] 热点概念匹配失败 %s: %s", code, exc)
 
         # 规律评分
         score = 0.0
@@ -469,6 +500,151 @@ class PatternScreener:
             "wash_score": wash, "wash_detail": wash_detail,
             "v3_final": round(final, 1) if final is not None else None,
         }
+
+    # ------------------------------------------------------------------
+    # 实时洗盘评分（日线 + 分时线）
+    # ------------------------------------------------------------------
+
+    def score_realtime(self, code: str) -> Dict[str, Any]:
+        """结合日线 + 当日分时线的实时洗盘评分。
+
+        Returns:
+            包含日线洗盘分、分时洗盘分、综合评分的字典。
+        """
+        # 1. 日线基础评分（复用 score_single）
+        base = self.score_single(code)
+        if "error" in base:
+            return base
+
+        # 2. 拉分时线
+        try:
+            from src.services.intraday_minute_provider import IntradayMinuteCacheProvider
+            provider = IntradayMinuteCacheProvider()
+            minutes = provider.get_minutes(code)
+        except Exception as exc:
+            logger.warning("[RealtimeWash] 分时数据获取失败: %s", exc)
+            base["intraday_wash"] = None
+            base["intraday_detail"] = f"分时数据获取失败: {exc}"
+            return base
+
+        if not minutes:
+            base["intraday_wash"] = None
+            base["intraday_detail"] = "无分时数据（非交易时段或数据源异常）"
+            return base
+
+        # 3. 分时洗盘评分
+        i_wash, i_detail = self._compute_intraday_wash(minutes, base)
+        base["intraday_wash"] = i_wash
+        base["intraday_detail"] = i_detail
+
+        # 4. 综合洗盘分 = 日线洗盘 + 分时洗盘
+        daily_wash = base.get("wash_score", 0)
+        total_wash = daily_wash + i_wash
+        base["total_wash"] = total_wash
+
+        # 5. 用综合洗盘分重算 v3
+        s = base.get("score", 0)
+        def _v3(s, w):
+            if w == 0: return None
+            if s > 60: return s + w
+            elif s > 50: return s - w if w >= 10 else None
+            else: return s + w if w >= 10 else None
+
+        base["v3_final_realtime"] = round(v, 1) if (v := _v3(s, total_wash)) is not None else None
+
+        return base
+
+    @staticmethod
+    def _compute_intraday_wash(
+        minutes: List[Dict[str, Any]], base: Dict[str, Any]
+    ) -> Tuple[int, str]:
+        """基于分时线的洗盘评分（0-15分）。
+
+        维度:
+          1. V型反转（盘中急跌后收回）  0-4
+          2. 量能前重后轻（洗盘量型）   0-3
+          3. 价格守均价线               0-3
+          4. 尾盘稳健/拉尾              0-3
+          5. 分时低点未破前日低点       0-2
+        """
+        wash = 0
+        tags = []
+
+        # 过滤有效数据
+        bars = [m for m in minutes if m.get("close") is not None and m.get("volume") is not None]
+        if len(bars) < 10:
+            return 0, "分时数据不足"
+
+        closes = [float(b["close"]) for b in bars]
+        volumes = [float(b["volume"]) for b in bars]
+        avg_prices = [float(b["avg_price"]) for b in bars if b.get("avg_price")]
+
+        high = max(closes)
+        low = min(closes)
+        last = closes[-1]
+        total_range = high - low
+
+        # 1. V型反转：盘中最大回撤幅度 vs 收盘位置
+        if total_range > 0:
+            max_drop = (high - low) / high * 100
+            recovery = (last - low) / total_range
+            if max_drop > 3 and recovery > 0.8:
+                wash += 4; tags.append("V型反转")
+            elif max_drop > 2 and recovery > 0.7:
+                wash += 3; tags.append("深V")
+            elif max_drop > 1 and recovery > 0.6:
+                wash += 2; tags.append("浅V")
+            elif recovery > 0.7:
+                wash += 1; tags.append("偏强")
+
+        # 2. 量能分布：前半段放量 / 后半段缩量 = 洗盘特征
+        mid = len(bars) // 2
+        if mid > 0:
+            vol_first = sum(volumes[:mid]) / mid
+            vol_second = sum(volumes[mid:]) / (len(bars) - mid)
+            if vol_second > 0:
+                vol_ratio = vol_first / vol_second
+                if vol_ratio > 2.0:
+                    wash += 3; tags.append("前放后缩")
+                elif vol_ratio > 1.3:
+                    wash += 2; tags.append("量前重")
+                elif vol_ratio > 0.9:
+                    wash += 1
+
+        # 3. 价格 vs 均价线
+        if avg_prices:
+            above_count = sum(1 for c, a in zip(closes, avg_prices) if c >= a)
+            above_ratio = above_count / len(avg_prices)
+            if above_ratio >= 0.8:
+                wash += 3; tags.append("守均价")
+            elif above_ratio >= 0.6:
+                wash += 2; tags.append("均价上")
+            elif above_ratio >= 0.4:
+                wash += 1
+
+        # 4. 尾盘行为（最后30分钟）
+        tail_n = min(30, len(bars))
+        if tail_n >= 5:
+            tail_closes = closes[-tail_n:]
+            tail_trend = (tail_closes[-1] - tail_closes[0]) / tail_closes[0] * 100
+            if tail_trend > 0.3:
+                wash += 3; tags.append("拉尾")
+            elif tail_trend > -0.1:
+                wash += 2; tags.append("尾盘稳")
+            elif tail_trend > -0.3:
+                wash += 1
+
+        # 5. 分时低点未破前日收盘价（日线支撑）
+        daily_close = base.get("close", 0)
+        if daily_close > 0:
+            intraday_low = low
+            if intraday_low >= daily_close * 0.98:
+                wash += 2; tags.append("未破前收")
+            elif intraday_low >= daily_close * 0.97:
+                wash += 1
+
+        detail = ",".join(tags) if tags else ""
+        return wash, detail
 
     # ------------------------------------------------------------------
     # 洗盘评分
@@ -583,12 +759,18 @@ class PatternScreener:
         return wash, detail
 
     def _apply_wash_score(self, candidates: List[PatternCandidate],
-                          daily_df: pd.DataFrame) -> None:
-        """批量计算洗盘评分并回写候选。需要至少25天数据来计算MA20。"""
+                          daily_df: pd.DataFrame,
+                          date_key: str = "") -> None:
+        """批量计算洗盘评分并回写候选。需要至少25天数据来计算MA20。
+
+        Args:
+            date_key: 截止日期 YYYYMMDD，保证历史回测时只用到该日期前的数据。
+        """
         if not candidates:
             return
         codes = [c.code for c in candidates]
-        df_wash = self.db.get_bulk_daily_data(days=30)
+        # 按 date_key 截止取数（修复历史回测数据穿越 bug）
+        df_wash = self.db.get_bulk_daily_data(days=30, end_date=date_key or None)
         for c in candidates:
             g = df_wash[df_wash["code"] == c.code].sort_values("date").reset_index(drop=True)
             if len(g) < 20:
@@ -605,7 +787,7 @@ class PatternScreener:
     def _compute_basic_metrics(df: pd.DataFrame) -> pd.DataFrame:
         results = []
         for code, group in df.groupby("code"):
-            if code.startswith(("300", "301", "688", "4", "8")):
+            if is_excluded_board(code):
                 continue
             g = group.sort_values("date").copy()
             if len(g) < 5:
@@ -616,109 +798,28 @@ class PatternScreener:
         return pd.concat(results, ignore_index=True)
 
     def _load_theme_universe(self, top_n: int, date_key: str = "") -> Dict[str, List[str]]:
+        """题材成分股池（强制 DB 数据源）。
+
+        优先使用外部注入的 `_theme_universe_provider`（main.py 加载后注入，避免重复查 DB），
+        否则直接调 PersistentThemeFinder.load_themes_from_db。
+        永不读 JSON（已废弃 --cache-concepts 路径）。
+        """
         if self._theme_universe_provider:
             return dict(self._theme_universe_provider())
 
-        # 尝试读取缓存（优先指定日期，其次最新）
-        cached = self._load_concept_cache(date_key)
-        if cached:
-            return cached
-
-    def cache_todays_concepts(self) -> Optional[Dict[str, List[str]]]:
-        """独立缓存当天的概念板块数据（不需要日线数据，收盘后即可调用）。"""
-        try:
-            from data_provider.base import DataFetcherManager
-            from datetime import datetime
-            mgr = DataFetcherManager()
-            universe = mgr.get_hot_theme_universe(n=self._default_config().concept_top_n,
-                                                    max_members_per_theme=100)
-            result = dict(universe) if universe else {}
-            if result:
-                today_key = datetime.now().strftime("%Y%m%d")
-                self._save_concept_cache(today_key, result)
-                logger.info("[PatternScreen] 概念数据已缓存: %s (%d只股票)", today_key, len(result))
-            return result if result else None
-        except Exception as exc:
-            logger.warning("[PatternScreen] 缓存概念数据失败: %s", exc)
-            return None
+        from src.services.persistent_theme_finder import PersistentThemeFinder
+        return PersistentThemeFinder.load_themes_from_db()
 
     @staticmethod
     def _default_config() -> "PatternScreenerConfig":
         return PatternScreenerConfig()
 
-        # 缓存未命中，从API获取
-        try:
-            from data_provider.base import DataFetcherManager
-            from datetime import datetime
-            universe = DataFetcherManager().get_hot_theme_universe(n=top_n, max_members_per_theme=100)
-            result = dict(universe) if universe else {}
-            if result:
-                # 用今天的日期作key（概念数据是当天的实时数据）
-                today_key = datetime.now().strftime("%Y%m%d")
-                self._save_concept_cache(today_key, result)
-            return result
-        except Exception as exc:
-            logger.warning("[PatternScreen] 获取概念板块失败: %s", exc)
-        return {}
-
-    # ------------------------------------------------------------------
-    # 概念板块缓存
-    # ------------------------------------------------------------------
-
-    @staticmethod
-    def _concept_cache_path(date_key: str) -> str:
-        return os.path.join(CONCEPT_CACHE_DIR, f"concept_universe_{date_key}.json")
-
-    def _load_concept_cache(self, date_key: str = "") -> Optional[Dict[str, List[str]]]:
-        """加载概念板块缓存。优先指定日期，否则取最新缓存。"""
-        # 指定日期
-        if date_key:
-            path = self._concept_cache_path(date_key)
-            if os.path.exists(path):
-                try:
-                    with open(path, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    logger.info("[PatternScreen] 命中概念缓存: %s (%d只股票)",
-                                date_key, len(data))
-                    return data
-                except Exception as exc:
-                    logger.warning("[PatternScreen] 概念缓存读取失败: %s", exc)
-
-        # 未指定日期，取最新缓存
-        if os.path.isdir(CONCEPT_CACHE_DIR):
-            files = [f for f in os.listdir(CONCEPT_CACHE_DIR)
-                     if f.startswith("concept_universe_") and f.endswith(".json")]
-            if files:
-                latest = sorted(files, reverse=True)[0]
-                try:
-                    with open(os.path.join(CONCEPT_CACHE_DIR, latest), "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    cache_date = latest.replace("concept_universe_", "").replace(".json", "")
-                    logger.info("[PatternScreen] 使用最新概念缓存: %s (%d只股票)",
-                                cache_date, len(data))
-                    return data
-                except Exception as exc:
-                    logger.warning("[PatternScreen] 概念缓存读取失败: %s", exc)
-
-        return None
-
-    def _save_concept_cache(self, date_key: str, universe: Dict[str, List[str]]) -> None:
-        """保存概念板块映射缓存。"""
-        os.makedirs(CONCEPT_CACHE_DIR, exist_ok=True)
-        path = self._concept_cache_path(date_key)
-        try:
-            with open(path, "w", encoding="utf-8") as f:
-                json.dump(universe, f, ensure_ascii=False)
-            logger.info("[PatternScreen] 概念缓存已保存: %s (%d只股票)", path, len(universe))
-        except Exception as exc:
-            logger.warning("[PatternScreen] 概念缓存写入失败: %s", exc)
-
     def _get_stock_name(self, code: str) -> str:
         if self._stock_name_provider:
             return self._stock_name_provider(code)
         try:
-            from data_provider.base import DataFetcherManager
-            return DataFetcherManager().get_stock_name(code) or ""
+            from data_provider.base import get_data_fetcher_manager
+            return get_data_fetcher_manager().get_stock_name(code) or ""
         except Exception:
             return ""
 
@@ -727,21 +828,41 @@ class PatternScreener:
     # ------------------------------------------------------------------
 
     @staticmethod
+    def compute_wash_final(score: float, wash_score: int) -> Optional[float]:
+        """洗盘综合分算法（v3）。
+
+        - score>60：综合 = 规律分 + 洗盘分（共振加分）
+        - 50<score<=60：洗盘>=10 时综合 = 规律分 - 洗盘分（高洗减分），否则淘汰
+        - score<=50：洗盘>=10 时综合 = 规律分 + 洗盘分（强洗加分），否则淘汰
+        - wash_score=0：返回 None（不入选）
+        """
+        if wash_score == 0:
+            return None
+        if score > 60:
+            return score + wash_score
+        elif score > 50:
+            return score - wash_score if wash_score >= 10 else None
+        else:
+            return score + wash_score if wash_score >= 10 else None
+
+    @staticmethod
     def format_report(candidates: List[PatternCandidate],
                       hot_themes: List[Tuple[str, int]],
-                      date_key: str = "") -> str:
+                      date_key: str = "",
+                      slim: bool = False) -> str:
         lines: List[str] = []
         display = ""
         if date_key and len(date_key) == 8:
             display = f"{date_key[:4]}-{date_key[4:6]}-{date_key[6:8]}"
 
+        title = "洗盘选股V3报告" if slim else "规律选股报告（基于涨跌基因分析）"
         lines.append("=" * 90)
-        lines.append("  规律选股报告（基于涨跌基因分析）")
+        lines.append(f"  {title}")
         if display:
             lines.append(f"  数据日期: {display}")
         lines.append("=" * 90)
 
-        if hot_themes:
+        if not slim and hot_themes:
             lines.append("")
             lines.append("  持续热点概念:")
             for name, days in hot_themes[:8]:
@@ -751,25 +872,47 @@ class PatternScreener:
         if candidates:
             lines.append(f"  候选股票: {len(candidates)} 只")
             lines.append("")
-            lines.append(
-                f"  {'代码':<8} {'名称':<8} {'收盘':>7} {'量比':>5} "
-                f"{'3日涨':>7} {'5日涨':>7} {'涨/5天':>5} "
-                f"{'距MA10':>7} {'连涨':>4} {'评分':>5} {'洗盘':>4}  所属概念"
-            )
-            lines.append("  " + "-" * 120)
-
-            for c in candidates:
-                themes_str = ",".join(c.themes[:3])
-                wash_str = str(c.wash_score) if c.wash_score > 0 else "-"
-                lines.append(
-                    f"  {c.code:<8} {c.name:<8} {c.close:>7.2f} {c.vol_ratio:>5.2f} "
-                    f"{c.ret3:>+6.2f}% {c.ret5:>+6.02f}% {c.up_days_5:>3}/5 "
-                    f"{c.dist_ma10:>+6.02f}% {c.consecutive_up:>3}天 {c.score:>5.1f} {wash_str:>4}  {themes_str}"
-                )
+            if slim:
+                headers = ['代码', '名称', '概念', '规律', '洗盘', '综合']
+                table_rows = []
+                for c in candidates:
+                    wash_str = str(c.wash_score) if c.wash_score > 0 else "-"
+                    final = PatternScreener.compute_wash_final(c.score, c.wash_score)
+                    final_str = f"{final:.1f}" if final is not None else "-"
+                    table_rows.append([
+                        c.code, c.name, f"{c.theme_score:.0f}",
+                        f"{c.score:.1f}", wash_str, final_str,
+                    ])
+                lines.append(tabulate(
+                    table_rows, headers=headers, tablefmt='grid', numalign='right',
+                ))
+            else:
+                headers = ['代码', '名称', '收盘', '量比', '3日涨', '5日涨',
+                           '涨/5天', '距MA10', '连涨', '概念', '规律', '洗盘', '综合', '所属概念']
+                table_rows = []
+                for c in candidates:
+                    wash_str = str(c.wash_score) if c.wash_score > 0 else "-"
+                    final = PatternScreener.compute_wash_final(c.score, c.wash_score)
+                    final_str = f"{final:.1f}" if final is not None else "-"
+                    themes_str = ",".join(c.themes[:3])
+                    table_rows.append([
+                        c.code, c.name, f"{c.close:.2f}", f"{c.vol_ratio:.2f}",
+                        f"{c.ret3:+.2f}%", f"{c.ret5:+.2f}%", f"{c.up_days_5}/5",
+                        f"{c.dist_ma10:+.2f}%", f"{c.consecutive_up}天",
+                        f"{c.theme_score:.0f}", f"{c.score:.1f}", wash_str, final_str, themes_str,
+                    ])
+                lines.append(tabulate(
+                    table_rows, headers=headers, tablefmt='grid', numalign='right',
+                ))
         else:
             lines.append("  无符合条件的股票")
 
         lines.append("")
-        lines.append("  评分: 热点数x10 + 量比x10 + 上涨天数x5 + 贴近MA10加分 - 追高惩罚")
+        if slim:
+            lines.append("  综合: v3算法(w=0淘汰 | s>60: s+w | 50<s<=60: s-w需w>=10 | s<=50: s+w需w>=10)")
+        else:
+            lines.append("  规律: 热点数x10 + 量比x10 + 上涨天数x5 + 贴近MA10加分 - 追高惩罚")
+            lines.append("  概念: 热点数×10（已从规律分拆出单独展示）")
+            lines.append("  综合: v3算法(>60加洗盘, 50-60高洗减, <=50强洗加)")
         lines.append("=" * 90)
         return "\n".join(lines)

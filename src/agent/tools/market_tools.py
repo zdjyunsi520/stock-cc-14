@@ -16,8 +16,8 @@ logger = logging.getLogger(__name__)
 
 def _get_fetcher_manager():
     """Lazy import to avoid circular deps."""
-    from data_provider import DataFetcherManager
-    return DataFetcherManager()
+    from data_provider import get_data_fetcher_manager
+    return get_data_fetcher_manager()
 
 
 # ============================================================

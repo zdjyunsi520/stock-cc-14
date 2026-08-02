@@ -1,0 +1,495 @@
+{
+  "date_key": "20260622",
+  "hot_themes": [
+    [
+      "光伏概念",
+      2
+    ],
+    [
+      "小金属概念",
+      1
+    ],
+    [
+      "期货概念",
+      1
+    ],
+    [
+      "金属铜",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "000060",
+      "name": "中金岭南",
+      "close": 8.81,
+      "vol_ratio": 1.57,
+      "ret3": 9.87,
+      "ret5": 15.89,
+      "up_days_5": 4,
+      "dist_ma10": 15.13,
+      "consecutive_up": 2,
+      "themes": [
+        "期货概念",
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 60.7,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "000878",
+      "name": "云南铜业",
+      "close": 19.63,
+      "vol_ratio": 1.27,
+      "ret3": 9.89,
+      "ret5": 13.2,
+      "up_days_5": 4,
+      "dist_ma10": 12.97,
+      "consecutive_up": 3,
+      "themes": [
+        "期货概念",
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 57.7,
+      "theme_score": 30.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "000408",
+      "name": "藏格矿业",
+      "close": 78.96,
+      "vol_ratio": 1.27,
+      "ret3": 3.44,
+      "ret5": -0.3,
+      "up_days_5": 3,
+      "dist_ma10": 2.65,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 57.7,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "603077",
+      "name": "和邦生物",
+      "close": 2.5,
+      "vol_ratio": 2.23,
+      "ret3": 2.38,
+      "ret5": 3.62,
+      "up_days_5": 3,
+      "dist_ma10": 5.0,
+      "consecutive_up": 1,
+      "themes": [
+        "金属铜"
+      ],
+      "score": 57.3,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002738",
+      "name": "中矿资源",
+      "close": 62.84,
+      "vol_ratio": 1.18,
+      "ret3": 1.76,
+      "ret5": 2.8,
+      "up_days_5": 3,
+      "dist_ma10": 4.94,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 56.8,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600755",
+      "name": "厦门国贸",
+      "close": 5.62,
+      "vol_ratio": 1.16,
+      "ret3": 1.28,
+      "ret5": 2.54,
+      "up_days_5": 3,
+      "dist_ma10": 0.21,
+      "consecutive_up": 2,
+      "themes": [
+        "期货概念",
+        "小金属概念"
+      ],
+      "score": 56.6,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "601390",
+      "name": "中国中铁",
+      "close": 4.65,
+      "vol_ratio": 1.12,
+      "ret3": 1.88,
+      "ret5": 1.92,
+      "up_days_5": 3,
+      "dist_ma10": 1.86,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 56.2,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "600517",
+      "name": "国网英大",
+      "close": 5.2,
+      "vol_ratio": 2.07,
+      "ret3": 3.46,
+      "ret5": 6.32,
+      "up_days_5": 3,
+      "dist_ma10": 4.35,
+      "consecutive_up": 0,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 55.7,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "600489",
+      "name": "中金黄金",
+      "close": 22.26,
+      "vol_ratio": 1.05,
+      "ret3": -1.09,
+      "ret5": 3.62,
+      "up_days_5": 3,
+      "dist_ma10": 2.84,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 55.5,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "600490",
+      "name": "鹏欣资源",
+      "close": 7.4,
+      "vol_ratio": 1.02,
+      "ret3": -2.05,
+      "ret5": 4.42,
+      "up_days_5": 3,
+      "dist_ma10": 4.64,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 55.2,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600331",
+      "name": "宏达股份",
+      "close": 13.06,
+      "vol_ratio": 1.01,
+      "ret3": 1.12,
+      "ret5": -0.79,
+      "up_days_5": 3,
+      "dist_ma10": 1.35,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 55.1,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "601899",
+      "name": "紫金矿业",
+      "close": 30.44,
+      "vol_ratio": 1.0,
+      "ret3": 0.56,
+      "ret5": 4.93,
+      "up_days_5": 3,
+      "dist_ma10": 3.96,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 55.0,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "601069",
+      "name": "西部黄金",
+      "close": 26.9,
+      "vol_ratio": 1.0,
+      "ret3": 0.53,
+      "ret5": 3.73,
+      "up_days_5": 3,
+      "dist_ma10": 3.54,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 55.0,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002378",
+      "name": "章源钨业",
+      "close": 40.52,
+      "vol_ratio": 0.98,
+      "ret3": 7.66,
+      "ret5": 16.91,
+      "up_days_5": 4,
+      "dist_ma10": 16.73,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "光伏概念",
+        "金属铜"
+      ],
+      "score": 54.8,
+      "theme_score": 30.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "000655",
+      "name": "金岭矿业",
+      "close": 7.26,
+      "vol_ratio": 1.44,
+      "ret3": 1.25,
+      "ret5": 1.43,
+      "up_days_5": 2,
+      "dist_ma10": 2.98,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 54.4,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000850",
+      "name": "华茂股份",
+      "close": 3.77,
+      "vol_ratio": 1.39,
+      "ret3": -0.22,
+      "ret5": -0.48,
+      "up_days_5": 2,
+      "dist_ma10": 0.24,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 53.9,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "600030",
+      "name": "中信证券",
+      "close": 28.64,
+      "vol_ratio": 2.25,
+      "ret3": 5.31,
+      "ret5": 8.93,
+      "up_days_5": 4,
+      "dist_ma10": 8.04,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 52.5,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "601375",
+      "name": "中原证券",
+      "close": 4.13,
+      "vol_ratio": 1.23,
+      "ret3": 2.38,
+      "ret5": 5.94,
+      "up_days_5": 4,
+      "dist_ma10": 4.64,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 52.3,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "601969",
+      "name": "海南矿业",
+      "close": 9.09,
+      "vol_ratio": 1.23,
+      "ret3": -1.96,
+      "ret5": -2.9,
+      "up_days_5": 2,
+      "dist_ma10": 0.09,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 52.3,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "601059",
+      "name": "信达证券",
+      "close": 16.11,
+      "vol_ratio": 1.71,
+      "ret3": 3.21,
+      "ret5": 6.35,
+      "up_days_5": 3,
+      "dist_ma10": 4.04,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 52.1,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600704",
+      "name": "物产中大",
+      "close": 4.83,
+      "vol_ratio": 1.2,
+      "ret3": 1.28,
+      "ret5": 1.31,
+      "up_days_5": 2,
+      "dist_ma10": 1.73,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念",
+        "小金属概念"
+      ],
+      "score": 52.0,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "600155",
+      "name": "华创云信",
+      "close": 5.62,
+      "vol_ratio": 1.68,
+      "ret3": 1.44,
+      "ret5": 4.58,
+      "up_days_5": 3,
+      "dist_ma10": 3.77,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 51.8,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000758",
+      "name": "中色股份",
+      "close": 7.63,
+      "vol_ratio": 1.66,
+      "ret3": 7.41,
+      "ret5": 9.62,
+      "up_days_5": 3,
+      "dist_ma10": 11.75,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 51.6,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "601878",
+      "name": "浙商证券",
+      "close": 9.67,
+      "vol_ratio": 1.64,
+      "ret3": 2.01,
+      "ret5": 4.15,
+      "up_days_5": 3,
+      "dist_ma10": 4.37,
+      "consecutive_up": 1,
+      "themes": [
+        "期货概念"
+      ],
+      "score": 51.4,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "601168",
+      "name": "西部矿业",
+      "close": 33.37,
+      "vol_ratio": 1.14,
+      "ret3": 7.74,
+      "ret5": 8.86,
+      "up_days_5": 4,
+      "dist_ma10": 7.83,
+      "consecutive_up": 3,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 51.4,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    }
+  ],
+  "analysis_time": "2026-06-28 15:50:55"
+}

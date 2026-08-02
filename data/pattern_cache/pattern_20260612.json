@@ -1,0 +1,540 @@
+{
+  "date_key": "20260612",
+  "hot_themes": [
+    [
+      "黄金概念",
+      4
+    ],
+    [
+      "小金属概念",
+      3
+    ],
+    [
+      "金属铜",
+      3
+    ],
+    [
+      "金属回收",
+      3
+    ],
+    [
+      "稀土永磁",
+      3
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "002340",
+      "name": "格林美",
+      "close": 7.36,
+      "vol_ratio": 1.46,
+      "ret3": 4.79,
+      "ret5": 2.41,
+      "up_days_5": 3,
+      "dist_ma10": 0.6,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁",
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 89.6,
+      "theme_score": 50.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000758",
+      "name": "中色股份",
+      "close": 6.96,
+      "vol_ratio": 1.76,
+      "ret3": 9.01,
+      "ret5": 4.23,
+      "up_days_5": 2,
+      "dist_ma10": 4.63,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁",
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 87.6,
+      "theme_score": 50.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600531",
+      "name": "豫光金铅",
+      "close": 13.09,
+      "vol_ratio": 1.99,
+      "ret3": 10.76,
+      "ret5": 5.39,
+      "up_days_5": 3,
+      "dist_ma10": 4.51,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 84.9,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000751",
+      "name": "锌业股份",
+      "close": 5.09,
+      "vol_ratio": 1.59,
+      "ret3": 9.75,
+      "ret5": 2.13,
+      "up_days_5": 3,
+      "dist_ma10": 2.21,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 80.9,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000060",
+      "name": "中金岭南",
+      "close": 7.56,
+      "vol_ratio": 1.5,
+      "ret3": 5.67,
+      "ret5": 1.98,
+      "up_days_5": 3,
+      "dist_ma10": 1.16,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 80.0,
+      "theme_score": 40.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600961",
+      "name": "株冶集团",
+      "close": 25.41,
+      "vol_ratio": 1.47,
+      "ret3": 11.22,
+      "ret5": 4.73,
+      "up_days_5": 3,
+      "dist_ma10": 4.5,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 79.7,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002738",
+      "name": "中矿资源",
+      "close": 61.18,
+      "vol_ratio": 1.33,
+      "ret3": 6.52,
+      "ret5": 5.24,
+      "up_days_5": 3,
+      "dist_ma10": 4.37,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁",
+        "小金属概念",
+        "金属铜",
+        "金属回收"
+      ],
+      "score": 78.3,
+      "theme_score": 40.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    },
+    {
+      "code": "000737",
+      "name": "北方铜业",
+      "close": 14.08,
+      "vol_ratio": 2.21,
+      "ret3": 7.89,
+      "ret5": 2.36,
+      "up_days_5": 3,
+      "dist_ma10": 2.34,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 77.1,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000878",
+      "name": "云南铜业",
+      "close": 17.27,
+      "vol_ratio": 2.19,
+      "ret3": 6.55,
+      "ret5": 0.32,
+      "up_days_5": 3,
+      "dist_ma10": 0.14,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 76.9,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002716",
+      "name": "湖南白银",
+      "close": 9.01,
+      "vol_ratio": 2.12,
+      "ret3": 3.39,
+      "ret5": -0.41,
+      "up_days_5": 3,
+      "dist_ma10": -0.14,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 76.2,
+      "theme_score": 40.0,
+      "wash_score": 2,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "600711",
+      "name": "盛屯矿业",
+      "close": 13.0,
+      "vol_ratio": 3.93,
+      "ret3": 13.8,
+      "ret5": 9.69,
+      "up_days_5": 3,
+      "dist_ma10": 8.12,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 75.0,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603077",
+      "name": "和邦生物",
+      "close": 2.42,
+      "vol_ratio": 1.5,
+      "ret3": 4.7,
+      "ret5": 1.39,
+      "up_days_5": 4,
+      "dist_ma10": 1.09,
+      "consecutive_up": 4,
+      "themes": [
+        "稀土永磁",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 75.0,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "603799",
+      "name": "华友钴业",
+      "close": 50.22,
+      "vol_ratio": 1.88,
+      "ret3": 5.0,
+      "ret5": 0.94,
+      "up_days_5": 3,
+      "dist_ma10": 0.24,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "金属回收"
+      ],
+      "score": 73.8,
+      "theme_score": 30.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "603993",
+      "name": "洛阳钼业",
+      "close": 19.11,
+      "vol_ratio": 1.81,
+      "ret3": 11.95,
+      "ret5": 5.75,
+      "up_days_5": 3,
+      "dist_ma10": 4.89,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 73.1,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "601069",
+      "name": "西部黄金",
+      "close": 26.12,
+      "vol_ratio": 1.77,
+      "ret3": 4.06,
+      "ret5": 0.57,
+      "up_days_5": 3,
+      "dist_ma10": 0.21,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 72.7,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002266",
+      "name": "浙富控股",
+      "close": 4.79,
+      "vol_ratio": 1.23,
+      "ret3": 5.17,
+      "ret5": -1.44,
+      "up_days_5": 4,
+      "dist_ma10": -1.22,
+      "consecutive_up": 4,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 72.3,
+      "theme_score": 40.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "600111",
+      "name": "北方稀土",
+      "close": 49.43,
+      "vol_ratio": 1.69,
+      "ret3": 2.22,
+      "ret5": 0.15,
+      "up_days_5": 3,
+      "dist_ma10": 1.89,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁",
+        "小金属概念",
+        "金属回收"
+      ],
+      "score": 71.9,
+      "theme_score": 30.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000408",
+      "name": "藏格矿业",
+      "close": 79.47,
+      "vol_ratio": 1.69,
+      "ret3": 5.51,
+      "ret5": 4.61,
+      "up_days_5": 3,
+      "dist_ma10": 3.57,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 71.9,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "600490",
+      "name": "鹏欣资源",
+      "close": 7.1,
+      "vol_ratio": 1.62,
+      "ret3": 5.05,
+      "ret5": 1.33,
+      "up_days_5": 3,
+      "dist_ma10": 1.2,
+      "consecutive_up": 2,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念"
+      ],
+      "score": 71.2,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "601168",
+      "name": "西部矿业",
+      "close": 30.71,
+      "vol_ratio": 2.1,
+      "ret3": 2.59,
+      "ret5": 1.02,
+      "up_days_5": 2,
+      "dist_ma10": -0.11,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 71.0,
+      "theme_score": 40.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    },
+    {
+      "code": "601609",
+      "name": "金田股份",
+      "close": 12.55,
+      "vol_ratio": 1.97,
+      "ret3": 3.1,
+      "ret5": 1.33,
+      "up_days_5": 2,
+      "dist_ma10": 1.34,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁",
+        "金属铜",
+        "金属回收"
+      ],
+      "score": 69.7,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "001280",
+      "name": "中国铀业",
+      "close": 73.0,
+      "vol_ratio": 2.37,
+      "ret3": 5.65,
+      "ret5": 4.94,
+      "up_days_5": 3,
+      "dist_ma10": 3.72,
+      "consecutive_up": 2,
+      "themes": [
+        "稀土永磁",
+        "小金属概念"
+      ],
+      "score": 68.7,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "600338",
+      "name": "西藏珠峰",
+      "close": 17.87,
+      "vol_ratio": 1.78,
+      "ret3": 7.75,
+      "ret5": 5.31,
+      "up_days_5": 4,
+      "dist_ma10": 3.87,
+      "consecutive_up": 4,
+      "themes": [
+        "小金属概念",
+        "金属铜"
+      ],
+      "score": 67.8,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "603257",
+      "name": "中国瑞林",
+      "close": 68.76,
+      "vol_ratio": 1.77,
+      "ret3": 2.87,
+      "ret5": 7.58,
+      "up_days_5": 2,
+      "dist_ma10": 5.76,
+      "consecutive_up": 1,
+      "themes": [
+        "稀土永磁",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 67.7,
+      "theme_score": 40.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600362",
+      "name": "江西铜业",
+      "close": 43.05,
+      "vol_ratio": 1.77,
+      "ret3": 4.28,
+      "ret5": -2.39,
+      "up_days_5": 2,
+      "dist_ma10": -1.03,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "黄金概念",
+        "金属回收"
+      ],
+      "score": 67.7,
+      "theme_score": 40.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    }
+  ],
+  "analysis_time": "2026-06-19 00:27:12"
+}

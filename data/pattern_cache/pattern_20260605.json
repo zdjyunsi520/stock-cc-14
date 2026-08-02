@@ -3,10 +3,10 @@
   "hot_themes": [
     [
       "工业母机",
-      5
+      4
     ],
     [
-      "减速器",
+      "数字孪生",
       4
     ],
     [
@@ -14,446 +14,473 @@
       4
     ],
     [
-      "数字孪生",
-      3
+      "页岩气",
+      4
     ],
     [
-      "页岩气",
+      "减速器",
       3
     ]
   ],
   "candidates": [
     {
-      "code": "603638",
-      "name": "艾迪精密",
-      "close": 23.57,
-      "vol_ratio": 2.21,
-      "ret3": 7.39,
-      "ret5": 8.22,
-      "up_days_5": 4,
-      "dist_ma10": 3.13,
+      "code": "002520",
+      "name": "日发精机",
+      "close": 6.35,
+      "vol_ratio": 2.89,
+      "ret3": 10.24,
+      "ret5": 8.37,
+      "up_days_5": 3,
+      "dist_ma10": 4.87,
       "consecutive_up": 2,
       "themes": [
-        "工业母机",
-        "减速器"
+        "减速器",
+        "工业母机"
       ],
-      "score": 72.1,
-      "wash_score": 3,
-      "wash_detail": ""
+      "score": 73.9,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "下影1x"
     },
     {
       "code": "000837",
       "name": "秦川机床",
-      "close": 13.25,
-      "vol_ratio": 2.49,
-      "ret3": 14.78,
-      "ret5": 15.84,
-      "up_days_5": 5,
-      "dist_ma10": 10.93,
-      "consecutive_up": 5,
+      "close": 12.02,
+      "vol_ratio": 2.4,
+      "ret3": 5.85,
+      "ret5": 3.68,
+      "up_days_5": 3,
+      "dist_ma10": 1.43,
+      "consecutive_up": 3,
       "themes": [
-        "工业母机",
-        "减速器"
+        "减速器",
+        "工业母机"
       ],
-      "score": 64.9,
-      "wash_score": 6,
-      "wash_detail": "守MA20"
+      "score": 69.0,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "贴MA10"
     },
     {
-      "code": "603915",
-      "name": "国茂股份",
-      "close": 16.52,
-      "vol_ratio": 1.64,
-      "ret3": 5.21,
-      "ret5": 5.4,
-      "up_days_5": 4,
-      "dist_ma10": 0.54,
-      "consecutive_up": 4,
+      "code": "603638",
+      "name": "艾迪精密",
+      "close": 23.16,
+      "vol_ratio": 2.1,
+      "ret3": 5.67,
+      "ret5": 5.81,
+      "up_days_5": 3,
+      "dist_ma10": 0.48,
+      "consecutive_up": 1,
+      "themes": [
+        "减速器",
+        "工业母机"
+      ],
+      "score": 66.0,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002164",
+      "name": "宁波东力",
+      "close": 13.33,
+      "vol_ratio": 3.24,
+      "ret3": 5.22,
+      "ret5": 6.18,
+      "up_days_5": 3,
+      "dist_ma10": 2.05,
+      "consecutive_up": 2,
       "themes": [
         "减速器"
       ],
-      "score": 56.4,
+      "score": 65.0,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "002031",
+      "name": "巨轮智能",
+      "close": 6.67,
+      "vol_ratio": 1.84,
+      "ret3": 6.67,
+      "ret5": 6.83,
+      "up_days_5": 3,
+      "dist_ma10": 1.46,
+      "consecutive_up": 2,
+      "themes": [
+        "减速器",
+        "工业母机"
+      ],
+      "score": 63.4,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000785",
+      "name": "居然智家",
+      "close": 2.47,
+      "vol_ratio": 3.5,
+      "ret3": 1.87,
+      "ret5": 2.75,
+      "up_days_5": 2,
+      "dist_ma10": 2.75,
+      "consecutive_up": 1,
+      "themes": [
+        "AI视频"
+      ],
+      "score": 60.0,
+      "theme_score": 10.0,
       "wash_score": 3,
       "wash_detail": "贴MA10"
     },
     {
-      "code": "002963",
-      "name": "豪尔赛",
-      "close": 17.93,
-      "vol_ratio": 4.26,
-      "ret3": 10.44,
-      "ret5": 8.27,
-      "up_days_5": 3,
-      "dist_ma10": 5.64,
-      "consecutive_up": 2,
+      "code": "001306",
+      "name": "夏厦精密",
+      "close": 63.9,
+      "vol_ratio": 3.27,
+      "ret3": 3.53,
+      "ret5": 3.14,
+      "up_days_5": 2,
+      "dist_ma10": -1.16,
+      "consecutive_up": 1,
       "themes": [
-        "数字孪生"
+        "减速器",
+        "工业母机"
       ],
-      "score": 55.0,
-      "wash_score": 6,
-      "wash_detail": "长下影3x"
-    },
-    {
-      "code": "002407",
-      "name": "多氟多",
-      "close": 33.94,
-      "vol_ratio": 1.44,
-      "ret3": 3.56,
-      "ret5": 2.54,
-      "up_days_5": 4,
-      "dist_ma10": 0.14,
-      "consecutive_up": 3,
-      "themes": [
-        "数字孪生"
-      ],
-      "score": 54.4,
-      "wash_score": 8,
-      "wash_detail": "长下影3x,贴MA10"
-    },
-    {
-      "code": "002553",
-      "name": "南方精工",
-      "close": 18.67,
-      "vol_ratio": 1.9,
-      "ret3": 4.09,
-      "ret5": 2.05,
-      "up_days_5": 3,
-      "dist_ma10": 1.04,
-      "consecutive_up": 3,
-      "themes": [
-        "减速器"
-      ],
-      "score": 54.0,
-      "wash_score": 6,
-      "wash_detail": "长下影3x,贴MA10"
-    },
-    {
-      "code": "600373",
-      "name": "中文传媒",
-      "close": 7.82,
-      "vol_ratio": 1.9,
-      "ret3": 6.69,
-      "ret5": 2.46,
-      "up_days_5": 3,
-      "dist_ma10": 3.06,
-      "consecutive_up": 3,
-      "themes": [
-        "AI视频"
-      ],
-      "score": 54.0,
+      "score": 60.0,
+      "theme_score": 20.0,
       "wash_score": 4,
       "wash_detail": "收高位"
     },
     {
-      "code": "002520",
-      "name": "日发精机",
-      "close": 6.74,
-      "vol_ratio": 1.87,
-      "ret3": 7.54,
-      "ret5": 16.34,
-      "up_days_5": 4,
-      "dist_ma10": 10.42,
-      "consecutive_up": 4,
+      "code": "002403",
+      "name": "爱仕达",
+      "close": 10.62,
+      "vol_ratio": 3.23,
+      "ret3": 1.93,
+      "ret5": 2.83,
+      "up_days_5": 2,
+      "dist_ma10": 0.24,
+      "consecutive_up": 1,
       "themes": [
-        "工业母机",
         "减速器"
       ],
-      "score": 53.7,
-      "wash_score": 4,
-      "wash_detail": "守MA20"
+      "score": 60.0,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "003021",
+      "name": "兆威机电",
+      "close": 104.69,
+      "vol_ratio": 2.41,
+      "ret3": 7.96,
+      "ret5": 8.41,
+      "up_days_5": 3,
+      "dist_ma10": 2.43,
+      "consecutive_up": 2,
+      "themes": [
+        "减速器"
+      ],
+      "score": 59.1,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "002472",
+      "name": "双环传动",
+      "close": 42.86,
+      "vol_ratio": 1.78,
+      "ret3": 7.06,
+      "ret5": 9.01,
+      "up_days_5": 4,
+      "dist_ma10": 3.35,
+      "consecutive_up": 4,
+      "themes": [
+        "减速器"
+      ],
+      "score": 57.8,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "下影1x"
     },
     {
       "code": "603466",
       "name": "风语筑",
-      "close": 12.24,
-      "vol_ratio": 1.22,
-      "ret3": 10.93,
-      "ret5": 9.83,
-      "up_days_5": 4,
-      "dist_ma10": 8.11,
-      "consecutive_up": 3,
-      "themes": [
-        "AI视频",
-        "数字孪生"
-      ],
-      "score": 52.2,
-      "wash_score": 12,
-      "wash_detail": "长下影3x,多头,守MA20"
-    },
-    {
-      "code": "000795",
-      "name": "英洛华",
-      "close": 9.31,
-      "vol_ratio": 1.62,
-      "ret3": 3.23,
-      "ret5": 5.5,
+      "close": 11.56,
+      "vol_ratio": 1.23,
+      "ret3": 4.0,
+      "ret5": 9.17,
       "up_days_5": 3,
-      "dist_ma10": 3.94,
+      "dist_ma10": 4.98,
       "consecutive_up": 1,
       "themes": [
-        "减速器"
-      ],
-      "score": 51.2,
-      "wash_score": 6,
-      "wash_detail": "收高位"
-    },
-    {
-      "code": "603888",
-      "name": "新华网",
-      "close": 19.5,
-      "vol_ratio": 5.27,
-      "ret3": 9.06,
-      "ret5": 4.01,
-      "up_days_5": 2,
-      "dist_ma10": 5.17,
-      "consecutive_up": 2,
-      "themes": [
+        "数字孪生",
         "AI视频"
       ],
-      "score": 50.0,
-      "wash_score": 3,
-      "wash_detail": "守MA20"
+      "score": 57.3,
+      "theme_score": 20.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603048",
+      "name": "浙江黎明",
+      "close": 20.79,
+      "vol_ratio": 2.62,
+      "ret3": 4.91,
+      "ret5": 5.66,
+      "up_days_5": 2,
+      "dist_ma10": 2.59,
+      "consecutive_up": 1,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 56.2,
+      "theme_score": 10.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
     },
     {
       "code": "605208",
       "name": "永茂泰",
-      "close": 14.66,
-      "vol_ratio": 1.44,
-      "ret3": 2.58,
-      "ret5": 2.86,
-      "up_days_5": 3,
-      "dist_ma10": 1.56,
-      "consecutive_up": 0,
+      "close": 14.68,
+      "vol_ratio": 1.53,
+      "ret3": 3.21,
+      "ret5": 5.06,
+      "up_days_5": 4,
+      "dist_ma10": 1.88,
+      "consecutive_up": 3,
       "themes": [
         "减速器"
       ],
-      "score": 49.4,
-      "wash_score": 7,
-      "wash_detail": "下影1x,收高位,贴MA10"
-    },
-    {
-      "code": "000925",
-      "name": "众合科技",
-      "close": 8.5,
-      "vol_ratio": 0.94,
-      "ret3": 0.6,
-      "ret5": 9.06,
-      "up_days_5": 4,
-      "dist_ma10": 4.96,
-      "consecutive_up": 1,
-      "themes": [
-        "数字孪生"
-      ],
-      "score": 49.4,
-      "wash_score": 5,
-      "wash_detail": ""
-    },
-    {
-      "code": "002378",
-      "name": "章源钨业",
-      "close": 30.41,
-      "vol_ratio": 0.91,
-      "ret3": -1.91,
-      "ret5": 3.36,
-      "up_days_5": 4,
-      "dist_ma10": 2.76,
-      "consecutive_up": 2,
-      "themes": [
-        "工业母机"
-      ],
-      "score": 49.1,
-      "wash_score": 8,
-      "wash_detail": "长下影3x,贴MA10"
-    },
-    {
-      "code": "601882",
-      "name": "海天精工",
-      "close": 21.22,
-      "vol_ratio": 1.25,
-      "ret3": 7.24,
-      "ret5": 1.75,
-      "up_days_5": 3,
-      "dist_ma10": 0.43,
-      "consecutive_up": 3,
-      "themes": [
-        "工业母机"
-      ],
-      "score": 47.5,
-      "wash_score": 2,
+      "score": 55.3,
+      "theme_score": 10.0,
+      "wash_score": 6,
       "wash_detail": "贴MA10"
     },
     {
       "code": "002527",
       "name": "新时达",
-      "close": 16.16,
-      "vol_ratio": 1.24,
-      "ret3": 8.4,
-      "ret5": 10.11,
+      "close": 15.43,
+      "vol_ratio": 1.01,
+      "ret3": 5.33,
+      "ret5": 10.06,
       "up_days_5": 4,
-      "dist_ma10": 8.9,
-      "consecutive_up": 0,
+      "dist_ma10": 6.71,
+      "consecutive_up": 3,
       "themes": [
+        "减速器",
         "工业母机",
-        "减速器"
-      ],
-      "score": 47.4,
-      "wash_score": 10,
-      "wash_detail": "长下影2x,多头,守MA20"
-    },
-    {
-      "code": "002368",
-      "name": "太极股份",
-      "close": 15.71,
-      "vol_ratio": 1.12,
-      "ret3": -0.21,
-      "ret5": -0.52,
-      "up_days_5": 3,
-      "dist_ma10": 0.08,
-      "consecutive_up": 1,
-      "themes": [
         "数字孪生"
       ],
-      "score": 46.2,
-      "wash_score": 6,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "002048",
-      "name": "宁波华翔",
-      "close": 29.25,
-      "vol_ratio": 2.09,
-      "ret3": 15.04,
-      "ret5": 16.59,
-      "up_days_5": 4,
-      "dist_ma10": 10.94,
-      "consecutive_up": 4,
-      "themes": [
-        "减速器"
-      ],
-      "score": 45.9,
-      "wash_score": 5,
-      "wash_detail": "收高位"
-    },
-    {
-      "code": "603859",
-      "name": "XD能科科",
-      "close": 49.87,
-      "vol_ratio": 3.29,
-      "ret3": 16.75,
-      "ret5": 13.76,
-      "up_days_5": 2,
-      "dist_ma10": 12.33,
-      "consecutive_up": 2,
-      "themes": [
-        "数字孪生"
-      ],
-      "score": 45.0,
+      "score": 55.1,
+      "theme_score": 30.0,
       "wash_score": 10,
       "wash_detail": "收高位,多头,守MA20"
     },
     {
-      "code": "003005",
-      "name": "竞业达",
-      "close": 15.36,
-      "vol_ratio": 0.95,
-      "ret3": 4.58,
-      "ret5": -1.41,
-      "up_days_5": 3,
-      "dist_ma10": -0.41,
-      "consecutive_up": 3,
+      "code": "603859",
+      "name": "能科科技",
+      "close": 45.34,
+      "vol_ratio": 2.49,
+      "ret3": 5.16,
+      "ret5": 9.33,
+      "up_days_5": 2,
+      "dist_ma10": 2.73,
+      "consecutive_up": 1,
       "themes": [
-        "AI视频",
         "数字孪生"
       ],
-      "score": 44.5,
-      "wash_score": 2,
-      "wash_detail": ""
+      "score": 54.9,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "收高位,守MA20,贴MA10"
+    },
+    {
+      "code": "601798",
+      "name": "蓝科高新",
+      "close": 8.17,
+      "vol_ratio": 1.91,
+      "ret3": 5.82,
+      "ret5": 7.09,
+      "up_days_5": 3,
+      "dist_ma10": 0.73,
+      "consecutive_up": 0,
+      "themes": [
+        "页岩气"
+      ],
+      "score": 54.1,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "003013",
+      "name": "地铁设计",
+      "close": 15.52,
+      "vol_ratio": 1.38,
+      "ret3": 4.05,
+      "ret5": 5.83,
+      "up_days_5": 4,
+      "dist_ma10": 4.15,
+      "consecutive_up": 3,
+      "themes": [
+        "数字孪生"
+      ],
+      "score": 53.8,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603728",
+      "name": "鸣志电器",
+      "close": 65.82,
+      "vol_ratio": 1.7,
+      "ret3": 5.24,
+      "ret5": 7.3,
+      "up_days_5": 3,
+      "dist_ma10": 1.97,
+      "consecutive_up": 2,
+      "themes": [
+        "减速器"
+      ],
+      "score": 52.0,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,贴MA10"
     },
     {
       "code": "002334",
       "name": "英威腾",
-      "close": 8.96,
-      "vol_ratio": 0.85,
-      "ret3": -5.45,
-      "ret5": 4.06,
-      "up_days_5": 3,
-      "dist_ma10": 0.12,
-      "consecutive_up": 1,
+      "close": 9.17,
+      "vol_ratio": 1.12,
+      "ret3": 6.34,
+      "ret5": 7.75,
+      "up_days_5": 4,
+      "dist_ma10": 1.91,
+      "consecutive_up": 0,
       "themes": [
         "工业母机"
       ],
-      "score": 43.5,
-      "wash_score": 6,
-      "wash_detail": "长下影3x,贴MA10"
+      "score": 51.2,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20,贴MA10"
     },
     {
-      "code": "001288",
-      "name": "运机集团",
-      "close": 25.1,
-      "vol_ratio": 1.24,
-      "ret3": 3.83,
-      "ret5": 2.24,
-      "up_days_5": 2,
-      "dist_ma10": 0.93,
+      "code": "603166",
+      "name": "福达股份",
+      "close": 13.45,
+      "vol_ratio": 2.55,
+      "ret3": 8.92,
+      "ret5": 6.86,
+      "up_days_5": 1,
+      "dist_ma10": 3.61,
       "consecutive_up": 1,
       "themes": [
         "减速器"
       ],
-      "score": 42.4,
-      "wash_score": 7,
-      "wash_detail": "下影1x,收高位,贴MA10"
+      "score": 50.5,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
     },
     {
-      "code": "600114",
-      "name": "东睦股份",
-      "close": 42.08,
-      "vol_ratio": 1.22,
-      "ret3": 6.21,
-      "ret5": 8.32,
+      "code": "002681",
+      "name": "奋达科技",
+      "close": 5.17,
+      "vol_ratio": 2.53,
+      "ret3": -6.74,
+      "ret5": -4.18,
+      "up_days_5": 3,
+      "dist_ma10": -5.33,
+      "consecutive_up": 1,
+      "themes": [
+        "减速器"
+      ],
+      "score": 50.3,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "002331",
+      "name": "皖通科技",
+      "close": 8.84,
+      "vol_ratio": 0.93,
+      "ret3": 1.15,
+      "ret5": 4.68,
       "up_days_5": 4,
-      "dist_ma10": 7.86,
-      "consecutive_up": 1,
-      "themes": [
-        "减速器"
-      ],
-      "score": 42.2,
-      "wash_score": 10,
-      "wash_detail": "收高位,多头,守MA20"
-    },
-    {
-      "code": "002164",
-      "name": "宁波东力",
-      "close": 14.53,
-      "vol_ratio": 2.2,
-      "ret3": 18.09,
-      "ret5": 14.31,
-      "up_days_5": 3,
-      "dist_ma10": 10.55,
-      "consecutive_up": 0,
-      "themes": [
-        "减速器"
-      ],
-      "score": 42.0,
-      "wash_score": 6,
-      "wash_detail": "下影1x,守MA20"
-    },
-    {
-      "code": "603679",
-      "name": "华体科技",
-      "close": 16.72,
-      "vol_ratio": 1.6,
-      "ret3": 0.75,
-      "ret5": -0.73,
-      "up_days_5": 3,
-      "dist_ma10": -1.69,
+      "dist_ma10": 1.02,
       "consecutive_up": 2,
       "themes": [
         "数字孪生"
       ],
-      "score": 41.0,
-      "wash_score": 0,
-      "wash_detail": ""
+      "score": 49.3,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600114",
+      "name": "东睦股份",
+      "close": 40.39,
+      "vol_ratio": 1.37,
+      "ret3": 4.07,
+      "ret5": 10.37,
+      "up_days_5": 4,
+      "dist_ma10": 4.52,
+      "consecutive_up": 4,
+      "themes": [
+        "减速器"
+      ],
+      "score": 48.7,
+      "theme_score": 10.0,
+      "wash_score": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002353",
+      "name": "杰瑞股份",
+      "close": 151.38,
+      "vol_ratio": 1.37,
+      "ret3": 2.8,
+      "ret5": 8.24,
+      "up_days_5": 3,
+      "dist_ma10": 4.53,
+      "consecutive_up": 0,
+      "themes": [
+        "页岩气"
+      ],
+      "score": 48.7,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002378",
+      "name": "章源钨业",
+      "close": 29.69,
+      "vol_ratio": 0.86,
+      "ret3": 0.95,
+      "ret5": 2.81,
+      "up_days_5": 4,
+      "dist_ma10": 1.31,
+      "consecutive_up": 0,
+      "themes": [
+        "工业母机"
+      ],
+      "score": 48.6,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": "贴MA10"
     }
   ],
-  "analysis_time": "2026-06-10 01:21:28"
+  "analysis_time": "2026-06-19 00:00:39"
 }

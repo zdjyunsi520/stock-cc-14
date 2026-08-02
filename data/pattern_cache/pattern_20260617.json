@@ -1,0 +1,588 @@
+{
+  "date_key": "20260617",
+  "hot_themes": [
+    [
+      "汽车电子",
+      2
+    ],
+    [
+      "PCB概念",
+      2
+    ],
+    [
+      "锂电池概念",
+      2
+    ],
+    [
+      "小金属概念",
+      2
+    ],
+    [
+      "金属铜",
+      2
+    ],
+    [
+      "共封装光学(CPO)",
+      1
+    ],
+    [
+      "5G",
+      1
+    ],
+    [
+      "先进封装",
+      1
+    ],
+    [
+      "储能",
+      1
+    ],
+    [
+      "光伏概念",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "000988",
+      "name": "华工科技",
+      "close": 170.51,
+      "vol_ratio": 1.21,
+      "ret3": 12.45,
+      "ret5": 13.96,
+      "up_days_5": 5,
+      "dist_ma10": 8.89,
+      "consecutive_up": 5,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "汽车电子",
+        "5G",
+        "锂电池概念",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 102.1,
+      "theme_score": 70.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "603920",
+      "name": "世运电路",
+      "close": 60.21,
+      "vol_ratio": 1.36,
+      "ret3": 13.77,
+      "ret5": 8.12,
+      "up_days_5": 3,
+      "dist_ma10": 3.78,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "PCB概念"
+      ],
+      "score": 98.6,
+      "theme_score": 60.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "close": 33.41,
+      "vol_ratio": 1.02,
+      "ret3": 17.36,
+      "ret5": 14.53,
+      "up_days_5": 4,
+      "dist_ma10": 11.81,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "锂电池概念",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 95.2,
+      "theme_score": 70.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "600522",
+      "name": "中天科技",
+      "close": 54.91,
+      "vol_ratio": 0.95,
+      "ret3": 12.51,
+      "ret5": 9.3,
+      "up_days_5": 3,
+      "dist_ma10": 8.81,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "锂电池概念",
+        "PCB概念"
+      ],
+      "score": 94.5,
+      "theme_score": 70.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "605058",
+      "name": "澳弘电子",
+      "close": 41.5,
+      "vol_ratio": 1.38,
+      "ret3": 12.18,
+      "ret5": 15.94,
+      "up_days_5": 5,
+      "dist_ma10": 9.19,
+      "consecutive_up": 5,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "汽车电子",
+        "5G",
+        "PCB概念"
+      ],
+      "score": 83.8,
+      "theme_score": 50.0,
+      "wash_score": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002669",
+      "name": "康达新材",
+      "close": 17.38,
+      "vol_ratio": 0.81,
+      "ret3": 11.71,
+      "ret5": -8.26,
+      "up_days_5": 3,
+      "dist_ma10": 2.85,
+      "consecutive_up": 3,
+      "themes": [
+        "光伏概念",
+        "5G",
+        "锂电池概念",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 83.1,
+      "theme_score": 50.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20,贴MA10"
+    },
+    {
+      "code": "002138",
+      "name": "顺络电子",
+      "close": 66.52,
+      "vol_ratio": 1.1,
+      "ret3": 17.67,
+      "ret5": 14.04,
+      "up_days_5": 3,
+      "dist_ma10": 14.25,
+      "consecutive_up": 1,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "PCB概念"
+      ],
+      "score": 81.0,
+      "theme_score": 60.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603220",
+      "name": "中贝通信",
+      "close": 24.27,
+      "vol_ratio": 0.9,
+      "ret3": 8.15,
+      "ret5": -0.58,
+      "up_days_5": 2,
+      "dist_ma10": 4.49,
+      "consecutive_up": 0,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "光伏概念",
+        "5G",
+        "锂电池概念"
+      ],
+      "score": 79.0,
+      "theme_score": 50.0,
+      "wash_score": 3,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "002815",
+      "name": "崇达技术",
+      "close": 20.14,
+      "vol_ratio": 1.29,
+      "ret3": 16.66,
+      "ret5": 14.76,
+      "up_days_5": 4,
+      "dist_ma10": 10.8,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "5G",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 77.9,
+      "theme_score": 50.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603328",
+      "name": "依顿电子",
+      "close": 15.12,
+      "vol_ratio": 1.11,
+      "ret3": 12.55,
+      "ret5": 15.31,
+      "up_days_5": 4,
+      "dist_ma10": 10.07,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "PCB概念"
+      ],
+      "score": 76.1,
+      "theme_score": 50.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603459",
+      "name": "红板科技",
+      "close": 89.31,
+      "vol_ratio": 1.11,
+      "ret3": 17.06,
+      "ret5": 7.02,
+      "up_days_5": 3,
+      "dist_ma10": 1.09,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "锂电池概念",
+        "PCB概念"
+      ],
+      "score": 76.1,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002079",
+      "name": "苏州固锝",
+      "close": 13.52,
+      "vol_ratio": 1.49,
+      "ret3": 15.81,
+      "ret5": 12.37,
+      "up_days_5": 3,
+      "dist_ma10": 10.66,
+      "consecutive_up": 3,
+      "themes": [
+        "储能",
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "先进封装"
+      ],
+      "score": 74.9,
+      "theme_score": 50.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "603118",
+      "name": "共进股份",
+      "close": 13.32,
+      "vol_ratio": 1.42,
+      "ret3": 9.27,
+      "ret5": 9.72,
+      "up_days_5": 4,
+      "dist_ma10": 5.07,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 74.2,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002179",
+      "name": "中航光电",
+      "close": 38.82,
+      "vol_ratio": 1.4,
+      "ret3": 7.71,
+      "ret5": 4.59,
+      "up_days_5": 2,
+      "dist_ma10": 3.72,
+      "consecutive_up": 1,
+      "themes": [
+        "共封装光学(CPO)",
+        "储能",
+        "光伏概念",
+        "5G"
+      ],
+      "score": 74.0,
+      "theme_score": 40.0,
+      "wash_score": 1,
+      "wash_detail": ""
+    },
+    {
+      "code": "002782",
+      "name": "可立克",
+      "close": 24.69,
+      "vol_ratio": 2.38,
+      "ret3": 12.03,
+      "ret5": 6.3,
+      "up_days_5": 2,
+      "dist_ma10": 2.12,
+      "consecutive_up": 0,
+      "themes": [
+        "储能",
+        "光伏概念",
+        "5G"
+      ],
+      "score": 73.8,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002429",
+      "name": "兆驰股份",
+      "close": 11.86,
+      "vol_ratio": 0.84,
+      "ret3": 14.08,
+      "ret5": 9.87,
+      "up_days_5": 3,
+      "dist_ma10": 4.44,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "5G",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 73.4,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "002886",
+      "name": "沃特股份",
+      "close": 31.09,
+      "vol_ratio": 1.66,
+      "ret3": 12.97,
+      "ret5": 8.39,
+      "up_days_5": 3,
+      "dist_ma10": 8.62,
+      "consecutive_up": 3,
+      "themes": [
+        "光伏概念",
+        "5G",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 71.6,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "603067",
+      "name": "振华股份",
+      "close": 36.18,
+      "vol_ratio": 1.03,
+      "ret3": 12.49,
+      "ret5": 6.67,
+      "up_days_5": 4,
+      "dist_ma10": 4.55,
+      "consecutive_up": 4,
+      "themes": [
+        "小金属概念",
+        "储能",
+        "锂电池概念"
+      ],
+      "score": 70.3,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": ""
+    },
+    {
+      "code": "002137",
+      "name": "实益达",
+      "close": 10.16,
+      "vol_ratio": 1.03,
+      "ret3": 10.49,
+      "ret5": -4.06,
+      "up_days_5": 2,
+      "dist_ma10": 0.18,
+      "consecutive_up": 1,
+      "themes": [
+        "汽车电子",
+        "光伏概念",
+        "5G",
+        "先进封装"
+      ],
+      "score": 70.3,
+      "theme_score": 40.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20,贴MA10"
+    },
+    {
+      "code": "001389",
+      "name": "广合科技",
+      "close": 205.8,
+      "vol_ratio": 1.47,
+      "ret3": 14.74,
+      "ret5": 13.11,
+      "up_days_5": 4,
+      "dist_ma10": 11.17,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "5G",
+        "PCB概念"
+      ],
+      "score": 69.7,
+      "theme_score": 40.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "002922",
+      "name": "伊戈尔",
+      "close": 36.9,
+      "vol_ratio": 0.91,
+      "ret3": 8.14,
+      "ret5": 9.06,
+      "up_days_5": 4,
+      "dist_ma10": 2.22,
+      "consecutive_up": 0,
+      "themes": [
+        "储能",
+        "光伏概念",
+        "5G"
+      ],
+      "score": 69.1,
+      "theme_score": 30.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002185",
+      "name": "华天科技",
+      "close": 19.05,
+      "vol_ratio": 1.86,
+      "ret3": 17.59,
+      "ret5": 11.37,
+      "up_days_5": 3,
+      "dist_ma10": 8.42,
+      "consecutive_up": 3,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "5G",
+        "先进封装"
+      ],
+      "score": 68.6,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000630",
+      "name": "铜陵有色",
+      "close": 7.56,
+      "vol_ratio": 0.84,
+      "ret3": 6.58,
+      "ret5": 18.23,
+      "up_days_5": 3,
+      "dist_ma10": 11.09,
+      "consecutive_up": 0,
+      "themes": [
+        "小金属概念",
+        "金属铜",
+        "5G",
+        "锂电池概念",
+        "PCB概念"
+      ],
+      "score": 68.4,
+      "theme_score": 50.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002885",
+      "name": "京泉华",
+      "close": 42.32,
+      "vol_ratio": 2.81,
+      "ret3": 12.65,
+      "ret5": 7.92,
+      "up_days_5": 2,
+      "dist_ma10": 4.03,
+      "consecutive_up": 0,
+      "themes": [
+        "汽车电子",
+        "光伏概念"
+      ],
+      "score": 68.1,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "002975",
+      "name": "博杰股份",
+      "close": 142.57,
+      "vol_ratio": 1.18,
+      "ret3": 16.68,
+      "ret5": 17.29,
+      "up_days_5": 4,
+      "dist_ma10": 9.71,
+      "consecutive_up": 3,
+      "themes": [
+        "汽车电子",
+        "5G",
+        "先进封装",
+        "PCB概念"
+      ],
+      "score": 66.8,
+      "theme_score": 40.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20"
+    }
+  ],
+  "analysis_time": "2026-06-28 14:53:13"
+}

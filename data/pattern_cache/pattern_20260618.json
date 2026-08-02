@@ -1,0 +1,611 @@
+{
+  "date_key": "20260618",
+  "hot_themes": [
+    [
+      "共封装光学(CPO)",
+      2
+    ],
+    [
+      "新能源汽车",
+      2
+    ],
+    [
+      "5G",
+      2
+    ],
+    [
+      "汽车电子",
+      2
+    ],
+    [
+      "PCB概念",
+      2
+    ],
+    [
+      "锂电池概念",
+      2
+    ],
+    [
+      "液冷服务器",
+      1
+    ],
+    [
+      "华为概念",
+      1
+    ],
+    [
+      "先进封装",
+      1
+    ],
+    [
+      "储能",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "000988",
+      "name": "华工科技",
+      "close": 177.55,
+      "vol_ratio": 1.14,
+      "ret3": 9.97,
+      "ret5": 17.08,
+      "up_days_5": 5,
+      "dist_ma10": 12.01,
+      "consecutive_up": 6,
+      "themes": [
+        "锂电池概念",
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "先进封装",
+        "储能",
+        "华为概念"
+      ],
+      "score": 111.4,
+      "theme_score": 80.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002975",
+      "name": "博杰股份",
+      "close": 136.8,
+      "vol_ratio": 2.07,
+      "ret3": 2.63,
+      "ret5": 11.62,
+      "up_days_5": 3,
+      "dist_ma10": 5.82,
+      "consecutive_up": 0,
+      "themes": [
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "液冷服务器",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 100.7,
+      "theme_score": 70.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "002475",
+      "name": "立讯精密",
+      "close": 69.93,
+      "vol_ratio": 1.57,
+      "ret3": 2.66,
+      "ret5": 8.28,
+      "up_days_5": 3,
+      "dist_ma10": 4.25,
+      "consecutive_up": 2,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "5G",
+        "新能源汽车",
+        "液冷服务器",
+        "华为概念"
+      ],
+      "score": 100.7,
+      "theme_score": 60.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603936",
+      "name": "博敏电子",
+      "close": 28.65,
+      "vol_ratio": 1.23,
+      "ret3": 14.14,
+      "ret5": 19.55,
+      "up_days_5": 4,
+      "dist_ma10": 20.24,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "液冷服务器",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 97.3,
+      "theme_score": 70.0,
+      "wash_score": 9,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600522",
+      "name": "中天科技",
+      "close": 56.55,
+      "vol_ratio": 0.91,
+      "ret3": 9.84,
+      "ret5": 14.14,
+      "up_days_5": 4,
+      "dist_ma10": 9.78,
+      "consecutive_up": 4,
+      "themes": [
+        "锂电池概念",
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "液冷服务器",
+        "储能"
+      ],
+      "score": 94.1,
+      "theme_score": 70.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603920",
+      "name": "世运电路",
+      "close": 58.5,
+      "vol_ratio": 1.03,
+      "ret3": 1.99,
+      "ret5": 10.4,
+      "up_days_5": 3,
+      "dist_ma10": 1.56,
+      "consecutive_up": 0,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "储能"
+      ],
+      "score": 90.3,
+      "theme_score": 60.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "605058",
+      "name": "澳弘电子",
+      "close": 41.61,
+      "vol_ratio": 0.95,
+      "ret3": 2.45,
+      "ret5": 14.02,
+      "up_days_5": 5,
+      "dist_ma10": 8.48,
+      "consecutive_up": 6,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "储能"
+      ],
+      "score": 89.5,
+      "theme_score": 60.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "close": 32.88,
+      "vol_ratio": 0.89,
+      "ret3": 6.25,
+      "ret5": 12.15,
+      "up_days_5": 3,
+      "dist_ma10": 8.9,
+      "consecutive_up": 0,
+      "themes": [
+        "锂电池概念",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "先进封装",
+        "储能"
+      ],
+      "score": 88.9,
+      "theme_score": 70.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002137",
+      "name": "实益达",
+      "close": 10.55,
+      "vol_ratio": 1.21,
+      "ret3": 4.32,
+      "ret5": 7.16,
+      "up_days_5": 3,
+      "dist_ma10": 4.01,
+      "consecutive_up": 2,
+      "themes": [
+        "汽车电子",
+        "5G",
+        "新能源汽车",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 87.1,
+      "theme_score": 50.0,
+      "wash_score": 8,
+      "wash_detail": "长下影2x,守MA20"
+    },
+    {
+      "code": "603228",
+      "name": "景旺电子",
+      "close": 81.06,
+      "vol_ratio": 1.18,
+      "ret3": 2.04,
+      "ret5": 7.2,
+      "up_days_5": 3,
+      "dist_ma10": 7.2,
+      "consecutive_up": 2,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "华为概念"
+      ],
+      "score": 86.8,
+      "theme_score": 60.0,
+      "wash_score": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "603459",
+      "name": "红板科技",
+      "close": 90.18,
+      "vol_ratio": 1.04,
+      "ret3": 11.11,
+      "ret5": 14.07,
+      "up_days_5": 4,
+      "dist_ma10": 4.06,
+      "consecutive_up": 4,
+      "themes": [
+        "锂电池概念",
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "华为概念"
+      ],
+      "score": 85.4,
+      "theme_score": 50.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "603327",
+      "name": "福蓉科技",
+      "close": 10.65,
+      "vol_ratio": 0.9,
+      "ret3": -0.27,
+      "ret5": 8.8,
+      "up_days_5": 3,
+      "dist_ma10": 3.3,
+      "consecutive_up": 0,
+      "themes": [
+        "锂电池概念",
+        "5G",
+        "新能源汽车",
+        "储能",
+        "华为概念"
+      ],
+      "score": 84.0,
+      "theme_score": 50.0,
+      "wash_score": 4,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "605277",
+      "name": "新亚电子",
+      "close": 18.35,
+      "vol_ratio": 0.88,
+      "ret3": 2.38,
+      "ret5": 7.98,
+      "up_days_5": 3,
+      "dist_ma10": -11.99,
+      "consecutive_up": 1,
+      "themes": [
+        "汽车电子",
+        "5G",
+        "新能源汽车",
+        "液冷服务器",
+        "储能",
+        "华为概念"
+      ],
+      "score": 83.8,
+      "theme_score": 60.0,
+      "wash_score": 0,
+      "wash_detail": ""
+    },
+    {
+      "code": "600552",
+      "name": "凯盛科技",
+      "close": 23.32,
+      "vol_ratio": 1.32,
+      "ret3": 13.75,
+      "ret5": 14.11,
+      "up_days_5": 3,
+      "dist_ma10": 7.64,
+      "consecutive_up": 0,
+      "themes": [
+        "锂电池概念",
+        "汽车电子",
+        "PCB概念",
+        "新能源汽车",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 83.2,
+      "theme_score": 60.0,
+      "wash_score": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "000062",
+      "name": "深圳华强",
+      "close": 32.06,
+      "vol_ratio": 1.28,
+      "ret3": 3.0,
+      "ret5": 7.1,
+      "up_days_5": 4,
+      "dist_ma10": 2.45,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "新能源汽车",
+        "华为概念"
+      ],
+      "score": 82.8,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002335",
+      "name": "科华数据",
+      "close": 39.38,
+      "vol_ratio": 1.16,
+      "ret3": 0.39,
+      "ret5": 11.22,
+      "up_days_5": 3,
+      "dist_ma10": 4.49,
+      "consecutive_up": 1,
+      "themes": [
+        "锂电池概念",
+        "5G",
+        "液冷服务器",
+        "储能",
+        "华为概念"
+      ],
+      "score": 81.6,
+      "theme_score": 50.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "000938",
+      "name": "紫光股份",
+      "close": 27.45,
+      "vol_ratio": 1.1,
+      "ret3": 3.62,
+      "ret5": 8.36,
+      "up_days_5": 4,
+      "dist_ma10": 3.78,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "5G",
+        "液冷服务器",
+        "储能"
+      ],
+      "score": 81.0,
+      "theme_score": 40.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "603328",
+      "name": "依顿电子",
+      "close": 15.14,
+      "vol_ratio": 0.95,
+      "ret3": 6.26,
+      "ret5": 8.39,
+      "up_days_5": 4,
+      "dist_ma10": 8.58,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "华为概念"
+      ],
+      "score": 79.5,
+      "theme_score": 50.0,
+      "wash_score": 10,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002669",
+      "name": "康达新材",
+      "close": 17.73,
+      "vol_ratio": 0.94,
+      "ret3": 8.69,
+      "ret5": 3.73,
+      "up_days_5": 4,
+      "dist_ma10": 4.19,
+      "consecutive_up": 4,
+      "themes": [
+        "锂电池概念",
+        "PCB概念",
+        "5G",
+        "先进封装"
+      ],
+      "score": 79.4,
+      "theme_score": 40.0,
+      "wash_score": 8,
+      "wash_detail": "下影1x,收高位,守MA20"
+    },
+    {
+      "code": "603633",
+      "name": "徕木股份",
+      "close": 8.07,
+      "vol_ratio": 0.92,
+      "ret3": -0.29,
+      "ret5": 8.1,
+      "up_days_5": 4,
+      "dist_ma10": 0.71,
+      "consecutive_up": 1,
+      "themes": [
+        "汽车电子",
+        "新能源汽车",
+        "储能",
+        "华为概念"
+      ],
+      "score": 79.2,
+      "theme_score": 40.0,
+      "wash_score": 3,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002185",
+      "name": "华天科技",
+      "close": 19.61,
+      "vol_ratio": 1.41,
+      "ret3": 13.87,
+      "ret5": 16.41,
+      "up_days_5": 4,
+      "dist_ma10": 11.39,
+      "consecutive_up": 4,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "5G",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 79.1,
+      "theme_score": 50.0,
+      "wash_score": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002815",
+      "name": "崇达技术",
+      "close": 19.72,
+      "vol_ratio": 0.82,
+      "ret3": 4.54,
+      "ret5": 11.3,
+      "up_days_5": 3,
+      "dist_ma10": 7.36,
+      "consecutive_up": 0,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 78.2,
+      "theme_score": 60.0,
+      "wash_score": 9,
+      "wash_detail": "下影1x,多头,守MA20"
+    },
+    {
+      "code": "002886",
+      "name": "沃特股份",
+      "close": 32.19,
+      "vol_ratio": 1.19,
+      "ret3": 9.21,
+      "ret5": 15.07,
+      "up_days_5": 4,
+      "dist_ma10": 10.91,
+      "consecutive_up": 4,
+      "themes": [
+        "PCB概念",
+        "5G",
+        "新能源汽车",
+        "先进封装",
+        "华为概念"
+      ],
+      "score": 76.9,
+      "theme_score": 50.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002957",
+      "name": "科瑞技术",
+      "close": 60.15,
+      "vol_ratio": 2.1,
+      "ret3": 9.77,
+      "ret5": 15.87,
+      "up_days_5": 4,
+      "dist_ma10": 8.6,
+      "consecutive_up": 4,
+      "themes": [
+        "锂电池概念",
+        "共封装光学(CPO)",
+        "液冷服务器",
+        "华为概念"
+      ],
+      "score": 76.0,
+      "theme_score": 40.0,
+      "wash_score": 4,
+      "wash_detail": "下影1x"
+    },
+    {
+      "code": "001389",
+      "name": "广合科技",
+      "close": 201.46,
+      "vol_ratio": 1.09,
+      "ret3": 4.75,
+      "ret5": 13.58,
+      "up_days_5": 4,
+      "dist_ma10": 7.73,
+      "consecutive_up": 0,
+      "themes": [
+        "共封装光学(CPO)",
+        "汽车电子",
+        "PCB概念",
+        "5G",
+        "华为概念"
+      ],
+      "score": 75.9,
+      "theme_score": 50.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    }
+  ],
+  "analysis_time": "2026-06-28 14:53:37"
+}

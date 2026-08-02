@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "DIST_MA10_T1": [
+      -5.0,
+      5.0
+    ],
+    "WASH_T1_MIN": 1,
+    "RET5_T1_MAX": 15.0,
+    "PCT_T_MIN": 1.0,
+    "VOL_RATIO_T_MIN": 1.1,
+    "DIST_MA10_DELTA_MIN": 2.0
+  },
+  "scan_dates": [
+    "2026-06-23"
+  ],
+  "forward_days": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "total_hits": 0,
+  "hits": []
+}

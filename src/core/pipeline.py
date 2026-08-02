@@ -24,7 +24,7 @@ import pandas as pd
 
 from src.config import FUNDAMENTAL_STAGE_TIMEOUT_SECONDS_DEFAULT, get_config, Config
 from src.storage import get_db
-from data_provider import DataFetcherManager
+from data_provider import get_data_fetcher_manager
 from data_provider.base import normalize_stock_code
 from data_provider.realtime_types import ChipDistribution
 from src.analyzer import (
@@ -124,7 +124,7 @@ class StockAnalysisPipeline:
         
         # 初始化各模块
         self.db = get_db()
-        self.fetcher_manager = DataFetcherManager()
+        self.fetcher_manager = get_data_fetcher_manager()
         # 不再单独创建 akshare_fetcher，统一使用 fetcher_manager 获取增强数据
         self.trend_analyzer = StockTrendAnalyzer()  # 技术分析器
         self.analyzer = GeminiAnalyzer(config=self.config, skills=self.analysis_skills)

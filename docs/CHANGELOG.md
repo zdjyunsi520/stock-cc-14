@@ -46,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [改进] 通知报告默认发送路径恢复既有渠道兼容转换与分片逻辑，新增 renderer 能力仅保留为未来扩展基础。
 - [文档] 明确 #1311 的兼容性边界：渲染层仅消费分析结果 `model_used` 展示字段，未改动 `wechat/slack/feishu/telegram` sender 发送链路，不触发 provider/model/base_url 兼容迁移。
 - [改进] 关联板块缺少类型数据时改为单行展示板块名称，避免生成整列 `N/A` 的板块表格。
+- [改进] 重做 `--detect-accumulation` 分时吸筹评分模型为"十字星超短线识别"：核心评分维度改为 K 线形态——实体占价格% 40 分（\|收-开\|/开，越小越像十字星，满分<0.10%、零分>0.60%）、影线占振幅比 30 分（1-实体/振幅，越大越像星形）、双侧影线门槛 30 分（min(上影,下影)占价格%，真十字星上下都有影线，T字星/锤子线单侧影线扣分）；**评分完全脱离资金表依赖**（开盘用1min首根、收盘用1min末根、数据完整性用1min本身判断），此前因资金表未覆盖被判 0 分的日期现可正常评分；新增 `open_price`/`body_pct`/`wick_ratio`/`min_wick` 字段；废弃收盘vsPOC/连续流入/大单温和/缩量/僵尸股过滤等旧维度（多组标准答案在这些维度上方向冲突或无区分度），仅保留展示；用 1min 序列重构日 K。注意：当前公式在用户标注的标准答案上多数能正确识别（实体≤0.28% 的经典十字星 59-100 分），但纯 K 线形态对边缘案例（实体0.4-0.5% 的小实体中阳 vs 误选）存在固有重叠，已接受该局限；修复 `AccumulationResult` 缺 `score_tight`/`score_revisit` 字段导致 detect 必崩的 bug。
 
 - [文档] 明确 AlphaSift 锁定 commit 的 `alphasift.dsa_adapter` 契约依据，以及当前 DSA API/Web 调用结构的兼容边界。
 - [文档] 明确 Settings 页面对 LLM 配置仅做展示分组与字段归并，不改写或触发 LLM 迁移/回退路径；兼容现有 `LLM` 配置保存与回退语义。

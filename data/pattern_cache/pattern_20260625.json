@@ -1,0 +1,478 @@
+{
+  "date_key": "20260625",
+  "hot_themes": [
+    [
+      "PCB概念",
+      1
+    ],
+    [
+      "芯片概念",
+      1
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "002741",
+      "name": "光华科技",
+      "close": 36.85,
+      "vol_ratio": 1.13,
+      "ret3": -11.13,
+      "ret5": -5.79,
+      "up_days_5": 3,
+      "dist_ma10": 3.16,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 56.3,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "002848",
+      "name": "*ST高斯",
+      "close": 14.26,
+      "vol_ratio": 1.1,
+      "ret3": -0.07,
+      "ret5": 2.51,
+      "up_days_5": 4,
+      "dist_ma10": 4.38,
+      "consecutive_up": 2,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 51.0,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "长下影2x"
+    },
+    {
+      "code": "603002",
+      "name": "宏昌电子",
+      "close": 24.95,
+      "vol_ratio": 1.06,
+      "ret3": -3.17,
+      "ret5": 8.48,
+      "up_days_5": 4,
+      "dist_ma10": 13.36,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 50.6,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "605303",
+      "name": "园林股份",
+      "close": 25.87,
+      "vol_ratio": 3.33,
+      "ret3": -17.77,
+      "ret5": -18.55,
+      "up_days_5": 2,
+      "dist_ma10": -10.92,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 50.0,
+      "theme_score": 10.0,
+      "wash_score": 0,
+      "wash_detail": ""
+    },
+    {
+      "code": "002138",
+      "name": "顺络电子",
+      "close": 71.19,
+      "vol_ratio": 0.88,
+      "ret3": -2.42,
+      "ret5": 7.76,
+      "up_days_5": 4,
+      "dist_ma10": 9.43,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 48.8,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "002815",
+      "name": "崇达技术",
+      "close": 18.73,
+      "vol_ratio": 0.82,
+      "ret3": -3.34,
+      "ret5": -6.75,
+      "up_days_5": 2,
+      "dist_ma10": 0.19,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 48.2,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "下影1x,收高位,多头,贴MA10"
+    },
+    {
+      "code": "002429",
+      "name": "兆驰股份",
+      "close": 11.35,
+      "vol_ratio": 1.11,
+      "ret3": -1.9,
+      "ret5": -4.34,
+      "up_days_5": 1,
+      "dist_ma10": 0.13,
+      "consecutive_up": 0,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 46.1,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "002975",
+      "name": "博杰股份",
+      "close": 156.18,
+      "vol_ratio": 1.07,
+      "ret3": 3.95,
+      "ret5": 9.9,
+      "up_days_5": 3,
+      "dist_ma10": 11.85,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 45.7,
+      "theme_score": 20.0,
+      "wash_score": 11,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "002851",
+      "name": "麦格米特",
+      "close": 171.98,
+      "vol_ratio": 1.06,
+      "ret3": -8.94,
+      "ret5": -3.43,
+      "up_days_5": 3,
+      "dist_ma10": 4.26,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 45.6,
+      "theme_score": 10.0,
+      "wash_score": 11,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "002384",
+      "name": "东山精密",
+      "close": 275.8,
+      "vol_ratio": 1.0,
+      "ret3": 2.35,
+      "ret5": 7.71,
+      "up_days_5": 3,
+      "dist_ma10": 10.09,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 45.0,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "605589",
+      "name": "圣泉集团",
+      "close": 72.96,
+      "vol_ratio": 0.96,
+      "ret3": 0.24,
+      "ret5": 10.69,
+      "up_days_5": 4,
+      "dist_ma10": 9.59,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 44.6,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "002137",
+      "name": "实益达",
+      "close": 10.71,
+      "vol_ratio": 0.92,
+      "ret3": -1.95,
+      "ret5": 5.68,
+      "up_days_5": 3,
+      "dist_ma10": 4.95,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 44.2,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "收高位,多头"
+    },
+    {
+      "code": "603186",
+      "name": "华正新材",
+      "close": 262.8,
+      "vol_ratio": 0.89,
+      "ret3": 6.01,
+      "ret5": 15.71,
+      "up_days_5": 4,
+      "dist_ma10": 19.84,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 43.9,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603110",
+      "name": "东方材料",
+      "close": 24.26,
+      "vol_ratio": 0.86,
+      "ret3": -3.78,
+      "ret5": 7.22,
+      "up_days_5": 3,
+      "dist_ma10": 3.82,
+      "consecutive_up": 0,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 43.6,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "603256",
+      "name": "宏和科技",
+      "close": 276.76,
+      "vol_ratio": 0.85,
+      "ret3": 5.63,
+      "ret5": 7.23,
+      "up_days_5": 3,
+      "dist_ma10": 11.98,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 43.5,
+      "theme_score": 20.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600520",
+      "name": "三佳科技",
+      "close": 33.48,
+      "vol_ratio": 1.34,
+      "ret3": 1.02,
+      "ret5": 8.42,
+      "up_days_5": 4,
+      "dist_ma10": 7.62,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 43.4,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "600601",
+      "name": "方正科技",
+      "close": 14.16,
+      "vol_ratio": 1.33,
+      "ret3": 1.09,
+      "ret5": -0.99,
+      "up_days_5": 2,
+      "dist_ma10": 4.24,
+      "consecutive_up": 1,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 43.3,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "多头,守MA20"
+    },
+    {
+      "code": "002134",
+      "name": "天津普林",
+      "close": 29.58,
+      "vol_ratio": 1.33,
+      "ret3": 2.44,
+      "ret5": -0.43,
+      "up_days_5": 2,
+      "dist_ma10": 2.06,
+      "consecutive_up": 1,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 43.3,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "多头,贴MA10"
+    },
+    {
+      "code": "000988",
+      "name": "华工科技",
+      "close": 173.58,
+      "vol_ratio": 0.81,
+      "ret3": -0.33,
+      "ret5": 2.18,
+      "up_days_5": 3,
+      "dist_ma10": 4.92,
+      "consecutive_up": 2,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 43.1,
+      "theme_score": 10.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603010",
+      "name": "万盛股份",
+      "close": 15.53,
+      "vol_ratio": 1.76,
+      "ret3": 12.37,
+      "ret5": 9.37,
+      "up_days_5": 3,
+      "dist_ma10": 9.71,
+      "consecutive_up": 1,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 42.6,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "close": 35.6,
+      "vol_ratio": 1.16,
+      "ret3": 3.9,
+      "ret5": 7.11,
+      "up_days_5": 2,
+      "dist_ma10": 10.53,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 41.6,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    },
+    {
+      "code": "603228",
+      "name": "景旺电子",
+      "close": 77.63,
+      "vol_ratio": 1.14,
+      "ret3": 1.67,
+      "ret5": -3.48,
+      "up_days_5": 2,
+      "dist_ma10": 1.02,
+      "consecutive_up": 1,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 41.4,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "000062",
+      "name": "深圳华强",
+      "close": 34.14,
+      "vol_ratio": 1.59,
+      "ret3": 8.25,
+      "ret5": 7.48,
+      "up_days_5": 3,
+      "dist_ma10": 8.49,
+      "consecutive_up": 2,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 40.9,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "605006",
+      "name": "山东玻纤",
+      "close": 23.71,
+      "vol_ratio": 1.07,
+      "ret3": 4.54,
+      "ret5": -7.94,
+      "up_days_5": 2,
+      "dist_ma10": 4.0,
+      "consecutive_up": 2,
+      "themes": [
+        "PCB概念"
+      ],
+      "score": 40.7,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002579",
+      "name": "中京电子",
+      "close": 21.3,
+      "vol_ratio": 1.06,
+      "ret3": 1.44,
+      "ret5": 15.49,
+      "up_days_5": 3,
+      "dist_ma10": 15.75,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念",
+        "PCB概念"
+      ],
+      "score": 40.6,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
+    }
+  ],
+  "analysis_time": "2026-06-28 15:57:43"
+}

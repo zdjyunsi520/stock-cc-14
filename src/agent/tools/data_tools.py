@@ -11,40 +11,30 @@ Tools:
 
 import logging
 from datetime import date
-from threading import Lock
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.agent.tools.registry import ToolParameter, ToolDefinition
 
 logger = logging.getLogger(__name__)
 
-_fetcher_manager_singleton = None
-_fetcher_manager_lock = Lock()
 _DAILY_HISTORY_DEFAULT_DAYS = 60
 _DAILY_HISTORY_MAX_DAYS = 365
 
 
 def _get_fetcher_manager():
-    """Return a module-level singleton DataFetcherManager.
+    """Return the process-level singleton DataFetcherManager.
 
-    Re-creating the manager on every tool call causes Tushare re-init overhead
-    (~2 s each) and prevents circuit-breaker cooldown from taking effect across
-    consecutive tool calls within the same agent run.
+    Delegates to data_provider.base.get_data_fetcher_manager so all callers
+    (agent tools, screeners, alert service, etc.) share one manager instance.
     """
-    from data_provider import DataFetcherManager
-    global _fetcher_manager_singleton
-    if _fetcher_manager_singleton is None:
-        with _fetcher_manager_lock:
-            if _fetcher_manager_singleton is None:
-                _fetcher_manager_singleton = DataFetcherManager()
-    return _fetcher_manager_singleton
+    from data_provider import get_data_fetcher_manager
+    return get_data_fetcher_manager()
 
 
 def reset_fetcher_manager() -> None:
     """Clear the cached DataFetcherManager so runtime config reloads take effect."""
-    global _fetcher_manager_singleton
-    with _fetcher_manager_lock:
-        _fetcher_manager_singleton = None
+    from data_provider import reset_data_fetcher_manager
+    reset_data_fetcher_manager()
 
 
 def _get_db():

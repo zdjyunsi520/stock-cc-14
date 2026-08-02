@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import pandas as pd
 
-from data_provider.base import DataFetcherManager, normalize_stock_code
+from data_provider.base import DataFetcherManager, get_data_fetcher_manager, normalize_stock_code
 from data_provider.realtime_types import safe_float
 from src.stock_analyzer import StockTrendAnalyzer
 
@@ -36,7 +36,7 @@ class AskMetricsService:
         trend_analyzer: Optional[StockTrendAnalyzer] = None,
     ) -> None:
         self.config = config
-        self.data_manager = data_manager or DataFetcherManager()
+        self.data_manager = data_manager or get_data_fetcher_manager()
         self.minute_provider = minute_provider
         self.trend_analyzer = trend_analyzer or StockTrendAnalyzer()
 

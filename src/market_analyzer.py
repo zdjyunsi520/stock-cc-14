@@ -24,7 +24,7 @@ from src.search_service import SearchService
 from src.core.market_profile import get_profile, MarketProfile
 from src.core.market_strategy import get_market_strategy_blueprint
 from src.schemas.market_light import MarketLightSnapshot
-from data_provider.base import DataFetcherManager
+from data_provider.base import get_data_fetcher_manager
 
 logger = logging.getLogger(__name__)
 
@@ -132,7 +132,7 @@ class MarketAnalyzer:
         self.config = get_config()
         self.search_service = search_service
         self.analyzer = analyzer
-        self.data_manager = DataFetcherManager()
+        self.data_manager = get_data_fetcher_manager()
         self.region = region if region in ("cn", "us", "hk") else "cn"
         self.profile: MarketProfile = get_profile(self.region)
         self.strategy = get_market_strategy_blueprint(self.region)

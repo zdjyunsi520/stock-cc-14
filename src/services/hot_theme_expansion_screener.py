@@ -146,9 +146,9 @@ class HotThemeExpansionScreener:
 
     @staticmethod
     def _default_manager():
-        from data_provider.base import DataFetcherManager
+        from data_provider.base import get_data_fetcher_manager
 
-        return DataFetcherManager()
+        return get_data_fetcher_manager()
 
     def _default_snapshot_provider(self, stock_codes: Optional[Sequence[str]] = None) -> List[Dict[str, Any]]:
         return self._default_manager().get_a_share_realtime_snapshot(stock_codes)

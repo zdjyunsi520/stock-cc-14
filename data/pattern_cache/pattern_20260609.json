@@ -24,61 +24,6 @@
   ],
   "candidates": [
     {
-      "code": "600206",
-      "name": "有研新材",
-      "close": 29.31,
-      "vol_ratio": 0.98,
-      "ret3": 0.19,
-      "ret5": 5.81,
-      "up_days_5": 3,
-      "dist_ma10": 1.91,
-      "consecutive_up": 1,
-      "themes": [
-        "芯片概念",
-        "OLED",
-        "光纤概念"
-      ],
-      "score": 64.8,
-      "wash_score": 7,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "603650",
-      "name": "彤程新材",
-      "close": 56.06,
-      "vol_ratio": 1.44,
-      "ret3": 4.85,
-      "ret5": 7.39,
-      "up_days_5": 4,
-      "dist_ma10": 4.49,
-      "consecutive_up": 1,
-      "themes": [
-        "芯片概念",
-        "OLED"
-      ],
-      "score": 64.4,
-      "wash_score": 5,
-      "wash_detail": "收高位"
-    },
-    {
-      "code": "002387",
-      "name": "维信诺",
-      "close": 8.75,
-      "vol_ratio": 0.91,
-      "ret3": 4.51,
-      "ret5": 8.07,
-      "up_days_5": 4,
-      "dist_ma10": 3.5,
-      "consecutive_up": 1,
-      "themes": [
-        "OLED",
-        "柔性屏(折叠屏)"
-      ],
-      "score": 59.1,
-      "wash_score": 12,
-      "wash_detail": "长下影3x,多头,守MA20"
-    },
-    {
       "code": "002845",
       "name": "同兴达",
       "close": 15.8,
@@ -89,12 +34,71 @@
       "dist_ma10": 1.43,
       "consecutive_up": 1,
       "themes": [
-        "OLED",
-        "柔性屏(折叠屏)"
+        "柔性屏(折叠屏)",
+        "OLED"
       ],
       "score": 55.4,
+      "theme_score": 20.0,
       "wash_score": 7,
       "wash_detail": "下影1x,收高位,贴MA10"
+    },
+    {
+      "code": "600641",
+      "name": "先导基电",
+      "close": 27.03,
+      "vol_ratio": 1.53,
+      "ret3": 1.8,
+      "ret5": 6.03,
+      "up_days_5": 2,
+      "dist_ma10": 2.21,
+      "consecutive_up": 1,
+      "themes": [
+        "OLED",
+        "芯片概念"
+      ],
+      "score": 55.3,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000725",
+      "name": "京东方A",
+      "close": 6.52,
+      "vol_ratio": 0.99,
+      "ret3": 6.03,
+      "ret5": 18.24,
+      "up_days_5": 4,
+      "dist_ma10": 11.8,
+      "consecutive_up": 1,
+      "themes": [
+        "柔性屏(折叠屏)",
+        "OLED",
+        "光纤概念"
+      ],
+      "score": 54.9,
+      "theme_score": 30.0,
+      "wash_score": 13,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "600206",
+      "name": "有研新材",
+      "close": 29.31,
+      "vol_ratio": 0.98,
+      "ret3": 0.19,
+      "ret5": 5.81,
+      "up_days_5": 3,
+      "dist_ma10": 1.91,
+      "consecutive_up": 1,
+      "themes": [
+        "OLED",
+        "光纤概念"
+      ],
+      "score": 54.8,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,贴MA10"
     },
     {
       "code": "002584",
@@ -110,6 +114,25 @@
         "芯片概念"
       ],
       "score": 54.5,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603650",
+      "name": "彤程新材",
+      "close": 56.06,
+      "vol_ratio": 1.44,
+      "ret3": 4.85,
+      "ret5": 7.39,
+      "up_days_5": 4,
+      "dist_ma10": 4.49,
+      "consecutive_up": 1,
+      "themes": [
+        "OLED"
+      ],
+      "score": 54.4,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位"
     },
@@ -124,47 +147,32 @@
       "dist_ma10": 4.12,
       "consecutive_up": 1,
       "themes": [
-        "OLED",
-        "柔性屏(折叠屏)"
+        "柔性屏(折叠屏)",
+        "OLED"
       ],
       "score": 54.4,
+      "theme_score": 20.0,
       "wash_score": 2,
       "wash_detail": ""
     },
     {
-      "code": "002553",
-      "name": "南方精工",
-      "close": 18.67,
-      "vol_ratio": 1.9,
-      "ret3": 4.09,
-      "ret5": 2.05,
-      "up_days_5": 3,
-      "dist_ma10": 1.04,
-      "consecutive_up": 3,
+      "code": "600114",
+      "name": "东睦股份",
+      "close": 42.08,
+      "vol_ratio": 1.22,
+      "ret3": 6.21,
+      "ret5": 8.32,
+      "up_days_5": 4,
+      "dist_ma10": 7.86,
+      "consecutive_up": 1,
       "themes": [
-        "芯片概念"
-      ],
-      "score": 54.0,
-      "wash_score": 6,
-      "wash_detail": "长下影3x,贴MA10"
-    },
-    {
-      "code": "002194",
-      "name": "武汉凡谷",
-      "close": 12.03,
-      "vol_ratio": 1.19,
-      "ret3": 9.13,
-      "ret5": 5.01,
-      "up_days_5": 2,
-      "dist_ma10": 3.9,
-      "consecutive_up": 0,
-      "themes": [
-        "芯片概念",
+        "柔性屏(折叠屏)",
         "共封装光学(CPO)"
       ],
-      "score": 51.9,
-      "wash_score": 3,
-      "wash_detail": "下影1x"
+      "score": 52.2,
+      "theme_score": 20.0,
+      "wash_score": 10,
+      "wash_detail": "收高位,多头,守MA20"
     },
     {
       "code": "002587",
@@ -180,8 +188,46 @@
         "柔性屏(折叠屏)"
       ],
       "score": 51.4,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": ""
+    },
+    {
+      "code": "002129",
+      "name": "TCL中环",
+      "close": 9.81,
+      "vol_ratio": 1.58,
+      "ret3": 3.31,
+      "ret5": 8.02,
+      "up_days_5": 3,
+      "dist_ma10": 2.58,
+      "consecutive_up": 1,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 50.8,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "603688",
+      "name": "石英股份",
+      "close": 74.72,
+      "vol_ratio": 1.56,
+      "ret3": 12.44,
+      "ret5": 19.75,
+      "up_days_5": 4,
+      "dist_ma10": 11.12,
+      "consecutive_up": 1,
+      "themes": [
+        "光纤概念",
+        "芯片概念"
+      ],
+      "score": 50.6,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
     },
     {
       "code": "002824",
@@ -197,8 +243,27 @@
         "柔性屏(折叠屏)"
       ],
       "score": 50.2,
+      "theme_score": 10.0,
       "wash_score": 6,
       "wash_detail": "长下影3x,贴MA10"
+    },
+    {
+      "code": "002362",
+      "name": "汉王科技",
+      "close": 19.68,
+      "vol_ratio": 4.76,
+      "ret3": 21.34,
+      "ret5": 18.0,
+      "up_days_5": 3,
+      "dist_ma10": 15.47,
+      "consecutive_up": 3,
+      "themes": [
+        "芯片概念"
+      ],
+      "score": 50.0,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "收高位,守MA20"
     },
     {
       "code": "603228",
@@ -211,11 +276,12 @@
       "dist_ma10": -4.04,
       "consecutive_up": 1,
       "themes": [
-        "共封装光学(CPO)",
+        "柔性屏(折叠屏)",
         "OLED",
-        "柔性屏(折叠屏)"
+        "共封装光学(CPO)"
       ],
       "score": 49.6,
+      "theme_score": 30.0,
       "wash_score": 2,
       "wash_detail": ""
     },
@@ -230,35 +296,18 @@
       "dist_ma10": 9.9,
       "consecutive_up": 1,
       "themes": [
-        "芯片概念",
+        "柔性屏(折叠屏)",
         "OLED",
-        "柔性屏(折叠屏)"
+        "芯片概念"
       ],
       "score": 49.5,
+      "theme_score": 30.0,
       "wash_score": 12,
       "wash_detail": "下影1x,收高位,多头,守MA20"
     },
     {
-      "code": "603155",
-      "name": "新亚强",
-      "close": 20.76,
-      "vol_ratio": 1.43,
-      "ret3": 5.41,
-      "ret5": 12.41,
-      "up_days_5": 4,
-      "dist_ma10": 8.13,
-      "consecutive_up": 1,
-      "themes": [
-        "芯片概念",
-        "光纤概念"
-      ],
-      "score": 49.3,
-      "wash_score": 7,
-      "wash_detail": "收高位,守MA20"
-    },
-    {
       "code": "000050",
-      "name": "深天马Ａ",
+      "name": "深天马A",
       "close": 8.32,
       "vol_ratio": 0.91,
       "ret3": 1.18,
@@ -270,44 +319,85 @@
         "柔性屏(折叠屏)"
       ],
       "score": 49.1,
+      "theme_score": 10.0,
       "wash_score": 13,
       "wash_detail": "长下影3x,多头,守MA20,贴MA10"
     },
     {
-      "code": "000859",
-      "name": "国风新材",
-      "close": 11.17,
-      "vol_ratio": 1.38,
-      "ret3": 6.95,
-      "ret5": 8.31,
-      "up_days_5": 3,
-      "dist_ma10": 6.4,
+      "code": "002387",
+      "name": "维信诺",
+      "close": 8.75,
+      "vol_ratio": 0.91,
+      "ret3": 4.51,
+      "ret5": 8.07,
+      "up_days_5": 4,
+      "dist_ma10": 3.5,
       "consecutive_up": 1,
       "themes": [
-        "芯片概念",
         "柔性屏(折叠屏)"
       ],
-      "score": 48.8,
+      "score": 49.1,
+      "theme_score": 10.0,
+      "wash_score": 12,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "601869",
+      "name": "长飞光纤",
+      "close": 484.33,
+      "vol_ratio": 0.87,
+      "ret3": 6.57,
+      "ret5": 17.89,
+      "up_days_5": 3,
+      "dist_ma10": 15.68,
+      "consecutive_up": 1,
+      "themes": [
+        "光纤概念",
+        "共封装光学(CPO)",
+        "芯片概念"
+      ],
+      "score": 48.7,
+      "theme_score": 30.0,
       "wash_score": 10,
       "wash_detail": "收高位,多头,守MA20"
     },
     {
-      "code": "603203",
-      "name": "快克智能",
-      "close": 53.97,
-      "vol_ratio": 1.83,
-      "ret3": 4.31,
-      "ret5": 1.67,
-      "up_days_5": 2,
-      "dist_ma10": -18.91,
-      "consecutive_up": 0,
+      "code": "600552",
+      "name": "凯盛科技",
+      "close": 22.74,
+      "vol_ratio": 1.36,
+      "ret3": 14.68,
+      "ret5": 19.55,
+      "up_days_5": 4,
+      "dist_ma10": 14.85,
+      "consecutive_up": 4,
       "themes": [
-        "共封装光学(CPO)",
+        "柔性屏(折叠屏)",
         "OLED"
       ],
-      "score": 48.3,
-      "wash_score": 1,
-      "wash_detail": ""
+      "score": 48.6,
+      "theme_score": 20.0,
+      "wash_score": 14,
+      "wash_detail": "长下影3x,收高位,多头,守MA20"
+    },
+    {
+      "code": "603051",
+      "name": "鹿山新材",
+      "close": 21.68,
+      "vol_ratio": 1.25,
+      "ret3": 3.81,
+      "ret5": 2.49,
+      "up_days_5": 3,
+      "dist_ma10": -0.28,
+      "consecutive_up": 1,
+      "themes": [
+        "柔性屏(折叠屏)",
+        "OLED"
+      ],
+      "score": 47.5,
+      "theme_score": 20.0,
+      "wash_score": 3,
+      "wash_detail": "收高位"
     },
     {
       "code": "603690",
@@ -323,8 +413,28 @@
         "光纤概念"
       ],
       "score": 46.6,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位"
+    },
+    {
+      "code": "600498",
+      "name": "烽火通信",
+      "close": 58.85,
+      "vol_ratio": 1.14,
+      "ret3": 11.55,
+      "ret5": 18.04,
+      "up_days_5": 4,
+      "dist_ma10": 12.19,
+      "consecutive_up": 1,
+      "themes": [
+        "光纤概念",
+        "共封装光学(CPO)"
+      ],
+      "score": 46.4,
+      "theme_score": 20.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
     },
     {
       "code": "002319",
@@ -340,6 +450,7 @@
         "柔性屏(折叠屏)"
       ],
       "score": 45.9,
+      "theme_score": 10.0,
       "wash_score": 5,
       "wash_detail": "收高位,贴MA10"
     },
@@ -357,112 +468,29 @@
         "共封装光学(CPO)"
       ],
       "score": 45.6,
+      "theme_score": 10.0,
       "wash_score": 4,
       "wash_detail": "收高位"
     },
     {
-      "code": "600641",
-      "name": "先导基电",
-      "close": 27.03,
-      "vol_ratio": 1.53,
-      "ret3": 1.8,
-      "ret5": 6.03,
-      "up_days_5": 2,
-      "dist_ma10": 2.21,
-      "consecutive_up": 1,
-      "themes": [
-        "OLED"
-      ],
-      "score": 45.3,
-      "wash_score": 6,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "002897",
-      "name": "意华股份",
-      "close": 85.26,
+      "code": "002515",
+      "name": "金字火腿",
+      "close": 7.36,
       "vol_ratio": 0.99,
-      "ret3": -11.3,
-      "ret5": -2.47,
+      "ret3": 6.7,
+      "ret5": 7.73,
       "up_days_5": 3,
-      "dist_ma10": 0.23,
-      "consecutive_up": 1,
+      "dist_ma10": 10.35,
+      "consecutive_up": 2,
       "themes": [
-        "共封装光学(CPO)"
-      ],
-      "score": 44.9,
-      "wash_score": 8,
-      "wash_detail": "多头,守MA20,贴MA10"
-    },
-    {
-      "code": "603683",
-      "name": "晶华新材",
-      "close": 31.73,
-      "vol_ratio": 0.98,
-      "ret3": 1.72,
-      "ret5": 6.97,
-      "up_days_5": 3,
-      "dist_ma10": 4.66,
-      "consecutive_up": 0,
-      "themes": [
-        "柔性屏(折叠屏)"
-      ],
-      "score": 44.8,
-      "wash_score": 7,
-      "wash_detail": "多头,守MA20"
-    },
-    {
-      "code": "003031",
-      "name": "中瓷电子",
-      "close": 143.79,
-      "vol_ratio": 0.96,
-      "ret3": -1.7,
-      "ret5": 1.65,
-      "up_days_5": 3,
-      "dist_ma10": 0.4,
-      "consecutive_up": 1,
-      "themes": [
-        "共封装光学(CPO)"
-      ],
-      "score": 44.6,
-      "wash_score": 6,
-      "wash_detail": "收高位,贴MA10"
-    },
-    {
-      "code": "002960",
-      "name": "青鸟智控",
-      "close": 8.44,
-      "vol_ratio": 0.93,
-      "ret3": 5.46,
-      "ret5": 4.73,
-      "up_days_5": 3,
-      "dist_ma10": 0.81,
-      "consecutive_up": 1,
-      "themes": [
+        "共封装光学(CPO)",
         "芯片概念"
       ],
-      "score": 44.3,
+      "score": 44.9,
+      "theme_score": 20.0,
       "wash_score": 5,
-      "wash_detail": "长下影2x,贴MA10"
-    },
-    {
-      "code": "002643",
-      "name": "万润股份",
-      "close": 14.37,
-      "vol_ratio": 0.93,
-      "ret3": 0.58,
-      "ret5": 0.79,
-      "up_days_5": 3,
-      "dist_ma10": -2.87,
-      "consecutive_up": 1,
-      "themes": [
-        "OLED",
-        "光纤概念"
-      ],
-      "score": 44.3,
-      "wash_score": 4,
       "wash_detail": "收高位"
     }
   ],
-  "analysis_time": "2026-06-10 11:43:39"
+  "analysis_time": "2026-06-19 00:09:56"
 }

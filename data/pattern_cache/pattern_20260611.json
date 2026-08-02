@@ -1,0 +1,499 @@
+{
+  "date_key": "20260611",
+  "hot_themes": [
+    [
+      "中芯国际概念",
+      5
+    ],
+    [
+      "氟化工概念",
+      4
+    ],
+    [
+      "先进封装",
+      4
+    ],
+    [
+      "小金属概念",
+      3
+    ],
+    [
+      "存储芯片",
+      3
+    ]
+  ],
+  "candidates": [
+    {
+      "code": "002409",
+      "name": "雅克科技",
+      "close": 134.81,
+      "vol_ratio": 2.19,
+      "ret3": 25.49,
+      "ret5": 14.97,
+      "up_days_5": 3,
+      "dist_ma10": 17.95,
+      "consecutive_up": 3,
+      "themes": [
+        "中芯国际概念",
+        "先进封装",
+        "存储芯片",
+        "氟化工概念"
+      ],
+      "score": 71.9,
+      "theme_score": 40.0,
+      "wash_score": 7,
+      "wash_detail": "收高位,守MA20"
+    },
+    {
+      "code": "600618",
+      "name": "氯碱化工",
+      "close": 10.7,
+      "vol_ratio": 2.78,
+      "ret3": 8.34,
+      "ret5": 4.84,
+      "up_days_5": 4,
+      "dist_ma10": 3.71,
+      "consecutive_up": 3,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 67.8,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002407",
+      "name": "多氟多",
+      "close": 38.19,
+      "vol_ratio": 1.74,
+      "ret3": 13.21,
+      "ret5": 15.85,
+      "up_days_5": 5,
+      "dist_ma10": 12.02,
+      "consecutive_up": 5,
+      "themes": [
+        "中芯国际概念",
+        "存储芯片",
+        "氟化工概念"
+      ],
+      "score": 67.4,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "600206",
+      "name": "有研新材",
+      "close": 34.24,
+      "vol_ratio": 2.57,
+      "ret3": 22.2,
+      "ret5": 16.39,
+      "up_days_5": 3,
+      "dist_ma10": 16.06,
+      "consecutive_up": 3,
+      "themes": [
+        "中芯国际概念",
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 65.7,
+      "theme_score": 30.0,
+      "wash_score": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "603991",
+      "name": "至正股份",
+      "close": 120.21,
+      "vol_ratio": 3.01,
+      "ret3": 17.73,
+      "ret5": 9.27,
+      "up_days_5": 3,
+      "dist_ma10": 10.32,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 65.0,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603650",
+      "name": "彤程新材",
+      "close": 64.3,
+      "vol_ratio": 2.66,
+      "ret3": 22.09,
+      "ret5": 19.05,
+      "up_days_5": 4,
+      "dist_ma10": 17.22,
+      "consecutive_up": 3,
+      "themes": [
+        "中芯国际概念",
+        "存储芯片"
+      ],
+      "score": 61.6,
+      "theme_score": 20.0,
+      "wash_score": 6,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "000969",
+      "name": "安泰科技",
+      "close": 22.24,
+      "vol_ratio": 1.6,
+      "ret3": 5.73,
+      "ret5": 1.31,
+      "up_days_5": 3,
+      "dist_ma10": 1.45,
+      "consecutive_up": 1,
+      "themes": [
+        "中芯国际概念",
+        "小金属概念"
+      ],
+      "score": 61.0,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002312",
+      "name": "川发龙蟒",
+      "close": 8.88,
+      "vol_ratio": 3.49,
+      "ret3": 7.37,
+      "ret5": 2.85,
+      "up_days_5": 2,
+      "dist_ma10": 2.02,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念"
+      ],
+      "score": 60.0,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "605589",
+      "name": "圣泉集团",
+      "close": 61.0,
+      "vol_ratio": 3.49,
+      "ret3": 21.5,
+      "ret5": 12.62,
+      "up_days_5": 3,
+      "dist_ma10": 13.62,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 60.0,
+      "theme_score": 20.0,
+      "wash_score": 11,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "600641",
+      "name": "先导基电",
+      "close": 28.91,
+      "vol_ratio": 2.39,
+      "ret3": 16.87,
+      "ret5": 8.66,
+      "up_days_5": 3,
+      "dist_ma10": 8.64,
+      "consecutive_up": 3,
+      "themes": [
+        "小金属概念",
+        "存储芯片"
+      ],
+      "score": 58.9,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "守MA20"
+    },
+    {
+      "code": "002428",
+      "name": "云南锗业",
+      "close": 88.24,
+      "vol_ratio": 1.89,
+      "ret3": 12.41,
+      "ret5": 0.88,
+      "up_days_5": 2,
+      "dist_ma10": 3.27,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "氟化工概念"
+      ],
+      "score": 58.9,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000422",
+      "name": "湖北宜化",
+      "close": 14.06,
+      "vol_ratio": 2.79,
+      "ret3": 9.62,
+      "ret5": 5.92,
+      "up_days_5": 2,
+      "dist_ma10": 3.84,
+      "consecutive_up": 2,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 57.9,
+      "theme_score": 10.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002658",
+      "name": "雪迪龙",
+      "close": 8.33,
+      "vol_ratio": 2.68,
+      "ret3": 10.06,
+      "ret5": 7.15,
+      "up_days_5": 4,
+      "dist_ma10": 6.78,
+      "consecutive_up": 3,
+      "themes": [
+        "中芯国际概念"
+      ],
+      "score": 56.8,
+      "theme_score": 10.0,
+      "wash_score": 3,
+      "wash_detail": ""
+    },
+    {
+      "code": "002371",
+      "name": "北方华创",
+      "close": 637.5,
+      "vol_ratio": 1.12,
+      "ret3": 8.65,
+      "ret5": 1.96,
+      "up_days_5": 3,
+      "dist_ma10": 4.04,
+      "consecutive_up": 3,
+      "themes": [
+        "中芯国际概念",
+        "存储芯片"
+      ],
+      "score": 56.2,
+      "theme_score": 20.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "603203",
+      "name": "快克智能",
+      "close": 59.1,
+      "vol_ratio": 1.56,
+      "ret3": 5.95,
+      "ret5": 13.65,
+      "up_days_5": 3,
+      "dist_ma10": -6.62,
+      "consecutive_up": 2,
+      "themes": [
+        "中芯国际概念",
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 55.6,
+      "theme_score": 30.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "603690",
+      "name": "至纯科技",
+      "close": 28.46,
+      "vol_ratio": 1.49,
+      "ret3": 9.45,
+      "ret5": 7.15,
+      "up_days_5": 2,
+      "dist_ma10": 8.49,
+      "consecutive_up": 1,
+      "themes": [
+        "中芯国际概念",
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 54.9,
+      "theme_score": 30.0,
+      "wash_score": 5,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "000021",
+      "name": "深科技",
+      "close": 39.08,
+      "vol_ratio": 0.96,
+      "ret3": 10.78,
+      "ret5": -0.36,
+      "up_days_5": 3,
+      "dist_ma10": 2.83,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装",
+        "存储芯片"
+      ],
+      "score": 54.6,
+      "theme_score": 20.0,
+      "wash_score": 5,
+      "wash_detail": "收高位,贴MA10"
+    },
+    {
+      "code": "000762",
+      "name": "西藏矿业",
+      "close": 29.38,
+      "vol_ratio": 1.9,
+      "ret3": 10.12,
+      "ret5": 4.87,
+      "up_days_5": 3,
+      "dist_ma10": 3.01,
+      "consecutive_up": 3,
+      "themes": [
+        "小金属概念"
+      ],
+      "score": 54.0,
+      "theme_score": 10.0,
+      "wash_score": 2,
+      "wash_detail": ""
+    },
+    {
+      "code": "000792",
+      "name": "盐湖股份",
+      "close": 30.41,
+      "vol_ratio": 1.71,
+      "ret3": 8.07,
+      "ret5": 3.89,
+      "up_days_5": 3,
+      "dist_ma10": 2.18,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念"
+      ],
+      "score": 52.1,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "002414",
+      "name": "高德红外",
+      "close": 12.65,
+      "vol_ratio": 1.6,
+      "ret3": 6.71,
+      "ret5": -0.68,
+      "up_days_5": 3,
+      "dist_ma10": 0.59,
+      "consecutive_up": 3,
+      "themes": [
+        "先进封装"
+      ],
+      "score": 51.0,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "贴MA10"
+    },
+    {
+      "code": "600160",
+      "name": "巨化股份",
+      "close": 41.0,
+      "vol_ratio": 1.56,
+      "ret3": 8.43,
+      "ret5": 8.27,
+      "up_days_5": 3,
+      "dist_ma10": 7.57,
+      "consecutive_up": 2,
+      "themes": [
+        "中芯国际概念",
+        "氟化工概念"
+      ],
+      "score": 50.6,
+      "theme_score": 20.0,
+      "wash_score": 11,
+      "wash_detail": "长下影3x,多头,守MA20"
+    },
+    {
+      "code": "603505",
+      "name": "金石资源",
+      "close": 18.87,
+      "vol_ratio": 1.55,
+      "ret3": 6.95,
+      "ret5": 4.73,
+      "up_days_5": 3,
+      "dist_ma10": 3.78,
+      "consecutive_up": 2,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 50.5,
+      "theme_score": 10.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    },
+    {
+      "code": "002430",
+      "name": "杭氧股份",
+      "close": 27.72,
+      "vol_ratio": 3.22,
+      "ret3": 15.93,
+      "ret5": 11.34,
+      "up_days_5": 3,
+      "dist_ma10": 9.76,
+      "consecutive_up": 3,
+      "themes": [
+        "存储芯片"
+      ],
+      "score": 50.0,
+      "theme_score": 10.0,
+      "wash_score": 8,
+      "wash_detail": "长下影3x"
+    },
+    {
+      "code": "601678",
+      "name": "滨化股份",
+      "close": 5.95,
+      "vol_ratio": 3.11,
+      "ret3": 13.89,
+      "ret5": 11.66,
+      "up_days_5": 3,
+      "dist_ma10": 8.68,
+      "consecutive_up": 2,
+      "themes": [
+        "氟化工概念"
+      ],
+      "score": 50.0,
+      "theme_score": 10.0,
+      "wash_score": 7,
+      "wash_detail": "下影1x,收高位"
+    },
+    {
+      "code": "002213",
+      "name": "大为股份",
+      "close": 38.77,
+      "vol_ratio": 1.98,
+      "ret3": 9.06,
+      "ret5": 1.06,
+      "up_days_5": 2,
+      "dist_ma10": 7.66,
+      "consecutive_up": 1,
+      "themes": [
+        "小金属概念",
+        "存储芯片"
+      ],
+      "score": 49.8,
+      "theme_score": 20.0,
+      "wash_score": 4,
+      "wash_detail": "收高位"
+    }
+  ],
+  "analysis_time": "2026-06-19 00:27:40"
+}
